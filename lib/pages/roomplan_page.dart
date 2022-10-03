@@ -67,7 +67,8 @@ class MySearchDelegate extends SearchDelegate {
     List <String> suggestions = [
       'Raum 1.64',
       'Raum 1.65',
-      'Raum 1.66'
+      'Raum 1.66',
+      'Raum 1.67'
     ];
 
     return ListView.builder(
