@@ -21,8 +21,14 @@ class Timetable extends StatelessWidget {
               ),
             ),
             drawer: const MCGDrawer(),
-            body: TabBarView(
+            body: const TabBarView(
               children: <Widget>[
+                Center(
+                  child: Text("Stundenplan A-Woche")
+                ),
+                Center(
+                  child: Text("Stundenplan B-Woche")
+                ),
               ],
             )
         )
