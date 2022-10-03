@@ -15,7 +15,7 @@ class Home extends StatelessWidget {
           appBar: MCGAppBar(title: "MCG App"),
           drawer: const MCGDrawer(),
           body: const Center(
-              child: Text("Homepage")
+              child: Text("Startseite")
           ),
         ),
     );

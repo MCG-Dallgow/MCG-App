@@ -12,7 +12,7 @@ class SubstitutionPlan extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-        appBar: MCGAppBar(title: "MCG App"),
+        appBar: MCGAppBar(title: "Vertretungsplan"),
         drawer: const MCGDrawer(),
         body: const Center(
             child: Text("Vertretungsplan")

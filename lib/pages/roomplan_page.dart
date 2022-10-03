@@ -12,24 +12,51 @@ class RoomPlan extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-        appBar: MCGAppBar(title: "MCG App"),
-        drawer: const MCGDrawer(),
-        body: Column(
-          children: <Widget> [
-            Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(32.0, 32.0, 32.0, 24.0),
-              child: Row(children: <Widget> [
-                IconButton(onPressed: () {
-                  showSearch(context: context,
-                      delegate: MySearchDelegate());
-                }, icon: const Icon(Icons.search, size: 40,)),
-                const Text('  Search', style: const TextStyle(fontSize: 32),),
-              ],)
-            )
-          ],
-        )
-        ),
-      );
+          appBar: MCGAppBar(title: "Raumplan"),
+          drawer: const MCGDrawer(),
+          body: Column(
+            children: <Widget>[
+              Row(
+                children: <Widget>[
+                  IconButton(
+                      onPressed: () {
+                        showSearch(
+                          context: context,
+                          delegate: MySearchDelegate(),
+                        );
+                      },
+                      icon: const Icon(
+                        Icons.search,
+                        size: 40,
+                      )),
+                  const Text(
+                    'Search',
+                    style: TextStyle(fontSize: 32),
+                  ),
+                ],
+              ),
+              Center(
+                child: GestureDetector(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: const Color.fromRGBO(0, 0, 0, 1),
+                        width: 3,
+                      ),
+                      color: const Color.fromRGBO(200, 200, 200, 1),
+                    ),
+                    width: 100,
+                    height: 100,
+                    child: const Center(
+                      child: Text("1.60"),
+                    )
+                  ),
+                  onTap: () { },
+                ),
+              ),
+            ],
+          )),
+    );
   }
 }
 
@@ -42,29 +69,26 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   List<Widget>? buildActions(BuildContext context) => [
-    IconButton(
-      icon: const Icon(Icons.clear),
-      onPressed: () {
-        if (query.isEmpty) {
-          close(context, null);
-        } else {
-          query = '';
-        }
-      },
-    ),
-  ];
+        IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: () {
+            if (query.isEmpty) {
+              close(context, null);
+            } else {
+              query = '';
+            }
+          },
+        ),
+      ];
 
   @override
   Widget buildResults(BuildContext context) => Center(
-    child: Text(
-      query,
-      style: const TextStyle(fontSize: 64)
-    ),
-  );
+        child: Text(query, style: const TextStyle(fontSize: 64)),
+      );
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List <String> suggestions = [
+    List<String> suggestions = [
       'Raum 1.64',
       'Raum 1.65',
       'Raum 1.66',
@@ -78,13 +102,13 @@ class MySearchDelegate extends SearchDelegate {
 
         return ListTile(
           title: Text(suggestion),
-          onTap:() {
+          onTap: () {
             query = suggestion;
 
             showResults(context);
           },
         );
-        },
+      },
     );
   }
 }
