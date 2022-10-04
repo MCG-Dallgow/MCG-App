@@ -41,11 +41,15 @@ class _MCGAppBarState extends State<MCGAppBar> {
               isThemeDark = !isThemeDark;
             });
           */},
-        ),*/
+        ),*/IconButton(
+          icon: const Icon(Icons.search),
+          onPressed: () { },
+        ),
         IconButton(
           icon: const Icon(Icons.settings),
           onPressed: () { },
-        )
+        ),
+
       ],
     );
   }

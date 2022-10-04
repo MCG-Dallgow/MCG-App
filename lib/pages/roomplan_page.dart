@@ -55,7 +55,13 @@ class RoomPlan extends StatelessWidget {
                 ),
               ),
             ],
-          )),
+          ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.blueGrey,
+          onPressed: () {  },
+          child: const Icon(Icons.layers),
+        ),
+      ),
     );
   }
 }
