@@ -1,0 +1,20 @@
+{
+  "teachers": [
+    {
+      "vorname": "Johannes Paul",
+      "nachname": "Haberjoh",
+      "anrede": "Herr",
+      "kuerzel": "HabeJ",
+      "email": "johannes.haberjoh@lk.brandenburg.de",
+      "faecher": "Mathematik, Physik"
+    },
+    {
+      "vorname": "Stefan",
+      "nachname": "Plaumann",
+      "anrede": "Herr",
+      "kuerzel": "PlauS",
+      "email": "stefan.plaumann@lk.brandenburg.de",
+      "faecher": "Informatik, Technik"
+    }
+  ]
+}
