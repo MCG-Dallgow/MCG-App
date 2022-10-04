@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
@@ -12,32 +13,32 @@ class RoomPlan extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-          appBar: MCGAppBar(title: "Raumplan"),
-          drawer: const MCGDrawer(),
-          body: Column(
-            children: <Widget>[
-              Row(
-                children: <Widget>[
-                  IconButton(
-                      onPressed: () {
-                        showSearch(
-                          context: context,
-                          delegate: MySearchDelegate(),
-                        );
-                      },
-                      icon: const Icon(
-                        Icons.search,
-                        size: 40,
-                      )),
-                  const Text(
-                    'Search',
-                    style: TextStyle(fontSize: 32),
-                  ),
-                ],
-              ),
-              Center(
-                child: GestureDetector(
-                  child: Container(
+        appBar: MCGAppBar(title: "Raumplan"),
+        drawer: const MCGDrawer(),
+        body: Column(
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                IconButton(
+                    onPressed: () {
+                      showSearch(
+                        context: context,
+                        delegate: MySearchDelegate(),
+                      );
+                    },
+                    icon: const Icon(
+                      Icons.search,
+                      size: 40,
+                    )),
+                const Text(
+                  'Search',
+                  style: TextStyle(fontSize: 32),
+                ),
+              ],
+            ),
+            Center(
+              child: GestureDetector(
+                child: Container(
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: const Color.fromRGBO(0, 0, 0, 1),
@@ -49,53 +50,65 @@ class RoomPlan extends StatelessWidget {
                     height: 100,
                     child: const Center(
                       child: Text("1.60"),
-                    )
-                  ),
-                  onTap: () { },
-                ),
+                    )),
+                onTap: () {},
               ),
-            ],
-          ),
+            ),
+          ],
+        ),
         floatingActionButton: SpeedDial(
-          marginBottom: 10,
           icon: Icons.layers,
           activeIcon: Icons.close,
-          backgroundColor: Colors.blueGrey
+          backgroundColor: Colors.blueGrey,
           foregroundColor: Colors.white,
-          activeBackgroundColor: Colors.blueGrey
+          activeBackgroundColor: Colors.blueGrey,
           activeForegroundColor: Colors.white,
-          buttonSize: 56.0,
+          buttonSize: const Size(56.0, 56.0),
           visible: true,
           closeManually: false,
           overlayColor: Colors.black,
           overlayOpacity: 0.5,
           elevation: 8.0,
-          shape CircleBorder(),
-
+          shape: const CircleBorder(),
           children: [
             SpeedDialChild(
-              child: Icon(Icons.layers),
-              backgroundColor: Colors.blueGrey
+              child: const Text(
+                "U",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              backgroundColor: Colors.blueGrey,
               foregroundColor: Colors.white,
               label: 'Untergeschoss',
-              labelStyle: TextStyle(fontSize: 18.0),
-              onTap: () => print('Untergeschoss'),
+              labelStyle: const TextStyle(fontSize: 18.0),
+              onTap: () {  },
             ),
             SpeedDialChild(
-              child: Icon(Icons.layers),
-              backgroundColor: Colors.blueGrey
+              child: const Text(
+                "0",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              backgroundColor: Colors.blueGrey,
+              foregroundColor: Colors.white,
+              label: 'Erdgeschoss',
+              labelStyle: const TextStyle(fontSize: 18.0),
+              onTap: () {  },
+            ),
+            SpeedDialChild(
+              child: const Text(
+                "1",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              backgroundColor: Colors.blueGrey,
               foregroundColor: Colors.white,
               label: '1. Obergeschoss',
-              labelStyle: TextStyle(fontSize: 18.0),
-              onTap: () => print('1. Obergeschoss'),
-            ),
-            SpeedDialChild(
-              child: Icon(Icons.layers),
-              backgroundColor: Colors.blueGrey
-              foregroundColor: Colors.white,
-              label: '2. Obergeschoss',
-              labelStyle: TextStyle(fontSize: 18.0),
-              onTap: () => print('2. Obergeschoss'),
+              labelStyle: const TextStyle(fontSize: 18.0),
+              onTap: () {  },
             ),
           ],
         ),
@@ -106,11 +119,11 @@ class RoomPlan extends StatelessWidget {
 
 class MySearchDelegate extends SearchDelegate {
   List<String> searchResults = [
-      'Raum 1.64',
-      'Raum 1.65',
-      'Raum 1.66',
-      'Raum 1.67'
-    ];
+    'Raum 1.64',
+    'Raum 1.65',
+    'Raum 1.66',
+    'Raum 1.67'
+  ];
 
   @override
   Widget? buildLeading(BuildContext context) => IconButton(
