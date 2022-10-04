@@ -61,6 +61,13 @@ class RoomPlan extends StatelessWidget {
 }
 
 class MySearchDelegate extends SearchDelegate {
+  List<String> searchResults = [
+      'Raum 1.64',
+      'Raum 1.65',
+      'Raum 1.66',
+      'Raum 1.67'
+    ];
+
   @override
   Widget? buildLeading(BuildContext context) => IconButton(
         icon: const Icon(Icons.arrow_back),
@@ -88,12 +95,12 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> suggestions = [
-      'Raum 1.64',
-      'Raum 1.65',
-      'Raum 1.66',
-      'Raum 1.67'
-    ];
+    List<String> sugestions = searchResults.where((searchResult) {
+      final result = searchResult.toLowerCase();
+      final input = query.toLowerCase();
+
+      return result.contains(input);
+    }).toList();
 
     return ListView.builder(
       itemCount: suggestions.length,
