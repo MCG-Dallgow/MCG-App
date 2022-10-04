@@ -87,6 +87,18 @@ class MCGDrawer extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Einstellungen'),
+            onTap: () {
+              /*Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return TeachersPage();
+                }),
+              );*/
+            },
+          ),
         ],
       ),
     );

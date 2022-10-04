@@ -13,29 +13,23 @@ class RoomPlan extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-        appBar: MCGAppBar(title: "Raumplan"),
+        appBar: MCGAppBar(
+          title: "Raumplan",
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                showSearch(
+                  context: context,
+                  delegate: MySearchDelegate(),
+                );
+              },
+            ),
+          ],
+        ),
         drawer: const MCGDrawer(),
         body: Column(
           children: <Widget>[
-            Row(
-              children: <Widget>[
-                IconButton(
-                    onPressed: () {
-                      showSearch(
-                        context: context,
-                        delegate: MySearchDelegate(),
-                      );
-                    },
-                    icon: const Icon(
-                      Icons.search,
-                      size: 40,
-                    )),
-                const Text(
-                  'Search',
-                  style: TextStyle(fontSize: 32),
-                ),
-              ],
-            ),
             Center(
               child: GestureDetector(
                 child: Container(

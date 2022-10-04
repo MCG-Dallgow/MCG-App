@@ -4,11 +4,13 @@ class MCGAppBar extends StatefulWidget implements PreferredSizeWidget {
   MCGAppBar({
     Key? key,
     required this.title,
+    this.actions,
     this.bottom}) :
         preferredSize = _PreferredAppBarSize(kToolbarHeight, bottom?.preferredSize.height),
         super(key: key);
 
   final String title;
+  final List<Widget>? actions;
   final PreferredSizeWidget? bottom;
 
   @override
@@ -33,7 +35,8 @@ class _MCGAppBarState extends State<MCGAppBar> {
       title: Text(widget.title),
       bottom: widget.bottom,
       backgroundColor: Colors.blueGrey,
-      actions: [
+      actions: widget.actions
+      /*[
         /*IconButton(
           icon: Icon(/*isThemeDark ? */Icons.dark_mode/* : Icons.light_mode*/),
           onPressed: () {/*
@@ -41,7 +44,8 @@ class _MCGAppBarState extends State<MCGAppBar> {
               isThemeDark = !isThemeDark;
             });
           */},
-        ),*/IconButton(
+        ),*/
+        IconButton(
           icon: const Icon(Icons.search),
           onPressed: () { },
         ),
@@ -50,7 +54,7 @@ class _MCGAppBarState extends State<MCGAppBar> {
           onPressed: () { },
         ),
 
-      ],
+      ],*/
     );
   }
 }

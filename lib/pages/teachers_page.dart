@@ -19,6 +19,12 @@ class TeachersPage extends StatelessWidget {
       child: Scaffold(
         appBar: MCGAppBar(
           title: "Lehrerliste",
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () { },
+            ),
+          ],
         ),
         drawer: const MCGDrawer(),
         body: ListView.builder(

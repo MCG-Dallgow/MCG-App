@@ -12,7 +12,15 @@ class SubstitutionPlan extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-        appBar: MCGAppBar(title: "Vertretungsplan"),
+        appBar: MCGAppBar(
+          title: "Vertretungsplan",
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.filter_alt),
+              onPressed: () {  },
+            ),
+          ],
+        ),
         drawer: const MCGDrawer(),
         body: const Center(
             child: Text("Vertretungsplan")
