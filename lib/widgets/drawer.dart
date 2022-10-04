@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mcgapp/pages/roomplan_page.dart';
 import 'package:mcgapp/pages/substitution_page.dart';
+import 'package:mcgapp/pages/teachers_page.dart';
 
 import '../pages/home_page.dart';
 import '../pages/timetable_page.dart';
@@ -70,6 +71,18 @@ class MCGDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) {
                   return const RoomPlan();
+                }),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.person),
+            title: const Text('Lehrerliste'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return TeachersPage();
                 }),
               );
             },
