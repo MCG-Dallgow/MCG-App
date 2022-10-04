@@ -56,10 +56,48 @@ class RoomPlan extends StatelessWidget {
               ),
             ],
           ),
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.blueGrey,
-          onPressed: () {  },
-          child: const Icon(Icons.layers),
+        floatingActionButton: SpeedDial(
+          marginBottom: 10,
+          icon: Icons.layers,
+          activeIcon: Icons.close,
+          backgroundColor: Colors.blueGrey
+          foregroundColor: Colors.white,
+          activeBackgroundColor: Colors.blueGrey
+          activeForegroundColor: Colors.white,
+          buttonSize: 56.0,
+          visible: true,
+          closeManually: false,
+          overlayColor: Colors.black,
+          overlayOpacity: 0.5,
+          elevation: 8.0,
+          shape CircleBorder(),
+
+          children: [
+            SpeedDialChild(
+              child: Icon(Icons.layers),
+              backgroundColor: Colors.blueGrey
+              foregroundColor: Colors.white,
+              label: 'Untergeschoss',
+              labelStyle: TextStyle(fontSize: 18.0),
+              onTap: () => print('Untergeschoss'),
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.layers),
+              backgroundColor: Colors.blueGrey
+              foregroundColor: Colors.white,
+              label: '1. Obergeschoss',
+              labelStyle: TextStyle(fontSize: 18.0),
+              onTap: () => print('1. Obergeschoss'),
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.layers),
+              backgroundColor: Colors.blueGrey
+              foregroundColor: Colors.white,
+              label: '2. Obergeschoss',
+              labelStyle: TextStyle(fontSize: 18.0),
+              onTap: () => print('2. Obergeschoss'),
+            ),
+          ],
         ),
       ),
     );
@@ -101,7 +139,7 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    List<String> suggestions = searchResults.where((searchResult) {
+    List<String> sugestions = searchResults.where((searchResult) {
       final result = searchResult.toLowerCase();
       final input = query.toLowerCase();
 
