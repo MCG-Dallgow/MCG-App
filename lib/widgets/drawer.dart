@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:mcgapp/pages/roomplan_page.dart';
-import 'package:mcgapp/pages/substitution_page.dart';
-import 'package:mcgapp/pages/teachers_page.dart';
+import 'package:mcgapp/screens/roomplan_page.dart';
+import 'package:mcgapp/screens/substitution_page.dart';
+import 'package:mcgapp/screens/teachers_page.dart';
 
-import '../pages/home_page.dart';
-import '../pages/timetable_page.dart';
+import '../screens/home_page.dart';
+import '../screens/timetable_page.dart';
 
 class MCGDrawer extends StatelessWidget {
   const MCGDrawer({Key? key}) : super(key: key);
@@ -15,11 +15,11 @@ class MCGDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          const DrawerHeader(
+          DrawerHeader(
               decoration: BoxDecoration(
-                color: Colors.blueGrey,
+                color: Theme.of(context).primaryColor,
               ),
-              child: Text(
+              child: const Text(
                 'MCG App',
                 style: TextStyle(
                   color: Colors.white,
@@ -82,7 +82,7 @@ class MCGDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return TeachersPage();
+                  return const TeachersPage();
                 }),
               );
             },

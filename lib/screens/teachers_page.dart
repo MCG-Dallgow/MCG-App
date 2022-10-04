@@ -61,6 +61,9 @@ class _TeachersPageState extends State<TeachersPage> {
                   return const Divider();
                 }
                 return ListTile(
+                  /*leading: CircleAvatar(
+
+                  ),*/
                   title: Text("${_teachers[index ~/ 2]["anrede"]} ${_teachers[index ~/ 2]["nachname"]}"),
                   onTap: () {  },
                 );

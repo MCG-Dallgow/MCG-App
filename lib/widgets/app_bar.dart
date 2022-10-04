@@ -34,7 +34,7 @@ class _MCGAppBarState extends State<MCGAppBar> {
     return AppBar(
       title: Text(widget.title),
       bottom: widget.bottom,
-      backgroundColor: Colors.blueGrey,
+      //backgroundColor: Theme.of(context).colorScheme.background,
       actions: widget.actions
       /*[
         /*IconButton(

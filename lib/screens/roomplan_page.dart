@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:mcgapp/theme/theme_constants.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
@@ -14,7 +15,7 @@ class RoomPlan extends StatelessWidget {
       length: 2,
       child: Scaffold(
         appBar: MCGAppBar(
-          title: "Raumplan",
+          title: 'Raumplan',
           actions: [
             IconButton(
               icon: const Icon(Icons.search),
@@ -28,34 +29,29 @@ class RoomPlan extends StatelessWidget {
           ],
         ),
         drawer: const MCGDrawer(),
-        body: Column(
-          children: <Widget>[
-            Center(
-              child: GestureDetector(
-                child: Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: const Color.fromRGBO(0, 0, 0, 1),
-                        width: 3,
-                      ),
-                      color: const Color.fromRGBO(200, 200, 200, 1),
-                    ),
-                    width: 100,
-                    height: 100,
-                    child: const Center(
-                      child: Text("1.60"),
-                    )),
-                onTap: () {},
+        body: Center(
+          child: GestureDetector(
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: const Color.fromRGBO(0, 0, 0, 1),
+                  width: 3,
+                ),
+                color: const Color.fromRGBO(200, 200, 200, 1),
+              ),
+              width: 100,
+              height: 100,
+              child: const Center(
+                child: Text("1.60"),
               ),
             ),
-          ],
+            onTap: () {},
+          ),
         ),
         floatingActionButton: SpeedDial(
           icon: Icons.layers,
           activeIcon: Icons.close,
-          backgroundColor: Colors.blueGrey,
           foregroundColor: Colors.white,
-          activeBackgroundColor: Colors.blueGrey,
           activeForegroundColor: Colors.white,
           buttonSize: const Size(56.0, 56.0),
           visible: true,
@@ -72,11 +68,11 @@ class RoomPlan extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              backgroundColor: Colors.blueGrey,
+              backgroundColor: colorAccent,
               foregroundColor: Colors.white,
-              label: 'Untergeschoss',
+              label: "Untergeschoss",
               labelStyle: const TextStyle(fontSize: 18.0),
-              onTap: () {  },
+              onTap: () {},
             ),
             SpeedDialChild(
               child: const Text(
@@ -85,11 +81,11 @@ class RoomPlan extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              backgroundColor: Colors.blueGrey,
+              backgroundColor: colorAccent,
               foregroundColor: Colors.white,
-              label: 'Erdgeschoss',
+              label: "Erdgeschoss",
               labelStyle: const TextStyle(fontSize: 18.0),
-              onTap: () {  },
+              onTap: () {},
             ),
             SpeedDialChild(
               child: const Text(
@@ -98,11 +94,11 @@ class RoomPlan extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              backgroundColor: Colors.blueGrey,
+              backgroundColor: colorAccent,
               foregroundColor: Colors.white,
-              label: '1. Obergeschoss',
+              label: "1. Obergeschoss",
               labelStyle: const TextStyle(fontSize: 18.0),
-              onTap: () {  },
+              onTap: () {},
             ),
           ],
         ),
@@ -113,10 +109,11 @@ class RoomPlan extends StatelessWidget {
 
 class MySearchDelegate extends SearchDelegate {
   List<String> searchResults = [
-    'Raum 1.64',
-    'Raum 1.65',
-    'Raum 1.66',
-    'Raum 1.67'
+    '0.21',
+    '0.65',
+    '1.12',
+    '1.66',
+    '1.67'
   ];
 
   @override
