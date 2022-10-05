@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 
 import '../widgets/app_bar.dart';
@@ -37,7 +38,6 @@ class _RoomPlanState extends State<RoomPlan> {
       }
       /*_rooms.add(json.decode(jsonText)['raeume'][0]['Raeume'][0]['Raumnummer']);
       print(_rooms[0]);*/
-
     });
     return "success";
   }
@@ -48,6 +48,35 @@ class _RoomPlanState extends State<RoomPlan> {
     loadJsonData();
   }
 
+  /*Widget currentPage = null;
+  Widget OG;
+  Widget EG;*/
+  Widget test = Container(
+      height: 1000,
+      width: 1000,
+      color: Colors.red,
+      child: Container(
+        color: Colors.grey,
+        height: 200,
+        width: 200,
+        child: Stack(
+          children: [
+            SvgPicture.asset(
+              'assets/roomplan_0.svg',
+              height: 100,
+              color: Colors.black,
+            ),
+            Positioned(
+              left: 50,
+              right: 50,
+              child: ElevatedButton(
+                onPressed: () {},
+                child: const Text("hi"),
+              ),
+            )
+          ],
+        ),
+      ));
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -69,24 +98,10 @@ class _RoomPlanState extends State<RoomPlan> {
           ],
         ),
         drawer: const MCGDrawer(),
-        body: Center(
-          child: GestureDetector(
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: const Color.fromRGBO(0, 0, 0, 1),
-                  width: 3,
-                ),
-                color: const Color.fromRGBO(200, 200, 200, 1),
-              ),
-              width: 100,
-              height: 100,
-              child: Center(
-                child: Text(_rooms.toString()),
-              ),
-            ),
-            onTap: () {},
-          ),
+        body: InteractiveViewer(
+          maxScale: 100,
+          //boundaryMargin: EdgeInsets.all(20),
+          child: test,
         ),
         floatingActionButton: SpeedDial(
           icon: Icons.layers,
@@ -113,7 +128,11 @@ class _RoomPlanState extends State<RoomPlan> {
               foregroundColor: Colors.white,
               label: "Untergeschoss",
               labelStyle: const TextStyle(fontSize: 18.0),
-              onTap: () {},
+              onTap: () {
+                setState(() {
+                  test = const Text("hi");
+                });
+              },
             ),
             SpeedDialChild(
               child: const Text(

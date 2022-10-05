@@ -3,11 +3,21 @@ import 'package:flutter/material.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
+import 'package:dsbuntis/dsbuntis.dart' as dsb;
+
 class SubstitutionPlan extends StatelessWidget {
   const SubstitutionPlan({Key? key}) : super(key: key);
 
+  Future<void> test() async {
+    final json = await dsb.getAllSubs('239601', 'a87xw9p4');
+    print(json);
+  }
+
   @override
   Widget build(BuildContext context) {
+
+
+
     return DefaultTabController(
       initialIndex: 0,
       length: 2,
@@ -17,7 +27,10 @@ class SubstitutionPlan extends StatelessWidget {
           actions: [
             IconButton(
               icon: const Icon(Icons.filter_alt),
-              onPressed: () {  },
+              onPressed: () {
+                print("test");
+                print(test());
+              },
             ),
           ],
         ),

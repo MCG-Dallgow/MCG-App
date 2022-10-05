@@ -23,7 +23,7 @@ class _TeachersPageState extends State<TeachersPage> {
   List _teachers = [];
 
   Future<String> loadJsonData() async {
-    var jsonText = await rootBundle.loadString("assets/teachers.json");
+    var jsonText = await rootBundle.loadString("assets/teacher.json");
     setState(() {
       _teachers = json.decode(jsonText)["teachers"];
     });

@@ -1,0 +1,526 @@
+{
+    "teachers": [
+        {
+            "anrede": "Herr",
+            "vorname": "Patrick",
+            "nachname": "Arthur",
+            "kuerzel": "ArthP",
+            "faecher": "",
+            "email": "patrick.arthur@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Lars-Frederick",
+            "nachname": "Bockmann",
+            "kuerzel": "BockL",
+            "faecher": "Englisch, Geschichte",
+            "email": "lars-frederik.bockmann@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Thomas",
+            "nachname": "Böhle",
+            "kuerzel": "BoehlT",
+            "faecher": "Deutsch, Englisch",
+            "email": "thomas.boehle@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Claudia",
+            "nachname": "Bohse",
+            "kuerzel": "BohsC",
+            "faecher": "Spanisch, Latein",
+            "email": "claudia.bohse@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Helen",
+            "nachname": "Börner",
+            "kuerzel": "BörnH",
+            "faecher": "",
+            "email": "helen.boerner@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Maik",
+            "nachname": "Burghardt",
+            "kuerzel": "BurgM",
+            "faecher": "",
+            "email": "maik.burghardt@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Constance",
+            "nachname": "Dornbrach",
+            "kuerzel": "DornC",
+            "faecher": "Englisch, Sport",
+            "email": "constance.dornbrach@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Julia",
+            "nachname": "Dunkel",
+            "kuerzel": "DunkJ",
+            "faecher": "",
+            "email": "julia.dunkel@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Roy",
+            "nachname": "Fischer",
+            "kuerzel": "FiscR",
+            "faecher": "Spanisch, Englisch",
+            "email": "roy.fischer@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Anika",
+            "nachname": "Försterling",
+            "kuerzel": "FörsA",
+            "faecher": "Deutsch, Französisch",
+            "email": "anika.foersterling@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Susan",
+            "nachname": "Gärtner",
+            "kuerzel": "GärtS",
+            "faecher": "Mathematik, Geografie, Englisch",
+            "email": "susan.gaertner@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Alla",
+            "nachname": "Gatz",
+            "kuerzel": "GatzA",
+            "faecher": "Chemie, Biologie",
+            "email": "alla.gatz@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Oliver",
+            "nachname": "Götting",
+            "kuerzel": "GöttO",
+            "faecher": "Biologie, Chemie, Physik",
+            "email": "oliver.goetting@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Laura",
+            "nachname": "Greisner",
+            "kuerzel": "GreiL",
+            "faecher": "",
+            "email": "laura.dominick@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Marko",
+            "nachname": "Gruber",
+            "kuerzel": "GrubM",
+            "faecher": "Mathematik, Chemie",
+            "email": "marko.gruber@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Andrea",
+            "nachname": "Gutschmidt",
+            "kuerzel": "GutsA",
+            "faecher": "Mathematik",
+            "email": "andrea.gutschmidt@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Johannes Paul",
+            "nachname": "Haberjoh",
+            "kuerzel": "HabeJ",
+            "faecher": "Mathematik, Physik",
+            "email": "johannes.haberjoh@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Tony",
+            "nachname": "Heidenreich",
+            "kuerzel": "HeidT",
+            "faecher": "",
+            "email": "tony.heidenreich@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Gregor",
+            "nachname": "Heinzel",
+            "kuerzel": "HeinG",
+            "faecher": "Mathematik, Sport",
+            "email": "gregor.heinzel@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Ute",
+            "nachname": "Hering",
+            "kuerzel": "HeriU",
+            "faecher": "",
+            "email": "ute.hering@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Astrid",
+            "nachname": "Hoßfeld",
+            "kuerzel": "HoßA",
+            "faecher": "Geschichte, Deutsch",
+            "email": "astrid.hossfeld@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Norbert",
+            "nachname": "Jerye",
+            "kuerzel": "JeryN",
+            "faecher": "Religionslehre, katholisch",
+            "email": "norbert.jerye2@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Franziska",
+            "nachname": "Kieper",
+            "kuerzel": "KiepF",
+            "faecher": "Wirtschaftswissenschaften, Politische Bildung",
+            "email": "franziska.kieper@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Nannette Florentine",
+            "nachname": "Kirschke",
+            "kuerzel": "KirsN",
+            "faecher": "Physik, Geografie",
+            "email": "nannette.kirschke@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Emese",
+            "nachname": "Knorrné Varga",
+            "kuerzel": "KnorE",
+            "faecher": "",
+            "email": "emese.knorrne-varga2@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Joshua",
+            "nachname": "Knuth",
+            "kuerzel": "KnutJ",
+            "faecher": "",
+            "email": "joshua.knuth@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Erika",
+            "nachname": "Kohler",
+            "kuerzel": "KohlE",
+            "faecher": "Kunst",
+            "email": "erika.kohler@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Anke",
+            "nachname": "Koösler",
+            "kuerzel": "KössA",
+            "faecher": "Sport, Informatik",
+            "email": "anke.koessler@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Jens",
+            "nachname": "Krüger",
+            "kuerzel": "KrügJ",
+            "faecher": "Sport, Geografie",
+            "email": "jens.krueger@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Karin",
+            "nachname": "Kurth",
+            "kuerzel": "KurtK",
+            "faecher": "Deutsch. Zeichnen/Kunsterziehung",
+            "email": "karin.kurth2@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Stefan",
+            "nachname": "Lestin",
+            "kuerzel": "LestS",
+            "faecher": "",
+            "email": "stefan.lestin@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Sarah",
+            "nachname": "Lindenborn",
+            "kuerzel": "LindS",
+            "faecher": "Franzoesisch, LER",
+            "email": "sarah.lindenborn@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Ralf",
+            "nachname": "Lüdemann",
+            "kuerzel": "LüdeR",
+            "faecher": "Geografie, Geschichte",
+            "email": "ralf.luedemann@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr Dr",
+            "vorname": "Helder",
+            "nachname": "Marchetto",
+            "kuerzel": "MarcH",
+            "faecher": "Mathe, Physik",
+            "email": "helder.marchetto@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Jörg",
+            "nachname": "Möbius",
+            "kuerzel": "MoebJ",
+            "faecher": "Geschichte, Sport, LER",
+            "email": "joerg.moebius@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Herr",
+            "vorname": "Frank",
+            "nachname": "Möller",
+            "kuerzel": "MöllF",
+            "faecher": "Informatik, Physik",
+            "email": "frank.moeller@lk.brandenburg.de"
+        },
+        {
+            "anrede": "Frau",
+            "vorname": "Elisabeth",
+            "nachname": "Pelczyk",
+            "kuerzel": "PelcE",
+            "faecher": "Englisch, Russisch",
+            "email": "elisabeth.pelczyk@lk.brandenburg.de"
+       },
+       {
+            "anrede": "Herr",
+            "vorname": "Stefan",
+            "nachname": "Plaumann",
+            "kuerzel": "PlauS",
+            "faecher": "Arbeitslehre, Informatik, Technik",
+            "email": "stefan.plaumann@lk.brandenburg.de"
+       },
+       {
+            "anrede": "Frau",
+            "vorname": "Ina",
+            "nachname": "Raabe",
+            "kuerzel": "RaabI",
+            "faecher": "Spanisch, Englisch",
+            "email": "ina.raabe@lk.brandenburg.de"
+       },              
+       {
+            "anrede": "Frau",
+            "vorname": "Tina",
+            "nachname": "Rinkau",
+            "kuerzel": "RinkT",
+            "faecher": "Mathematik, Politische Bildung",
+            "email": "tina.rinkau@lk.brandenburg.de"
+       },             
+       {
+            "anrede": "Frau",
+            "vorname": "Anne",
+            "nachname": "Roggelin",
+            "kuerzel": "RoggA",
+            "faecher": "Englisch, Geografie",
+            "email": "anne.roggelin@lk.brandenburg.de"
+       },             
+       {    
+            "anrede": "Herr",
+            "vorname": "Uwe",
+            "nachname": "Rohde",
+            "kuerzel": "RohdU",
+            "faecher": "Religion",
+            "email": "uwe.rohde@lk.brandenburg.de"
+       },             
+       {
+            "anrede": "Frau",
+            "vorname": "Nina",
+            "nachname": "Roska",
+            "kuerzel": "RoskN",
+            "faecher": "Englisch, Musik",
+            "email": "nina.roska@lk.brandenburg.de"
+       },           
+       {    
+            "anrede": "Herr Dr",
+            "vorname": "Tino",                                                      
+            "nachname": "Rublack",
+            "kuerzel": "RublT",
+            "faecher": "Mathematik, Physik",
+            "email": "tino.rublack@lk.brandenburg.de"
+       },             
+       {
+            "anrede": "Frau",
+            "vorname": "Yvonne",
+            "nachname": "Schärff",
+            "kuerzel": "SchäY",
+            "faecher": "Französich, Geografie",
+            "email": "yvonne.schaerff@lk.brandenburg.de"
+       },             
+       {    "anrede": "Herr",
+            "vorname": "Nick",
+            "nachname": "Schauberg",
+            "kuerzel": "SchaN",
+            "faecher": "Musik, Geschichte",
+            "email": "nick.schauberg@lk.brandenburg.de"
+       },            
+       {
+            "anrede": "Frau",
+            "vorname": "Rebecca",
+            "nachname": "Schaulies",
+            "kuerzel": "SchaR",
+            "faecher": "Biologie, Deutsch",
+            "email": "rebecca.schaulies@lk.brandenburg.de"
+       },            
+       {
+            "anrede": "Frau",
+            "vorname": "Lisa",
+            "nachname": "Schuback",
+            "kuerzel": "SchuL",
+            "faecher": "Deutsch, Englisch",
+            "email": "lisa.schuback@lk.brandenburg.de"
+       },           
+       {
+            "anrede": "Frau",
+            "vorname": "Carola",
+            "nachname": "Schulz",
+            "kuerzel": "SchuC",
+            "faecher": "",
+            "email": "carola.schulz@lk.brandenburg.de"
+       },             
+       {    "anrede": "Herr",
+            "vorname": "Christian",
+            "nachname": "Schulze",
+            "kuerzel": "SchuC",
+            "faecher": "Technik, Sport, Geografie",
+            "email": "christian.schulze@lk.brandenburg.de"
+       },          
+       {
+            "anrede": "Frau",
+            "vorname": "Sonja",
+            "nachname": "Schütz",
+            "kuerzel": "SchüS",
+            "faecher": "Deutsch, Geschichte",
+            "email": "sonja.schuetz@lk.brandenburg.de"
+       },           
+       {
+            "anrede": "Frau",
+            "vorname": "Frauke",
+            "nachname": "Sommer-Langhammer",
+            "kuerzel": "SommF",
+            "faecher": "",
+            "email": "frauke.sommer--langhammer@lk.brandenburg.de"
+       },           
+       {    "anrede": "Herr",
+            "vorname": "Frank",
+            "nachname": "Spangenberg",
+            "kuerzel": "SpanF",
+            "faecher": "Sport, Geografie",
+            "email": "frank.spangenberg@lk.brandenburg.de"
+       },          
+       {    "anrede": "Herr",
+            "vorname": "Hans Thorstem",
+            "nachname": "Steil",
+            "kuerzel": "SteiT",
+            "faecher": "Mathematik, Informatik, Sport",
+            "email": "thorsten.steil@lk.brandenburg.de"
+       },            
+       {    "anrede": "Herr",
+            "vorname": "Christian",
+            "nachname": "Steinhauer",
+            "kuerzel": "SteiC",
+            "faecher": "Deutsch, Geschichte",
+            "email": "christian.steinhauer@lk.brandenburg.de"
+       },          
+       {    "anrede": "Herr",
+            "vorname": "Andreas",
+            "nachname": "Sydow",
+            "kuerzel": "SydoA",
+            "faecher": "Informatik, Mathematik",
+            "email": "andreas.sydow@lk.brandenburg.de"
+       },                
+       {
+           "anrede": "Frau",
+           "vorname": "Heike",
+           "nachname": "Tigör",
+           "kuerzel": "TigöH",
+           "faecher": "Englisch, Deutsch",
+           "email": "heike.tigoer@lk.brandenburg.de"
+       },                       
+       {    
+           "anrede": "Herr",
+           "vorname": "Alexander",
+           "nachname": "Tillner",
+           "kuerzel": "TillA",
+           "faecher": "Chemie, Geschichte",
+           "email": "alexander.tillner@lk.brandenburg.de"
+       },                        
+       {
+            "anrede": "Herr Dr",
+            "vorname": "Florian Magnus",                   
+            "nachname": "Urschel-Sochaczewski",
+            "kuerzel": "UrSoF",
+            "faecher": "Deutsch, Geschichte",
+            "email": "florian.urschel-sochaczewski@lk.brandenburg.de"
+       },                        
+       {
+            "anrede": "Frau",
+            "vorname": "Alina",
+            "nachname": "Vasylenko",
+            "kuerzel": "VasyA",
+            "faecher": "",
+            "email": "alina.vasylenko@lk.brandenburg.de"
+       },                        
+       {
+            "anrede": "Frau",
+            "vorname": "Bettina",
+            "nachname": "Vogt-Hartung",
+            "kuerzel": "VogtB",
+            "faecher": "",
+            "email": "bettina.vogt@lk.brandenburg.de"
+       },                       
+       {
+            "anrede": "Frau",
+            "vorname": "Julia",
+            "nachname": "Walter",
+            "kuerzel": "WaltJ",
+            "faecher": "Deutsch, Kunst",
+            "email": "julia.walter2@lk.brandenburg.de"
+       },                       
+       {
+            "anrede": "Frau",
+            "vorname": "Antje",
+            "nachname": "Willimzik",
+            "kuerzel": "WillA",
+            "faecher": "Spanisch, Englisch",
+            "email": "antje.willimzik@lk.brandenburg.de"
+       },                        
+       {
+            "anrede": "Frau",
+            "vorname": "Sophie",
+            "nachname": "Wistuba-Mönke",
+            "kuerzel": "WistS",
+            "faecher": "",
+            "email": "sophie.wistuba-moenke@lk.brandenburg.de"
+       },                        
+       {
+            "anrede": "Herr",
+            "vorname": "Mathias",
+            "nachname": "Woizick",
+            "kuerzel": "WoizM",
+            "faecher": "Biologie, Chemie",
+            "email": "mathias.woizick@lk.brandenburg.de"
+       },                       
+       {
+            "anrede": "Frau",
+            "vorname": "Petra",
+            "nachname": "Woizick",
+            "kuerzel": "WoizP",
+            "faecher": "Biologie, Chemie",
+            "email": "petra.woizick@lk.brandenburg.de"
+       }
+    ]
+}
