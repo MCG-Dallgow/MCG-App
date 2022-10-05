@@ -29,21 +29,20 @@ class _SettingsState extends State<Settings> {
           ],*/
         ),
         drawer: const MCGDrawer(),
-        body: Padding(
-          padding: const EdgeInsetsDirectional.fromSTEB(32, 32, 32, 32),
-            child: ListView(
-              children: <Widget> [
-                ListTile(
-                  title: Text("Dark Mode"),
-                  trailing:Switch(value: themeManager.themeMode == ThemeMode.dark, onChanged: (newValue) {
-                    setState(() {
-                      themeManager.toggleTheme(newValue);
-                    });
-                  }),
-                ),
-                ],
+        body: ListView(
+            children: <Widget>[
+              ListTile(
+                title: const Text("Dark Mode"),
+                trailing: Switch(
+                    value: themeManager.themeMode == ThemeMode.dark,
+                    onChanged: (newValue) {
+                      setState(() {
+                        themeManager.toggleTheme(newValue);
+                      });
+                    }),
               ),
-        ),
+            ],
+          ),
       ),
     );
   }

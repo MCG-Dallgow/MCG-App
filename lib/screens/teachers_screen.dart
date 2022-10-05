@@ -2,8 +2,12 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:mcgapp/screens/teachers_details_screen.dart';
 import 'package:mcgapp/widgets/app_bar.dart';
 import 'package:mcgapp/widgets/drawer.dart';
+
+import '../classes/teacher.dart';
+import '../widgets/search_bar.dart';
 
 class TeachersPage extends StatefulWidget {
   const TeachersPage({Key? key}) : super(key: key);
@@ -20,14 +24,16 @@ class _TeachersPageState extends State<TeachersPage> {
     "Frau Gatz"
   ];
   */
-  List _teachers = [];
+  final List<Teacher> _teachers = [];
 
-  Future<String> loadJsonData() async {
-    var jsonText = await rootBundle.loadString("assets/teacher.json");
+  Future<void> loadJsonData() async {
+    var jsonText = await rootBundle.loadString("assets/teachers.json");
     setState(() {
-      _teachers = json.decode(jsonText)["teachers"];
+      List data = json.decode(jsonText)['teachers'];
+      for (int i = 0; i < data.length; i++) {
+        _teachers.add(Teacher.fromJson(data, i));
+      }
     });
-    return "success";
   }
 
   @override
@@ -47,7 +53,16 @@ class _TeachersPageState extends State<TeachersPage> {
           actions: [
             IconButton(
               icon: const Icon(Icons.search),
-              onPressed: () {  },
+              onPressed: () {
+                List<String> entries = [];
+                for (int i = 0; i < _teachers.length; i++) {
+                  entries.add("${_teachers[i].anrede} ${_teachers[i].nachname}");
+                }
+                showSearch(
+                  context: context,
+                  delegate: MySearchDelegate(searchResults: entries),
+                );
+              },
             ),
           ],
         ),
@@ -64,8 +79,14 @@ class _TeachersPageState extends State<TeachersPage> {
                   /*leading: CircleAvatar(
 
                   ),*/
-                  title: Text("${_teachers[index ~/ 2]["anrede"]} ${_teachers[index ~/ 2]["nachname"]}"),
-                  onTap: () {  },
+                  title: Text("${_teachers[index ~/ 2].anrede} ${_teachers[index ~/ 2].nachname}"),
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (BuildContext context) {
+                        return TeacherDetails(teacher: _teachers[index ~/ 2]);
+                      })
+                    );
+                  },
                 );
               })
           : const Center(child: Text("empty"))

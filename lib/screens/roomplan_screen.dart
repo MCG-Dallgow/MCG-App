@@ -1,13 +1,16 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:mcgapp/main.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
+import '../widgets/search_bar.dart';
 
 class RoomPlan extends StatefulWidget {
   const RoomPlan({Key? key}) : super(key: key);
@@ -17,12 +20,9 @@ class RoomPlan extends StatefulWidget {
 }
 
 class _RoomPlanState extends State<RoomPlan> {
-  List<String> _rooms = [];
-  int number_art = 11;
+  final List<String> _rooms = [];
 
-  String art = "";
-
-  Future<String> loadJsonData() async {
+  Future<void> loadJsonData() async {
     var jsonText = await rootBundle.loadString("assets/rooms.json");
     setState(() {
       var data = json.decode(jsonText);
@@ -32,14 +32,14 @@ class _RoomPlanState extends State<RoomPlan> {
         //print(test[i]);
         var test2 = data['raeume'][i]['Raeume'];
         for (int j = 0; j < test2.length; j++) {
-          print(test2[j]['Raumnummer']);
+          if (kDebugMode) {
+            print(test2[j]['Raumnummer']);
+          }
           _rooms.add(test2[j]['Raumnummer']);
         }
       }
-      /*_rooms.add(json.decode(jsonText)['raeume'][0]['Raeume'][0]['Raumnummer']);
-      print(_rooms[0]);*/
+      _rooms.sort((a, b) => a.compareTo(b));
     });
-    return "success";
   }
 
   @override
@@ -52,28 +52,37 @@ class _RoomPlanState extends State<RoomPlan> {
   Widget OG;
   Widget EG;*/
   Widget test = Container(
-      height: 1000,
-      width: 1000,
+      constraints: const BoxConstraints.expand(),
       color: Colors.red,
       child: Container(
         color: Colors.grey,
-        height: 200,
-        width: 200,
+        margin: const EdgeInsets.all(20.0),
         child: Stack(
+          alignment: Alignment.topLeft,
           children: [
-            SvgPicture.asset(
-              'assets/roomplan_0.svg',
-              height: 100,
-              color: Colors.black,
-            ),
             Positioned(
+              //height: 300,
+              //width: 500,
+              //left: 0,
+              //right: 0,
+              //bottom: 83,
+              child: SvgPicture.asset(
+                fit: BoxFit.fill,
+                'assets/roomplan_0.svg',
+                width: 200,
+                height: 83,
+                color: themeManager.colorStroke,
+              ),
+            ),
+            /*Positioned(
               left: 50,
               right: 50,
+              top: 0,
               child: ElevatedButton(
                 onPressed: () {},
                 child: const Text("hi"),
               ),
-            )
+            )*/
           ],
         ),
       ));
@@ -99,7 +108,7 @@ class _RoomPlanState extends State<RoomPlan> {
         ),
         drawer: const MCGDrawer(),
         body: InteractiveViewer(
-          maxScale: 100,
+          maxScale: 5,
           //boundaryMargin: EdgeInsets.all(20),
           child: test,
         ),
@@ -117,7 +126,7 @@ class _RoomPlanState extends State<RoomPlan> {
           childMargin: const EdgeInsets.all(20.0),
           shape: const CircleBorder(),
           children: [
-            SpeedDialChild(
+            /*SpeedDialChild(
               child: const Text(
                 "U",
                 style: TextStyle(
@@ -133,7 +142,7 @@ class _RoomPlanState extends State<RoomPlan> {
                   test = const Text("hi");
                 });
               },
-            ),
+            ),*/
             SpeedDialChild(
               child: const Text(
                 "0",
@@ -167,58 +176,3 @@ class _RoomPlanState extends State<RoomPlan> {
   }
 }
 
-class MySearchDelegate extends SearchDelegate {
-  MySearchDelegate({Key? key, required this.searchResults});
-  final List<String> searchResults;
-
-  @override
-  Widget? buildLeading(BuildContext context) => IconButton(
-        icon: const Icon(Icons.arrow_back),
-        onPressed: () => close(context, null),
-      );
-
-  @override
-  List<Widget>? buildActions(BuildContext context) => [
-        IconButton(
-          icon: const Icon(Icons.clear),
-          onPressed: () {
-            if (query.isEmpty) {
-              close(context, null);
-            } else {
-              query = '';
-            }
-          },
-        ),
-      ];
-
-  @override
-  Widget buildResults(BuildContext context) => Center(
-        child: Text(query, style: const TextStyle(fontSize: 64)),
-      );
-
-  @override
-  Widget buildSuggestions(BuildContext context) {
-    List<String> suggestions = searchResults.where((searchResult) {
-      final result = searchResult.toLowerCase();
-      final input = query.toLowerCase();
-
-      return result.contains(input);
-    }).toList();
-
-    return ListView.builder(
-      itemCount: suggestions.length,
-      itemBuilder: (context, index) {
-        final suggestion = suggestions[index];
-
-        return ListTile(
-          title: Text(suggestion),
-          onTap: () {
-            query = suggestion;
-
-            showResults(context);
-          },
-        );
-      },
-    );
-  }
-}
