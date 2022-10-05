@@ -19,23 +19,33 @@ class _TeacherDetailsState extends State<TeacherDetails> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MCGAppBar(title: "${widget.teacher.anrede} ${widget.teacher.nachname}",),
+      appBar: MCGAppBar(
+        title: "${widget.teacher.anrede} ${widget.teacher.nachname}",
+      ),
       body: ListView(
         children: [
           ListTile(
-            title: Text("${widget.teacher.vorname} ${widget.teacher.nachname}"),
+            title: Text("${widget.teacher.vorname} ${widget.teacher.nachname}" != ""
+                ? "${widget.teacher.vorname} ${widget.teacher.nachname}"
+                : "kein vermerkter Name"),
             leading: const Icon(Icons.person),
           ),
           ListTile(
-            title: Text(widget.teacher.faecher),
+            title: Text(widget.teacher.faecher != ""
+                ? widget.teacher.faecher
+                : "keine vermerkten Fächer"),
             leading: const Icon(Icons.subject),
           ),
           ListTile(
-            title: Text(widget.teacher.kuerzel),
+            title: Text(widget.teacher.kuerzel != ""
+                ? widget.teacher.kuerzel
+                : "kein vermerkes Kürzel"),
             leading: const Icon(Icons.tag),
           ),
           ListTile(
-            title: Text(widget.teacher.email),
+            title: Text(widget.teacher.email != ""
+                ? widget.teacher.email
+                : "keine vermerkte E-Mail-Adresse"),
             leading: const Icon(Icons.email),
           )
         ],

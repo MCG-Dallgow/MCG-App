@@ -34,27 +34,7 @@ class _MCGAppBarState extends State<MCGAppBar> {
     return AppBar(
       title: Text(widget.title),
       bottom: widget.bottom,
-      //backgroundColor: Theme.of(context).colorScheme.background,
       actions: widget.actions
-      /*[
-        /*IconButton(
-          icon: Icon(/*isThemeDark ? */Icons.dark_mode/* : Icons.light_mode*/),
-          onPressed: () {/*
-            setState(() {
-              isThemeDark = !isThemeDark;
-            });
-          */},
-        ),*/
-        IconButton(
-          icon: const Icon(Icons.search),
-          onPressed: () { },
-        ),
-        IconButton(
-          icon: const Icon(Icons.settings),
-          onPressed: () { },
-        ),
-
-      ],*/
     );
   }
 }
