@@ -1,0 +1,615 @@
+{"raeume":
+[
+	{
+		"Art":"Naturwissenschaften",
+		"Raeume": [
+			{
+				"Raumnummer":"0.63",
+				"Name":"Lorenz",
+				"Raumverantwortlicher":"",
+				"Bildquelle":"assets/bilder/lorenz.jpg"
+			},
+			{
+				"Raumnummer":"0.64",
+				"Name":"Vorbereitungsraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.65",
+				"Name":"Röntgen",
+				"Raumverantwortlicher":"Frau Woizick",
+				"Bildquelle":"assets/bilder/roentgen.jpg"
+			},{
+				"Raumnummer":"0.66",
+				"Name":"Sammlungsraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.19",
+				"Name":"Ostwald",
+				"Raumverantwortlicher":"Herr Götting",
+				"Bildquelle":"assets/bilder/ostwald.jpg"
+			},{
+				"Raumnummer":"0.20",
+				"Name":"Chemievorbereitung",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.21",
+				"Name":"Fleming",
+				"Raumverantwortlicher":"Herr Schulze/Plaumann",
+				"Bildquelle":"assets/bilder/fleming.jpg"
+			},{
+				"Raumnummer":"0.24",
+				"Name":"Watson",
+				"Raumverantwortlicher":"Herr Woizick",
+				"Bildquelle":"assets/bilder/watson.jpg"
+			},{
+				"Raumnummer":"0.23",
+				"Name":"Physikvorbereitung",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.25",
+				"Name":"Einstein",
+				"Raumverantwortlicher":"Herr Schubert",
+				"Bildquelle":"assets/bilder/einstein.jpg"
+			}
+		]
+	},
+
+	{"Art":"Informatik",
+		"Raeume": [
+			{
+				"Raumnummer":"0.15",
+				"Name":"Einzelarbeitsplätze",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.16",
+				"Name":"Infovorbereitung",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.17",
+				"Name":"Kilby",
+				"Raumverantwortlicher":"Herr Plaumann",
+				"Bildquelle":"assets/bilder/kilby.jpg"
+			},
+			{
+				"Raumnummer":"0.60",
+				"Name":"",
+				"Raumverantwortlicher":"Frau Kössler/Herr Sydow",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.61",
+				"Name":"Infovorbereitung",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.62",
+				"Name":"",
+				"Raumverantwortlicher":"Frau Schlosshauer",
+				"Bildquelle":""
+			}
+		]
+	},
+
+	{"Art":"Sportumkleiden",
+		"Raeume": [
+			{
+				"Raumnummer":"0.62",
+				"Name":"Damen Feld C",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.61",
+				"Name":"Herren Feld C",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.63",
+				"Name":"Damen Feld B",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.64",
+				"Name":"Herren Feld B",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.65",
+				"Name":"Damen Feld A",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.66",
+				"Name":"Herren Feld A",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.67",
+				"Name":"Hallenwart",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			}
+		]
+	},
+
+	{"Art":"kreativer Unterricht",
+		"Raeume": [
+			{
+				"Raumnummer":"0.41",
+				"Name":"Musik",
+				"Raumverantwortlicher":"Herr Schauberg",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.45",
+				"Name":"Musikvorbereitung",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.46",
+				"Name":"Kunst",
+				"Raumverantwortlicher":"Frau Kurth",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.47",
+				"Name":"WAT-Vorbereitung/Maschinenraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.48",
+				"Name":"Fachraum Arbeitslehre",
+				"Raumverantwortlicher":"Frau Tumbrägel",
+				"Bildquelle":""
+			},
+			{	"Raumnummer":"1.66",
+				"Name":"Koch",
+				"Raumverantwortlicher":"Herr Schauberg",
+				"Bildquelle":"assets/bilder/koch.jpg"
+			},{
+				"Raumnummer":"1.65",
+				"Name":"Morgan",
+				"Raumverantwortlicher":"Frau Willimzik",
+				"Bildquelle":"assets/bilder/morgan.jpg"
+			},{
+				"Raumnummer":"1.64",
+				"Name":"Zur Hausen",
+				"Raumverantwortlicher":"Frau Pelcyk",
+				"Bildquelle":"assets/bilder/zurhausen.jpg"
+			},{
+				"Raumnummer":"1.63",
+				"Name":"Heisenberg",
+				"Raumverantwortlicher":"Frau Dornbrach",
+				"Bildquelle":"assets/bilder/heisenberg.jpg"
+			},{
+				"Raumnummer":"1.62",
+				"Name":"Curie",
+				"Raumverantwortlicher":"Herr Fischer",
+				"Bildquelle":"assets/bilder/curie.jpg"
+			},{
+				"Raumnummer":"1.61",
+				"Name":"Merrifield",
+				"Raumverantwortlicher":"Frau Tigör",
+				"Bildquelle":"assets/bilder/merrifield.jpg"
+			},{
+				"Raumnummer":"1.60",
+				"Name":"Appletone",
+				"Raumverantwortlicher":"Frau Raabe",
+				"Bildquelle":"assets/bilder/appletone.jpg"
+			}
+		]
+	},
+
+	{"Art":"Verwaltung",
+		"Raeume": [
+			{
+				"Raumnummer":"0.01",
+				"Name":"Haustechniker",
+				"Raumverantwortlicher":"Herr Hes/Lache",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.02",
+				"Name":"Erste Hilfe",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.03",
+				"Name":"Oberstufenkoordinatorin",
+				"Raumverantwortlicher":"Frau Gutschmidt",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.04",
+				"Name":"Archiv",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.06",
+				"Name":"Teeküche",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.08",
+				"Name":"Kopierraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.10",
+				"Name":"Lehrerzimmer",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			}
+		]
+	},
+
+	{"Art":"WC",
+		"Raeume": [
+			{
+				"Raumnummer":"0.69",
+				"Name":"WC Damen",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.68",
+				"Name":"WC Lehrer Damen",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.12",
+				"Name":"WC Damen",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.13",
+				"Name":"WC Herren",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.40",
+				"Name":"WC Damen",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.43",
+				"Name":"WC Behindert",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.42",
+				"Name":"WC Herren",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.44",
+				"Name":"WC Herren Lehrer",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.60",
+				"Name":"WC Behindert",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"1.72",
+				"Name":"WC Lehrer Herren",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"1.73",
+				"Name":"WC Herren",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			}
+		]
+	},
+
+	{"Art":"Sonstiges",
+		"Raeume": [
+			{
+				"Raumnummer":"0.67a",
+				"Name":"Lehreraufenthaltsraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.67b",
+				"Name":"Schülercafe",
+				"Raumverantwortlicher":"",
+				"Bildquelle":"assets/bilder/schuelercafe.jpg"
+			},
+			{
+				"Raumnummer":"0.18",
+				"Name":"Lehrmittel",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.22a",
+				"Name":"Lager",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"0.26",
+				"Name":"Mediathek/Bibliothek",
+				"Raumverantwortlicher":"",
+				"Bildquelle":"assets/bilder/mediathek.jpg"
+			},{
+				"Raumnummer":"0.27",
+				"Name":"Lager",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.31",
+				"Name":"Technikraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.30",
+				"Name":"Sozialraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.37",
+				"Name":"Aula",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.11",
+				"Name":"Abstellraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.14",
+				"Name":"Schülervertretung",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.37",
+				"Name":"Stuhllager",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},
+			{
+				"Raumnummer":"0.49/0.50",
+				"Name":"Umkleide Reinigungspersonal",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			},{
+				"Raumnummer":"1.71",
+				"Name":"Lehrmittelraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+			}
+		]
+	},
+
+	{"Art":"Oberstufenspezifische Räume",
+		"Raeume": [
+			{
+				"Raumnummer":"1.01",
+				"Name":"Todd",
+				"Raumverantwortlicher":"Frau Gutschmidt",
+				"Bildquelle":"assets/bilder/todd.jpg"
+
+
+			},
+			{
+				"Raumnummer":"1.02",
+				"Name":"Bethe",
+				"Raumverantwortlicher":"",
+				"Bildquelle":"assets/bilder/bethe.jpg"
+
+
+			},{
+				"Raumnummer":"1.03",
+				"Name":"Berg",
+				"Raumverantwortlicher":"Frau Bohse",
+				"Bildquelle":"assets/bilder/bethe.jpg"
+
+
+			},{
+				"Raumnummer":"1.04",
+				"Name":"Klitzing",
+				"Raumverantwortlicher":"Frau Schärff",
+				"Bildquelle":"assets/bilder/klitzing.jpg"
+
+
+			},{
+				"Raumnummer":"1.05",
+				"Name":"Charpak",
+				"Raumverantwortlicher":"Frau Dornbrach",
+				"Bildquelle":"assets/bilder/charpak.jpg"
+
+
+			},{
+				"Raumnummer":"1.06",
+				"Name":"Mullis",
+				"Raumverantwortlicher":"Herr Rohde",
+				"Bildquelle":"assets/bilder/mullis.jpg"
+
+
+			},{
+				"Raumnummer":"1.07",
+				"Name":"Stellraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+
+
+			},{
+				"Raumnummer":"1.10",
+				"Name":"Reines",
+				"Raumverantwortlicher":"",
+				"Bildquelle":"assets/bilder/reines.jpg"
+
+
+			},{
+				"Raumnummer":"1.11",
+				"Name":"Molina",
+				"Raumverantwortlicher":"Frau Schärff",
+				"Bildquelle":"assets/bilder/molina.jpg"
+
+
+			},
+			{
+				"Raumnummer":"1.12",
+				"Name":"Skou",
+				"Raumverantwortlicher":"Herr Schulze /Herr Krüger",
+				"Bildquelle":"assets/bilder/skou.jpg"
+
+
+			},{
+				"Raumnummer":"1.13",
+				"Name":"Blobel",
+				"Raumverantwortlicher":"Herr Reppich",
+				"Bildquelle":"assets/bilder/blobel.jpg"
+
+
+			},{
+				"Raumnummer":"1.14",
+				"Name":"Hunt",
+				"Raumverantwortlicher":"Frau Kieper",
+				"Bildquelle":"assets/bilder/hunt.jpg"
+
+
+			},{
+				"Raumnummer":"1.15",
+				"Name":"Agre",
+				"Raumverantwortlicher":"Herr Lasch",
+				"Bildquelle":"assets/bilder/agre.jpg"
+
+			}
+		]
+	},
+
+	{"Art":"Gesellschaftiche Räume",
+		"Raeume": [
+
+			{
+				"Raumnummer":"1.69",
+				"Name":"Golgi",
+				"Raumverantwortlicher":"Herr Tiller",
+				"Bildquelle":"assets/bilder/golgi.jpg"
+
+
+			},{
+				"Raumnummer":"1.70",
+				"Name":"Lehreraufenthalsraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+
+
+			},{
+				"Raumnummer":"1.68",
+				"Name":"Hounsfield",
+				"Raumverantwortlicher":"Herr Spangenberg",
+				"Bildquelle":"assets/bilder/hounsfield.jpg"
+
+
+			}
+		]
+	},
+
+	{
+		"Art":"Deutschräume",
+		"Raeume": [
+
+			{
+				"Raumnummer":"1.16",
+				"Name":"Rutherford",
+				"Raumverantwortlicher":"Frau Schaulies",
+				"Bildquelle":"assets/bilder/rutherford.jpg"
+			},{
+				"Raumnummer":"1.17",
+				"Name":"Plack",
+				"Raumverantwortlicher":"Frau Hoßfeld",
+				"Bildquelle":"assets/bilder/plack.jpg"
+
+			},{
+				"Raumnummer":"1.18",
+				"Name":"Bohr",
+				"Raumverantwortlicher":"Frau Schütz",
+				"Bildquelle":"assets/bilder/bohr.jpg"
+			},{
+
+				"Raumnummer":"1.19",
+				"Name":"Landsteiner",
+				"Raumverantwortlicher":"Frau Kurth",
+				"Bildquelle":"assets/bilder/landsteiner.jpg"
+			},{
+
+				"Raumnummer":"1.20",
+				"Name":"Chadwick",
+				"Raumverantwortlicher":"Frau Kammel",
+				"Bildquelle":"assets/bilder/chadwick.jpg"
+
+			},{
+				"Raumnummer":"1.21",
+				"Name":"Besprechungsraum",
+				"Raumverantwortlicher":"",
+				"Bildquelle":""
+
+			}
+		]
+	},
+
+	{
+		"Art":"Matheräume",
+		"Raeume": [
+
+			{
+				"Raumnummer":"1.25",
+				"Name":"Hahn",
+				"Raumverantwortlicher":"",
+				"Bildquelle":"assets/bilder/hahn.jpg"
+
+			},{
+				"Raumnummer":"1.26",
+				"Name":"Pauling",
+				"Raumverantwortlicher":"Frau Schilling",
+				"Bildquelle":"assets/bilder/pauling.jpg"
+
+			},{
+				"Raumnummer":"1.27",
+				"Name":"Calvin",
+				"Raumverantwortlicher":"Frau Pischke",
+				"Bildquelle":"assets/bilder/calvin.jpg"
+			},{
+				"Raumnummer":"1.28",
+				"Name":"Eigen",
+				"Raumverantwortlicher":"Frau Hoffmann",
+				"Bildquelle":"assets/bilder/eigen.jpg"
+
+			},{
+				"Raumnummer":"1.29",
+				"Name":"Mitschel",
+				"Raumverantwortlicher":"Frau Gärtner",
+				"Bildquelle":"assets/bilder/mitschel.jpg"
+			}
+		]
+	}
+]
+}
+

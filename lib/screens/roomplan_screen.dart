@@ -1,12 +1,52 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
-class RoomPlan extends StatelessWidget {
+class RoomPlan extends StatefulWidget {
   const RoomPlan({Key? key}) : super(key: key);
+
+  @override
+  State<RoomPlan> createState() => _RoomPlanState();
+}
+
+class _RoomPlanState extends State<RoomPlan> {
+  List<String> _rooms = [];
+  int number_art = 11;
+
+  String art = "";
+
+  Future<String> loadJsonData() async {
+    var jsonText = await rootBundle.loadString("assets/rooms.json");
+    setState(() {
+      var data = json.decode(jsonText);
+      List test = [];
+      test.addAll(data['raeume']);
+      for (int i = 0; i < test.length; i++) {
+        //print(test[i]);
+        var test2 = data['raeume'][i]['Raeume'];
+        for (int j = 0; j < test2.length; j++) {
+          print(test2[j]['Raumnummer']);
+          _rooms.add(test2[j]['Raumnummer']);
+        }
+      }
+      /*_rooms.add(json.decode(jsonText)['raeume'][0]['Raeume'][0]['Raumnummer']);
+      print(_rooms[0]);*/
+
+    });
+    return "success";
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadJsonData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +62,7 @@ class RoomPlan extends StatelessWidget {
               onPressed: () {
                 showSearch(
                   context: context,
-                  delegate: MySearchDelegate(),
+                  delegate: MySearchDelegate(searchResults: _rooms),
                 );
               },
             ),
@@ -41,8 +81,8 @@ class RoomPlan extends StatelessWidget {
               ),
               width: 100,
               height: 100,
-              child: const Center(
-                child: Text("1.60"),
+              child: Center(
+                child: Text(_rooms.toString()),
               ),
             ),
             onTap: () {},
@@ -59,6 +99,7 @@ class RoomPlan extends StatelessWidget {
           overlayColor: Colors.black,
           overlayOpacity: 0.5,
           elevation: 8.0,
+          childMargin: const EdgeInsets.all(20.0),
           shape: const CircleBorder(),
           children: [
             SpeedDialChild(
@@ -108,13 +149,8 @@ class RoomPlan extends StatelessWidget {
 }
 
 class MySearchDelegate extends SearchDelegate {
-  List<String> searchResults = [
-    '0.21',
-    '0.65',
-    '1.12',
-    '1.66',
-    '1.67'
-  ];
+  MySearchDelegate({Key? key, required this.searchResults});
+  final List<String> searchResults;
 
   @override
   Widget? buildLeading(BuildContext context) => IconButton(
