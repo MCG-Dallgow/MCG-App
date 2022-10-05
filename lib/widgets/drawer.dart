@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mcgapp/screens/roomplan_screen.dart';
+import 'package:mcgapp/screens/settings_screen.dart';
 import 'package:mcgapp/screens/substitutions_screen.dart';
 import 'package:mcgapp/screens/teachers_screen.dart';
 
@@ -91,12 +92,12 @@ class MCGDrawer extends StatelessWidget {
             leading: const Icon(Icons.settings),
             title: const Text('Einstellungen'),
             onTap: () {
-              /*Navigator.push(
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return TeachersPage();
+                  return Settings();
                 }),
-              );*/
+              );
             },
           ),
         ],
