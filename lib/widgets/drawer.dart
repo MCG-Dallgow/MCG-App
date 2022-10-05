@@ -3,6 +3,7 @@ import 'package:mcgapp/screens/roomplan_screen.dart';
 import 'package:mcgapp/screens/settings_screen.dart';
 import 'package:mcgapp/screens/substitutions_screen.dart';
 import 'package:mcgapp/screens/teachers_screen.dart';
+import 'package:mcgapp/screens/credits_screen.dart';
 
 import '../screens/home_screen.dart';
 import '../screens/timetable_screen.dart';
@@ -96,6 +97,18 @@ class MCGDrawer extends StatelessWidget {
                 context,
                 MaterialPageRoute(builder: (context) {
                   return Settings();
+                }),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.account_balance),
+            title: const Text('Creidts'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return Credits();
                 }),
               );
             },
