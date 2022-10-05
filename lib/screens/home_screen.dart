@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mcgapp/main.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
@@ -20,13 +19,6 @@ class _HomeState extends State<Home> {
         child: Scaffold(
           appBar: MCGAppBar(
             title: "MCG App",
-            actions: [
-              Switch(value: themeManager.themeMode == ThemeMode.dark, onChanged: (newValue) {
-                setState(() {
-                  themeManager.toggleTheme(newValue);
-                });
-              }),
-            ],
           ),
           drawer: const MCGDrawer(),
           body: const Center(
