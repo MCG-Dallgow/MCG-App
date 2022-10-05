@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mcgapp/screens/home_page.dart';
+import 'package:mcgapp/screens/home_screen.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 import 'package:mcgapp/theme/theme_manager.dart';
 
