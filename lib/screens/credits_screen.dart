@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
-class Credits extends StatefulWidget {
-  const Credits({Key? key}) : super(key: key);
+class CreditsScreen extends StatefulWidget {
+  const CreditsScreen({Key? key}) : super(key: key);
 
   @override
-  State<Credits> createState() => _CreditsState();
+  State<CreditsScreen> createState() => _CreditsScreenState();
 }
 
-class _CreditsState extends State<Credits> {
+class _CreditsScreenState extends State<CreditsScreen> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

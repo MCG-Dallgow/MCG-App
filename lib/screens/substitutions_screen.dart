@@ -5,8 +5,8 @@ import '../widgets/drawer.dart';
 
 import 'package:dsbuntis/dsbuntis.dart' as dsb;
 
-class SubstitutionPlan extends StatelessWidget {
-  const SubstitutionPlan({Key? key}) : super(key: key);
+class SubstitutionsScreen extends StatelessWidget {
+  const SubstitutionsScreen({Key? key}) : super(key: key);
 
   Future<void> test() async {
     final json = await dsb.getAllSubs('239601', 'a87xw9p4');

@@ -36,7 +36,7 @@ class MCGDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) {
-                    return const Home();
+                    return const HomeScreen();
                   }),
               );
             },
@@ -48,7 +48,7 @@ class MCGDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return const Timetable();
+                  return const TimetableScreen();
                 }),
               );
             },
@@ -60,7 +60,7 @@ class MCGDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return const SubstitutionPlan();
+                  return const SubstitutionsScreen();
                 }),
               );
             },
@@ -72,7 +72,7 @@ class MCGDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return const RoomPlan();
+                  return const RoomplanScreen();
                 }),
               );
             },
@@ -84,7 +84,7 @@ class MCGDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return const TeachersPage();
+                  return const TeacherListScreen();
                 }),
               );
             },
@@ -96,7 +96,7 @@ class MCGDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return const Settings();
+                  return const SettingsScreen();
                 }),
               );
             },
@@ -108,7 +108,7 @@ class MCGDrawer extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
-                  return const Credits();
+                  return const CreditsScreen();
                 }),
               );
             },

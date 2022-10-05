@@ -219,7 +219,7 @@
         {
             "anrede": "Frau",
             "vorname": "Anke",
-            "nachname": "Koösler",
+            "nachname": "Kössler",
             "kuerzel": "KössA",
             "faecher": "Sport, Informatik",
             "email": "anke.koessler@lk.brandenburg.de"
@@ -237,7 +237,7 @@
             "vorname": "Karin",
             "nachname": "Kurth",
             "kuerzel": "KurtK",
-            "faecher": "Deutsch. Zeichnen/Kunsterziehung",
+            "faecher": "Deutsch, Zeichnen/Kunsterziehung",
             "email": "karin.kurth2@lk.brandenburg.de"
         },
         {
@@ -265,7 +265,7 @@
             "email": "ralf.luedemann@lk.brandenburg.de"
         },
         {
-            "anrede": "Herr Dr",
+            "anrede": "Herr Dr.",
             "vorname": "Helder",
             "nachname": "Marchetto",
             "kuerzel": "MarcH",
@@ -276,7 +276,7 @@
             "anrede": "Herr",
             "vorname": "Jörg",
             "nachname": "Möbius",
-            "kuerzel": "MoebJ",
+            "kuerzel": "MöbiJ",
             "faecher": "Geschichte, Sport, LER",
             "email": "joerg.moebius@lk.brandenburg.de"
         },
@@ -345,7 +345,7 @@
             "email": "nina.roska@lk.brandenburg.de"
        },           
        {    
-            "anrede": "Herr Dr",
+            "anrede": "Herr Dr.",
             "vorname": "Tino",                                                      
             "nachname": "Rublack",
             "kuerzel": "RublT",
@@ -410,7 +410,7 @@
             "anrede": "Frau",
             "vorname": "Frauke",
             "nachname": "Sommer-Langhammer",
-            "kuerzel": "SommF",
+            "kuerzel": "SoLaF",
             "faecher": "",
             "email": "frauke.sommer--langhammer@lk.brandenburg.de"
        },           
@@ -459,7 +459,7 @@
            "email": "alexander.tillner@lk.brandenburg.de"
        },                        
        {
-            "anrede": "Herr Dr",
+            "anrede": "Herr Dr.",
             "vorname": "Florian Magnus",                   
             "nachname": "Urschel-Sochaczewski",
             "kuerzel": "UrSoF",
@@ -478,7 +478,7 @@
             "anrede": "Frau",
             "vorname": "Bettina",
             "nachname": "Vogt-Hartung",
-            "kuerzel": "VogtB",
+            "kuerzel": "VoHaB",
             "faecher": "",
             "email": "bettina.vogt@lk.brandenburg.de"
        },                       
@@ -502,7 +502,7 @@
             "anrede": "Frau",
             "vorname": "Sophie",
             "nachname": "Wistuba-Mönke",
-            "kuerzel": "WistS",
+            "kuerzel": "WiMöS",
             "faecher": "",
             "email": "sophie.wistuba-moenke@lk.brandenburg.de"
        },                        

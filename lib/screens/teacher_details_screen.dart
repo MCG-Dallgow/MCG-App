@@ -3,8 +3,8 @@ import 'package:mcgapp/widgets/app_bar.dart';
 
 import '../classes/teacher.dart';
 
-class TeacherDetails extends StatefulWidget {
-  const TeacherDetails({
+class TeacherDetailsScreen extends StatefulWidget {
+  const TeacherDetailsScreen({
     Key? key,
     required this.teacher,
   }) : super(key: key);
@@ -12,10 +12,10 @@ class TeacherDetails extends StatefulWidget {
   final Teacher teacher;
 
   @override
-  State<TeacherDetails> createState() => _TeacherDetailsState();
+  State<TeacherDetailsScreen> createState() => _TeacherDetailsScreenState();
 }
 
-class _TeacherDetailsState extends State<TeacherDetails> {
+class _TeacherDetailsScreenState extends State<TeacherDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -7,14 +7,14 @@ import 'package:mcgapp/widgets/drawer.dart';
 
 import '../classes/teacher.dart';
 
-class TeachersPage extends StatefulWidget {
-  const TeachersPage({Key? key}) : super(key: key);
+class TeacherListScreen extends StatefulWidget {
+  const TeacherListScreen({Key? key}) : super(key: key);
 
   @override
-  State<TeachersPage> createState() => _TeachersPageState();
+  State<TeacherListScreen> createState() => _TeacherListScreenState();
 }
 
-class _TeachersPageState extends State<TeachersPage> {
+class _TeacherListScreenState extends State<TeacherListScreen> {
   final List<Teacher> _teachers = [];
   final List<Teacher> _entries = [];
 
@@ -155,7 +155,7 @@ class _TeachersPageState extends State<TeachersPage> {
                       onTap: () {
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (BuildContext context) {
-                          return TeacherDetails(teacher: _entries[index ~/ 2]);
+                          return TeacherDetailsScreen(teacher: _entries[index ~/ 2]);
                         }));
                       },
                     );

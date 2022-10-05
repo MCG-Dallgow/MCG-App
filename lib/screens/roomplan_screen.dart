@@ -12,14 +12,14 @@ import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 import '../widgets/search_bar.dart';
 
-class RoomPlan extends StatefulWidget {
-  const RoomPlan({Key? key}) : super(key: key);
+class RoomplanScreen extends StatefulWidget {
+  const RoomplanScreen({Key? key}) : super(key: key);
 
   @override
-  State<RoomPlan> createState() => _RoomPlanState();
+  State<RoomplanScreen> createState() => _RoomplanScreenState();
 }
 
-class _RoomPlanState extends State<RoomPlan> {
+class _RoomplanScreenState extends State<RoomplanScreen> {
   final List<String> _rooms = [];
 
   Future<void> loadJsonData() async {
