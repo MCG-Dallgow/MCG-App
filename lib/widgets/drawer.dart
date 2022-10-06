@@ -42,15 +42,15 @@ class MCGDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.book),
-            title: const Text('Stundenplan'),
+            leading: const Icon(Icons.book, color: Colors.grey,),
+            title: const Text('Stundenplan - Coming Soon', style: TextStyle(color: Colors.grey)),
             onTap: () {
-              Navigator.push(
+              /*Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
                   return const TimetableScreen();
                 }),
-              );
+              );*/
             },
           ),
           ListTile(
