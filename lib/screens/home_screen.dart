@@ -41,8 +41,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             const SizedBox(
-              height: 50,
+              height: 23,
             ),
+            const Text('Die Intention des Projektes war es, den Schulalltag der'
+                ' SuS des Marie-Curie-Gymnasiums zu vereinfachen. Die App kann euch'
+                ' helfen Räume zu finden, den Vertretungsplan anzuschauen und vieles mehr... ',
+            style: TextStyle(fontSize: 16)),
             Image.asset(
               'assets/images/mcg_oben.png',
               width: double.infinity,
