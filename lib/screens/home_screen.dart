@@ -31,9 +31,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: double.infinity,
                   fit: BoxFit.cover,
                 ),
-                Image.asset(
-                  'assets/images/mcg_logo.png',
-                  height: 100,
+                Padding(
+                  padding: EdgeInsets.all(10.0),
+                  child: Image.asset(
+                    'assets/images/mcg_logo.png',
+                    height: 100,
+                  ),
                 ),
               ],
             ),
