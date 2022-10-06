@@ -7,7 +7,7 @@ Android: Da es nicht ohne weiteres möglich ist eine App im Google Play Store od
 
 Web App: Die App kann auch im Browser unter https://mcg-app.hafemann.xyz/ genutzt werden.
 
-iOS: Da Apple es nicht erlaubt Apps auf anderem Wege als durch den App Store zu installieren, ist die MCG-App unter iOS nicht verfügbar.
+iOS: Da Apple es nicht erlaubt Apps auf anderem Wege als durch den App Store zu installieren, ist die MCG-App unter iOS vorerst nicht verfügbar.
 
 **Funktionen:**
 - Digitaler Raumplan
