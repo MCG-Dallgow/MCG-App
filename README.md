@@ -3,11 +3,11 @@ Eine App für Schüler des Marie-Curie-Gymnasiums Dallgow-Döberitz.
 ---
 **Benutzung**
 
-Android: Da es nicht ohne weiteres möglich ist eine App im Google Play Store oder dem Apple Appstore kurzfristig zu veröffentlichen, kann hier nur ein Android Paket in Form einer .apk Datei bereitgestellt werden. Dieses kann unter Releases heruntergeladen werden.
+**Android:** Da es nicht ohne weiteres möglich ist eine App im Google Play Store oder dem Apple Appstore kurzfristig zu veröffentlichen, kann hier nur ein Android Paket in Form einer .apk Datei bereitgestellt werden. Dieses kann unter Releases heruntergeladen werden.
 
-Web App: Die App kann auch im Browser unter https://mcg-app.hafemann.xyz/ genutzt werden.
+**Web App:** Die App kann auch im Browser unter https://mcg-app.hafemann.xyz/ genutzt werden.
 
-iOS: Da Apple es nicht erlaubt Apps auf anderem Wege als durch den App Store zu installieren, ist die MCG-App unter iOS vorerst nicht verfügbar.
+**iOS:** Da Apple es nicht erlaubt Apps auf anderem Wege als durch den App Store zu installieren, ist die MCG-App unter iOS vorerst nicht verfügbar.
 
 **Funktionen:**
 - Digitaler Raumplan
