@@ -90,7 +90,7 @@ class MCGDrawer extends StatelessWidget {
             },
           ),
           const Divider(
-            color:Colors.black,
+            color:Colors.black38,
           ),
           ListTile(
             leading: const Icon(Icons.settings),
