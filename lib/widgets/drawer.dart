@@ -89,6 +89,9 @@ class MCGDrawer extends StatelessWidget {
               );
             },
           ),
+          const Divider(
+            color:Colors.black,
+          ),
           ListTile(
             leading: const Icon(Icons.settings),
             title: const Text('Einstellungen'),
