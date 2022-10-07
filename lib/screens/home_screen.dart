@@ -21,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
           title: "MCG App",
         ),
         drawer: const MCGDrawer(),
-        body: Column(
+        body: ListView(
           children: [
             Stack(
               children: [
@@ -40,7 +40,22 @@ class _HomeScreenState extends State<HomeScreen> {
               ],
             ),
             const SizedBox(
-              height: 50,
+              height: 20,
+            ),
+            const Text(
+              'Eine App, die Schülern des Marie-Curie-Gymnasiums Dallgow-Döberitz in ihrem Alltag hilft.',
+              style: TextStyle(fontSize: 16),
+            ),
+            const Text(
+              'Diese App ist während der Projektwoche zum 20. Jahrestag des Marie-Curie-Gymnasiums erstellt worden, wird jedoch in Zukunft weiterentwickelt werden.',
+              style: TextStyle(fontSize: 16),
+            ),
+            const Text(
+              'Derzeitige Features: Vertretungsplan, Raumplan, Lehrerliste',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(
+              height: 20,
             ),
             Image.asset(
               'assets/images/mcg_oben.png',
