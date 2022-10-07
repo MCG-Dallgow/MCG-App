@@ -10,7 +10,6 @@ class Room {
   late double endY;
 
   Room.fromJson(var json, int index) {
-    //print("Room.fromJson");
     number = json[index]['number'];
     name = json[index]['name'];
     teacher = json[index]['teacher'];
@@ -20,6 +19,5 @@ class Room {
     startY = json[index]['startpos']['y'];
     endX = json[index]['endpos']['x'];
     endY = json[index]['endpos']['y'];
-    print("Room $number - $name completed ($startX, $startY - $endX, $endY)");
   }
 }

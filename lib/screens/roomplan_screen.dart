@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
@@ -22,16 +21,13 @@ class RoomplanScreen extends StatefulWidget {
 class _RoomplanScreenState extends State<RoomplanScreen> {
   final List<Room> _rooms0 = [];
   final List<Room> _rooms1 = [];
-  bool isLoading = true;
   Widget _selectedPlan = const Center(child: Text("not loaded"));
   String _currentFloor = '';
   String appBarTitle = "Raumplan";
 
   Future<void> loadJsonData() async {
-    setState(() {
-      isLoading = true;
-    });
     var jsonText = await rootBundle.loadString("assets/data/rooms.json");
+
     setState(() {
       List data = json.decode(jsonText)['rooms'];
       for (int i = 0; i < data.length; i++) {
@@ -47,16 +43,14 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
         }
       }
     });
-    setState(() {
-      isLoading = false;
-    });
+
+    _setSelectedPlan(_plan0(), '0');
   }
 
   @override
   void initState() {
     super.initState();
     loadJsonData();
-    //while(isLoading) {}
     _setSelectedPlan(_plan0(), '0');
   }
 
@@ -64,18 +58,12 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
     List<Widget> roomWidgets = [];
 
     for (Room room in rooms) {
-      roomWidgets.add(Positioned(
-        left: room.startX,
-        top: room.startY,
-        height: room.endY - room.startY,
-        width: room.endX - room.startX,
-        child: GestureDetector(
-          onTap: () {
-            if (kDebugMode) {
-              print("Bottom Sheet should be displayed");
-            }
-            _showBottomSheet(context, room);
-          },
+      roomWidgets.add(
+        Positioned(
+          left: room.startX,
+          top: room.startY,
+          height: room.endY - room.startY,
+          width: room.endX - room.startX,
           child: Container(
             color: Colors.green.shade200,
             child: Center(
@@ -86,7 +74,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
             ),
           ),
         ),
-      ));
+      );
     }
 
     roomWidgets.add(
@@ -205,117 +193,114 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //_selectedPlan = _plan0();
     Offset childWasTappedAt = Offset.zero;
     var transformationController = TransformationController();
-    return isLoading
-        ? const CircularProgressIndicator()
-        : DefaultTabController(
-            initialIndex: 0,
-            length: 2,
-            child: Scaffold(
-              appBar: MCGAppBar(
-                title: appBarTitle,
-                actions: [
-                  IconButton(
-                    icon: const Icon(Icons.search),
-                    onPressed: () {
-                      List<String> rooms = [];
-                      rooms.addAll(_rooms0.map((e) => e.number));
-                      rooms.addAll(_rooms1.map((e) => e.number));
-                      showSearch(
+    return DefaultTabController(
+      initialIndex: 0,
+      length: 2,
+      child: Scaffold(
+        appBar: MCGAppBar(
+          title: appBarTitle,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {
+                List<String> rooms = [];
+                rooms.addAll(_rooms0.map((e) => e.number));
+                rooms.addAll(_rooms1.map((e) => e.number));
+                showSearch(
                   context: context,
                   delegate: MySearchDelegate(searchResults: rooms),
                 );
-                    },
-                  ),
-                ],
-              ),
-              drawer: const MCGDrawer(),
-              floatingActionButton: SpeedDial(
-                icon: Icons.layers,
-                activeIcon: Icons.close,
-                foregroundColor: Colors.white,
-                activeForegroundColor: Colors.white,
-                buttonSize: const Size(56.0, 56.0),
-                visible: true,
-                closeManually: false,
-                overlayColor: Colors.black,
-                overlayOpacity: 0.5,
-                elevation: 8.0,
-                childMargin: const EdgeInsets.all(20.0),
-                shape: const CircleBorder(),
-                children: [
-                  SpeedDialChild(
-                    child: const Text(
-                      "0",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    backgroundColor: colorAccent,
-                    foregroundColor: Colors.white,
-                    label: "Erdgeschoss",
-                    labelStyle: const TextStyle(fontSize: 18.0),
-                    onTap: () {
-                      setState(() {
-                        _setSelectedPlan(_plan0(), '0');
-                      });
-                    },
-                  ),
-                  SpeedDialChild(
-                    child: const Text(
-                      "1",
-                      style: TextStyle(
-                        fontSize: 20,
-                      ),
-                    ),
-                    backgroundColor: colorAccent,
-                    foregroundColor: Colors.white,
-                    label: "1. Obergeschoss",
-                    labelStyle: const TextStyle(fontSize: 18.0),
-                    onTap: () {
-                      setState(() {
-                        _setSelectedPlan(_plan1(), '1');
-                      });
-                    },
-                  ),
-                ],
-              ),
-              body: GestureDetector(
-                onTapUp: (TapUpDetails details) {
-                  childWasTappedAt = transformationController.toScene(
-                    details.localPosition,
-                  );
-                  List<Room> rooms = [];
-                  if (_currentFloor == '0') {
-                    rooms = _rooms0;
-                  } else if (_currentFloor == '1') {
-                    rooms = _rooms1;
-                  }
-                  for (Room room in rooms) {
-                    if (childWasTappedAt.dx > room.startX &&
-                        childWasTappedAt.dx < room.endX &&
-                        childWasTappedAt.dy > room.startY &&
-                        childWasTappedAt.dy < room.endY) {
-                      _showBottomSheet(context, room);
-                    }
-                  }
-                },
-                child: InteractiveViewer(
-                  transformationController: transformationController,
-                  maxScale: 5,
-                  scaleFactor: 2,
-                  child: Container(
-                    constraints: const BoxConstraints.expand(),
-                    child: Container(
-                      child: _selectedPlan,
-                    ),
-                  ),
+              },
+            ),
+          ],
+        ),
+        drawer: const MCGDrawer(),
+        floatingActionButton: SpeedDial(
+          icon: Icons.layers,
+          activeIcon: Icons.close,
+          foregroundColor: Colors.white,
+          activeForegroundColor: Colors.white,
+          buttonSize: const Size(56.0, 56.0),
+          visible: true,
+          closeManually: false,
+          overlayColor: Colors.black,
+          overlayOpacity: 0.5,
+          elevation: 8.0,
+          childMargin: const EdgeInsets.all(20.0),
+          shape: const CircleBorder(),
+          children: [
+            SpeedDialChild(
+              child: const Text(
+                "0",
+                style: TextStyle(
+                  fontSize: 20,
                 ),
               ),
+              backgroundColor: colorAccent,
+              foregroundColor: Colors.white,
+              label: "Erdgeschoss",
+              labelStyle: const TextStyle(fontSize: 18.0),
+              onTap: () {
+                setState(() {
+                  _setSelectedPlan(_plan0(), '0');
+                });
+              },
             ),
-          );
+            SpeedDialChild(
+              child: const Text(
+                "1",
+                style: TextStyle(
+                  fontSize: 20,
+                ),
+              ),
+              backgroundColor: colorAccent,
+              foregroundColor: Colors.white,
+              label: "1. Obergeschoss",
+              labelStyle: const TextStyle(fontSize: 18.0),
+              onTap: () {
+                setState(() {
+                  _setSelectedPlan(_plan1(), '1');
+                });
+              },
+            ),
+          ],
+        ),
+        body: GestureDetector(
+          onTapUp: (TapUpDetails details) {
+            childWasTappedAt = transformationController.toScene(
+              details.localPosition,
+            );
+            List<Room> rooms = [];
+            if (_currentFloor == '0') {
+              rooms = _rooms0;
+            } else if (_currentFloor == '1') {
+              rooms = _rooms1;
+            }
+            for (Room room in rooms) {
+              if (childWasTappedAt.dx > room.startX &&
+                  childWasTappedAt.dx < room.endX &&
+                  childWasTappedAt.dy > room.startY &&
+                  childWasTappedAt.dy < room.endY) {
+                _showBottomSheet(context, room);
+              }
+            }
+          },
+          child: InteractiveViewer(
+            transformationController: transformationController,
+            maxScale: 5,
+            scaleFactor: 2,
+            child: Container(
+              constraints: const BoxConstraints.expand(),
+              child: Container(
+                child: _selectedPlan,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
 
@@ -325,28 +310,28 @@ class MySearchDelegate extends SearchDelegate {
 
   @override
   Widget? buildLeading(BuildContext context) => IconButton(
-    icon: const Icon(Icons.arrow_back),
-    onPressed: () => close(context, null),
-  );
+        icon: const Icon(Icons.arrow_back),
+        onPressed: () => close(context, null),
+      );
 
   @override
   List<Widget>? buildActions(BuildContext context) => [
-    IconButton(
-      icon: const Icon(Icons.clear),
-      onPressed: () {
-        if (query.isEmpty) {
-          close(context, null);
-        } else {
-          query = '';
-        }
-      },
-    ),
-  ];
+        IconButton(
+          icon: const Icon(Icons.clear),
+          onPressed: () {
+            if (query.isEmpty) {
+              close(context, null);
+            } else {
+              query = '';
+            }
+          },
+        ),
+      ];
 
   @override
   Widget buildResults(BuildContext context) => Center(
-    child: Text(query, style: const TextStyle(fontSize: 64)),
-  );
+        child: Text(query, style: const TextStyle(fontSize: 64)),
+      );
 
   @override
   Widget buildSuggestions(BuildContext context) {
