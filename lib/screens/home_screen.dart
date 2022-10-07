@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mcgapp/theme/theme_constants.dart';
 
-import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
+import '../widgets/app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -32,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fit: BoxFit.cover,
                 ),
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Image.asset(
                     'assets/images/mcg_logo.png',
                     height: 100,

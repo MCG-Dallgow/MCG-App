@@ -40,7 +40,7 @@ class _CreditsScreenState extends State<CreditsScreen> {
               Text('Vincenzo Herbers', style: TextStyle(fontSize: 16)),
               Text(''),
               Text('Design:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              Text('Tim Büschner', style: TextStyle(fontSize: 16)),
+              Text('Tim Püschner', style: TextStyle(fontSize: 16)),
               Text('Dani Badea', style: TextStyle(fontSize: 16)),
               Text('Kimi Müller', style: TextStyle(fontSize: 16)),
               Text('Michael Hennig', style: TextStyle(fontSize: 16)),

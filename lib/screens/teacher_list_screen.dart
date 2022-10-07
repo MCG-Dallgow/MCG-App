@@ -19,7 +19,7 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
   final List<Teacher> _entries = [];
 
   Future<void> loadJsonData() async {
-    var jsonText = await rootBundle.loadString("assets/teachers.json");
+    var jsonText = await rootBundle.loadString("assets/data/teachers.json");
     setState(() {
       List data = json.decode(jsonText)['teachers'];
       for (int i = 0; i < data.length; i++) {
