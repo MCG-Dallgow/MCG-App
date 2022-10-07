@@ -3,21 +3,22 @@ import 'package:flutter/material.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
-import 'package:dsbuntis/dsbuntis.dart' as dsb;
-
-class SubstitutionsScreen extends StatelessWidget {
+class SubstitutionsScreen extends StatefulWidget {
   const SubstitutionsScreen({Key? key}) : super(key: key);
 
-  Future<void> test() async {
-    final json = await dsb.getAllSubs('239601', 'a87xw9p4');
-    print(json);
+  @override
+  State<SubstitutionsScreen> createState() => _SubstitutionsScreenState();
+}
+
+class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
+
+  @override
+  void initState() {
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-
-
-
     return DefaultTabController(
       initialIndex: 0,
       length: 2,
@@ -28,16 +29,20 @@ class SubstitutionsScreen extends StatelessWidget {
             IconButton(
               icon: const Icon(Icons.filter_alt),
               onPressed: () {
-                print("test");
-                print(test());
+                //connect();
               },
             ),
           ],
         ),
         drawer: const MCGDrawer(),
-        body: const Center(
-            child: Text("Vertretungsplan")
-        ),
+        body: InteractiveViewer(
+          maxScale: 4,
+          child: Container(
+            alignment: Alignment.topCenter,
+            constraints: const BoxConstraints.expand(),
+            child: Image.asset('assets/images/substitution_plan.jpg'),
+          )
+        )
       ),
     );
   }
