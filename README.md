@@ -58,3 +58,6 @@ Wenn ihr ein iOS-Gerät benutzt, oder die APK-Version keine Option ist, könnt i
 #### Design
 - Michael Hennig
 - Benedikt Blum
+- Kimi Müller
+- Tim Püschner
+- Jonathan Frank
