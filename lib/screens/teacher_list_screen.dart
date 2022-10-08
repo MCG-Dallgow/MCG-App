@@ -6,6 +6,7 @@ import 'package:mcgapp/screens/teacher_details_screen.dart';
 import 'package:mcgapp/widgets/drawer.dart';
 
 import '../classes/teacher.dart';
+import '../widgets/app_bar.dart';
 
 class TeacherListScreen extends StatefulWidget {
   const TeacherListScreen({Key? key}) : super(key: key);
@@ -17,6 +18,7 @@ class TeacherListScreen extends StatefulWidget {
 class _TeacherListScreenState extends State<TeacherListScreen> {
   final List<Teacher> _teachers = [];
   final List<Teacher> _entries = [];
+  final List<String> sekretariat = [];
 
   Future<void> loadJsonData() async {
     var jsonText = await rootBundle.loadString("assets/data/teachers.json");
@@ -26,6 +28,9 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
         _teachers.add(Teacher.fromJson(data, i));
       }
       _entries.addAll(_teachers);
+
+      sekretariat.add(json.decode(jsonText)['sekretariat']['email'] as String);
+      sekretariat.add(json.decode(jsonText)['sekretariat']['phone'] as String);
     });
   }
 
@@ -145,6 +150,17 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
                   padding: const EdgeInsets.all(8),
                   itemCount: _entries.length * 2,
                   itemBuilder: (BuildContext context, int index) {
+                    if (index == 0) {
+                      return ListTile(
+                        title: const Text('Sekretariat'),
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (BuildContext context) {
+                            return SekretariatScreen(data: sekretariat);
+                          }));
+                        },
+                      );
+                    }
                     if (index.isOdd) {
                       return const Divider();
                     }
@@ -155,12 +171,43 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
                       onTap: () {
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (BuildContext context) {
-                          return TeacherDetailsScreen(teacher: _entries[index ~/ 2]);
+                          return TeacherDetailsScreen(
+                              teacher: _entries[index ~/ 2]);
                         }));
                       },
                     );
                   })
               : const Center(child: Text("keine Treffer"))),
+    );
+  }
+}
+
+class SekretariatScreen extends StatelessWidget {
+  const SekretariatScreen({
+    Key? key,
+    required this.data,
+  }) : super(key: key);
+
+  final List<String> data;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: MCGAppBar(
+        title: "Sekretariat",
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text(data[0]),
+            leading: const Icon(Icons.email),
+          ),
+          ListTile(
+            title: Text(data[1]),
+            leading: const Icon(Icons.phone),
+          ),
+        ],
+      ),
     );
   }
 }
