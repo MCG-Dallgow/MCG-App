@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:dsb/dsb.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
@@ -13,9 +16,25 @@ class SubstitutionsScreen extends StatefulWidget {
 }
 
 class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
+
+  final List<String> substitutionURIs = ["", ""];
+  bool isLoading = true;
+
   @override
   void initState() {
     super.initState();
+    _getSubstitutionsURI();
+  }
+
+  Future<void> _getSubstitutionsURI() async {
+    final session = Session('b89afef4-8a32-4480-bef8-1c874b1d8e62');
+    final jsonText = await session.getTimetablesJsonString();
+    final data = json.decode(jsonText);
+    setState(() {
+      substitutionURIs.insert(0, data[1]['Childs'][0]['Detail']);
+      substitutionURIs.insert(1, data[1]['Childs'][1]['Detail']);
+      isLoading = false;
+    });
   }
 
   @override
@@ -25,7 +44,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
       length: 2,
       child: Scaffold(
         appBar: MCGAppBar(
-          title: "Vertretungsplan",
+          title: 'Vertretungsplan',
           actions: [
             IconButton(
               icon: const Icon(Icons.refresh),
@@ -48,10 +67,10 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
             physics: NeverScrollableScrollPhysics(),
             tabs: [
               Tab(
-                child: Text("Heute"),
+                child: Text("Plan 1"),
               ),
               Tab(
-                child: Text("Morgen"),
+                child: Text("Plan 2"),
               ),
             ],
           ),
@@ -61,15 +80,15 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
           children: [
             InteractiveViewer(
               panEnabled: false,
-              child: const WebView(
-                initialUrl: 'https://dsbmobile.de/data/b89afef4-8a32-4480-bef8-1c874b1d8e62/dd3fb991-2339-4fce-8a1b-afb649e2cfa5/subst_001.htm'
-                ),
+              child: isLoading
+                  ? const Center(child: Text('Wird geladen...'))
+                  : WebView(initialUrl: substitutionURIs[0]),
             ),
             InteractiveViewer(
               panEnabled: false,
-              child: const WebView(
-                initialUrl: 'https://dsbmobile.de/data/b89afef4-8a32-4480-bef8-1c874b1d8e62/dd3fb991-2339-4fce-8a1b-afb649e2cfa5/subst_002.htm',
-              ),
+              child: isLoading
+                  ? const Center(child: Text('Wird geladen...'))
+                  : WebView(initialUrl: substitutionURIs[1]),
             ),
           ],
         ),
