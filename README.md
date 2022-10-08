@@ -32,6 +32,9 @@ Wenn ihr ein iOS-Gerät benutzt, oder die APK-Version keine Option ist, könnt i
 ### Einstellungen
 - Schalter für den Dark-Mode
 
+## Discord
+Wir haben auch einen Discord-Server für Schüler des MCG erstellt, auf dem ihr euch mit Mitschülern austauschen und über dieses Projekt informiert bleiben könnt: https://discord.gg/5ShaVGtYuP
+
 ## Credits
 
 #### Projektleitung
@@ -48,16 +51,13 @@ Wenn ihr ein iOS-Gerät benutzt, oder die APK-Version keine Option ist, könnt i
 - Luka Braunholz
 - Vanessa Fleck
 
-#### Beschaffung von Rauminformationen
+#### Informationsbeschaffung
+- Michael Hennig
 - Lukas Löffelmann
 - Charlene Kühnaß
 - Leni Helmhart
 - Mathis Jasse
 - Vincenzo Herbers
-
-#### Design
-- Michael Hennig
-- Benedikt Blum
 - Kimi Müller
 - Tim Püschner
 - Jonathan Frank
