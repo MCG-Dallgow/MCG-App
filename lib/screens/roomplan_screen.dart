@@ -25,8 +25,14 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   String _currentFloor = '';
   String appBarTitle = "Raumplan";
 
+  late double screenWidth;
+  late double screenHeight;
+  late double offsetX;
+  late double offsetY;
+
   Future<void> loadJsonData() async {
     var jsonText = await rootBundle.loadString("assets/data/rooms.json");
+
 
     setState(() {
       List data = json.decode(jsonText)['rooms'];
@@ -51,8 +57,11 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   void initState() {
     super.initState();
     loadJsonData();
-    _setSelectedPlan(_plan0(), '0');
+    //_setSelectedPlan(_plan0(), '0');
+
   }
+
+
 
   List<Widget> _loadRooms(List<Room> rooms, String floor) {
     List<Widget> roomWidgets = [];
@@ -60,10 +69,10 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
     for (Room room in rooms) {
       roomWidgets.add(
         Positioned(
-          left: room.startX,
-          top: room.startY,
-          height: room.endY - room.startY,
-          width: room.endX - room.startX,
+          left: offsetX + room.startX / 300 * screenWidth*0.9,
+          top: offsetY + room.startY / 300 * screenWidth*0.9,
+          height: (room.endY - room.startY) / 300 * screenWidth*0.9,
+          width: (room.endX - room.startX) / 300 * screenWidth*0.9,
           child: Container(
             color: Colors.green.shade200,
             child: Center(
@@ -79,11 +88,10 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
 
     roomWidgets.add(
       Positioned(
-        //height: 300,
-        //width: 500,
-        //left: 0,
-        //right: 0,
-        //bottom: 83,
+        height: 125 / 300 * screenWidth*0.9,
+        width: 300 / 300 * screenWidth*0.9,
+        left: offsetX,
+        top: offsetY,
         child: SvgPicture.asset(
           fit: BoxFit.fill,
           'assets/images/roomplan_$floor.svg',
@@ -125,8 +133,8 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   void _showBottomSheet(context, Room room) {
     showModalBottomSheet<dynamic>(
       isScrollControlled: true,
-      backgroundColor: Colors.transparent,
       context: context,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
       builder: (BuildContext bc) {
         return Wrap(
           children: [
@@ -193,6 +201,11 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
 
   @override
   Widget build(BuildContext context) {
+    screenWidth = MediaQuery.of(context).size.width;
+    screenHeight = MediaQuery.of(context).size.height;
+    offsetX = screenWidth * 0.05;
+    offsetY = screenHeight/2 - 125/300*screenWidth;
+
     Offset childWasTappedAt = Offset.zero;
     var transformationController = TransformationController();
     return DefaultTabController(
@@ -279,10 +292,10 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
               rooms = _rooms1;
             }
             for (Room room in rooms) {
-              if (childWasTappedAt.dx > room.startX &&
-                  childWasTappedAt.dx < room.endX &&
-                  childWasTappedAt.dy > room.startY &&
-                  childWasTappedAt.dy < room.endY) {
+              if (childWasTappedAt.dx > room.startX / 300 * screenWidth*0.9 + offsetX &&
+                  childWasTappedAt.dx < room.endX / 300 * screenWidth*0.9 + offsetX &&
+                  childWasTappedAt.dy > room.startY / 300 * screenWidth*0.9 + offsetY &&
+                  childWasTappedAt.dy < room.endY / 300 * screenWidth*0.9 + offsetY) {
                 _showBottomSheet(context, room);
               }
             }
