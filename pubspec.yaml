@@ -37,6 +37,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_speed_dial: ^6.0.0
   flutter_svg: ^1.1.5
+  flutter_launcher_icons: ^0.10.0
   webview_flutter: ^3.0.4
   dsb: ^0.1.0
   # dsbuntis: ^8.0.0
@@ -96,3 +97,14 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+flutter_icons:
+  # android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/mcg-icon.jpg"
+  min_sdk_android: 21 # android min sdk min:16, default 21
+  web:
+    generate: true
+    image_path: "assets/images/mcg-icon.jpg"
+    background_color: "#hexcode"
+    theme_color: "#hexcode"
