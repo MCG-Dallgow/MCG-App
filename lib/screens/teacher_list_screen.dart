@@ -150,7 +150,7 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
                   padding: const EdgeInsets.all(8),
                   itemCount: _entries.length * 2,
                   itemBuilder: (BuildContext context, int index) {
-                    if (index == 0) {
+                    if (index == 0 && (!_isSearching || searchQuery == '')) {
                       return ListTile(
                         title: const Text('Sekretariat'),
                         onTap: () {
