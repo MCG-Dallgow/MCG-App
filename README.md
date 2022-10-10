@@ -3,7 +3,7 @@ Eine App, die Schülern des Marie-Curie-Gymnasiums Dallgow-Döberitz in ihrem Al
 Diese App ist während der Projektwoche zum 20. Jahrestag des Marie-Curie-Gymnasiums erstellt worden, wird jedoch in Zukunft weiterentwickelt werden.
 
 ## Benutzung
-Die App ist leider noch nicht im Google PlayStore oder Apple AppStore verfügbar, da die dortige Veröffentlichung so kurzfristig nicht möglich ist. Ihr könnt die App jedoch auf zwei andere Wege verwenden:
+Die App ist leider noch nicht im Google Play Store oder Apple App Store verfügbar, da die dortige Veröffentlichung so kurzfristig nicht möglich ist. Ihr könnt die App jedoch auf zwei andere Wege verwenden:
 
 ### Android APK
 Wenn ihr ein Android-Gerät benutzt, könnt ihr euch über die Releases-Page (https://github.com/SLH335/MCG-App/releases) hier auf GitHub eine APK-Version der App herunterladen. So könnt ihr die MCG-App direkt ohne den Google PlayStore installieren. Wenn ihr zum ersten Mal eine APK-Datei installiert, müsst ihr zusätzlich das "Installieren von Apps aus unbekannten Quellen" o.Ä. in den Einstellungen aktivieren.
@@ -14,10 +14,9 @@ Wenn ihr ein iOS-Gerät benutzt, oder die APK-Version keine Option ist, könnt i
 ## Funktionen
 - Digitaler Raumplan
 - Lehrerliste
-- *Stundenplan (Coming Soon)*
 - Vertretungsplan
-- Einstellungen
-- Home
+- *Stundenplan (Coming Soon)*
+- *Notenübersicht (Coming Soon)*
 
 ### Digitaler Raumplan
 - Grafische Darstellung der Räume des MCG
@@ -28,6 +27,7 @@ Wenn ihr ein iOS-Gerät benutzt, oder die APK-Version keine Option ist, könnt i
 - Suchfunktion
 - Suche nach Lehrerkürzeln aus dem Vertretungsplan
 - E-Mail-Adressen
+- Kontaktdaten des Sekretariats
 
 ### Einstellungen
 - Schalter für den Dark-Mode
