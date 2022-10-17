@@ -6,7 +6,6 @@ import 'package:mcgapp/screens/teacher_list_screen.dart';
 import 'package:mcgapp/screens/credits_screen.dart';
 
 import '../screens/home_screen.dart';
-import '../screens/timetable_screen.dart';
 
 class MCGDrawer extends StatelessWidget {
   const MCGDrawer({Key? key}) : super(key: key);
@@ -33,6 +32,7 @@ class MCGDrawer extends StatelessWidget {
             leading: const Icon(Icons.home),
             title: const Text('Home'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) {
@@ -57,6 +57,7 @@ class MCGDrawer extends StatelessWidget {
             leading: const Icon(Icons.calendar_today),
             title: const Text('Vertretungsplan'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
@@ -69,6 +70,7 @@ class MCGDrawer extends StatelessWidget {
             leading: const Icon(Icons.room_outlined),
             title: const Text('Raumplan'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
@@ -81,6 +83,7 @@ class MCGDrawer extends StatelessWidget {
             leading: const Icon(Icons.person),
             title: const Text('Lehrerliste'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
@@ -96,6 +99,7 @@ class MCGDrawer extends StatelessWidget {
             leading: const Icon(Icons.settings),
             title: const Text('Einstellungen'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
@@ -108,6 +112,7 @@ class MCGDrawer extends StatelessWidget {
             leading: const Icon(Icons.account_balance),
             title: const Text('Credits'),
             onTap: () {
+              Navigator.pop(context);
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) {
