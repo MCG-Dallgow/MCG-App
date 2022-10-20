@@ -38,9 +38,10 @@ dependencies:
   flutter_speed_dial: ^6.0.0
   flutter_svg: ^1.1.5
   flutter_launcher_icons: ^0.10.0
-  webview_flutter: ^3.0.4
-  dsb: ^0.1.0
-  # dsbuntis: ^8.0.0
+  webviewx: ^0.2.1
+  intl: ^0.17.0
+  html: ^0.15.0
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
