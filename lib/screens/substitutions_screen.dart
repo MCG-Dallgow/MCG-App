@@ -43,7 +43,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
           'formatName': 'Vertretungsplan DSB',
           'schoolName': 'Marie-Curie-Gym',
           'date': format.format(now),
-          'dateOffset': now.hour < 12 || now.minute == 0 ? offset : offset-1,
+          'dateOffset': offset,
           'strikethrough': false,
           'mergeBlocks': true,
           'showOnlyFutureSub': false,
@@ -86,9 +86,15 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
       });
     }
     setState(() {
-      plan1Name = _getDateFormat(substitutionData[0]['payload']['nextDate'].toString());
-      plan2Name = _getDateFormat(substitutionData[1]['payload']['nextDate'].toString());
-      plan3Name = _getDateFormat(substitutionData[2]['payload']['nextDate'].toString());
+      plan1Name = substitutionData[0]['payload']['showingNextDate']
+          ? _getDateFormat(substitutionData[0]['payload']['nextDate'].toString())
+          : _getDateFormat(substitutionData[0]['payload']['date'].toString());
+      plan2Name = substitutionData[1]['payload']['showingNextDate']
+          ? _getDateFormat(substitutionData[1]['payload']['nextDate'].toString())
+          : _getDateFormat(substitutionData[1]['payload']['date'].toString());
+      plan3Name = substitutionData[2]['payload']['showingNextDate']
+          ? _getDateFormat(substitutionData[2]['payload']['nextDate'].toString())
+          : _getDateFormat(substitutionData[2]['payload']['date'].toString());
     });
   }
 
@@ -151,12 +157,11 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
             substitutionData[0].isEmpty
                 ? const Center(child: Text('Wird geladen...'))
                 : ListView.builder(
-                    itemCount: substitutionData[0]['payload']['rows'].length,
+                    itemCount: substitutionData[0]['payload']['rows'].length + 1,
                     itemBuilder: (BuildContext context, int index) {
                       if (index == 0) {
                         return Padding(
-                          padding: const EdgeInsets.only(
-                              left: 10.0, top: 5.0, bottom: 5.0),
+                          padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
                           child: Text('Stand: ${substitutionData[0]['payload']['lastUpdate']}'),
                         );
                       }
@@ -167,35 +172,32 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
             substitutionData[1].isEmpty
                 ? const Center(child: Text('Wird geladen...'))
                 : ListView.builder(
-              itemCount: substitutionData[1]['payload']['rows'].length,
-              itemBuilder: (BuildContext context, int index) {
-                if (index == 0) {
-                  return Padding(
-                    padding: const EdgeInsets.only(
-                        left: 10.0, top: 5.0, bottom: 5.0),
-                    child: Text('Stand: ${substitutionData[1]['payload']['lastUpdate']}'),
-                  );
-                }
-                var data = substitutionData[1]['payload']['rows'][index - 1];
-                return SubstitutionEntry.fromJson(data);
-              },
-            ),
+                    itemCount: substitutionData[1]['payload']['rows'].length + 1,
+                    itemBuilder: (BuildContext context, int index) {
+                      if (index == 0) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
+                          child: Text('Stand: ${substitutionData[1]['payload']['lastUpdate']}'),
+                        );
+                      }
+                      var data = substitutionData[1]['payload']['rows'][index - 1];
+                      return SubstitutionEntry.fromJson(data);
+                    },
+                  ),
             substitutionData[2].isEmpty
                 ? const Center(child: Text('Wird geladen...'))
                 : ListView.builder(
-              itemCount: substitutionData[2]['payload']['rows'].length,
-              itemBuilder: (BuildContext context, int index) {
-                if (index == 0) {
-                  return Padding(
-                    padding: const EdgeInsets.only(
-                        left: 10.0, top: 5.0, bottom: 5.0),
-                    child: Text('Stand: ${substitutionData[2]['payload']['lastUpdate']}'),
-                  );
-                }
-                var data = substitutionData[2]['payload']['rows'][index - 1];
-                return SubstitutionEntry.fromJson(data);
-              },
-            ),
+                    itemBuilder: (BuildContext context, int index) {
+                      if (index == 0) {
+                        return Padding(
+                          padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
+                          child: Text('Stand: ${substitutionData[2]['payload']['lastUpdate']}'),
+                        );
+                      }
+                      var data = substitutionData[2]['payload']['rows'][index - 1];
+                      return SubstitutionEntry.fromJson(data);
+                    },
+                  ),
           ],
         ),
       ),
