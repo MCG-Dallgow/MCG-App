@@ -85,7 +85,7 @@ class SubstitutionEntry extends StatelessWidget {
     );
 
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0), color: Colors.teal),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0), color: Colors.green.shade300),
       padding: const EdgeInsets.all(10.0),
       margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
       child: Column(

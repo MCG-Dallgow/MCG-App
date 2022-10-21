@@ -18,11 +18,13 @@ class SubstitutionsScreen extends StatefulWidget {
 class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
   late WebViewXController webviewController;
 
-  List<Map> substitutionData = [{}, {}, {}];
-  int length = 3;
-  String plan1Name = 'Plan 1';
-  String plan2Name = 'Plan 2';
-  String plan3Name = 'Plan 3';
+  int maxTabBarLength = 3;
+  List<Map> substitutionData = [];
+  List<String> planNames = [];
+
+  int _tabBarLength = 1;
+  TabBar _tabBar = const TabBar(tabs: [Tab(child: Text('Wird geladen...'))]);
+  TabBarView _tabBarView = const TabBarView(children: [Center(child: Text('Wird geladen...'))]);
 
   @override
   void initState() {
@@ -67,8 +69,6 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
           'showUnitTime': false,
           'showMessages': true,
           'showStudentgroup': false,
-          'enableSubstitutionFrom': true,
-          'showSubstitutionFrom': 1200,
           'showTeacherOnEvent': false,
           'showAbsentTeacher': true,
           'strikethroughAbsentTeacher': false,
@@ -81,21 +81,19 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
           'showUnheraldedExams': false
         },
       );
+
+      int planDate = response.data['payload']['showingNextDate']
+          ? response.data['payload']['nextDate']
+          : response.data['payload']['date'];
+
       setState(() {
-        substitutionData.insert(offset, response.data);
+        if (substitutionData.length < maxTabBarLength && (response.data['payload']['rows'] as List).isNotEmpty) {
+          substitutionData.add(response.data);
+          planNames.add(_getDateFormat(planDate.toString()));
+        }
       });
+      _setTabBar();
     }
-    setState(() {
-      plan1Name = substitutionData[0]['payload']['showingNextDate']
-          ? _getDateFormat(substitutionData[0]['payload']['nextDate'].toString())
-          : _getDateFormat(substitutionData[0]['payload']['date'].toString());
-      plan2Name = substitutionData[1]['payload']['showingNextDate']
-          ? _getDateFormat(substitutionData[1]['payload']['nextDate'].toString())
-          : _getDateFormat(substitutionData[1]['payload']['date'].toString());
-      plan3Name = substitutionData[2]['payload']['showingNextDate']
-          ? _getDateFormat(substitutionData[2]['payload']['nextDate'].toString())
-          : _getDateFormat(substitutionData[2]['payload']['date'].toString());
-    });
   }
 
   String _getDateFormat(String date) {
@@ -111,11 +109,48 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
     return DateFormat('dd.MM.yyyy').format(DateTime.parse(date));
   }
 
+  void _setTabBar() {
+    List<Widget> tabs = [];
+    for (int i = 0; i < substitutionData.length; i++) {
+      if (planNames.length > i) {
+        tabs.add(Tab(child: Text(planNames[i])));
+      }
+    }
+    if (tabs.isEmpty) tabs.add(const Tab(child: Text('Wird geladen...')));
+
+    List<Widget> tabViews = [];
+    for (int i = 0; i < substitutionData.length; i++) {
+      if (substitutionData.isNotEmpty && substitutionData.length > i) {}
+      tabViews.add(
+        ListView.builder(
+          itemCount: substitutionData[i]['payload']['rows'].length + 1,
+          itemBuilder: (BuildContext context, int index) {
+            if (index == 0) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
+                child: Text('Stand: ${substitutionData[i]['payload']['lastUpdate']}'),
+              );
+            }
+            var data = substitutionData[i]['payload']['rows'][index - 1];
+            return SubstitutionEntry.fromJson(data);
+          },
+        ),
+      );
+    }
+    if (tabViews.isEmpty) tabViews.add(const Center(child: Text('Wird geladen...')));
+
+    setState(() {
+      _tabBar = TabBar(tabs: tabs);
+      _tabBarView = TabBarView(children: tabViews);
+      _tabBarLength = tabs.length;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 0,
-      length: 3,
+      length: _tabBarLength,
       child: Scaffold(
         appBar: MCGAppBar(
           title: 'Vertretungsplan',
@@ -124,10 +159,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
               icon: const Icon(Icons.refresh),
               onPressed: () {
                 setState(() {
-                  substitutionData = [{}, {}, {}];
-                  plan1Name = 'Plan 1';
-                  plan2Name = 'Plan 2';
-                  plan3Name = 'Plan 3';
+                  substitutionData = [];
                 });
                 _getSubstitutions();
               },
@@ -137,69 +169,10 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
               onPressed: () {},
             ),
           ],
-          bottom: TabBar(
-            tabs: [
-              Tab(
-                child: Text(plan1Name),
-              ),
-              Tab(
-                child: Text(plan2Name),
-              ),
-              Tab(
-                child: Text(plan3Name),
-              )
-            ],
-          ),
+          bottom: _tabBar,
         ),
         drawer: const MCGDrawer(),
-        body: TabBarView(
-          children: [
-            substitutionData[0].isEmpty
-                ? const Center(child: Text('Wird geladen...'))
-                : ListView.builder(
-                    itemCount: substitutionData[0]['payload']['rows'].length + 1,
-                    itemBuilder: (BuildContext context, int index) {
-                      if (index == 0) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
-                          child: Text('Stand: ${substitutionData[0]['payload']['lastUpdate']}'),
-                        );
-                      }
-                      var data = substitutionData[0]['payload']['rows'][index - 1];
-                      return SubstitutionEntry.fromJson(data);
-                    },
-                  ),
-            substitutionData[1].isEmpty
-                ? const Center(child: Text('Wird geladen...'))
-                : ListView.builder(
-                    itemCount: substitutionData[1]['payload']['rows'].length + 1,
-                    itemBuilder: (BuildContext context, int index) {
-                      if (index == 0) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
-                          child: Text('Stand: ${substitutionData[1]['payload']['lastUpdate']}'),
-                        );
-                      }
-                      var data = substitutionData[1]['payload']['rows'][index - 1];
-                      return SubstitutionEntry.fromJson(data);
-                    },
-                  ),
-            substitutionData[2].isEmpty
-                ? const Center(child: Text('Wird geladen...'))
-                : ListView.builder(
-                    itemBuilder: (BuildContext context, int index) {
-                      if (index == 0) {
-                        return Padding(
-                          padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
-                          child: Text('Stand: ${substitutionData[2]['payload']['lastUpdate']}'),
-                        );
-                      }
-                      var data = substitutionData[2]['payload']['rows'][index - 1];
-                      return SubstitutionEntry.fromJson(data);
-                    },
-                  ),
-          ],
-        ),
+        body: _tabBarView,
       ),
     );
   }
