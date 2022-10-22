@@ -20,29 +20,23 @@ class _SettingsScreenState extends State<SettingsScreen> {
       child: Scaffold(
         appBar: MCGAppBar(
           title: "Einstellungen",
-          /*actions: [
-            Switch(value: themeManager.themeMode == ThemeMode.dark, onChanged: (newValue) {
-              setState(() {
-                themeManager.toggleTheme(newValue);
-              });
-            }),
-          ],*/
         ),
         drawer: const MCGDrawer(),
         body: ListView(
-            children: <Widget>[
-              ListTile(
-                title: const Text("Dark Mode"),
-                trailing: Switch(
-                    value: themeManager.themeMode == ThemeMode.dark,
-                    onChanged: (newValue) {
-                      setState(() {
-                        themeManager.toggleTheme(newValue);
-                      });
-                    }),
+          children: <Widget>[
+            ListTile(
+              title: const Text("Dark Mode"),
+              trailing: Switch(
+                value: themeManager.themeMode == ThemeMode.dark,
+                onChanged: (newValue) {
+                  setState(() {
+                    themeManager.toggleTheme(newValue);
+                  });
+                },
               ),
-            ],
-          ),
+            ),
+          ],
+        ),
       ),
     );
   }

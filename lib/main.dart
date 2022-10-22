@@ -20,6 +20,7 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    themeManager.loadTheme();
     themeManager.addListener(themeListener);
     super.initState();
   }
