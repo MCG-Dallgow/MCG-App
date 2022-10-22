@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'package:webviewx/webviewx.dart';
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../classes/substitution_entry.dart';
 import '../widgets/app_bar.dart';
@@ -16,15 +16,19 @@ class SubstitutionsScreen extends StatefulWidget {
 }
 
 class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
-  late WebViewXController webviewController;
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  int maxTabBarLength = 3;
-  List<Map> substitutionData = [];
-  List<String> planNames = [];
+  final int _maxTabBarLength = 3;
+  List<Map> _substitutionData = [];
+  List<String> _planNames = [];
 
   int _tabBarLength = 1;
   TabBar _tabBar = const TabBar(tabs: [Tab(child: Text('Wird geladen...'))]);
   TabBarView _tabBarView = const TabBarView(children: [Center(child: Text('Wird geladen...'))]);
+
+  String _groupFilter = '';
+  List<String> _courseFilter = [];
+  String _teacherFilter = '';
 
   @override
   void initState() {
@@ -34,8 +38,12 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
   }
 
   void _getSubstitutions() async {
-    var dio = Dio();
+    setState(() {
+      _substitutionData = [];
+      _planNames = [];
+    });
 
+    var dio = Dio();
     for (int offset = 0; offset < 3; offset++) {
       DateTime now = DateTime.now();
       DateFormat format = DateFormat('yyyyMMdd');
@@ -44,7 +52,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
         data: {
           'formatName': 'Vertretungsplan DSB',
           'schoolName': 'Marie-Curie-Gym',
-          'date': format.format(now),
+          'date': int.parse(format.format(now)),
           'dateOffset': offset,
           'strikethrough': false,
           'mergeBlocks': true,
@@ -87,13 +95,32 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
           : response.data['payload']['date'];
 
       setState(() {
-        if (substitutionData.length < maxTabBarLength && (response.data['payload']['rows'] as List).isNotEmpty) {
-          substitutionData.add(response.data);
-          planNames.add(_getDateFormat(planDate.toString()));
+        if (_substitutionData.length < _maxTabBarLength && (response.data['payload']['rows'] as List).isNotEmpty) {
+          _substitutionData.add(response.data);
+          _planNames.add(_getDateFormat(planDate.toString()));
         }
       });
+      _loadFilters();
       _setTabBar();
     }
+  }
+
+  Future<void> _saveFilters() async {
+    SharedPreferences prefs = await _prefs;
+
+    prefs.setString('groupFilter', _groupFilter);
+    prefs.setStringList('courseFilter', _courseFilter);
+    prefs.setString('teacherFilter', _teacherFilter);
+  }
+
+  Future<void> _loadFilters() async {
+    SharedPreferences prefs = await _prefs;
+
+    setState(() {
+      _groupFilter = prefs.getString('groupFilter') ?? '';
+      _courseFilter = prefs.getStringList('courseFilter') ?? [];
+      _teacherFilter = prefs.getString('teacherFilter') ?? '';
+    });
   }
 
   String _getDateFormat(String date) {
@@ -111,28 +138,53 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
 
   void _setTabBar() {
     List<Widget> tabs = [];
-    for (int i = 0; i < substitutionData.length; i++) {
-      if (planNames.length > i) {
-        tabs.add(Tab(child: Text(planNames[i])));
-      }
+    for (int i = 0; i < _substitutionData.length; i++) {
+      tabs.add(Tab(child: Text(_planNames[i])));
     }
     if (tabs.isEmpty) tabs.add(const Tab(child: Text('Wird geladen...')));
 
+    setState(() {
+      _tabBar = TabBar(tabs: tabs);
+      _tabBarLength = tabs.length;
+    });
+    _updateTabViews();
+  }
+
+  void _updateTabViews() {
     List<Widget> tabViews = [];
-    for (int i = 0; i < substitutionData.length; i++) {
-      if (substitutionData.isNotEmpty && substitutionData.length > i) {}
+    for (int i = 0; i < _substitutionData.length; i++) {
+      List<SubstitutionEntry> unfilteredEntries = [];
+      List<SubstitutionEntry> filteredEntries = [];
+
+      for (int j = 0; j < (_substitutionData[i]['payload']['rows'] as List).length; j++) {
+        unfilteredEntries.add(SubstitutionEntry.fromJson(_substitutionData[i]['payload']['rows'][j]));
+      }
+
+      for (SubstitutionEntry entry in unfilteredEntries) {
+        if ((_groupFilter == '' && _courseFilter.isEmpty && _teacherFilter == '') ||
+            (_groupFilter != '' && entry.group.toLowerCase().contains(_groupFilter.toLowerCase())) ||
+            (_courseFilter.isNotEmpty &&
+                (_courseFilter.contains(entry.courseNew) || _courseFilter.contains(entry.courseOld))) ||
+            (_teacherFilter != '' && (entry.teacherNew == _teacherFilter || entry.teacherOld == _teacherFilter))) {
+          filteredEntries.add(entry);
+        }
+      }
+
       tabViews.add(
         ListView.builder(
-          itemCount: substitutionData[i]['payload']['rows'].length + 1,
+          itemCount: filteredEntries.isEmpty ? 2 : filteredEntries.length + 1,
           itemBuilder: (BuildContext context, int index) {
             if (index == 0) {
               return Padding(
                 padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
-                child: Text('Stand: ${substitutionData[i]['payload']['lastUpdate']}'),
+                child: Text('Stand: ${_substitutionData[i]['payload']['lastUpdate']}'),
               );
             }
-            var data = substitutionData[i]['payload']['rows'][index - 1];
-            return SubstitutionEntry.fromJson(data);
+            if (filteredEntries.isNotEmpty) {
+              return filteredEntries[index - 1];
+            } else {
+              return const Center(child: Text('Keine Ergebnisse für die ausgewählten Filter'));
+            }
           },
         ),
       );
@@ -140,10 +192,89 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
     if (tabViews.isEmpty) tabViews.add(const Center(child: Text('Wird geladen...')));
 
     setState(() {
-      _tabBar = TabBar(tabs: tabs);
       _tabBarView = TabBarView(children: tabViews);
-      _tabBarLength = tabs.length;
     });
+  }
+
+  Future<void> _showFilterDialog(BuildContext context) {
+    TextEditingController groupFilterController = TextEditingController();
+    groupFilterController.text = _groupFilter;
+
+    TextEditingController courseFilterController = TextEditingController();
+    courseFilterController.text = _courseFilter.join(' ');
+
+    TextEditingController teacherFilterController = TextEditingController();
+    teacherFilterController.text = _teacherFilter;
+
+    return showDialog<void>(
+        context: context,
+        builder: (BuildContext context) {
+          return SimpleDialog(
+            title: const Text('Ergebnisse filtern'),
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Klasse oder Klassenstufe',
+                  ),
+                  controller: groupFilterController,
+                  onChanged: (text) {
+                    setState(() {
+                      _groupFilter = text.trim();
+                    });
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: TextField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Kurse oder Fächer',
+                  ),
+                  controller: courseFilterController,
+                  onChanged: (text) {
+                    setState(() {
+                      _courseFilter = text.trim().split(' ');
+                    });
+                  },
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.fromLTRB(16, 0, 16, 8),
+                child: Text('Mehrere durch Leerzeichen trennen'),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: TextFormField(
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Lehrer',
+                  ),
+                  controller: teacherFilterController,
+                  onChanged: (text) {
+                    setState(() {
+                      _teacherFilter = teacherFilterController.text.trim();
+                    });
+                  },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: ElevatedButton(
+                  onPressed: () {
+                    _saveFilters();
+                    _updateTabViews();
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('Speichern'),
+                ),
+              ),
+            ],
+          );
+        });
   }
 
   @override
@@ -155,19 +286,8 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
         appBar: MCGAppBar(
           title: 'Vertretungsplan',
           actions: [
-            IconButton(
-              icon: const Icon(Icons.refresh),
-              onPressed: () {
-                setState(() {
-                  substitutionData = [];
-                });
-                _getSubstitutions();
-              },
-            ),
-            IconButton(
-              icon: const Icon(Icons.filter_alt),
-              onPressed: () {},
-            ),
+            IconButton(icon: const Icon(Icons.refresh), onPressed: () => _getSubstitutions()),
+            IconButton(icon: const Icon(Icons.filter_alt), onPressed: () => _showFilterDialog(context)),
           ],
           bottom: _tabBar,
         ),
