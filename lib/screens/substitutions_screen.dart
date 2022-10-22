@@ -164,7 +164,8 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
         if ((_groupFilter == '' && _courseFilter.isEmpty && _teacherFilter == '') ||
             (_groupFilter != '' && entry.group.toLowerCase().contains(_groupFilter.toLowerCase())) ||
             (_courseFilter.isNotEmpty &&
-                (_courseFilter.contains(entry.courseNew) || _courseFilter.contains(entry.courseOld))) ||
+                (entry.courseNew != '' && _courseFilter.contains(entry.courseNew) ||
+                    entry.courseOld != '' && _courseFilter.contains(entry.courseOld))) ||
             (_teacherFilter != '' && (entry.teacherNew == _teacherFilter || entry.teacherOld == _teacherFilter))) {
           filteredEntries.add(entry);
         }
