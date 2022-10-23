@@ -79,8 +79,7 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
   }
 
   void _startSearch() {
-    ModalRoute.of(context)
-        ?.addLocalHistoryEntry(LocalHistoryEntry(onRemove: _stopSearching));
+    ModalRoute.of(context)?.addLocalHistoryEntry(LocalHistoryEntry(onRemove: _stopSearching));
 
     setState(() {
       _isSearching = true;
@@ -93,18 +92,10 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
 
       _entries.clear();
       for (Teacher teacher in _teachers) {
-        if (teacher.nachname
-                .toLowerCase()
-                .startsWith(searchQuery.toLowerCase()) ||
-            "${teacher.anrede} ${teacher.nachname}"
-                .toLowerCase()
-                .startsWith(searchQuery.toLowerCase()) ||
-            teacher.vorname
-                .toLowerCase()
-                .startsWith(searchQuery.toLowerCase()) ||
-            teacher.kuerzel
-                .toLowerCase()
-                .startsWith(searchQuery.toLowerCase())) {
+        if (teacher.nachname.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
+            "${teacher.anrede} ${teacher.nachname}".toLowerCase().startsWith(searchQuery.toLowerCase()) ||
+            teacher.vorname.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
+            teacher.kuerzel.toLowerCase().startsWith(searchQuery.toLowerCase())) {
           _entries.add(teacher);
         }
       }
@@ -140,22 +131,21 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
       child: Scaffold(
           appBar: AppBar(
             leading: _isSearching ? const BackButton() : null,
-            title:
-                _isSearching ? _buildSearchField() : const Text("Lehrerliste"),
+            title: _isSearching ? _buildSearchField() : const Text("Lehrerliste"),
             actions: _buildActions(),
           ),
           drawer: const MCGDrawer(),
           body: _entries.isNotEmpty
               ? ListView.builder(
                   padding: const EdgeInsets.all(8),
-                  itemCount: _entries.length * 2,
+                  itemCount:
+                      _entries.length * 2 + ((_entries.isNotEmpty && !_isSearching || searchQuery == '') ? 1 : 0),
                   itemBuilder: (BuildContext context, int index) {
                     if (index == 0 && (!_isSearching || searchQuery == '')) {
                       return ListTile(
                         title: const Text('Sekretariat'),
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (BuildContext context) {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
                             return SekretariatScreen(data: sekretariat);
                           }));
                         },
@@ -164,15 +154,13 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
                     if (index.isOdd) {
                       return const Divider();
                     }
+                    int teacherIndex = index ~/ 2 - ((_entries.isNotEmpty && !_isSearching || searchQuery == '') ? 1 : 0);
                     return ListTile(
                       //leading: CircleAvatar(),
-                      title: Text(
-                          "${_entries[index ~/ 2].anrede} ${_entries[index ~/ 2].nachname}"),
+                      title: Text("${_entries[teacherIndex].anrede} ${_entries[teacherIndex].nachname}"),
                       onTap: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (BuildContext context) {
-                          return TeacherDetailsScreen(
-                              teacher: _entries[index ~/ 2]);
+                        Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
+                          return TeacherDetailsScreen(teacher: _entries[teacherIndex]);
                         }));
                       },
                     );
