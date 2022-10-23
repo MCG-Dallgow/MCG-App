@@ -26,9 +26,9 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
   TabBar _tabBar = const TabBar(tabs: [Tab(child: Text('Wird geladen...'))]);
   TabBarView _tabBarView = const TabBarView(children: [Center(child: Text('Wird geladen...'))]);
 
-  String _groupFilter = '';
+  List<String> _groupFilter = [];
   List<String> _courseFilter = [];
-  String _teacherFilter = '';
+  List<String> _teacherFilter = [];
 
   @override
   void initState() {
@@ -108,18 +108,18 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
   Future<void> _saveFilters() async {
     SharedPreferences prefs = await _prefs;
 
-    prefs.setString('groupFilter', _groupFilter);
+    prefs.setStringList('groupFilter', _groupFilter);
     prefs.setStringList('courseFilter', _courseFilter);
-    prefs.setString('teacherFilter', _teacherFilter);
+    prefs.setStringList('teacherFilter', _teacherFilter);
   }
 
   Future<void> _loadFilters() async {
     SharedPreferences prefs = await _prefs;
 
     setState(() {
-      _groupFilter = prefs.getString('groupFilter') ?? '';
+      _groupFilter = prefs.getStringList('groupFilter') ?? [];
       _courseFilter = prefs.getStringList('courseFilter') ?? [];
-      _teacherFilter = prefs.getString('teacherFilter') ?? '';
+      _teacherFilter = prefs.getStringList('teacherFilter') ?? [];
     });
   }
 
@@ -161,12 +161,13 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
       }
 
       for (SubstitutionEntry entry in unfilteredEntries) {
-        if ((_groupFilter == '' && _courseFilter.isEmpty && _teacherFilter == '') ||
-            (_groupFilter != '' && entry.group.toLowerCase().contains(_groupFilter.toLowerCase())) ||
-            (_courseFilter.isNotEmpty &&
-                (entry.courseNew != '' && _courseFilter.contains(entry.courseNew) ||
-                    entry.courseOld != '' && _courseFilter.contains(entry.courseOld))) ||
-            (_teacherFilter != '' && (entry.teacherNew == _teacherFilter || entry.teacherOld == _teacherFilter))) {
+        if ((_groupFilter.isEmpty || _groupFilter.map((e) => e.toLowerCase()).contains(entry.group.toLowerCase())) &&
+            (_courseFilter.isEmpty ||
+                _courseFilter.map((e) => e.toLowerCase()).contains((entry.courseNew ?? '').toLowerCase()) ||
+                _courseFilter.map((e) => e.toLowerCase()).contains((entry.courseOld ?? '').toLowerCase())) &&
+            (_teacherFilter.isEmpty ||
+                _teacherFilter.map((e) => e.toLowerCase()).contains((entry.teacherNew ?? '').toLowerCase()) ||
+                _teacherFilter.map((e) => e.toLowerCase()).contains((entry.teacherOld ?? '').toLowerCase()))) {
           filteredEntries.add(entry);
         }
       }
@@ -199,13 +200,13 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
 
   Future<void> _showFilterDialog(BuildContext context) {
     TextEditingController groupFilterController = TextEditingController();
-    groupFilterController.text = _groupFilter;
+    groupFilterController.text = _groupFilter.join(' ');
 
     TextEditingController courseFilterController = TextEditingController();
     courseFilterController.text = _courseFilter.join(' ');
 
     TextEditingController teacherFilterController = TextEditingController();
-    teacherFilterController.text = _teacherFilter;
+    teacherFilterController.text = _teacherFilter.join(' ');
 
     return showDialog<void>(
         context: context,
@@ -213,17 +214,22 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
           return SimpleDialog(
             title: const Text('Ergebnisse filtern'),
             children: <Widget>[
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                child: Text('Es werden nur Ergebnisse angezeigt, die auf alle Filter zutreffen.\n'
+                    '\nMehrere Einträge sind durch Leerzeichen zu trennen.'),
+              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: TextField(
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Klasse oder Klassenstufe',
+                    labelText: 'Klassen oder Klassenstufen',
                   ),
                   controller: groupFilterController,
                   onChanged: (text) {
                     setState(() {
-                      _groupFilter = text.trim();
+                      _groupFilter = text.trim() == '' ? [] : text.trim().split(' ');
                     });
                   },
                 ),
@@ -238,26 +244,22 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
                   controller: courseFilterController,
                   onChanged: (text) {
                     setState(() {
-                      _courseFilter = text.trim().split(' ');
+                      _courseFilter = text.trim() == '' ? [] : text.trim().split(' ');
                     });
                   },
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.fromLTRB(16, 0, 16, 8),
-                child: Text('Mehrere durch Leerzeichen trennen'),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: TextFormField(
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: 'Lehrer',
+                    labelText: 'Lehrer (Nachname)',
                   ),
                   controller: teacherFilterController,
                   onChanged: (text) {
                     setState(() {
-                      _teacherFilter = teacherFilterController.text.trim();
+                      _teacherFilter = text.trim() == '' ? [] : text.trim().split(' ');
                     });
                   },
                 ),
