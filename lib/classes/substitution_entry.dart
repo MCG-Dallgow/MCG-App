@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart';
+import 'package:mcgapp/main.dart';
 
 class SubstitutionEntry extends StatelessWidget {
   const SubstitutionEntry({
@@ -85,7 +86,7 @@ class SubstitutionEntry extends StatelessWidget {
     );
 
     return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0), color: Colors.green.shade300),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0), color: themeManager.colorSecondary),
       padding: const EdgeInsets.all(10.0),
       margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
       child: Column(
@@ -98,7 +99,7 @@ class SubstitutionEntry extends StatelessWidget {
               Text(lesson, style: headerStyle),
             ],
           ),
-          const Divider(color: Colors.black),
+          Divider(color: themeManager.colorStroke),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -134,7 +135,7 @@ class SubstitutionEntry extends StatelessWidget {
               ),
             ],
           ),
-          const Divider(color: Colors.black),
+          Divider(color: themeManager.colorStroke),
           Text(description ?? '', style: normalStyle),
         ],
       ),

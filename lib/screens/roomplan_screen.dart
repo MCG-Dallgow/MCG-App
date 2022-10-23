@@ -6,7 +6,6 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mcgapp/classes/room.dart';
 import 'package:mcgapp/main.dart';
-import 'package:mcgapp/theme/theme_constants.dart';
 
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
@@ -33,7 +32,6 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   Future<void> loadJsonData() async {
     var jsonText = await rootBundle.loadString("assets/data/rooms.json");
 
-
     setState(() {
       List data = json.decode(jsonText)['rooms'];
       for (int i = 0; i < data.length; i++) {
@@ -58,10 +56,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
     super.initState();
     loadJsonData();
     //_setSelectedPlan(_plan0(), '0');
-
   }
-
-
 
   List<Widget> _loadRooms(List<Room> rooms, String floor) {
     List<Widget> roomWidgets = [];
@@ -69,12 +64,12 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
     for (Room room in rooms) {
       roomWidgets.add(
         Positioned(
-          left: offsetX + room.startX / 300 * screenWidth*0.9,
-          top: offsetY + room.startY / 300 * screenWidth*0.9,
-          height: (room.endY - room.startY) / 300 * screenWidth*0.9,
-          width: (room.endX - room.startX) / 300 * screenWidth*0.9,
+          left: offsetX + room.startX / 300 * screenWidth * 0.9,
+          top: offsetY + room.startY / 300 * screenWidth * 0.9,
+          height: (room.endY - room.startY) / 300 * screenWidth * 0.9,
+          width: (room.endX - room.startX) / 300 * screenWidth * 0.9,
           child: Container(
-            color: Colors.green.shade200,
+            color: themeManager.colorSecondary,
             child: Center(
               child: Text(
                 room.number,
@@ -88,8 +83,8 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
 
     roomWidgets.add(
       Positioned(
-        height: 125 / 300 * screenWidth*0.9,
-        width: 300 / 300 * screenWidth*0.9,
+        height: 125 / 300 * screenWidth * 0.9,
+        width: 300 / 300 * screenWidth * 0.9,
         left: offsetX,
         top: offsetY,
         child: SvgPicture.asset(
@@ -106,8 +101,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   }
 
   Widget _plan0() {
-    return Stack(
-        alignment: Alignment.topLeft, children: _loadRooms(_rooms0, '0'));
+    return Stack(alignment: Alignment.topLeft, children: _loadRooms(_rooms0, '0'));
   }
 
   Widget _plan1() {
@@ -204,7 +198,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
     screenWidth = MediaQuery.of(context).size.width;
     screenHeight = MediaQuery.of(context).size.height;
     offsetX = screenWidth * 0.05;
-    offsetY = screenHeight/2 - 125/300*screenWidth;
+    offsetY = screenHeight / 2 - 125 / 300 * screenWidth;
 
     Offset childWasTappedAt = Offset.zero;
     var transformationController = TransformationController();
@@ -251,7 +245,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
                   fontSize: 20,
                 ),
               ),
-              backgroundColor: colorAccent,
+              backgroundColor: themeManager.colorSecondary,
               foregroundColor: Colors.white,
               label: "Erdgeschoss",
               labelStyle: const TextStyle(fontSize: 18.0),
@@ -268,7 +262,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
                   fontSize: 20,
                 ),
               ),
-              backgroundColor: colorAccent,
+              backgroundColor: themeManager.colorSecondary,
               foregroundColor: Colors.white,
               label: "1. Obergeschoss",
               labelStyle: const TextStyle(fontSize: 18.0),
@@ -292,10 +286,10 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
               rooms = _rooms1;
             }
             for (Room room in rooms) {
-              if (childWasTappedAt.dx > room.startX / 300 * screenWidth*0.9 + offsetX &&
-                  childWasTappedAt.dx < room.endX / 300 * screenWidth*0.9 + offsetX &&
-                  childWasTappedAt.dy > room.startY / 300 * screenWidth*0.9 + offsetY &&
-                  childWasTappedAt.dy < room.endY / 300 * screenWidth*0.9 + offsetY) {
+              if (childWasTappedAt.dx > room.startX / 300 * screenWidth * 0.9 + offsetX &&
+                  childWasTappedAt.dx < room.endX / 300 * screenWidth * 0.9 + offsetX &&
+                  childWasTappedAt.dy > room.startY / 300 * screenWidth * 0.9 + offsetY &&
+                  childWasTappedAt.dy < room.endY / 300 * screenWidth * 0.9 + offsetY) {
                 _showBottomSheet(context, room);
               }
             }
