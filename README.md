@@ -1,36 +1,44 @@
 # MCG-App
-Eine App, die Schülern des Marie-Curie-Gymnasiums Dallgow-Döberitz in ihrem Alltag hilft.
-Diese App ist während der Projektwoche zum 20. Jahrestag des Marie-Curie-Gymnasiums erstellt worden, wird jedoch in Zukunft weiterentwickelt werden.
+Eine App, die Schülern des Marie-Curie-Gymnasiums Dallgow-Döberitz ihren Alltag erleichtert.
+Diese App wurde in der Projektwoche zum 20. Jahrestag des Marie-Curie-Gymnasiums erstellt und wird aktiv weiterentwickelt.
 
 ## Benutzung
-Die App ist leider noch nicht im Google Play Store oder Apple App Store verfügbar, da die dortige Veröffentlichung so kurzfristig nicht möglich ist. Ihr könnt die App jedoch auf zwei andere Wege verwenden:
+Die App ist leider noch nicht im Google Play Store oder Apple App Store verfügbar, da die dortige Veröffentlichung mit viel Aufwand und Kosten verbunden ist. Ihr könnt die App jedoch auf zwei andere Wege verwenden:
 
 ### Android APK
-Wenn ihr ein Android-Gerät benutzt, könnt ihr euch über die Releases-Page (https://github.com/SLH335/MCG-App/releases) hier auf GitHub eine APK-Version der App herunterladen. So könnt ihr die MCG-App direkt ohne den Google PlayStore installieren. Wenn ihr zum ersten Mal eine APK-Datei installiert, müsst ihr zusätzlich das "Installieren von Apps aus unbekannten Quellen" o.Ä. in den Einstellungen aktivieren.
+Wenn ihr ein Android-Gerät benutzt, könnt ihr euch über die Releases-Page (https://github.com/MCG-Dallgow/MCG-App/releases) hier auf GitHub eine APK-Version der App herunterladen. So könnt ihr die MCG-App direkt ohne den Google Play Store installieren. Wenn ihr zum ersten Mal eine APK-Datei installiert, müsst ihr zusätzlich das "Installieren von Apps aus unbekannten Quellen" o.Ä. in den Einstellungen aktivieren.
 
 ### Web App
-Wenn ihr ein iOS-Gerät benutzt, oder die APK-Version keine Option ist, könnt ihr die App auch direkt ohne Installation im Browser als Web-App nutzen. Klickt hierzu auf folgenden Link: https://mcg-app.hafemann.xyz/
+Wenn ihr ein iOS-Gerät oder einen PC benutzt, oder die APK-Version aus anderen Gründen keine Option ist, könnt ihr die App auch direkt ohne Installation im Browser als Web-App nutzen. Klickt hierzu auf folgenden Link: https://mcg-app.hafemann.xyz/
 
 ## Funktionen
-- Digitaler Raumplan
+- Vertretungsplan mit Filterfunktion
 - Lehrerliste
-- Vertretungsplan
+- Interaktiver Raumplan
 - *Stundenplan (Coming Soon)*
+- *Hausaufgaben-Organisator (Coming Soon)*
 - *Notenübersicht (Coming Soon)*
 
-### Digitaler Raumplan
-- Grafische Darstellung der Räume des MCG
-- Übersichtliches Layout
-- *Suchfunktion zum einfachen Finden von Räumen (Coming Soon)*
+### Vertretungsplan
+- Aktualisierender Vertretungsplan via WebUntis
+- Pläne für die nächsten drei Schultage
+- Übersichtliche Darstellung
+- Filterfunktion nach Klassen, Kursen und Lehrern
 
 ### Lehrerliste
+- Auflistung aller 66 Lehrer des MCG
 - Suchfunktion
-- Suche nach Lehrerkürzeln aus dem Vertretungsplan
-- E-Mail-Adressen
+- E-Mail-Adressen für jeden Lehrer
 - Kontaktdaten des Sekretariats
 
+### Interaktiver Raumplan
+- Grafische Darstellung der Räume des MCG
+- Übersichtliches Layout
+- Mehr Informationen über die Räume
+- *Suchfunktion zum einfachen Finden von Räumen (Coming Soon)*
+
 ### Einstellungen
-- Schalter für den Dark-Mode
+- Dark-Mode
 
 ## Discord
 Wir haben auch einen Discord-Server für Schüler des MCG erstellt, auf dem ihr euch mit Mitschülern austauschen und über dieses Projekt informiert bleiben könnt: https://discord.gg/5ShaVGtYuP
@@ -49,15 +57,7 @@ Wir haben auch einen Discord-Server für Schüler des MCG erstellt, auf dem ihr 
 - Linus Wettach
 - Lars Kuhr
 - Luka Braunholz
-- Vanessa Fleck
 
 #### Informationsbeschaffung
 - Michael Hennig
 - Lukas Löffelmann
-- Charlene Kühnaß
-- Leni Helmhart
-- Mathis Jasse
-- Vincenzo Herbers
-- Kimi Müller
-- Tim Püschner
-- Jonathan Frank
