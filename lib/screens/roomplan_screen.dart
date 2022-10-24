@@ -202,107 +202,103 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
 
     Offset childWasTappedAt = Offset.zero;
     var transformationController = TransformationController();
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 2,
-      child: Scaffold(
-        appBar: MCGAppBar(
-          title: appBarTitle,
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {
-                List<String> rooms = [];
-                rooms.addAll(_rooms0.map((e) => e.number));
-                rooms.addAll(_rooms1.map((e) => e.number));
-                showSearch(
-                  context: context,
-                  delegate: MySearchDelegate(searchResults: rooms),
-                );
-              },
-            ),
-          ],
-        ),
-        drawer: const MCGDrawer(),
-        floatingActionButton: SpeedDial(
-          icon: Icons.layers,
-          activeIcon: Icons.close,
-          foregroundColor: Colors.white,
-          activeForegroundColor: Colors.white,
-          buttonSize: const Size(56.0, 56.0),
-          visible: true,
-          closeManually: false,
-          overlayColor: Colors.black,
-          overlayOpacity: 0.5,
-          elevation: 8.0,
-          childMargin: const EdgeInsets.all(20.0),
-          shape: const CircleBorder(),
-          children: [
-            SpeedDialChild(
-              child: const Text(
-                "0",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+    return Scaffold(
+      appBar: MCGAppBar(
+        title: appBarTitle,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {
+              List<String> rooms = [];
+              rooms.addAll(_rooms0.map((e) => e.number));
+              rooms.addAll(_rooms1.map((e) => e.number));
+              showSearch(
+                context: context,
+                delegate: MySearchDelegate(searchResults: rooms),
+              );
+            },
+          ),
+        ],
+      ),
+      drawer: const MCGDrawer(),
+      floatingActionButton: SpeedDial(
+        icon: Icons.layers,
+        activeIcon: Icons.close,
+        foregroundColor: Colors.white,
+        activeForegroundColor: Colors.white,
+        buttonSize: const Size(56.0, 56.0),
+        visible: true,
+        closeManually: false,
+        overlayColor: Colors.black,
+        overlayOpacity: 0.5,
+        elevation: 8.0,
+        childMargin: const EdgeInsets.all(20.0),
+        shape: const CircleBorder(),
+        children: [
+          SpeedDialChild(
+            child: const Text(
+              "0",
+              style: TextStyle(
+                fontSize: 20,
               ),
-              backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
-              foregroundColor: Colors.white,
-              label: "Erdgeschoss",
-              labelStyle: const TextStyle(fontSize: 18.0),
-              onTap: () {
-                setState(() {
-                  _setSelectedPlan(_plan0(), '0');
-                });
-              },
             ),
-            SpeedDialChild(
-              child: const Text(
-                "1",
-                style: TextStyle(
-                  fontSize: 20,
-                ),
+            backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
+            foregroundColor: Colors.white,
+            label: "Erdgeschoss",
+            labelStyle: const TextStyle(fontSize: 18.0),
+            onTap: () {
+              setState(() {
+                _setSelectedPlan(_plan0(), '0');
+              });
+            },
+          ),
+          SpeedDialChild(
+            child: const Text(
+              "1",
+              style: TextStyle(
+                fontSize: 20,
               ),
-              backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
-              foregroundColor: Colors.white,
-              label: "Obergeschoss",
-              labelStyle: const TextStyle(fontSize: 18.0),
-              onTap: () {
-                setState(() {
-                  _setSelectedPlan(_plan1(), '1');
-                });
-              },
             ),
-          ],
-        ),
-        body: GestureDetector(
-          onTapUp: (TapUpDetails details) {
-            childWasTappedAt = transformationController.toScene(
-              details.localPosition,
-            );
-            List<Room> rooms = [];
-            if (_currentFloor == '0') {
-              rooms = _rooms0;
-            } else if (_currentFloor == '1') {
-              rooms = _rooms1;
+            backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
+            foregroundColor: Colors.white,
+            label: "Obergeschoss",
+            labelStyle: const TextStyle(fontSize: 18.0),
+            onTap: () {
+              setState(() {
+                _setSelectedPlan(_plan1(), '1');
+              });
+            },
+          ),
+        ],
+      ),
+      body: GestureDetector(
+        onTapUp: (TapUpDetails details) {
+          childWasTappedAt = transformationController.toScene(
+            details.localPosition,
+          );
+          List<Room> rooms = [];
+          if (_currentFloor == '0') {
+            rooms = _rooms0;
+          } else if (_currentFloor == '1') {
+            rooms = _rooms1;
+          }
+          for (Room room in rooms) {
+            if (childWasTappedAt.dx > room.startX / 300 * screenWidth * 0.9 + offsetX &&
+                childWasTappedAt.dx < room.endX / 300 * screenWidth * 0.9 + offsetX &&
+                childWasTappedAt.dy > room.startY / 300 * screenWidth * 0.9 + offsetY &&
+                childWasTappedAt.dy < room.endY / 300 * screenWidth * 0.9 + offsetY) {
+              _showBottomSheet(context, room);
             }
-            for (Room room in rooms) {
-              if (childWasTappedAt.dx > room.startX / 300 * screenWidth * 0.9 + offsetX &&
-                  childWasTappedAt.dx < room.endX / 300 * screenWidth * 0.9 + offsetX &&
-                  childWasTappedAt.dy > room.startY / 300 * screenWidth * 0.9 + offsetY &&
-                  childWasTappedAt.dy < room.endY / 300 * screenWidth * 0.9 + offsetY) {
-                _showBottomSheet(context, room);
-              }
-            }
-          },
-          child: InteractiveViewer(
-            transformationController: transformationController,
-            maxScale: 5,
-            scaleFactor: 2,
+          }
+        },
+        child: InteractiveViewer(
+          transformationController: transformationController,
+          maxScale: 5,
+          scaleFactor: 2,
+          child: Container(
+            constraints: const BoxConstraints.expand(),
             child: Container(
-              constraints: const BoxConstraints.expand(),
-              child: Container(
-                child: _selectedPlan,
-              ),
+              child: _selectedPlan,
             ),
           ),
         ),
