@@ -14,25 +14,25 @@ class ThemeManager with ChangeNotifier {
   get colorStroke => _colorStroke;
   get colorSecondary => _colorSecondary;
 
-  Future<ThemeMode> getThemeMode() async {
+  Future<ThemeMode> _getThemeMode() async {
     final SharedPreferences prefs = await _prefs;
     final bool isDark = prefs.getBool('isDarkMode') ?? false;
     return isDark ? ThemeMode.dark : ThemeMode.light;
   }
 
-  Future<void> setThemeMode(ThemeMode themeMode) async {
+  Future<void> _setThemeMode(ThemeMode themeMode) async {
     final SharedPreferences prefs = await _prefs;
     prefs.setBool('isDarkMode', themeMode == ThemeMode.dark);
     notifyListeners();
   }
 
   loadTheme() async {
-    _themeMode = await getThemeMode();
-    setColors(themeMode == ThemeMode.dark);
+    _themeMode = await _getThemeMode();
+    _setColors(themeMode == ThemeMode.dark);
     notifyListeners();
   }
 
-  setColors(bool isDark) {
+  _setColors(bool isDark) {
     if (isDark) {
       _colorStroke = colorStrokeDark;
       _colorSecondary = colorSecondaryDark;
@@ -43,10 +43,10 @@ class ThemeManager with ChangeNotifier {
   }
 
   toggleTheme(bool isDark) async {
-    await setThemeMode(isDark ? ThemeMode.dark : ThemeMode.light);
+    await _setThemeMode(isDark ? ThemeMode.dark : ThemeMode.light);
     await loadTheme();
 
-    setColors(isDark);
+    _setColors(isDark);
     notifyListeners();
   }
 }
