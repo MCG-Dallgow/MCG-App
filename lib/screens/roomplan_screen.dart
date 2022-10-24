@@ -245,7 +245,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
                   fontSize: 20,
                 ),
               ),
-              backgroundColor: themeManager.colorSecondary,
+              backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
               foregroundColor: Colors.white,
               label: "Erdgeschoss",
               labelStyle: const TextStyle(fontSize: 18.0),
@@ -262,9 +262,9 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
                   fontSize: 20,
                 ),
               ),
-              backgroundColor: themeManager.colorSecondary,
+              backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
               foregroundColor: Colors.white,
-              label: "1. Obergeschoss",
+              label: "Obergeschoss",
               labelStyle: const TextStyle(fontSize: 18.0),
               onTap: () {
                 setState(() {
