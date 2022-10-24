@@ -16,7 +16,7 @@ Wenn ihr ein iOS-Gerät oder einen PC benutzt, oder die APK-Version aus anderen 
 - Lehrerliste
 - Interaktiver Raumplan
 - *Stundenplan (Coming Soon)*
-- *Hausaufgaben-Organisator (Coming Soon)*
+- *Hausaufgaben- und Terminplaner (Coming Soon)*
 - *Notenübersicht (Coming Soon)*
 
 ### Vertretungsplan
