@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MCGAppBar extends StatefulWidget implements PreferredSizeWidget {
+class MCGAppBar extends StatelessWidget implements PreferredSizeWidget {
   MCGAppBar({
     Key? key,
     required this.title,
@@ -17,7 +17,13 @@ class MCGAppBar extends StatefulWidget implements PreferredSizeWidget {
   final Size preferredSize;
 
   @override
-  State<MCGAppBar> createState() => _MCGAppBarState();
+  Widget build(BuildContext context) {
+    return AppBar(
+      title: Text(title),
+      bottom: bottom,
+      actions: actions
+    );
+  }
 }
 
 class _PreferredAppBarSize extends Size {
@@ -26,15 +32,4 @@ class _PreferredAppBarSize extends Size {
 
   final double? toolbarHeight;
   final double? bottomHeight;
-}
-
-class _MCGAppBarState extends State<MCGAppBar> {
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: Text(widget.title),
-      bottom: widget.bottom,
-      actions: widget.actions
-    );
-  }
 }
