@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:mcgapp/main.dart';
+import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
+import 'package:mcgapp/screens/grades/grades_screen.dart';
+import 'package:mcgapp/widgets/bottom_sheet.dart';
 
 import 'course.dart';
 
-enum GradeFormat {
-  format15, format6
-}
+enum GradeFormat { format15, format6 }
 
-enum GradeType {
-  test, exam
-}
+enum GradeType { test, exam }
 
 class Grade {
   String title;
@@ -28,54 +28,81 @@ class Grade {
     required this.type,
   });
 
-
-  _showBottomSheet(context, Grade grade) {
-    showModalBottomSheet(
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16),
-          topRight: Radius.circular(16),
+  List<Widget> get _details {
+    return [
+      ListTile(
+        leading: Icon(
+          Icons.school,
+          color: course.color,
         ),
+        title: Text(course.displayName),
       ),
-      builder: (BuildContext context) {
-        return Wrap(
-          children: <Widget>[
-            ListTile(
-              title: Text(
-                grade.title,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-                textAlign: TextAlign.center,
-              ),
-            ),
-            ListTile(
-              leading: Icon(
-                Icons.school,
-                color: grade.course.color,
-              ),
-              title: Text(grade.course.displayName),
-            ),
-            ListTile(
-              leading: const Icon(Icons.star),
-              title: Text("${grade.grade}"),
-            ),
-            ListTile(
-              leading: const Icon(Icons.event),
-              title: Text(DateFormat('EEEE, d. MMMM yyyy', 'de').format(grade.date)),
-            ),
-            ListTile(
-              leading: const Icon(Icons.text_fields),
-              title: Text(grade.type.name),
-            ),
+      ListTile(
+        leading: const Icon(Icons.star),
+        title: Text("$grade"),
+      ),
+      ListTile(
+        leading: const Icon(Icons.event),
+        title: Text(DateFormat('EEEE, d. MMMM yyyy', 'de').format(date)),
+      ),
+      ListTile(
+        leading: const Icon(Icons.text_fields),
+        title: Text(type.name),
+      ),
+    ];
+  }
+
+  List<Widget> _actions(BuildContext context) {
+    return <Widget>[
+      OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          foregroundColor: themeManager.colorStroke,
+          //textStyle: TextStyle(color: themeManager.colorStroke),
+        ),
+        child: Row(
+          children: const [
+            Icon(Icons.edit),
+            SizedBox(width: 8),
+            Text('Bearbeiten'),
           ],
-        );
-      },
-    );
+        ),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (BuildContext context) => GradeEditScreen(grade: this)),
+          );
+        },
+      ),
+      const SizedBox(width: 8),
+      OutlinedButton(
+        style: OutlinedButton.styleFrom(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+          foregroundColor: themeManager.colorStroke,
+          //textStyle: TextStyle(color: themeManager.colorStroke),
+        ),
+        child: Row(
+          children: const [
+            Icon(Icons.delete),
+            SizedBox(width: 8),
+            Text('Löschen'),
+          ],
+        ),
+        onPressed: () {
+          removeGrade(this);
+          Navigator.pop(context);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (BuildContext context) => const GradesScreen()),
+          );
+        },
+      ),
+    ];
   }
 
   Widget listTile(BuildContext context) {
     return ListTile(
-      onTap: () => _showBottomSheet(context, this),
+      onTap: () => showMCGBottomSheet(context, title, _details, _actions(context),),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

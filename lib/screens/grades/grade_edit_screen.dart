@@ -7,7 +7,12 @@ import 'package:mcgapp/screens/grades/grades_screen.dart';
 import 'package:mcgapp/widgets/app_bar.dart';
 
 class GradeEditScreen extends StatefulWidget {
-  const GradeEditScreen({Key? key}) : super(key: key);
+  const GradeEditScreen({
+    Key? key,
+    this.grade,
+  }) : super(key: key);
+
+  final Grade? grade;
 
   @override
   State<GradeEditScreen> createState() => _GradeEditScreenState();
@@ -15,6 +20,7 @@ class GradeEditScreen extends StatefulWidget {
 
 class _GradeEditScreenState extends State<GradeEditScreen> {
   static DateFormat format = DateFormat('EEEE, d. MMMM yyyy', 'de');
+  late TextEditingController titleController;
   late TextEditingController dateController;
 
   String? _title;
@@ -23,8 +29,6 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
   final GradeFormat _gradeFormat = GradeFormat.format15;
   DateTime? _date;
   GradeType? _type;
-
-  String test = 'Neue Note';
 
   _showCourseSelectionBottonSheet(BuildContext context) {
     showModalBottomSheet(
@@ -57,7 +61,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
       },
     );
   }
-  
+
   _showGradeSelectionBottonSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
@@ -90,11 +94,12 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
   }
 
   Future<DateTime?> _showDatePicker(BuildContext context) {
+    DateTime now = DateTime.now();
     return showDatePicker(
-        context: context,
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2022),
-        lastDate: DateTime(2023),
+      context: context,
+      initialDate: now,
+      firstDate: DateTime(now.year - 1),
+      lastDate: DateTime(now.year + 2),
     );
   }
 
@@ -103,30 +108,46 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
     super.initState();
     initializeDateFormatting('de_DE');
     dateController = TextEditingController(text: '');
+    titleController = TextEditingController(text: '');
+
+    _title = widget.grade?.title;
+    _course = widget.grade?.course;
+    _gradeValue = widget.grade?.grade;
+    _date = widget.grade?.date;
+    _type = widget.grade?.type;
+
+    if (_title != null) titleController.text = _title!;
+    if (_date != null) dateController.text = format.format(_date!);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MCGAppBar(title: test),
+      appBar: MCGAppBar(title: widget.grade == null ? 'Neue Note' : 'Note bearbeiten'),
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('Fertig'),
         icon: const Icon(Icons.done),
         onPressed: () {
-          if (_title == null || _title == '') {
-            setState(() {
-              test = 'Fehler';
-            });
-          } else {
-            grades.add(Grade(
+          if (_title != null && _title != '') {
+            Grade grade = Grade(
               title: _title!,
               course: _course!,
               grade: _gradeValue!,
               format: _gradeFormat,
               date: _date!,
               type: _type ?? GradeType.test,
-            ));
+            );
+
+            if (widget.grade != null) {
+              editGrade(widget.grade!, grade);
+            } else {
+              addGrade(grade);
+            }
             Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (BuildContext context) => const GradesScreen()),
+            );
           }
         },
       ),
@@ -139,6 +160,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
                 border: OutlineInputBorder(),
                 labelText: 'Titel',
               ),
+              controller: titleController,
               onChanged: (text) => setState(() {
                 _title = text;
               }),
@@ -152,7 +174,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
           ),
           const Divider(),
           ListTile(
-            title: _gradeValue == null ? const Text('Note: -'): Text("Note: $_gradeValue"),
+            title: _gradeValue == null ? const Text('Note: -') : Text("Note: $_gradeValue"),
             leading: const Icon(Icons.star),
             onTap: () => _showGradeSelectionBottonSheet(context),
           ),

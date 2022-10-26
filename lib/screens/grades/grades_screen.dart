@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
-import 'package:intl/intl.dart';
 import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
 import 'package:mcgapp/widgets/app_bar.dart';
 import 'package:mcgapp/widgets/drawer.dart';
@@ -24,7 +23,7 @@ final List<Course> courses = [
     short: 'Mat',
     color: Colors.blue.shade900,
   ),
-   Course(
+  Course(
     title: 'EnG11_2',
     displayName: 'Englisch',
     short: 'Eng',
@@ -51,9 +50,20 @@ List<Grade> grades = [
   ),
 ];
 
-class _GradesScreenState extends State<GradesScreen> {
-  static DateFormat format = DateFormat('EEEE, d. MMMM yyyy', 'de');
+void addGrade(Grade grade) {
+  grades.add(grade);
+}
 
+void removeGrade(Grade grade) {
+  grades.remove(grade);
+}
+
+void editGrade(Grade before, Grade after) {
+  grades.insert(grades.indexOf(before), after);
+  grades.remove(before);
+}
+
+class _GradesScreenState extends State<GradesScreen> {
   @override
   void initState() {
     super.initState();
@@ -84,7 +94,6 @@ class _GradesScreenState extends State<GradesScreen> {
           if (index.isOdd) return const Divider();
 
           Grade grade = grades[index ~/ 2];
-
           return grade.listTile(context);
         },
       ),
