@@ -10,9 +10,14 @@ class GradeEditScreen extends StatefulWidget {
   const GradeEditScreen({
     Key? key,
     this.grade,
-  }) : super(key: key);
+    this.course,
+    this.returnToScreen = const GradesScreen(),
+  }) : assert(grade == null || course == null),
+       super(key: key);
 
   final Grade? grade;
+  final Course? course;
+  final Widget returnToScreen;
 
   @override
   State<GradeEditScreen> createState() => _GradeEditScreenState();
@@ -111,7 +116,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
     titleController = TextEditingController(text: '');
 
     _title = widget.grade?.title;
-    _course = widget.grade?.course;
+    _course = widget.grade?.course ?? widget.course;
     _gradeValue = widget.grade?.grade;
     _date = widget.grade?.date;
     _type = widget.grade?.type;
@@ -146,7 +151,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
             Navigator.pop(context);
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (BuildContext context) => const GradesScreen()),
+              MaterialPageRoute(builder: (BuildContext context) => widget.returnToScreen),
             );
           }
         },

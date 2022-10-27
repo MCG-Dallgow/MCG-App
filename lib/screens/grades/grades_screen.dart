@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:mcgapp/screens/grades/course_grades_screen.dart';
 import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
 import 'package:mcgapp/widgets/app_bar.dart';
 import 'package:mcgapp/widgets/drawer.dart';
@@ -37,8 +38,9 @@ class _GradesScreenState extends State<GradesScreen> {
           ),
         ),
         drawer: const MCGDrawer(),
-        floatingActionButton: FloatingActionButton(
-          child: const Icon(Icons.add),
+        floatingActionButton: FloatingActionButton.extended(
+          label: const Text('Neue Note'),
+          icon: const Icon(Icons.add),
           onPressed: () {
             Navigator.push(
               context,
@@ -70,6 +72,12 @@ class _GradesScreenState extends State<GradesScreen> {
                     course.gradeAverage == -1 ? '/' : 'Ø${course.gradeAverage}',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (BuildContext context) => CourseGradesScreen(course: course)),
+                    );
+                  },
                 );
               },
             ),

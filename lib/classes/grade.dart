@@ -5,6 +5,7 @@ import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
 import 'package:mcgapp/screens/grades/grades_screen.dart';
 import 'package:mcgapp/widgets/bottom_sheet.dart';
 
+import '../screens/grades/course_grades_screen.dart';
 import 'course.dart';
 
 enum GradeFormat { format15, format6 }
@@ -69,7 +70,10 @@ class Grade {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (BuildContext context) => GradeEditScreen(grade: this)),
+            MaterialPageRoute(
+              builder: (BuildContext context) =>
+                  GradeEditScreen(grade: this, returnToScreen: CourseGradesScreen(course: course)),
+            ),
           );
         },
       ),
@@ -100,7 +104,7 @@ class Grade {
 
   Widget listTile(BuildContext context) {
     return ListTile(
-      onTap: () => showMCGBottomSheet(context, title, _details, _actions(context),),
+      onTap: () => showMCGBottomSheet(context, title, _details, _actions(context)),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,8 +159,8 @@ final List<int> gradeEntries = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 
 List<Grade> grades = [];
 
 void sortGrades() {
-  grades.sort((a, b) => int.parse(DateFormat('yyyyMMdd').format(b.date))
-      .compareTo(int.parse(DateFormat('yyyyMMdd').format(a.date))));
+  grades.sort((a, b) =>
+      int.parse(DateFormat('yyyyMMdd').format(b.date)).compareTo(int.parse(DateFormat('yyyyMMdd').format(a.date))));
 }
 
 void addGrade(Grade grade) {
