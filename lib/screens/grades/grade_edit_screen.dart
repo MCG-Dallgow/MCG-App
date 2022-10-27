@@ -180,10 +180,12 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
           ),
           const Divider(),
           ListTile(
-            title: TextField(
-              controller: dateController,
-              decoration: const InputDecoration(border: OutlineInputBorder(), labelText: 'Datum'),
-              //enabled: false,
+            title: AbsorbPointer(
+              absorbing: true,
+              child: TextField(
+                controller: dateController,
+                decoration: const InputDecoration(border: OutlineInputBorder(), labelText: 'Datum'),
+              ),
             ),
             leading: const Icon(Icons.calendar_today),
             onTap: () async {
