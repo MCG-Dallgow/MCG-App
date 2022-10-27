@@ -10,7 +10,7 @@ void showMCGBottomSheet(BuildContext context, String? title, List<Widget>? body,
       ),
     ),
     builder: (BuildContext context) {
-      return ListView(
+      return Wrap(
         children: [
           title == null
               ? Container()

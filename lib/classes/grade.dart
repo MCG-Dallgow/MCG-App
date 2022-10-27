@@ -58,7 +58,6 @@ class Grade {
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
           foregroundColor: themeManager.colorStroke,
-          //textStyle: TextStyle(color: themeManager.colorStroke),
         ),
         child: Row(
           children: const [
@@ -79,7 +78,6 @@ class Grade {
         style: OutlinedButton.styleFrom(
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
           foregroundColor: themeManager.colorStroke,
-          //textStyle: TextStyle(color: themeManager.colorStroke),
         ),
         child: Row(
           children: const [
@@ -150,4 +148,28 @@ class Grade {
       ),
     );
   }
+}
+
+final List<int> gradeEntries = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+
+List<Grade> grades = [];
+
+void sortGrades() {
+  grades.sort((a, b) => int.parse(DateFormat('yyyyMMdd').format(b.date))
+      .compareTo(int.parse(DateFormat('yyyyMMdd').format(a.date))));
+}
+
+void addGrade(Grade grade) {
+  grades.add(grade);
+  sortGrades();
+}
+
+void removeGrade(Grade grade) {
+  grades.remove(grade);
+}
+
+void editGrade(Grade before, Grade after) {
+  grades.insert(grades.indexOf(before), after);
+  grades.remove(before);
+  sortGrades();
 }
