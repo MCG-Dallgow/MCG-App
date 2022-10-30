@@ -23,7 +23,7 @@ ThemeData lightTheme = ThemeData(
     backgroundColor: colorPrimaryLight,
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: colorAccentLight,
+    backgroundColor: colorPrimaryLight,
   ),
 );
 
@@ -35,6 +35,6 @@ ThemeData darkTheme = ThemeData(
     backgroundColor: colorPrimaryDark,
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
-    backgroundColor: colorAccentDark,
+    backgroundColor: colorPrimaryDark,
   ),
 );

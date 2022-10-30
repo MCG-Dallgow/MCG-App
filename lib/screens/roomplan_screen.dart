@@ -18,8 +18,7 @@ class RoomplanScreen extends StatefulWidget {
 }
 
 class _RoomplanScreenState extends State<RoomplanScreen> {
-  final List<Room> _rooms0 = [];
-  final List<Room> _rooms1 = [];
+  final List<List<Room>> _rooms = [[], []];
   Widget _selectedPlan = const Center(child: Text("not loaded"));
   String _currentFloor = '';
   String appBarTitle = "Raumplan";
@@ -38,12 +37,9 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
         Room room = Room.fromJson(data, i);
 
         if (room.number.startsWith('0')) {
-          //print("Room 0.");
-          _rooms0.add(room);
-          //print("_rooms0:");
-          //_rooms0.forEach((element) { print(element.number); });
+          _rooms[0].add(room);
         } else if (room.number.startsWith('1')) {
-          _rooms1.add(room);
+          _rooms[1].add(room);
         }
       }
     });
@@ -55,61 +51,23 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   void initState() {
     super.initState();
     loadJsonData();
-    //_setSelectedPlan(_plan0(), '0');
   }
 
-  List<Widget> _loadRooms(List<Room> rooms, String floor) {
-    List<Widget> roomWidgets = [];
-
-    for (Room room in rooms) {
-      roomWidgets.add(
-        Positioned(
-          left: offsetX + room.startX / 300 * screenWidth * 0.9,
-          top: offsetY + room.startY / 300 * screenWidth * 0.9,
-          height: (room.endY - room.startY) / 300 * screenWidth * 0.9,
-          width: (room.endX - room.startX) / 300 * screenWidth * 0.9,
-          child: Container(
-            color: themeManager.colorSecondary,
-            child: Center(
-              child: Text(
-                room.number,
-                style: const TextStyle(fontSize: 5),
-              ),
-            ),
-          ),
-        ),
-      );
-    }
-
-    roomWidgets.add(
-      Positioned(
+  Widget _loadPlan(String floor) => Positioned(
         height: 125 / 300 * screenWidth * 0.9,
         width: 300 / 300 * screenWidth * 0.9,
         left: offsetX,
         top: offsetY,
         child: SvgPicture.asset(
           fit: BoxFit.fill,
-          'assets/images/roomplan_$floor.svg',
+          'assets/images/roomplan$floor-${themeManager.themeMode == ThemeMode.dark ? 'dark' : 'light'}.svg',
           width: 300,
           height: 125,
-          color: themeManager.colorStroke,
         ),
-      ),
-    );
+      );
 
-    return roomWidgets;
-  }
-
-  Widget _plan0() {
-    return Stack(alignment: Alignment.topLeft, children: _loadRooms(_rooms0, '0'));
-  }
-
-  Widget _plan1() {
-    return Stack(
-      alignment: Alignment.topLeft,
-      children: _loadRooms(_rooms1, '1'),
-    );
-  }
+  Widget _plan0() => Stack(alignment: Alignment.topLeft, children: [_loadPlan('0')]);
+  Widget _plan1() => Stack(alignment: Alignment.topLeft, children: [_loadPlan('1')]);
 
   void _setSelectedPlan(Widget plan, String floor) {
     setState(() {
@@ -119,7 +77,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
       if (floor == '0') {
         appBarTitle = "Raumplan - Erdgeschoss";
       } else if (floor == '1') {
-        appBarTitle = "Raumplan - 1. Obergeschoss";
+        appBarTitle = "Raumplan - Obergeschoss";
       }
     });
   }
@@ -132,14 +90,6 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
       builder: (BuildContext bc) {
         return Wrap(
           children: [
-            /*Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25.0),
-                      topRight: Radius.circular(25.0))),
-              child: ListView(
-                children: [*/
             Align(
               alignment: Alignment.topRight,
               child: Padding(
@@ -159,36 +109,29 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
               alignment: Alignment.topLeft,
               child: Padding(
                 padding: const EdgeInsets.only(left: 10, top: 5),
-                child: Text(room.name,
-                    style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    )),
+                child: Text(
+                  room.name,
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
-            /*SizedBox(
-                    height: 200,
-                    child: Image(image: AssetImage(room.image)),
-                  ),*/
             ListTile(
               leading: const Icon(Icons.account_tree),
-              title: Text("Art: ${room.type}"),
+              title: Text(room.type),
             ),
             ListTile(
               leading: const Icon(Icons.numbers),
-              title: Text("Raumnummer: ${room.number}"),
+              title: Text(room.number),
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: Text("Raumverantwortlicher: ${room.teacher}"),
+              title: Text(room.teacher),
             )
           ],
         );
-        /*),
-            ),
-          ],
-        );
-      },*/
       },
     );
   }
@@ -213,8 +156,8 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
               icon: const Icon(Icons.search),
               onPressed: () {
                 List<String> rooms = [];
-                rooms.addAll(_rooms0.map((e) => e.number));
-                rooms.addAll(_rooms1.map((e) => e.number));
+                rooms.addAll(_rooms[0].map((e) => e.number));
+                rooms.addAll(_rooms[1].map((e) => e.number));
                 showSearch(
                   context: context,
                   delegate: MySearchDelegate(searchResults: rooms),
@@ -281,9 +224,9 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
             );
             List<Room> rooms = [];
             if (_currentFloor == '0') {
-              rooms = _rooms0;
+              rooms = _rooms[0];
             } else if (_currentFloor == '1') {
-              rooms = _rooms1;
+              rooms = _rooms[1];
             }
             for (Room room in rooms) {
               if (childWasTappedAt.dx > room.startX / 300 * screenWidth * 0.9 + offsetX &&
