@@ -18,6 +18,29 @@ class CourseGradesScreen extends StatefulWidget {
 }
 
 class _CourseGradesScreenState extends State<CourseGradesScreen> {
+  Widget _body = const Center(child: Text('Wird geladen...'));
+
+  _updateBody() async {
+    await loadGrades();
+    setState(() {
+      _body = ListView.builder(
+        itemCount: widget.course.courseGrades.length * 2,
+        itemBuilder: (BuildContext context, int index) {
+          if (index.isOdd) return const Divider();
+
+          Grade grade = widget.course.courseGrades[index ~/ 2];
+          return grade.listTile(context);
+        },
+      );
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _updateBody();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,24 +62,18 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('Neue Note'),
         icon: const Icon(Icons.add),
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          await Navigator.push(
             context,
             MaterialPageRoute(builder: (context) {
               return GradeEditScreen(course: widget.course, returnToScreen: CourseGradesScreen(course: widget.course));
             }),
           );
+          if (!mounted) return;
+          _updateBody();
         },
       ),
-      body: ListView.builder(
-        itemCount: widget.course.courseGrades.length * 2,
-        itemBuilder: (BuildContext context, int index) {
-          if (index.isOdd) return const Divider();
-
-          Grade grade = widget.course.courseGrades[index ~/ 2];
-          return grade.listTile(context);
-        }
-      ),
+      body: _body,
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:mcgapp/main.dart';
 import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
 import 'package:mcgapp/screens/grades/grades_screen.dart';
 import 'package:mcgapp/widgets/bottom_sheet.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../screens/grades/course_grades_screen.dart';
 import 'course.dart';
@@ -68,12 +69,13 @@ class Grade {
           ],
         ),
         onPressed: () {
-          Navigator.push(
+          Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
               builder: (BuildContext context) =>
                   GradeEditScreen(grade: this, returnToScreen: CourseGradesScreen(course: course)),
             ),
+            (var route) => true,
           );
         },
       ),
@@ -93,9 +95,12 @@ class Grade {
         onPressed: () {
           removeGrade(this);
           Navigator.pop(context);
-          Navigator.push(
+          Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (BuildContext context) => const GradesScreen()),
+            MaterialPageRoute(
+              builder: (BuildContext context) => const GradesScreen(),
+            ),
+            (var route) => true,
           );
         },
       ),
@@ -166,14 +171,45 @@ void sortGrades() {
 void addGrade(Grade grade) {
   grades.add(grade);
   sortGrades();
+  saveGrades();
 }
 
 void removeGrade(Grade grade) {
   grades.remove(grade);
+  saveGrades();
 }
 
 void editGrade(Grade before, Grade after) {
   grades.insert(grades.indexOf(before), after);
   grades.remove(before);
   sortGrades();
+  saveGrades();
+}
+
+Future<void> saveGrades() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  List<String> encodedGrades = [];
+  for (Grade grade in grades) {
+    encodedGrades
+        .add('${grade.title}|${grade.course.title}|${grade.grade}|${DateFormat('yyyy-MM-dd').format(grade.date)}');
+  }
+  prefs.setStringList('grades', encodedGrades);
+}
+
+Future<void> loadGrades() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  List<String> encodedGrades = prefs.getStringList('grades') ?? [];
+  List<Grade> decodedGrades = [];
+  for (String encodedGrade in encodedGrades) {
+    List<String> gradeParameters = encodedGrade.split('|');
+    decodedGrades.add(Grade(
+      title: gradeParameters[0],
+      course: Course.fromTitle(gradeParameters[1])!,
+      format: GradeFormat.format15,
+      grade: int.parse(gradeParameters[2]),
+      date: DateTime.parse(gradeParameters[3]),
+      type: GradeType.test,
+    ));
+  }
+  grades = decodedGrades;
 }

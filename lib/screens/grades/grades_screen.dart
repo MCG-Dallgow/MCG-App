@@ -16,10 +16,55 @@ class GradesScreen extends StatefulWidget {
 }
 
 class _GradesScreenState extends State<GradesScreen> {
+  TabBarView _tabBarView = const TabBarView(children: [
+    Center(child: Text('Wird geladen...')),
+    Center(child: Text('Wird geladen...')),
+  ]);
+
   @override
   void initState() {
     super.initState();
     initializeDateFormatting('de_DE');
+    _updateBody();
+  }
+
+  _updateBody() async {
+    await loadGrades();
+    setState(() {
+      _tabBarView = TabBarView(
+        children: [
+          ListView.builder(
+            itemCount: grades.length * 2,
+            itemBuilder: (BuildContext context, int index) {
+              if (index.isOdd) return const Divider();
+
+              Grade grade = grades[index ~/ 2];
+              return grade.listTile(context);
+            },
+          ),
+          ListView.builder(
+            itemCount: courses.length,
+            itemBuilder: (BuildContext context, int index) {
+              Course course = courses[index];
+              return ListTile(
+                title: Text(course.displayName),
+                leading: course.circleAvatar,
+                trailing: Text(
+                  course.gradeAverage == -1 ? '/' : 'Ø${course.gradeAverage}',
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (BuildContext context) => CourseGradesScreen(course: course)),
+                  );
+                },
+              );
+            },
+          ),
+        ],
+      );
+    });
   }
 
   @override
@@ -41,48 +86,18 @@ class _GradesScreenState extends State<GradesScreen> {
         floatingActionButton: FloatingActionButton.extended(
           label: const Text('Neue Note'),
           icon: const Icon(Icons.add),
-          onPressed: () {
-            Navigator.push(
+          onPressed: () async {
+            await Navigator.push(
               context,
               MaterialPageRoute(builder: (context) {
                 return const GradeEditScreen();
               }),
             );
+            if (!mounted) return;
+            _updateBody();
           },
         ),
-        body: TabBarView(
-          children: [
-            ListView.builder(
-              itemCount: grades.length * 2,
-              itemBuilder: (BuildContext context, int index) {
-                if (index.isOdd) return const Divider();
-
-                Grade grade = grades[index ~/ 2];
-                return grade.listTile(context);
-              },
-            ),
-            ListView.builder(
-              itemCount: courses.length,
-              itemBuilder: (BuildContext context, int index) {
-                Course course = courses[index];
-                return ListTile(
-                  title: Text(course.displayName),
-                  leading: course.circleAvatar,
-                  trailing: Text(
-                    course.gradeAverage == -1 ? '/' : 'Ø${course.gradeAverage}',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (BuildContext context) => CourseGradesScreen(course: course)),
-                    );
-                  },
-                );
-              },
-            ),
-          ],
-        ),
+        body: _tabBarView,
       ),
     );
   }

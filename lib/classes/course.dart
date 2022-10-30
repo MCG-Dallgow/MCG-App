@@ -17,12 +17,12 @@ class Course {
 
   List<Grade> get courseGrades {
     List<Grade> courseGrades = [];
-    courseGrades.sort((a, b) => int.parse(DateFormat('yyyyMMdd').format(b.date))
-          .compareTo(int.parse(DateFormat('yyyyMMdd').format(a.date))));
 
     for (Grade grade in grades) {
       if (grade.course == this) courseGrades.add(grade);
     }
+    courseGrades.sort((a, b) => int.parse(DateFormat('yyyyMMdd').format(b.date))
+        .compareTo(int.parse(DateFormat('yyyyMMdd').format(a.date))));
     return courseGrades;
   }
 
@@ -47,6 +47,13 @@ class Course {
         ),
       ),
     );
+  }
+
+  static Course? fromTitle(String title) {
+    for (Course course in courses) {
+      if (course.title == title) return course;
+    }
+    return null;
   }
 }
 

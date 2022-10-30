@@ -12,12 +12,14 @@ class GradeEditScreen extends StatefulWidget {
     this.grade,
     this.course,
     this.returnToScreen = const GradesScreen(),
+    this.doAfter,
   }) : assert(grade == null || course == null),
        super(key: key);
 
   final Grade? grade;
   final Course? course;
   final Widget returnToScreen;
+  final Future<dynamic>? doAfter;
 
   @override
   State<GradeEditScreen> createState() => _GradeEditScreenState();
@@ -148,11 +150,9 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
             } else {
               addGrade(grade);
             }
-            Navigator.pop(context);
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (BuildContext context) => widget.returnToScreen),
-            );
+            widget.doAfter;
+            //Navigator.pop(context);
+            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => widget.returnToScreen));
           }
         },
       ),
