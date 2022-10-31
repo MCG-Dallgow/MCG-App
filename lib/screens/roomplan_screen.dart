@@ -220,11 +220,13 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
             screenWidth = constraints.maxWidth;
             screenHeight = constraints.maxHeight;
 
-            if (screenHeight > screenWidth) {
+            if (screenWidth * 125 / 300 < screenHeight) {
+              // fix plan size to 90% of width
               planHeight = 125 / 300 * screenWidth * 0.9;
-              planWidth = 300 / 300 * screenWidth * 0.9;
+              planWidth = screenWidth * 0.9;
             } else {
-              planHeight = 125 / 125 * screenHeight * 0.9;
+              // fix plan size to 90% of height
+              planHeight = screenHeight * 0.9;
               planWidth = 300 / 125 * screenHeight * 0.9;
             }
 
