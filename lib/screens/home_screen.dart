@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Image.asset(
-              'assets/images/mcg_oben.png',
+              'assets/images/mcg_oben.jpg',
               width: double.infinity,
               fit: BoxFit.cover,
             ),
