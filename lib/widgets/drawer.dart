@@ -92,6 +92,11 @@ class MCGDrawer extends StatelessWidget {
               );
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.star, color: Colors.grey,),
+            title: const Text('Noten - Coming Soon', style: TextStyle(color: Colors.grey)),
+            onTap: () {},
+          ),
           const Divider(
             color:Colors.black38,
           ),
