@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:dio/dio.dart';
@@ -47,56 +51,63 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
     for (int offset = 0; offset < 3; offset++) {
       DateTime now = DateTime.now();
       DateFormat format = DateFormat('yyyyMMdd');
-      var response = await dio.post(
-        'https://herakles.webuntis.com/WebUntis/monitor/substitution/data?school=Marie-Curie-Gym',
-        data: {
-          'formatName': 'Vertretungsplan DSB',
-          'schoolName': 'Marie-Curie-Gym',
-          'date': int.parse(format.format(now)),
-          'dateOffset': offset,
-          'strikethrough': false,
-          'mergeBlocks': true,
-          'showOnlyFutureSub': false,
-          'showBreakSupervisions': false,
-          'showTeacher': true,
-          'showClass': true,
-          'showHour': true,
-          'showInfo': true,
-          'showRoom': true,
-          'showSubject': true,
-          'groupBy': 1,
-          'hideAbsent': false,
-          'departmentIds': [],
-          'departmentElementType': -1,
-          'hideCancelWithSubstitution': false,
-          'hideCancelCausedByEvent': false,
-          'showTime': true,
-          'showSubstText': true,
-          'showAbsentElements': [],
-          'showAffectedElements': [],
-          'showUnitTime': false,
-          'showMessages': true,
-          'showStudentgroup': false,
-          'showTeacherOnEvent': false,
-          'showAbsentTeacher': true,
-          'strikethroughAbsentTeacher': false,
-          'activityTypeIds': [],
-          'showEvent': true,
-          'showCancel': true,
-          'showOnlyCancel': false,
-          'showSubstTypeColor': false,
-          'showExamSupervision': true,
-          'showUnheraldedExams': false
-        },
-      );
+      Map data;
+      if (!kIsWeb) {
+        var response = await dio.post(
+          'https://herakles.webuntis.com/WebUntis/monitor/substitution/data?school=Marie-Curie-Gym',
+          data: {
+            'formatName': 'Vertretungsplan DSB',
+            'schoolName': 'Marie-Curie-Gym',
+            'date': int.parse(format.format(now)),
+            'dateOffset': offset,
+            'strikethrough': false,
+            'mergeBlocks': true,
+            'showOnlyFutureSub': false,
+            'showBreakSupervisions': false,
+            'showTeacher': true,
+            'showClass': true,
+            'showHour': true,
+            'showInfo': true,
+            'showRoom': true,
+            'showSubject': true,
+            'groupBy': 1,
+            'hideAbsent': false,
+            'departmentIds': [],
+            'departmentElementType': -1,
+            'hideCancelWithSubstitution': false,
+            'hideCancelCausedByEvent': false,
+            'showTime': true,
+            'showSubstText': true,
+            'showAbsentElements': [],
+            'showAffectedElements': [],
+            'showUnitTime': false,
+            'showMessages': true,
+            'showStudentgroup': false,
+            'showTeacherOnEvent': false,
+            'showAbsentTeacher': true,
+            'strikethroughAbsentTeacher': false,
+            'activityTypeIds': [],
+            'showEvent': true,
+            'showCancel': true,
+            'showOnlyCancel': false,
+            'showSubstTypeColor': false,
+            'showExamSupervision': true,
+            'showUnheraldedExams': false
+          },
+        );
+        data = response.data;
+      } else {
+        var jsonText = await rootBundle.loadString("assets/data/substitutions$offset.json");
+        data = json.decode(jsonText);
+      }
 
-      int planDate = response.data['payload']['showingNextDate']
-          ? response.data['payload']['nextDate']
-          : response.data['payload']['date'];
+      int planDate = data['payload']['showingNextDate']
+          ? data['payload']['nextDate']
+          : data['payload']['date'];
 
       setState(() {
-        if (_substitutionData.length < _maxTabBarLength && (response.data['payload']['rows'] as List).isNotEmpty) {
-          _substitutionData.add(response.data);
+        if (_substitutionData.length < _maxTabBarLength && (data['payload']['rows'] as List).isNotEmpty) {
+          _substitutionData.add(data);
           _planNames.add(_getDateFormat(planDate.toString()));
         }
       });
