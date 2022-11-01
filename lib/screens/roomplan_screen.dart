@@ -21,14 +21,14 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   final List<List<Room>> _rooms = [[], []];
   Widget _selectedPlan = const Center(child: Text("Wird geladen..."));
   int _currentFloor = 0;
-  String appBarTitle = "Raumplan";
+  String _appBarTitle = "Raumplan";
 
-  late double screenWidth;
-  late double screenHeight;
-  late double offsetX;
-  late double offsetY;
-  late double planWidth;
-  late double planHeight;
+  late double _screenWidth;
+  late double _screenHeight;
+  late double _offsetX;
+  late double _offsetY;
+  late double _planWidth;
+  late double _planHeight;
 
   Future<void> loadJsonData() async {
     var jsonText = await rootBundle.loadString("assets/data/rooms.json");
@@ -46,7 +46,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
       }
     });
 
-    _setSelectedPlan(_loadPlan(0), 0);
+    _setSelectedPlan(0);
   }
 
   @override
@@ -59,10 +59,10 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
         alignment: Alignment.topLeft,
         children: [
           Positioned(
-            height: planHeight,
-            width: planWidth,
-            left: offsetX,
-            top: offsetY,
+            height: _planHeight,
+            width: _planWidth,
+            left: _offsetX,
+            top: _offsetY,
             child: SvgPicture.asset(
               fit: BoxFit.fill,
               'assets/images/roomplan$floor-${themeManager.themeMode == ThemeMode.dark ? 'dark' : 'light'}.svg',
@@ -73,15 +73,15 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
         ],
       );
 
-  void _setSelectedPlan(Widget plan, int floor) {
+  void _setSelectedPlan(int floor) {
     setState(() {
-      _selectedPlan = plan;
+      _selectedPlan = _loadPlan(floor);
       _currentFloor = floor;
 
       if (floor == 0) {
-        appBarTitle = "Raumplan - Erdgeschoss";
+        _appBarTitle = "Raumplan - Erdgeschoss";
       } else if (floor == 1) {
-        appBarTitle = "Raumplan - Obergeschoss";
+        _appBarTitle = "Raumplan - Obergeschoss";
       }
     });
   }
@@ -148,7 +148,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
       length: 2,
       child: Scaffold(
         appBar: MCGAppBar(
-          title: appBarTitle,
+          title: _appBarTitle,
           actions: [
             IconButton(
               icon: const Icon(Icons.search),
@@ -192,7 +192,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
               labelStyle: const TextStyle(fontSize: 18.0),
               onTap: () {
                 setState(() {
-                  _setSelectedPlan(_loadPlan(0), 0);
+                  _setSelectedPlan(0);
                 });
               },
             ),
@@ -209,7 +209,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
               labelStyle: const TextStyle(fontSize: 18.0),
               onTap: () {
                 setState(() {
-                  _setSelectedPlan(_loadPlan(1), 1);
+                  _setSelectedPlan(1);
                 });
               },
             ),
@@ -217,21 +217,21 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
         ),
         body: LayoutBuilder(
           builder: (BuildContext context, BoxConstraints constraints) {
-            screenWidth = constraints.maxWidth;
-            screenHeight = constraints.maxHeight;
+            _screenWidth = constraints.maxWidth;
+            _screenHeight = constraints.maxHeight;
 
-            if (screenWidth * 125 / 300 < screenHeight) {
+            if (_screenWidth * 125 / 300 < _screenHeight) {
               // fix plan size to 90% of width
-              planHeight = 125 / 300 * screenWidth * 0.9;
-              planWidth = screenWidth * 0.9;
+              _planHeight = 125 / 300 * _screenWidth * 0.9;
+              _planWidth = _screenWidth * 0.9;
             } else {
               // fix plan size to 90% of height
-              planHeight = screenHeight * 0.9;
-              planWidth = 300 / 125 * screenHeight * 0.9;
+              _planHeight = _screenHeight * 0.9;
+              _planWidth = 300 / 125 * _screenHeight * 0.9;
             }
 
-            offsetX = (screenWidth - planWidth) / 2;
-            offsetY = (screenHeight - planHeight) / 2;
+            _offsetX = (_screenWidth - _planWidth) / 2;
+            _offsetY = (_screenHeight - _planHeight) / 2;
 
             Offset childWasTappedAt = Offset.zero;
             var transformationController = TransformationController();
@@ -248,10 +248,10 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
                   rooms = _rooms[1];
                 }
                 for (Room room in rooms) {
-                  if (childWasTappedAt.dx > room.startX / 300 * planWidth + offsetX &&
-                      childWasTappedAt.dx < room.endX / 300 * planWidth + offsetX &&
-                      childWasTappedAt.dy > room.startY / 300 * planWidth + offsetY &&
-                      childWasTappedAt.dy < room.endY / 300 * planWidth + offsetY) {
+                  if (childWasTappedAt.dx > room.startX / 300 * _planWidth + _offsetX &&
+                      childWasTappedAt.dx < room.endX / 300 * _planWidth + _offsetX &&
+                      childWasTappedAt.dy > room.startY / 300 * _planWidth + _offsetY &&
+                      childWasTappedAt.dy < room.endY / 300 * _planWidth + _offsetY) {
                     _showBottomSheet(context, room);
                   }
                 }
