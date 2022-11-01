@@ -95,18 +95,16 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
             'showUnheraldedExams': false
           },
         );
-        data = response.data;
+        data = response.data['payload'];
       } else {
         var jsonText = await rootBundle.loadString("assets/data/substitutions$offset.json");
-        data = json.decode(jsonText);
+        data = json.decode(jsonText)['payload'];
       }
 
-      int planDate = data['payload']['showingNextDate']
-          ? data['payload']['nextDate']
-          : data['payload']['date'];
+      int planDate = data['showingNextDate'] ? data['nextDate'] : data['date'];
 
       setState(() {
-        if (_substitutionData.length < _maxTabBarLength && (data['payload']['rows'] as List).isNotEmpty) {
+        if (_substitutionData.length < _maxTabBarLength) {
           _substitutionData.add(data);
           _planNames.add(_getDateFormat(planDate.toString()));
         }
@@ -167,8 +165,8 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
       List<SubstitutionEntry> unfilteredEntries = [];
       List<SubstitutionEntry> filteredEntries = [];
 
-      for (int j = 0; j < (_substitutionData[i]['payload']['rows'] as List).length; j++) {
-        unfilteredEntries.add(SubstitutionEntry.fromJson(_substitutionData[i]['payload']['rows'][j]));
+      for (int j = 0; j < (_substitutionData[i]['rows'] as List).length; j++) {
+        unfilteredEntries.add(SubstitutionEntry.fromJson(_substitutionData[i]['rows'][j]));
       }
 
       for (SubstitutionEntry entry in unfilteredEntries) {
@@ -184,21 +182,26 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
       }
 
       tabViews.add(
-        ListView.builder(
-          itemCount: filteredEntries.isEmpty ? 2 : filteredEntries.length + 1,
-          itemBuilder: (BuildContext context, int index) {
-            if (index == 0) {
-              return Padding(
-                padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
-                child: Text('Stand: ${_substitutionData[i]['payload']['lastUpdate']}'),
-              );
-            }
-            if (filteredEntries.isNotEmpty) {
-              return filteredEntries[index - 1];
-            } else {
-              return const Center(child: Text('Keine Ergebnisse für die ausgewählten Filter'));
-            }
-          },
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
+              child: Text('Stand: ${_substitutionData[i]['lastUpdate']}'),
+            ),
+            unfilteredEntries.isEmpty
+                ? const Expanded(child: Center(child: Text('Keine Vertretungen')))
+                : filteredEntries.isEmpty
+                    ? const Expanded(child: Center(child: Text('Keine Ergebnisse für die ausgewählten Filter')))
+                    : Expanded(
+                        child: ListView.builder(
+                          itemCount: filteredEntries.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return filteredEntries[index];
+                          },
+                        ),
+                      ),
+          ],
         ),
       );
     }
