@@ -14,29 +14,25 @@ class SettingsScreen extends StatefulWidget {
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 2,
-      child: Scaffold(
-        appBar: MCGAppBar(
-          title: "Einstellungen",
-        ),
-        drawer: const MCGDrawer(),
-        body: ListView(
-          children: <Widget>[
-            ListTile(
-              title: const Text("Dark Mode"),
-              trailing: Switch(
-                value: themeManager.themeMode == ThemeMode.dark,
-                onChanged: (newValue) {
-                  setState(() {
-                    themeManager.toggleTheme(newValue);
-                  });
-                },
-              ),
+    return Scaffold(
+      appBar: MCGAppBar(
+        title: "Einstellungen",
+      ),
+      drawer: const MCGDrawer(),
+      body: ListView(
+        children: <Widget>[
+          ListTile(
+            title: const Text("Dark Mode"),
+            trailing: Switch(
+              value: themeManager.themeMode == ThemeMode.dark,
+              onChanged: (newValue) {
+                setState(() {
+                  themeManager.toggleTheme(newValue);
+                });
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

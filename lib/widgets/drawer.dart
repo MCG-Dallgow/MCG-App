@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mcgapp/screens/grades/grades_screen.dart';
 import 'package:mcgapp/screens/roomplan_screen.dart';
 import 'package:mcgapp/screens/settings_screen.dart';
 import 'package:mcgapp/screens/substitutions_screen.dart';
@@ -93,9 +94,17 @@ class MCGDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.star, color: Colors.grey,),
-            title: const Text('Noten - Coming Soon', style: TextStyle(color: Colors.grey)),
-            onTap: () {},
+            leading: const Icon(Icons.star),
+            title: const Text('Noten'),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) {
+                  return const GradesScreen();
+                }),
+              );
+            },
           ),
           const Divider(
             color:Colors.black38,
