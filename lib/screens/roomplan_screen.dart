@@ -193,21 +193,12 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
               });
             },
           ),
-          backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
-          foregroundColor: Colors.white,
-          label: "Erdgeschoss",
-          labelStyle: const TextStyle(fontSize: 18.0),
-          onTap: () {
-            setState(() {
-              _setSelectedPlan(_plan0(), '0');
-            });
-          },
-        ),
-        SpeedDialChild(
-          child: const Text(
-            "1",
-            style: TextStyle(
-              fontSize: 20,
+          SpeedDialChild(
+            child: const Text(
+              "1",
+              style: TextStyle(
+                fontSize: 20,
+              ),
             ),
             backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
             foregroundColor: Colors.white,
