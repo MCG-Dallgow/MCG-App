@@ -55,10 +55,9 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Text(
               'Derzeitige Features: Vertretungsplan, Raumplan, Lehrerliste',
               style: TextStyle(fontSize: 16),
-            ),
           ),
           Image.asset(
-            'assets/images/mcg_oben.png',
+            'assets/images/mcg_oben.jpg',
             width: double.infinity,
             fit: BoxFit.cover,
           ),

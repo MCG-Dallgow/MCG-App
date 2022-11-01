@@ -18,16 +18,17 @@ class RoomplanScreen extends StatefulWidget {
 }
 
 class _RoomplanScreenState extends State<RoomplanScreen> {
-  final List<Room> _rooms0 = [];
-  final List<Room> _rooms1 = [];
-  Widget _selectedPlan = const Center(child: Text("not loaded"));
-  String _currentFloor = '';
-  String appBarTitle = "Raumplan";
+  final List<List<Room>> _rooms = [[], []];
+  Widget _selectedPlan = const Center(child: Text("Wird geladen..."));
+  int _currentFloor = 0;
+  String _appBarTitle = "Raumplan";
 
-  late double screenWidth;
-  late double screenHeight;
-  late double offsetX;
-  late double offsetY;
+  late double _screenWidth;
+  late double _screenHeight;
+  late double _offsetX;
+  late double _offsetY;
+  late double _planWidth;
+  late double _planHeight;
 
   Future<void> loadJsonData() async {
     var jsonText = await rootBundle.loadString("assets/data/rooms.json");
@@ -38,108 +39,62 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
         Room room = Room.fromJson(data, i);
 
         if (room.number.startsWith('0')) {
-          //print("Room 0.");
-          _rooms0.add(room);
-          //print("_rooms0:");
-          //_rooms0.forEach((element) { print(element.number); });
+          _rooms[0].add(room);
         } else if (room.number.startsWith('1')) {
-          _rooms1.add(room);
+          _rooms[1].add(room);
         }
       }
     });
 
-    _setSelectedPlan(_plan0(), '0');
+    _setSelectedPlan(0);
   }
 
   @override
   void initState() {
     super.initState();
     loadJsonData();
-    //_setSelectedPlan(_plan0(), '0');
   }
 
-  List<Widget> _loadRooms(List<Room> rooms, String floor) {
-    List<Widget> roomWidgets = [];
-
-    for (Room room in rooms) {
-      roomWidgets.add(
-        Positioned(
-          left: offsetX + room.startX / 300 * screenWidth * 0.9,
-          top: offsetY + room.startY / 300 * screenWidth * 0.9,
-          height: (room.endY - room.startY) / 300 * screenWidth * 0.9,
-          width: (room.endX - room.startX) / 300 * screenWidth * 0.9,
-          child: Container(
-            color: themeManager.colorSecondary,
-            child: Center(
-              child: Text(
-                room.number,
-                style: const TextStyle(fontSize: 5),
-              ),
+  Widget _loadPlan(int floor) => Stack(
+        alignment: Alignment.topLeft,
+        children: [
+          Positioned(
+            height: _planHeight,
+            width: _planWidth,
+            left: _offsetX,
+            top: _offsetY,
+            child: SvgPicture.asset(
+              fit: BoxFit.fill,
+              'assets/images/roomplan$floor-${themeManager.themeMode == ThemeMode.dark ? 'dark' : 'light'}.svg',
+              width: 300,
+              height: 125,
             ),
           ),
-        ),
+        ],
       );
-    }
 
-    roomWidgets.add(
-      Positioned(
-        height: 125 / 300 * screenWidth * 0.9,
-        width: 300 / 300 * screenWidth * 0.9,
-        left: offsetX,
-        top: offsetY,
-        child: SvgPicture.asset(
-          fit: BoxFit.fill,
-          'assets/images/roomplan_$floor.svg',
-          width: 300,
-          height: 125,
-          color: themeManager.colorStroke,
-        ),
-      ),
-    );
-
-    return roomWidgets;
-  }
-
-  Widget _plan0() {
-    return Stack(alignment: Alignment.topLeft, children: _loadRooms(_rooms0, '0'));
-  }
-
-  Widget _plan1() {
-    return Stack(
-      alignment: Alignment.topLeft,
-      children: _loadRooms(_rooms1, '1'),
-    );
-  }
-
-  void _setSelectedPlan(Widget plan, String floor) {
+  void _setSelectedPlan(int floor) {
     setState(() {
-      _selectedPlan = plan;
+      _selectedPlan = _loadPlan(floor);
       _currentFloor = floor;
 
-      if (floor == '0') {
-        appBarTitle = "Raumplan - Erdgeschoss";
-      } else if (floor == '1') {
-        appBarTitle = "Raumplan - 1. Obergeschoss";
+      if (floor == 0) {
+        _appBarTitle = "Raumplan - Erdgeschoss";
+      } else if (floor == 1) {
+        _appBarTitle = "Raumplan - Obergeschoss";
       }
     });
   }
 
   void _showBottomSheet(context, Room room) {
     showModalBottomSheet<dynamic>(
-      isScrollControlled: true,
       context: context,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
-      builder: (BuildContext bc) {
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(18), topRight: Radius.circular(18)),
+      ),
+      builder: (BuildContext context) {
         return Wrap(
           children: [
-            /*Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(25.0),
-                      topRight: Radius.circular(25.0))),
-              child: ListView(
-                children: [*/
             Align(
               alignment: Alignment.topRight,
               child: Padding(
@@ -159,59 +114,45 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
               alignment: Alignment.topLeft,
               child: Padding(
                 padding: const EdgeInsets.only(left: 10, top: 5),
-                child: Text(room.name,
-                    style: const TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                    )),
+                child: Text(
+                  room.name,
+                  style: const TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
-            /*SizedBox(
-                    height: 200,
-                    child: Image(image: AssetImage(room.image)),
-                  ),*/
             ListTile(
               leading: const Icon(Icons.account_tree),
-              title: Text("Art: ${room.type}"),
+              title: Text(room.type),
             ),
             ListTile(
               leading: const Icon(Icons.numbers),
-              title: Text("Raumnummer: ${room.number}"),
+              title: Text(room.number),
             ),
             ListTile(
               leading: const Icon(Icons.person),
-              title: Text("Raumverantwortlicher: ${room.teacher}"),
+              title: Text(room.teacher),
             )
           ],
         );
-        /*),
-            ),
-          ],
-        );
-      },*/
       },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    screenWidth = MediaQuery.of(context).size.width;
-    screenHeight = MediaQuery.of(context).size.height;
-    offsetX = screenWidth * 0.05;
-    offsetY = screenHeight / 2 - 125 / 300 * screenWidth;
-
-    Offset childWasTappedAt = Offset.zero;
-    var transformationController = TransformationController();
     return Scaffold(
       appBar: MCGAppBar(
-        title: appBarTitle,
+        title: _appBarTitle,
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
             onPressed: () {
               List<String> rooms = [];
-              rooms.addAll(_rooms0.map((e) => e.number));
-              rooms.addAll(_rooms1.map((e) => e.number));
+              rooms.addAll(_rooms[0].map((e) => e.number));
+              rooms.addAll(_rooms[1].map((e) => e.number));
               showSearch(
                 context: context,
                 delegate: MySearchDelegate(searchResults: rooms),
@@ -248,16 +189,25 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
             labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {
               setState(() {
-                _setSelectedPlan(_plan0(), '0');
+                _setSelectedPlan(0);
               });
             },
           ),
-          SpeedDialChild(
-            child: const Text(
-              "1",
-              style: TextStyle(
-                fontSize: 20,
-              ),
+          backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
+          foregroundColor: Colors.white,
+          label: "Erdgeschoss",
+          labelStyle: const TextStyle(fontSize: 18.0),
+          onTap: () {
+            setState(() {
+              _setSelectedPlan(_plan0(), '0');
+            });
+          },
+        ),
+        SpeedDialChild(
+          child: const Text(
+            "1",
+            style: TextStyle(
+              fontSize: 20,
             ),
             backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
             foregroundColor: Colors.white,
@@ -265,43 +215,66 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
             labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {
               setState(() {
-                _setSelectedPlan(_plan1(), '1');
+                _setSelectedPlan(1);
               });
             },
           ),
         ],
       ),
-      body: GestureDetector(
-        onTapUp: (TapUpDetails details) {
-          childWasTappedAt = transformationController.toScene(
-            details.localPosition,
-          );
-          List<Room> rooms = [];
-          if (_currentFloor == '0') {
-            rooms = _rooms0;
-          } else if (_currentFloor == '1') {
-            rooms = _rooms1;
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+          _screenWidth = constraints.maxWidth;
+          _screenHeight = constraints.maxHeight;
+
+          if (_screenWidth * 125 / 300 < _screenHeight) {
+            // fix plan size to 90% of width
+            _planHeight = 125 / 300 * _screenWidth * 0.9;
+            _planWidth = _screenWidth * 0.9;
+          } else {
+            // fix plan size to 90% of height
+            _planHeight = _screenHeight * 0.9;
+            _planWidth = 300 / 125 * _screenHeight * 0.9;
           }
-          for (Room room in rooms) {
-            if (childWasTappedAt.dx > room.startX / 300 * screenWidth * 0.9 + offsetX &&
-                childWasTappedAt.dx < room.endX / 300 * screenWidth * 0.9 + offsetX &&
-                childWasTappedAt.dy > room.startY / 300 * screenWidth * 0.9 + offsetY &&
-                childWasTappedAt.dy < room.endY / 300 * screenWidth * 0.9 + offsetY) {
-              _showBottomSheet(context, room);
-            }
-          }
-        },
-        child: InteractiveViewer(
-          transformationController: transformationController,
-          maxScale: 5,
-          scaleFactor: 2,
-          child: Container(
-            constraints: const BoxConstraints.expand(),
-            child: Container(
-              child: _selectedPlan,
+
+          _offsetX = (_screenWidth - _planWidth) / 2;
+          _offsetY = (_screenHeight - _planHeight) / 2;
+
+          Offset childWasTappedAt = Offset.zero;
+          var transformationController = TransformationController();
+
+          return GestureDetector(
+            onTapUp: (TapUpDetails details) {
+              childWasTappedAt = transformationController.toScene(
+                details.localPosition,
+              );
+              List<Room> rooms = [];
+              if (_currentFloor == 0) {
+                rooms = _rooms[0];
+              } else if (_currentFloor == 1) {
+                rooms = _rooms[1];
+              }
+              for (Room room in rooms) {
+                if (childWasTappedAt.dx > room.startX / 300 * _planWidth + _offsetX &&
+                    childWasTappedAt.dx < room.endX / 300 * _planWidth + _offsetX &&
+                    childWasTappedAt.dy > room.startY / 300 * _planWidth + _offsetY &&
+                    childWasTappedAt.dy < room.endY / 300 * _planWidth + _offsetY) {
+                  _showBottomSheet(context, room);
+                }
+              }
+            },
+            child: InteractiveViewer(
+              transformationController: transformationController,
+              maxScale: 5,
+              scaleFactor: 2,
+              child: Container(
+                constraints: const BoxConstraints.expand(),
+                child: Container(
+                  child: _selectedPlan,
+                ),
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

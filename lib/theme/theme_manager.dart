@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,18 +35,21 @@ class ThemeManager with ChangeNotifier {
 
   _setColors(bool isDark) {
     if (isDark) {
+      _themeMode = ThemeMode.dark;
       _colorStroke = colorStrokeDark;
       _colorSecondary = colorSecondaryDark;
     } else {
+      _themeMode = ThemeMode.light;
       _colorStroke = colorStrokeLight;
       _colorSecondary = colorSecondaryLight;
     }
   }
 
   toggleTheme(bool isDark) async {
-    await _setThemeMode(isDark ? ThemeMode.dark : ThemeMode.light);
-    await loadTheme();
-
+    if (!kIsWeb) {
+      await _setThemeMode(isDark ? ThemeMode.dark : ThemeMode.light);
+      await loadTheme();
+    }
     _setColors(isDark);
     notifyListeners();
   }
