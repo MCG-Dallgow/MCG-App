@@ -92,7 +92,8 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
     return Scaffold(
       appBar: MCGAppBar(
         title: course.displayName,
-        color: course.color,
+        backgroundColor: course.backgroundColor,
+        foregroundColor: course.foregroundColor,
         actions: [
           Center(
             child: Padding(

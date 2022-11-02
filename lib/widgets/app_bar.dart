@@ -6,14 +6,16 @@ class MCGAppBar extends StatelessWidget implements PreferredSizeWidget {
     required this.title,
     this.actions,
     this.bottom,
-    this.color}) :
-        preferredSize = _PreferredAppBarSize(kToolbarHeight, bottom?.preferredSize.height),
-        super(key: key);
+    this.backgroundColor,
+    this.foregroundColor,
+  }) : preferredSize = _PreferredAppBarSize(kToolbarHeight, bottom?.preferredSize.height),
+       super(key: key);
 
   final String title;
   final List<Widget>? actions;
   final PreferredSizeWidget? bottom;
-  final Color? color;
+  final Color? backgroundColor;
+  final Color? foregroundColor;
 
   @override
   final Size preferredSize;
@@ -24,7 +26,8 @@ class MCGAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(title),
       bottom: bottom,
       actions: actions,
-      backgroundColor: color,
+      backgroundColor: backgroundColor,
+      foregroundColor: foregroundColor,
     );
   }
 }

@@ -31,7 +31,7 @@ class Grade {
       ListTile(
         leading: Icon(
           Icons.school,
-          color: course.color,
+          color: course.backgroundColor,
         ),
         title: Text(course.displayName),
       ),
@@ -81,16 +81,7 @@ class Grade {
           ),
         ],
       ),
-      leading: CircleAvatar(
-        backgroundColor: course.color,
-        child: Text(
-          course.short,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-      ),
+      leading: course.circleAvatar,
       trailing: Text(
         "$grade",
         style: const TextStyle(

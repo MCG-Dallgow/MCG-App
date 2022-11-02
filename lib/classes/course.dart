@@ -6,14 +6,16 @@ class Course {
   String title;
   String displayName;
   String short;
-  Color color;
+  Color backgroundColor;
 
   Course({
     required this.title,
     required this.displayName,
     required this.short,
-    required this.color,
+    required this.backgroundColor,
   });
+
+  Color get foregroundColor => backgroundColor.computeLuminance() > 0.5 ? Colors.black : Colors.white;
 
   List<Grade> get courseGrades {
     List<Grade> courseGrades = [];
@@ -38,12 +40,12 @@ class Course {
 
   Widget get circleAvatar {
     return CircleAvatar(
-      backgroundColor: color,
+      backgroundColor: backgroundColor,
       child: Text(
         short,
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          color: color.computeLuminance() > 0.5 ? Colors.black : Colors.white,
+          color: foregroundColor,
         ),
       ),
     );
@@ -62,115 +64,115 @@ List<Course> courses = [
     title: 'Biologie',
     displayName: 'Biologie',
     short: 'Bio',
-    color: Colors.green.shade800,
+    backgroundColor: Colors.green.shade800,
   ),
   Course(
     title: 'Chemie',
     displayName: 'Chemie',
     short: 'Che',
-    color: Colors.green,
+    backgroundColor: Colors.green,
   ),
   Course(
     title: 'Deutsch',
     displayName: 'Deutsch',
     short: 'Deu',
-    color: Colors.red,
+    backgroundColor: Colors.red,
   ),
   Course(
     title: 'Englisch',
     displayName: 'Englisch',
     short: 'Eng',
-    color: Colors.yellow,
+    backgroundColor: Colors.yellow,
   ),
   Course(
     title: 'evangelische Religion',
     displayName: 'evangelische Religion',
     short: 'eRe',
-    color: Colors.purple.shade300,
+    backgroundColor: Colors.purple.shade300,
   ),
   Course(
     title: 'Geschichte',
     displayName: 'Geschichte',
     short: 'Ges',
-    color: Colors.brown.shade400,
+    backgroundColor: Colors.brown.shade400,
   ),
   Course(
     title: 'Geographie',
     displayName: 'Geographie',
     short: 'Geo',
-    color: Colors.deepPurple,
+    backgroundColor: Colors.deepPurple,
   ),
   Course(
     title: 'Informatik',
     displayName: 'Informatik',
     short: 'Inf',
-    color: Colors.teal,
+    backgroundColor: Colors.teal,
   ),
   Course(
     title: 'katholische Religion',
     displayName: 'katholische Religion',
     short: 'kRe',
-    color: Colors.purple.shade700,
+    backgroundColor: Colors.purple.shade700,
   ),
   Course(
     title: 'Kunst',
     displayName: 'Kunst',
     short: 'Kun',
-    color: Colors.pinkAccent,
+    backgroundColor: Colors.pinkAccent,
   ),
   Course(
     title: 'LER',
     displayName: 'LER',
     short: 'LER',
-    color: Colors.purple,
+    backgroundColor: Colors.purple,
   ),
   Course(
     title: 'Mathematik',
     displayName: 'Mathematik',
     short: 'Mat',
-    color: Colors.blue.shade900,
+    backgroundColor: Colors.blue.shade900,
   ),
   Course(
     title: 'Musik',
     displayName: 'Musik',
     short: 'Mus',
-    color: Colors.brown.shade700,
+    backgroundColor: Colors.brown.shade700,
   ),
   Course(
     title: 'Physik',
     displayName: 'Physik',
     short: 'Phy',
-    color: Colors.blue,
+    backgroundColor: Colors.blue,
   ),
   Course(
     title: 'Politische Bildung',
     displayName: 'Politische Bildung',
     short: 'PB',
-    color: Colors.grey,
+    backgroundColor: Colors.grey,
   ),
   Course(
     title: 'Seminarkurs',
     displayName: 'Seminarkurs',
     short: 'SK',
-    color: Colors.blueGrey,
+    backgroundColor: Colors.blueGrey,
   ),
   Course(
     title: 'Spanisch',
     displayName: 'Spanisch',
     short: 'Spa',
-    color: Colors.orangeAccent.shade700,
+    backgroundColor: Colors.orangeAccent.shade700,
   ),
   Course(
     title: 'Sport',
     displayName: 'Sport',
     short: 'Spo',
-    color: Colors.brown,
+    backgroundColor: Colors.brown,
   ),
   Course(
     title: 'Wirtschaft-Arbeit-Technik',
     displayName: 'Wirtschaft-Arbeit-Technik',
     short: 'WAT',
-    color: Colors.grey.shade300,
+    backgroundColor: Colors.grey.shade300,
   ),
 ];
 
