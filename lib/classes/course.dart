@@ -41,9 +41,9 @@ class Course {
       backgroundColor: color,
       child: Text(
         short,
-        style: const TextStyle(
+        style: TextStyle(
           fontWeight: FontWeight.bold,
-          color: Colors.white,
+          color: color.computeLuminance() > 0.5 ? Colors.black : Colors.white,
         ),
       ),
     );
