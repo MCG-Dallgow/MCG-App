@@ -3,23 +3,12 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:mcgapp/classes/course.dart';
 import 'package:mcgapp/classes/grade.dart';
-import 'package:mcgapp/screens/grades/grades_screen.dart';
 import 'package:mcgapp/widgets/app_bar.dart';
 
 class GradeEditScreen extends StatefulWidget {
-  const GradeEditScreen({
-    Key? key,
-    this.grade,
-    this.course,
-    this.returnToScreen = const GradesScreen(),
-    this.doAfter,
-  }) : assert(grade == null || course == null),
-       super(key: key);
+  const GradeEditScreen({Key? key}) : super(key: key);
 
-  final Grade? grade;
-  final Course? course;
-  final Widget returnToScreen;
-  final Future<dynamic>? doAfter;
+  static const routeName = '/grades/edit';
 
   @override
   State<GradeEditScreen> createState() => _GradeEditScreenState();
@@ -29,6 +18,8 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
   static DateFormat format = DateFormat('EEEE, d. MMMM yyyy', 'de');
   late TextEditingController titleController;
   late TextEditingController dateController;
+
+  bool fistChange = true;
 
   String? _title;
   Course? _course;
@@ -60,7 +51,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
                 setState(() {
                   _course = course;
                 });
-                Navigator.of(context).pop();
+                Navigator.pop(context, '');
               },
             );
           },
@@ -104,7 +95,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
     DateTime now = DateTime.now();
     return showDatePicker(
       context: context,
-      initialDate: now,
+      initialDate: _date ?? now,
       firstDate: DateTime(now.year - 1),
       lastDate: DateTime(now.year + 2),
     );
@@ -116,27 +107,34 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
     initializeDateFormatting('de_DE');
     dateController = TextEditingController(text: '');
     titleController = TextEditingController(text: '');
-
-    _title = widget.grade?.title;
-    _course = widget.grade?.course ?? widget.course;
-    _gradeValue = widget.grade?.grade;
-    _date = widget.grade?.date;
-    _type = widget.grade?.type;
-
-    if (_title != null) titleController.text = _title!;
-    if (_date != null) dateController.text = format.format(_date!);
   }
 
   @override
   Widget build(BuildContext context) {
+    Map? args = ModalRoute.of(context)!.settings.arguments as Map?;
+    Grade? grade = args?['grade'];
+
+    if (fistChange) {
+      _title = grade?.title;
+      _course = grade?.course ?? args?['course'];
+      _gradeValue = grade?.grade;
+      _date = grade?.date;
+      _type = grade?.type;
+
+      if (_title != null) titleController.text = _title!;
+      if (_date != null) dateController.text = format.format(_date!);
+
+      fistChange = false;
+    }
+
     return Scaffold(
-      appBar: MCGAppBar(title: widget.grade == null ? 'Neue Note' : 'Note bearbeiten'),
+      appBar: MCGAppBar(title: grade == null ? 'Neue Note' : 'Note bearbeiten'),
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('Fertig'),
         icon: const Icon(Icons.done),
         onPressed: () {
-          if (_title != null && _title != '') {
-            Grade grade = Grade(
+          if (_title != null && _title != '' && _course != null && _gradeValue != null && _date != null) {
+            Grade newGrade = Grade(
               title: _title!,
               course: _course!,
               grade: _gradeValue!,
@@ -145,14 +143,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
               type: _type ?? GradeType.test,
             );
 
-            if (widget.grade != null) {
-              editGrade(widget.grade!, grade);
-            } else {
-              addGrade(grade);
-            }
-            widget.doAfter;
-            //Navigator.pop(context);
-            Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) => widget.returnToScreen));
+            Navigator.pop(context, newGrade);
           }
         },
       ),

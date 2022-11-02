@@ -6,6 +6,8 @@ import '../widgets/drawer.dart';
 class CreditsScreen extends StatefulWidget {
   const CreditsScreen({Key? key}) : super(key: key);
 
+  static const String routeName = '/credits';
+
   @override
   State<CreditsScreen> createState() => _CreditsScreenState();
 }
@@ -17,7 +19,7 @@ class _CreditsScreenState extends State<CreditsScreen> {
       appBar: MCGAppBar(
         title: "Credits",
       ),
-      drawer: const MCGDrawer(),
+      drawer: const MCGDrawer(routeName: CreditsScreen.routeName),
       body: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 20, 10),
         child: Column(

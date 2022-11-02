@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:mcgapp/main.dart';
-import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
-import 'package:mcgapp/screens/grades/grades_screen.dart';
 import 'package:mcgapp/widgets/bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../screens/grades/course_grades_screen.dart';
 import 'course.dart';
 
 enum GradeFormat { format15, format6 }
@@ -54,62 +50,9 @@ class Grade {
     ];
   }
 
-  List<Widget> _actions(BuildContext context) {
-    return <Widget>[
-      OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-          foregroundColor: themeManager.colorStroke,
-        ),
-        child: Row(
-          children: const [
-            Icon(Icons.edit),
-            SizedBox(width: 8),
-            Text('Bearbeiten'),
-          ],
-        ),
-        onPressed: () {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) =>
-                  GradeEditScreen(grade: this, returnToScreen: CourseGradesScreen(course: course)),
-            ),
-            (var route) => true,
-          );
-        },
-      ),
-      const SizedBox(width: 8),
-      OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-          foregroundColor: themeManager.colorStroke,
-        ),
-        child: Row(
-          children: const [
-            Icon(Icons.delete),
-            SizedBox(width: 8),
-            Text('Löschen'),
-          ],
-        ),
-        onPressed: () {
-          removeGrade(this);
-          Navigator.pop(context);
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(
-              builder: (BuildContext context) => const GradesScreen(),
-            ),
-            (var route) => true,
-          );
-        },
-      ),
-    ];
-  }
-
-  Widget listTile(BuildContext context) {
+  Widget listTile(BuildContext context, List<Widget> actions) {
     return ListTile(
-      onTap: () => showMCGBottomSheet(context, title, _details, _actions(context)),
+      onTap: () => showMCGBottomSheet(context, title, _details, actions),
       contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       title: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

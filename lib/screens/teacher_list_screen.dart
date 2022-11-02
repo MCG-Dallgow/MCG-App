@@ -6,10 +6,11 @@ import 'package:mcgapp/screens/teacher_details_screen.dart';
 import 'package:mcgapp/widgets/drawer.dart';
 
 import '../classes/teacher.dart';
-import '../widgets/app_bar.dart';
 
 class TeacherListScreen extends StatefulWidget {
   const TeacherListScreen({Key? key}) : super(key: key);
+
+  static const String routeName = '/teachers';
 
   @override
   State<TeacherListScreen> createState() => _TeacherListScreenState();
@@ -131,7 +132,7 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
         title: _isSearching ? _buildSearchField() : const Text("Lehrerliste"),
         actions: _buildActions(),
       ),
-      drawer: const MCGDrawer(),
+      drawer: const MCGDrawer(routeName: TeacherListScreen.routeName),
       body: _entries.isNotEmpty
           ? ListView.builder(
               padding: const EdgeInsets.all(8),
@@ -141,9 +142,11 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
                   return ListTile(
                     title: const Text('Sekretariat'),
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
-                        return SekretariatScreen(data: sekretariat);
-                      }));
+                      Navigator.pushNamed(
+                        context,
+                        SekretariatScreen.routeName,
+                        arguments: sekretariat,
+                      );
                     },
                   );
                 }
@@ -155,9 +158,11 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
                   //leading: CircleAvatar(),
                   title: Text("${_entries[teacherIndex].anrede} ${_entries[teacherIndex].nachname}"),
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context) {
-                      return TeacherDetailsScreen(teacher: _entries[teacherIndex]);
-                    }));
+                    Navigator.pushNamed(
+                      context,
+                      TeacherDetailsScreen.routeName,
+                      arguments: _entries[teacherIndex],
+                    );
                   },
                 );
               })
@@ -166,32 +171,3 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
   }
 }
 
-class SekretariatScreen extends StatelessWidget {
-  const SekretariatScreen({
-    Key? key,
-    required this.data,
-  }) : super(key: key);
-
-  final List<String> data;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: MCGAppBar(
-        title: "Sekretariat",
-      ),
-      body: ListView(
-        children: [
-          ListTile(
-            title: Text(data[0]),
-            leading: const Icon(Icons.email),
-          ),
-          ListTile(
-            title: Text(data[1]),
-            leading: const Icon(Icons.phone),
-          ),
-        ],
-      ),
-    );
-  }
-}

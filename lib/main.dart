@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:mcgapp/screens/credits_screen.dart';
+import 'package:mcgapp/screens/grades/course_grades_screen.dart';
+import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
+import 'package:mcgapp/screens/grades/grades_screen.dart';
 import 'package:mcgapp/screens/home_screen.dart';
+import 'package:mcgapp/screens/roomplan_screen.dart';
+import 'package:mcgapp/screens/settings_screen.dart';
+import 'package:mcgapp/screens/substitutions_screen.dart';
+import 'package:mcgapp/screens/teacher_details_screen.dart';
+import 'package:mcgapp/screens/teacher_list_screen.dart';
+import 'package:mcgapp/screens/timetable_screen.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 import 'package:mcgapp/theme/theme_manager.dart';
 
@@ -47,7 +57,21 @@ class _MyAppState extends State<MyApp> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: themeManager.themeMode,
-      home: const HomeScreen(),
+      initialRoute: HomeScreen.routeName,
+      routes: {
+        HomeScreen.routeName: (context) => const HomeScreen(),
+        TimetableScreen.routeName: (context) => const TimetableScreen(),
+        SubstitutionsScreen.routeName: (context) => const SubstitutionsScreen(),
+        RoomplanScreen.routeName: (context) => const RoomplanScreen(),
+        TeacherListScreen.routeName: (context) => const TeacherListScreen(),
+        TeacherDetailsScreen.routeName: (context) => const TeacherDetailsScreen(),
+        SekretariatScreen.routeName: (context) => const SekretariatScreen(),
+        GradesScreen.routeName: (context) => const GradesScreen(),
+        GradeEditScreen.routeName: (context) => const GradeEditScreen(),
+        CourseGradesScreen.routeName: (context) => const CourseGradesScreen(),
+        SettingsScreen.routeName: (context) => const SettingsScreen(),
+        CreditsScreen.routeName: (context) => const CreditsScreen(),
+      },
     );
   }
 }

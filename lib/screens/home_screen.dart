@@ -6,6 +6,8 @@ import '../widgets/app_bar.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  static const String routeName = '/home';
+
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
@@ -17,7 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: MCGAppBar(
         title: "MCG App",
       ),
-      drawer: const MCGDrawer(),
+      drawer: const MCGDrawer(routeName: HomeScreen.routeName),
       body: ListView(
         children: [
           Stack(

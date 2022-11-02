@@ -4,15 +4,14 @@ import 'package:mcgapp/widgets/app_bar.dart';
 import '../classes/teacher.dart';
 
 class TeacherDetailsScreen extends StatelessWidget {
-  const TeacherDetailsScreen({
-    Key? key,
-    required this.teacher,
-  }) : super(key: key);
+  const TeacherDetailsScreen({Key? key}) : super(key: key);
 
-  final Teacher teacher;
+  static const String routeName = '/teachers/details';
 
   @override
   Widget build(BuildContext context) {
+    final teacher = ModalRoute.of(context)!.settings.arguments as Teacher;
+
     return Scaffold(
       appBar: MCGAppBar(
         title: "${teacher.anrede} ${teacher.nachname}",
@@ -43,6 +42,35 @@ class TeacherDetailsScreen extends StatelessWidget {
                 : "keine vermerkte E-Mail-Adresse"),
             leading: const Icon(Icons.email),
           )
+        ],
+      ),
+    );
+  }
+}
+
+class SekretariatScreen extends StatelessWidget {
+  const SekretariatScreen({Key? key}) : super(key: key);
+
+  static const String routeName = '/teachers/office';
+
+  @override
+  Widget build(BuildContext context) {
+    final data = ModalRoute.of(context)!.settings.arguments as List<String>;
+
+    return Scaffold(
+      appBar: MCGAppBar(
+        title: "Sekretariat",
+      ),
+      body: ListView(
+        children: [
+          ListTile(
+            title: Text(data[0]),
+            leading: const Icon(Icons.email),
+          ),
+          ListTile(
+            title: Text(data[1]),
+            leading: const Icon(Icons.phone),
+          ),
         ],
       ),
     );

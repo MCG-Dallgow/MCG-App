@@ -15,6 +15,8 @@ import '../widgets/drawer.dart';
 class SubstitutionsScreen extends StatefulWidget {
   const SubstitutionsScreen({Key? key}) : super(key: key);
 
+  static const String routeName = '/substitutions';
+
   @override
   State<SubstitutionsScreen> createState() => _SubstitutionsScreenState();
 }
@@ -308,7 +310,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
           ],
           bottom: _tabBar,
         ),
-        drawer: const MCGDrawer(),
+        drawer: const MCGDrawer(routeName: SubstitutionsScreen.routeName),
         body: _tabBarView,
       ),
     );

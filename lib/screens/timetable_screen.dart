@@ -6,6 +6,8 @@ import 'package:mcgapp/widgets/drawer.dart';
 class TimetableScreen extends StatelessWidget {
   const TimetableScreen({Key? key}) : super(key: key);
 
+  static const String routeName = '/timetable';
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -21,7 +23,7 @@ class TimetableScreen extends StatelessWidget {
                 ],
               ),
             ),
-            drawer: const MCGDrawer(),
+            drawer: const MCGDrawer(routeName: TimetableScreen.routeName),
             body: const TabBarView(
               children: <Widget>[
                 Center(

@@ -7,9 +7,12 @@ import 'package:mcgapp/widgets/drawer.dart';
 
 import '../../classes/course.dart';
 import '../../classes/grade.dart';
+import '../../main.dart';
 
 class GradesScreen extends StatefulWidget {
   const GradesScreen({Key? key}) : super(key: key);
+
+  static const routeName = '/grades';
 
   @override
   State<GradesScreen> createState() => _GradesScreenState();
@@ -39,7 +42,51 @@ class _GradesScreenState extends State<GradesScreen> {
               if (index.isOdd) return const Divider();
 
               Grade grade = grades[index ~/ 2];
-              return grade.listTile(context);
+              return grade.listTile(context, <Widget>[
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                    foregroundColor: themeManager.colorStroke,
+                  ),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.edit),
+                      SizedBox(width: 8),
+                      Text('Bearbeiten'),
+                    ],
+                  ),
+                  onPressed: () async {
+                    Navigator.pop(context);
+                    await Navigator.pushNamed(
+                      context,
+                      GradeEditScreen.routeName,
+                      arguments: {'grade': grade},
+                    ).then((newGrade) { if (newGrade != null) editGrade(grade, newGrade as Grade); });
+
+                    if (!mounted) return;
+                    _updateBody();
+                  },
+                ),
+                const SizedBox(width: 8),
+                OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+                    foregroundColor: themeManager.colorStroke,
+                  ),
+                  child: Row(
+                    children: const [
+                      Icon(Icons.delete),
+                      SizedBox(width: 8),
+                      Text('Löschen'),
+                    ],
+                  ),
+                  onPressed: () {
+                    removeGrade(grade);
+                    Navigator.pop(context);
+                    _updateBody();
+                  },
+                ),
+              ]);
             },
           ),
           ListView.builder(
@@ -54,10 +101,11 @@ class _GradesScreenState extends State<GradesScreen> {
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(builder: (BuildContext context) => CourseGradesScreen(course: course)),
-                  );
+                    CourseGradesScreen.routeName,
+                    arguments: course,
+                  ).then((value) => _updateBody());
                 },
               );
             },
@@ -82,17 +130,16 @@ class _GradesScreenState extends State<GradesScreen> {
             ],
           ),
         ),
-        drawer: const MCGDrawer(),
+        drawer: const MCGDrawer(routeName: GradesScreen.routeName),
         floatingActionButton: FloatingActionButton.extended(
           label: const Text('Neue Note'),
           icon: const Icon(Icons.add),
           onPressed: () async {
-            await Navigator.push(
+            await Navigator.pushNamed(
               context,
-              MaterialPageRoute(builder: (context) {
-                return const GradeEditScreen();
-              }),
-            );
+              GradeEditScreen.routeName,
+            ).then((newGrade) { if (newGrade != null) addGrade(newGrade as Grade); });
+
             if (!mounted) return;
             _updateBody();
           },

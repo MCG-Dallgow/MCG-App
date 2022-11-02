@@ -1,15 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:mcgapp/screens/grades/grades_screen.dart';
-import 'package:mcgapp/screens/roomplan_screen.dart';
-import 'package:mcgapp/screens/settings_screen.dart';
+import 'package:mcgapp/screens/home_screen.dart';
 import 'package:mcgapp/screens/substitutions_screen.dart';
-import 'package:mcgapp/screens/teacher_list_screen.dart';
-import 'package:mcgapp/screens/credits_screen.dart';
 
-import '../screens/home_screen.dart';
+import '../screens/credits_screen.dart';
+import '../screens/grades/grades_screen.dart';
+import '../screens/roomplan_screen.dart';
+import '../screens/settings_screen.dart';
+import '../screens/teacher_list_screen.dart';
 
 class MCGDrawer extends StatelessWidget {
-  const MCGDrawer({Key? key}) : super(key: key);
+  const MCGDrawer({
+    Key? key,
+    required this.routeName,
+  }) : super(key: key);
+
+  final String routeName;
 
   @override
   Widget build(BuildContext context) {
@@ -27,112 +32,152 @@ class MCGDrawer extends StatelessWidget {
                   color: Colors.white,
                   fontSize: 24,
                 ),
-              )
-          ),
+              )),
           ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Home'),
+            leading: Icon(
+              Icons.home,
+              color: routeName == HomeScreen.routeName ? Colors.green : null,
+            ),
+            title: Text(
+              'Home',
+              style: TextStyle(color: routeName == HomeScreen.routeName ? Colors.green : null),
+            ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) {
-                    return const HomeScreen();
-                  }),
-              );
+              if (routeName == HomeScreen.routeName) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+              }
             },
           ),
           ListTile(
-            leading: const Icon(Icons.book, color: Colors.grey,),
-            title: const Text('Stundenplan - Coming Soon', style: TextStyle(color: Colors.grey)),
+            leading: const Icon(
+              Icons.book,
+              color: Colors.grey, //routeName == const TimetableScreen().routeName ? Colors.green : null,
+            ),
+            title: const Text(
+              'Stundenplan - Coming Soon',
+              style: TextStyle(
+                color: Colors.grey, /*routeName == const TimetableScreen().routeName ? Colors.green : null*/),
+            ),
             onTap: () {
-              /*Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return const TimetableScreen();
-                }),
-              );*/
+              /*if (routeName == TimetableScreen.routeName) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                Navigator.pushNamed(context, TimetableScreen.routeName);
+              }*/
             },
           ),
           ListTile(
-            leading: const Icon(Icons.calendar_today),
-            title: const Text('Vertretungsplan'),
+            leading: Icon(
+              Icons.calendar_today,
+              color: routeName == SubstitutionsScreen.routeName ? Colors.green : null,
+            ),
+            title: Text(
+              'Vertretungsplan',
+              style: TextStyle(color: routeName == SubstitutionsScreen.routeName ? Colors.green : null),
+            ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return const SubstitutionsScreen();
-                }),
-              );
+              if (routeName == SubstitutionsScreen.routeName) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                Navigator.pushNamed(context, SubstitutionsScreen.routeName);
+              }
             },
           ),
           ListTile(
-            leading: const Icon(Icons.room_outlined),
-            title: const Text('Raumplan'),
+            leading: Icon(
+              Icons.room_outlined,
+              color: routeName == RoomplanScreen.routeName ? Colors.green : null,
+            ),
+            title: Text(
+              'Raumplan',
+              style: TextStyle(color: routeName == RoomplanScreen.routeName ? Colors.green : null),
+            ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return const RoomplanScreen();
-                }),
-              );
+              if (routeName == RoomplanScreen.routeName) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                Navigator.pushNamed(context, RoomplanScreen.routeName);
+              }
             },
           ),
           ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text('Lehrerliste'),
+            leading: Icon(
+              Icons.person,
+              color: routeName == TeacherListScreen.routeName ? Colors.green : null,
+            ),
+            title: Text(
+              'Lehrerliste',
+              style: TextStyle(color: routeName == TeacherListScreen.routeName ? Colors.green : null),
+            ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return const TeacherListScreen();
-                }),
-              );
+              if (routeName == TeacherListScreen.routeName) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                Navigator.pushNamed(context, TeacherListScreen.routeName);
+              }
             },
           ),
           ListTile(
-            leading: const Icon(Icons.star),
-            title: const Text('Noten'),
+            leading: Icon(
+              Icons.star,
+              color: routeName == GradesScreen.routeName ? Colors.green : null,
+            ),
+            title: Text(
+              'Noten',
+              style: TextStyle(color: routeName == GradesScreen.routeName ? Colors.green : null),
+            ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return const GradesScreen();
-                }),
-              );
+              if (routeName == GradesScreen.routeName) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                Navigator.pushNamed(context, GradesScreen.routeName);
+              }
             },
           ),
           const Divider(
-            color:Colors.black38,
+            color: Colors.black38,
           ),
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Einstellungen'),
+            leading: Icon(
+              Icons.settings,
+              color: routeName == SettingsScreen.routeName ? Colors.green : null,
+            ),
+            title: Text(
+              'Einstellungen',
+              style: TextStyle(color: routeName == SettingsScreen.routeName ? Colors.green : null),
+            ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return const SettingsScreen();
-                }),
-              );
+              if (routeName == SettingsScreen.routeName) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                Navigator.pushNamed(context, SettingsScreen.routeName);
+              }
             },
           ),
           ListTile(
-            leading: const Icon(Icons.account_balance),
-            title: const Text('Credits'),
+            leading: Icon(
+              Icons.account_balance,
+              color: routeName == CreditsScreen.routeName ? Colors.green : null,
+            ),
+            title: Text(
+              'Credits',
+              style: TextStyle(color: routeName == CreditsScreen.routeName ? Colors.green : null),
+            ),
             onTap: () {
-              Navigator.pop(context);
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) {
-                  return const CreditsScreen();
-                }),
-              );
+              if (routeName == CreditsScreen.routeName) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                Navigator.pushNamed(context, CreditsScreen.routeName);
+              }
             },
           ),
         ],

@@ -13,6 +13,8 @@ import '../widgets/drawer.dart';
 class RoomplanScreen extends StatefulWidget {
   const RoomplanScreen({Key? key}) : super(key: key);
 
+  static const String routeName = '/roomplan';
+
   @override
   State<RoomplanScreen> createState() => _RoomplanScreenState();
 }
@@ -161,7 +163,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
           ),
         ],
       ),
-      drawer: const MCGDrawer(),
+      drawer: const MCGDrawer(routeName: RoomplanScreen.routeName),
       floatingActionButton: SpeedDial(
         icon: Icons.layers,
         activeIcon: Icons.close,
