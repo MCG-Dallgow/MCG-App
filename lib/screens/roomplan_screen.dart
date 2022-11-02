@@ -167,8 +167,6 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
       floatingActionButton: SpeedDial(
         icon: Icons.layers,
         activeIcon: Icons.close,
-        foregroundColor: Colors.white,
-        activeForegroundColor: Colors.white,
         buttonSize: const Size(56.0, 56.0),
         visible: true,
         closeManually: false,
@@ -186,7 +184,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
               ),
             ),
             backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
-            foregroundColor: Colors.white,
+            foregroundColor: Theme.of(context).floatingActionButtonTheme.foregroundColor,
             label: "Erdgeschoss",
             labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {
@@ -203,7 +201,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
               ),
             ),
             backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
-            foregroundColor: Colors.white,
+            foregroundColor: Theme.of(context).floatingActionButtonTheme.foregroundColor,
             label: "Obergeschoss",
             labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {

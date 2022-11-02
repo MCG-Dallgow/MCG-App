@@ -20,6 +20,7 @@ ThemeData lightTheme = ThemeData(
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: colorPrimaryLight,
+    foregroundColor: Colors.white,
   ),
 );
 
@@ -31,5 +32,6 @@ ThemeData darkTheme = ThemeData(
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: colorPrimaryDark,
+    foregroundColor: Colors.white,
   ),
 );
