@@ -24,8 +24,9 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
     await loadGrades();
     setState(() {
       _body = ListView.builder(
-        itemCount: course.courseGrades.length * 2,
+        itemCount: course.courseGrades.length * 2 + 1,
         itemBuilder: (BuildContext context, int index) {
+          if (index == grades.length * 2) return const SizedBox(height: 76);
           if (index.isOdd) return const Divider();
 
           Grade grade = course.courseGrades[index ~/ 2];
@@ -99,7 +100,7 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: Text(
-                course.gradeAverage == -1 ? '/' : 'Ø${course.gradeAverage}',
+                course.gradeAverage == -1 ? '/' : 'Ø${course.gradeAverage.toStringAsFixed(2)}',
                 style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
               ),
             ),

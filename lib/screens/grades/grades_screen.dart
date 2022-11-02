@@ -37,8 +37,9 @@ class _GradesScreenState extends State<GradesScreen> {
       _tabBarView = TabBarView(
         children: [
           ListView.builder(
-            itemCount: grades.length * 2,
+            itemCount: grades.length * 2 + 1,
             itemBuilder: (BuildContext context, int index) {
+              if (index == grades.length * 2) return const SizedBox(height: 76);
               if (index.isOdd) return const Divider();
 
               Grade grade = grades[index ~/ 2];
@@ -61,7 +62,9 @@ class _GradesScreenState extends State<GradesScreen> {
                       context,
                       GradeEditScreen.routeName,
                       arguments: {'grade': grade},
-                    ).then((newGrade) { if (newGrade != null) editGrade(grade, newGrade as Grade); });
+                    ).then((newGrade) {
+                      if (newGrade != null) editGrade(grade, newGrade as Grade);
+                    });
 
                     if (!mounted) return;
                     _updateBody();
@@ -90,15 +93,17 @@ class _GradesScreenState extends State<GradesScreen> {
             },
           ),
           ListView.builder(
-            itemCount: courses.length,
+            itemCount: courses.length + 1,
             itemBuilder: (BuildContext context, int index) {
+              if (index == courses.length) return const SizedBox(height: 76);
+
               Course course = courses[index];
               return ListTile(
                 title: Text(course.displayName),
                 leading: course.circleAvatar,
                 trailing: Text(
-                  course.gradeAverage == -1 ? '/' : 'Ø${course.gradeAverage}',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  course.gradeAverage == -1 ? '/' : 'Ø${course.gradeAverage.toStringAsFixed(2)}',
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                 ),
                 onTap: () {
                   Navigator.pushNamed(
@@ -138,7 +143,9 @@ class _GradesScreenState extends State<GradesScreen> {
             await Navigator.pushNamed(
               context,
               GradeEditScreen.routeName,
-            ).then((newGrade) { if (newGrade != null) addGrade(newGrade as Grade); });
+            ).then((newGrade) {
+              if (newGrade != null) addGrade(newGrade as Grade);
+            });
 
             if (!mounted) return;
             _updateBody();
