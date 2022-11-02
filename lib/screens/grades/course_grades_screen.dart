@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mcgapp/widgets/app_bar.dart';
 
 import '../../classes/course.dart';
 import '../../classes/grade.dart';
@@ -91,8 +90,8 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
     course = ModalRoute.of(context)!.settings.arguments as Course;
 
     return Scaffold(
-      appBar: MCGAppBar(
-        title: course.displayName,
+      appBar: AppBar(
+        title: Text(course.displayName),
         backgroundColor: course.backgroundColor,
         foregroundColor: course.foregroundColor,
         actions: [

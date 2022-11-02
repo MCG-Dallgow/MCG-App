@@ -9,7 +9,6 @@ import 'package:dio/dio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../classes/substitution_entry.dart';
-import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
 class SubstitutionsScreen extends StatefulWidget {
@@ -99,7 +98,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
         );
         data = response.data['payload'];
       } else {
-        var jsonText = await rootBundle.loadString("assets/data/substitutions$offset.json");
+        var jsonText = await rootBundle.loadString('assets/data/substitutions$offset.json');
         data = json.decode(jsonText)['payload'];
       }
 
@@ -302,8 +301,8 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
       initialIndex: 0,
       length: _tabBarLength,
       child: Scaffold(
-        appBar: MCGAppBar(
-          title: 'Vertretungsplan',
+        appBar: AppBar(
+          title: const Text('Vertretungsplan'),
           actions: [
             IconButton(icon: const Icon(Icons.refresh), onPressed: () => _getSubstitutions()),
             IconButton(icon: const Icon(Icons.filter_alt), onPressed: () => _showFilterDialog(context)),

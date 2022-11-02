@@ -37,7 +37,7 @@ class Grade {
       ),
       ListTile(
         leading: const Icon(Icons.star),
-        title: Text("$grade"),
+        title: Text('$grade'),
       ),
       ListTile(
         leading: const Icon(Icons.event),
@@ -83,7 +83,7 @@ class Grade {
       ),
       leading: course.circleAvatar,
       trailing: Text(
-        "$grade",
+        '$grade',
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 20,

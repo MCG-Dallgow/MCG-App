@@ -3,7 +3,6 @@ import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:mcgapp/classes/course.dart';
 import 'package:mcgapp/classes/grade.dart';
-import 'package:mcgapp/widgets/app_bar.dart';
 
 class GradeEditScreen extends StatefulWidget {
   const GradeEditScreen({Key? key}) : super(key: key);
@@ -128,7 +127,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
     }
 
     return Scaffold(
-      appBar: MCGAppBar(title: grade == null ? 'Neue Note' : 'Note bearbeiten'),
+      appBar: AppBar(title: Text(grade == null ? 'Neue Note' : 'Note bearbeiten')),
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('Fertig'),
         icon: const Icon(Icons.done),
@@ -170,7 +169,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
           ),
           const Divider(),
           ListTile(
-            title: _gradeValue == null ? const Text('Note: -') : Text("Note: $_gradeValue"),
+            title: _gradeValue == null ? const Text('Note: -') : Text('Note: $_gradeValue'),
             leading: const Icon(Icons.star),
             onTap: () => _showGradeSelectionBottonSheet(context),
           ),

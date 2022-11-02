@@ -7,7 +7,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mcgapp/classes/room.dart';
 import 'package:mcgapp/main.dart';
 
-import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
 class RoomplanScreen extends StatefulWidget {
@@ -21,9 +20,9 @@ class RoomplanScreen extends StatefulWidget {
 
 class _RoomplanScreenState extends State<RoomplanScreen> {
   final List<List<Room>> _rooms = [[], []];
-  Widget _selectedPlan = const Center(child: Text("Wird geladen..."));
+  Widget _selectedPlan = const Center(child: Text('Wird geladen...'));
   int _currentFloor = 0;
-  String _appBarTitle = "Raumplan";
+  String _appBarTitle = 'Raumplan';
 
   late double _screenWidth;
   late double _screenHeight;
@@ -33,7 +32,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   late double _planHeight;
 
   Future<void> loadJsonData() async {
-    var jsonText = await rootBundle.loadString("assets/data/rooms.json");
+    var jsonText = await rootBundle.loadString('assets/data/rooms.json');
 
     setState(() {
       List data = json.decode(jsonText)['rooms'];
@@ -81,9 +80,9 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
       _currentFloor = floor;
 
       if (floor == 0) {
-        _appBarTitle = "Raumplan - Erdgeschoss";
+        _appBarTitle = 'Raumplan - Erdgeschoss';
       } else if (floor == 1) {
-        _appBarTitle = "Raumplan - Obergeschoss";
+        _appBarTitle = 'Raumplan - Obergeschoss';
       }
     });
   }
@@ -146,8 +145,8 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MCGAppBar(
-        title: _appBarTitle,
+      appBar: AppBar(
+        title: Text(_appBarTitle),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -178,14 +177,14 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
         children: [
           SpeedDialChild(
             child: const Text(
-              "0",
+              '0',
               style: TextStyle(
                 fontSize: 20,
               ),
             ),
             backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
             foregroundColor: Theme.of(context).floatingActionButtonTheme.foregroundColor,
-            label: "Erdgeschoss",
+            label: 'Erdgeschoss',
             labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {
               setState(() {
@@ -195,14 +194,14 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
           ),
           SpeedDialChild(
             child: const Text(
-              "1",
+              '1',
               style: TextStyle(
                 fontSize: 20,
               ),
             ),
             backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
             foregroundColor: Theme.of(context).floatingActionButtonTheme.foregroundColor,
-            label: "Obergeschoss",
+            label: 'Obergeschoss',
             labelStyle: const TextStyle(fontSize: 18.0),
             onTap: () {
               setState(() {

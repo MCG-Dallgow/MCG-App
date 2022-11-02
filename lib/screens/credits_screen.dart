@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
 class CreditsScreen extends StatefulWidget {
@@ -16,8 +15,8 @@ class _CreditsScreenState extends State<CreditsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MCGAppBar(
-        title: "Credits",
+      appBar: AppBar(
+        title: const Text('Credits'),
       ),
       drawer: const MCGDrawer(routeName: CreditsScreen.routeName),
       body: Padding(
@@ -33,27 +32,14 @@ class _CreditsScreenState extends State<CreditsScreen> {
             Text('Tamino Mende', style: TextStyle(fontSize: 16)),
             Text('Lukas Löffelmann', style: TextStyle(fontSize: 16)),
             Text(''),
-            Text('Digitalisierung des Raumplanes', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text('Digitalisierung des Raumplans', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             Text('Linus Wettach', style: TextStyle(fontSize: 16)),
-            Text('Denis Lomovtsev', style: TextStyle(fontSize: 15)),
-            Text('Luka Braunholz', style: TextStyle(fontSize: 16)),
             Text('Lars Kuhr', style: TextStyle(fontSize: 16)),
-            Text('Vanessa Fleck', style: TextStyle(fontSize: 16)),
+            Text('Luka Braunholz', style: TextStyle(fontSize: 16)),
             Text(''),
-            Text('Beschaffung von Rauminformationen', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text('Lukas Löffelmann', style: TextStyle(fontSize: 16)),
-            Text('Charlene Kühnaß', style: TextStyle(fontSize: 16)),
-            Text('Leni Helmhart', style: TextStyle(fontSize: 16)),
-            Text('Mathis Jasse', style: TextStyle(fontSize: 16)),
-            Text('Vincenzo Herbers', style: TextStyle(fontSize: 16)),
-            Text(''),
-            Text('Design', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            Text('Informationsbeschaffung', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             Text('Michael Hennig', style: TextStyle(fontSize: 16)),
-            Text('Benedikt Blum', style: TextStyle(fontSize: 16)),
-            Text('Kimi Müller', style: TextStyle(fontSize: 16)),
-            Text('Dani Badea', style: TextStyle(fontSize: 16)),
-            Text('Tim Püschner', style: TextStyle(fontSize: 16)),
-            Text('Jonathan Frank', style: TextStyle(fontSize: 16)),
+            Text('Lukas Löffelmann', style: TextStyle(fontSize: 16)),
           ],
         ),
       ),

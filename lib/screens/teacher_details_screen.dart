@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mcgapp/widgets/app_bar.dart';
 
 import '../classes/teacher.dart';
 
@@ -13,33 +12,33 @@ class TeacherDetailsScreen extends StatelessWidget {
     final teacher = ModalRoute.of(context)!.settings.arguments as Teacher;
 
     return Scaffold(
-      appBar: MCGAppBar(
-        title: "${teacher.anrede} ${teacher.nachname}",
+      appBar: AppBar(
+        title: Text('${teacher.anrede} ${teacher.nachname}'),
       ),
       body: ListView(
         children: [
           ListTile(
-            title: Text("${teacher.vorname} ${teacher.nachname}" != ""
-                ? "${teacher.vorname} ${teacher.nachname}"
-                : "kein vermerkter Name"),
+            title: Text('${teacher.vorname} ${teacher.nachname}' != ''
+                ? '${teacher.vorname} ${teacher.nachname}'
+                : 'kein vermerkter Name'),
             leading: const Icon(Icons.person),
           ),
           ListTile(
-            title: Text(teacher.faecher != ""
+            title: Text(teacher.faecher != ''
                 ? teacher.faecher
-                : "keine vermerkten Fächer"),
+                : 'keine vermerkten Fächer'),
             leading: const Icon(Icons.subject),
           ),
           ListTile(
-            title: Text(teacher.kuerzel != ""
+            title: Text(teacher.kuerzel != ''
                 ? teacher.kuerzel
-                : "kein vermerkes Kürzel"),
+                : 'kein vermerkes Kürzel'),
             leading: const Icon(Icons.tag),
           ),
           ListTile(
-            title: Text(teacher.email != ""
+            title: Text(teacher.email != ''
                 ? teacher.email
-                : "keine vermerkte E-Mail-Adresse"),
+                : 'keine vermerkte E-Mail-Adresse'),
             leading: const Icon(Icons.email),
           )
         ],
@@ -58,8 +57,8 @@ class SekretariatScreen extends StatelessWidget {
     final data = ModalRoute.of(context)!.settings.arguments as List<String>;
 
     return Scaffold(
-      appBar: MCGAppBar(
-        title: "Sekretariat",
+      appBar: AppBar(
+        title: const Text('Sekretariat'),
       ),
       body: ListView(
         children: [

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/drawer.dart';
-import '../widgets/app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -16,8 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MCGAppBar(
-        title: "MCG App",
+      appBar: AppBar(
+        title: const Text('MCG App'),
       ),
       drawer: const MCGDrawer(routeName: HomeScreen.routeName),
       body: ListView(

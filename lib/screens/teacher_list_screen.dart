@@ -22,7 +22,7 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
   final List<String> sekretariat = [];
 
   Future<void> loadJsonData() async {
-    var jsonText = await rootBundle.loadString("assets/data/teachers.json");
+    var jsonText = await rootBundle.loadString('assets/data/teachers.json');
     setState(() {
       List data = json.decode(jsonText)['teachers'];
       for (int i = 0; i < data.length; i++) {
@@ -94,7 +94,7 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
       _entries.clear();
       for (Teacher teacher in _teachers) {
         if (teacher.nachname.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
-            "${teacher.anrede} ${teacher.nachname}".toLowerCase().startsWith(searchQuery.toLowerCase()) ||
+            '${teacher.anrede} ${teacher.nachname}'.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
             teacher.vorname.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
             teacher.kuerzel.toLowerCase().startsWith(searchQuery.toLowerCase())) {
           _entries.add(teacher);
@@ -129,7 +129,7 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: _isSearching ? const BackButton() : null,
-        title: _isSearching ? _buildSearchField() : const Text("Lehrerliste"),
+        title: _isSearching ? _buildSearchField() : const Text('Lehrerliste'),
         actions: _buildActions(),
       ),
       drawer: const MCGDrawer(routeName: TeacherListScreen.routeName),
@@ -156,7 +156,7 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
                 int teacherIndex = index ~/ 2 - ((_entries.isNotEmpty && !_isSearching || searchQuery == '') ? 1 : 0);
                 return ListTile(
                   //leading: CircleAvatar(),
-                  title: Text("${_entries[teacherIndex].anrede} ${_entries[teacherIndex].nachname}"),
+                  title: Text('${_entries[teacherIndex].anrede} ${_entries[teacherIndex].nachname}'),
                   onTap: () {
                     Navigator.pushNamed(
                       context,
@@ -166,7 +166,7 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
                   },
                 );
               })
-          : const Center(child: Text("keine Treffer")),
+          : const Center(child: Text('keine Treffer')),
     );
   }
 }

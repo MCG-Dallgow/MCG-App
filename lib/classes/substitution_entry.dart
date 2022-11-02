@@ -19,7 +19,7 @@ class SubstitutionEntry extends StatelessWidget {
   }) : super(key: key);
 
   final String group; // Klasse(nstufe), auf die die Änderung zutrifft
-  final String lesson; // Schulstunde ("3-4" -> 2. Block)
+  final String lesson; // Schulstunde ('3-4' -> 2. Block)
   final String times; // Zeiten der Stunde (z.B. 11:30-13:00)
   final String? teacherOld; // regulärer Lehrer
   final String? teacherNew; // Vertretungslehrer

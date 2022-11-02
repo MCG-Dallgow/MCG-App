@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:mcgapp/screens/grades/course_grades_screen.dart';
 import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
-import 'package:mcgapp/widgets/app_bar.dart';
 import 'package:mcgapp/widgets/drawer.dart';
 
 import '../../classes/course.dart';
@@ -126,8 +125,8 @@ class _GradesScreenState extends State<GradesScreen> {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-        appBar: MCGAppBar(
-          title: 'Noten',
+        appBar: AppBar(
+          title: const Text('Noten'),
           bottom: const TabBar(
             tabs: [
               Tab(child: Text('Alle')),
