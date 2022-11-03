@@ -1,26 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mcgapp/classes/grade.dart';
+import 'package:mcgapp/classes/room.dart';
+import 'package:mcgapp/classes/teacher.dart';
 
-class Course {
-  String title;
-  String displayName;
-  String short;
-  Color backgroundColor;
+enum Subject {
+  biology('Biologie', 'Bio', Color(0xFF2E7D32)),
+  chemistry('Chemie', 'Che', Colors.green),
+  german('Deutsch', 'Deu', Colors.red),
+  english('Englisch', 'Eng', Colors.yellow),
+  religionE('evangelische Religion', 'eRe', Color(0xFFBA68C8)),
+  history('Geschichte', 'Ges', Color(0xFF8D6E63)),
+  geography('Geographie', 'Geo', Colors.deepPurple),
+  informatics('Informatik', 'Inf', Colors.teal),
+  religionK('katholische Religion', 'kRe', Color(0xFF7B1FA2)),
+  art('Kunst', 'Kun', Colors.pinkAccent),
+  ler('LER', 'LER', Colors.purple),
+  maths('Mathematik', 'Mat', Color(0xFF0D47A1)),
+  music('Musik', 'Mus', Color(0xFF5D4037)),
+  physics('Physik', 'Phy', Colors.blue),
+  politics('Politische Bildung', 'PB', Colors.grey),
+  sk('Seminarkurs', 'SK', Colors.blueGrey),
+  spanish('Spanisch', 'Spa', Color(0xFFFF6D00)),
+  pe('Sport', 'Spo', Colors.brown),
+  wat('Wirtschaft-Arbeit-Technik', 'WAT', Color(0xFFE0E0E0));
 
-  Course({
-    required this.title,
-    required this.displayName,
-    required this.short,
-    required this.backgroundColor,
-  });
+  const Subject(this.title, this.short, this.backgroundColor);
+  final String title;
+  final String short;
+  final Color backgroundColor;
 
   Color get foregroundColor => backgroundColor.computeLuminance() > 0.5 ? Colors.black : Colors.white;
+}
+
+class Course {
+  Subject subject;
+  Teacher teacher;
+  Room room;
+
+  Course({
+    required this.subject,
+    required this.teacher,
+    required this.room,
+  });
 
   List<Grade> get courseGrades {
     List<Grade> courseGrades = [];
 
-    for (Grade grade in grades) {
+    for (Grade grade in Grade.grades) {
       if (grade.course == this) courseGrades.add(grade);
     }
     courseGrades.sort((a, b) => int.parse(DateFormat('yyyyMMdd').format(b.date))
@@ -40,12 +67,12 @@ class Course {
 
   Widget get circleAvatar {
     return CircleAvatar(
-      backgroundColor: backgroundColor,
+      backgroundColor: subject.backgroundColor,
       child: Text(
-        short,
+        subject.short,
         style: TextStyle(
           fontWeight: FontWeight.bold,
-          color: foregroundColor,
+          color: subject.foregroundColor,
         ),
       ),
     );
@@ -53,129 +80,35 @@ class Course {
 
   static Course? fromTitle(String title) {
     for (Course course in courses) {
-      if (course.title == title) return course;
+      if (course.subject.title == title) return course;
     }
     return null;
   }
 }
 
-List<Course> courses = [
-  Course(
-    title: 'Biologie',
-    displayName: 'Biologie',
-    short: 'Bio',
-    backgroundColor: Colors.green.shade800,
+List<Course> courses = Subject.values.map((e) => Course(
+  subject: e,
+  teacher: Teacher(
+    anrede: 'Herr',
+    vorname: 'Alexander',
+    nachname: 'Tillner',
+    kuerzel: 'TillA',
+    faecher: 'Chemie, Geschichte',
+    email: 'alexander.tillner@lk.brandenburg.de',
   ),
-  Course(
-    title: 'Chemie',
-    displayName: 'Chemie',
-    short: 'Che',
-    backgroundColor: Colors.green,
+  room: Room(
+    number: '1.69',
+    name: '1.69',
+    teacher: 'Herr Tillner',
+    image: '',
+    type: 'Gesellschaftswissenschaften',
+    startX: 0,
+    startY: 0,
+    endX: 0,
+    endY: 0,
   ),
-  Course(
-    title: 'Deutsch',
-    displayName: 'Deutsch',
-    short: 'Deu',
-    backgroundColor: Colors.red,
-  ),
-  Course(
-    title: 'Englisch',
-    displayName: 'Englisch',
-    short: 'Eng',
-    backgroundColor: Colors.yellow,
-  ),
-  Course(
-    title: 'evangelische Religion',
-    displayName: 'evangelische Religion',
-    short: 'eRe',
-    backgroundColor: Colors.purple.shade300,
-  ),
-  Course(
-    title: 'Geschichte',
-    displayName: 'Geschichte',
-    short: 'Ges',
-    backgroundColor: Colors.brown.shade400,
-  ),
-  Course(
-    title: 'Geographie',
-    displayName: 'Geographie',
-    short: 'Geo',
-    backgroundColor: Colors.deepPurple,
-  ),
-  Course(
-    title: 'Informatik',
-    displayName: 'Informatik',
-    short: 'Inf',
-    backgroundColor: Colors.teal,
-  ),
-  Course(
-    title: 'katholische Religion',
-    displayName: 'katholische Religion',
-    short: 'kRe',
-    backgroundColor: Colors.purple.shade700,
-  ),
-  Course(
-    title: 'Kunst',
-    displayName: 'Kunst',
-    short: 'Kun',
-    backgroundColor: Colors.pinkAccent,
-  ),
-  Course(
-    title: 'LER',
-    displayName: 'LER',
-    short: 'LER',
-    backgroundColor: Colors.purple,
-  ),
-  Course(
-    title: 'Mathematik',
-    displayName: 'Mathematik',
-    short: 'Mat',
-    backgroundColor: Colors.blue.shade900,
-  ),
-  Course(
-    title: 'Musik',
-    displayName: 'Musik',
-    short: 'Mus',
-    backgroundColor: Colors.brown.shade700,
-  ),
-  Course(
-    title: 'Physik',
-    displayName: 'Physik',
-    short: 'Phy',
-    backgroundColor: Colors.blue,
-  ),
-  Course(
-    title: 'Politische Bildung',
-    displayName: 'Politische Bildung',
-    short: 'PB',
-    backgroundColor: Colors.grey,
-  ),
-  Course(
-    title: 'Seminarkurs',
-    displayName: 'Seminarkurs',
-    short: 'SK',
-    backgroundColor: Colors.blueGrey,
-  ),
-  Course(
-    title: 'Spanisch',
-    displayName: 'Spanisch',
-    short: 'Spa',
-    backgroundColor: Colors.orangeAccent.shade700,
-  ),
-  Course(
-    title: 'Sport',
-    displayName: 'Sport',
-    short: 'Spo',
-    backgroundColor: Colors.brown,
-  ),
-  Course(
-    title: 'Wirtschaft-Arbeit-Technik',
-    displayName: 'Wirtschaft-Arbeit-Technik',
-    short: 'WAT',
-    backgroundColor: Colors.grey.shade300,
-  ),
-];
+)).toList();
 
 void sortCourses() {
-  courses.sort((a, b) => a.displayName.compareTo(b.displayName));
+  courses.sort((a, b) => a.subject.title.compareTo(b.subject.title));
 }

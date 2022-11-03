@@ -20,12 +20,12 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
   late Course course;
 
   _updateBody() async {
-    await loadGrades();
+    await Grade.loadGrades();
     setState(() {
       _body = ListView.builder(
         itemCount: course.courseGrades.length * 2 + 1,
         itemBuilder: (BuildContext context, int index) {
-          if (index == grades.length * 2) return const SizedBox(height: 76);
+          if (index == course.courseGrades.length * 2) return const SizedBox(height: 76);
           if (index.isOdd) return const Divider();
 
           Grade grade = course.courseGrades[index ~/ 2];
@@ -48,7 +48,7 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
                   context,
                   GradeEditScreen.routeName,
                   arguments: {'grade': grade},
-                ).then((newGrade) { if (newGrade != null) editGrade(grade, newGrade as Grade); });
+                ).then((newGrade) { if (newGrade != null) Grade.editGrade(grade, newGrade as Grade); });
 
                 if (!mounted) return;
                 _updateBody();
@@ -68,7 +68,7 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
                 ],
               ),
               onPressed: () {
-                removeGrade(grade);
+                Grade.removeGrade(grade);
                 Navigator.pop(context);
                 _updateBody();
               },
@@ -91,9 +91,9 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(course.displayName),
-        backgroundColor: course.backgroundColor,
-        foregroundColor: course.foregroundColor,
+        title: Text(course.subject.title),
+        backgroundColor: course.subject.backgroundColor,
+        foregroundColor: course.subject.foregroundColor,
         actions: [
           Center(
             child: Padding(
@@ -114,7 +114,7 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
             context,
             GradeEditScreen.routeName,
             arguments: {'course': course},
-          ).then((newGrade) { if (newGrade != null) addGrade(newGrade as Grade); });
+          ).then((newGrade) { if (newGrade != null) Grade.addGrade(newGrade as Grade); });
 
           if (!mounted) return;
           _updateBody();

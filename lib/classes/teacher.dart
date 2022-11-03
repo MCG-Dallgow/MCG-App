@@ -12,7 +12,7 @@ class Teacher {
     required this.nachname,
     required this.kuerzel,
     required this.faecher,
-    required this.email
+    required this.email,
   });
 
   Teacher.fromJson(var json, int index) {

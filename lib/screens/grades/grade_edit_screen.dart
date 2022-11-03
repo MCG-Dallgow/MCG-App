@@ -44,7 +44,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
 
             Course course = courses[index ~/ 2];
             return ListTile(
-              title: Text(course.displayName),
+              title: Text(course.subject.title),
               leading: course.circleAvatar,
               onTap: () {
                 setState(() {
@@ -70,16 +70,16 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
       ),
       builder: (BuildContext context) {
         return ListView.builder(
-          itemCount: gradeEntries.length,
+          itemCount: Grade.gradeEntries.length,
           itemBuilder: (BuildContext context, int index) {
             //if (index.isOdd) return const Divider();
 
             return ListTile(
-              title: Text(gradeEntries[index].toString()),
+              title: Text(Grade.gradeEntries[index].toString()),
               leading: const Icon(Icons.star),
               onTap: () {
                 setState(() {
-                  _gradeValue = gradeEntries[index];
+                  _gradeValue = Grade.gradeEntries[index];
                 });
                 Navigator.of(context).pop();
               },
@@ -163,7 +163,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
           ),
           const Divider(),
           ListTile(
-            title: _course == null ? const Text('Kurs') : Text(_course!.displayName),
+            title: _course == null ? const Text('Kurs') : Text(_course!.subject.title),
             leading: _course == null ? const Icon(Icons.widgets) : _course?.circleAvatar,
             onTap: () => _showCourseSelectionBottonSheet(context),
           ),

@@ -9,6 +9,18 @@ class Room {
   late double endX;
   late double endY;
 
+  Room({
+    required this.number,
+    required this.name,
+    required this.teacher,
+    required this.image,
+    required this.type,
+    required this.startX,
+    required this.startY,
+    required this.endX,
+    required this.endY,
+  });
+
   Room.fromJson(var json, int index) {
     number = json[index]['number'];
     name = json[index]['name'];

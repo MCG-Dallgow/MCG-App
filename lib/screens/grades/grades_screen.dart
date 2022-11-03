@@ -21,6 +21,7 @@ class _GradesScreenState extends State<GradesScreen> {
   TabBarView _tabBarView = const TabBarView(children: [
     Center(child: Text('Wird geladen...')),
     Center(child: Text('Wird geladen...')),
+    Center(child: Text('Wird geladen...')),
   ]);
 
   @override
@@ -31,17 +32,17 @@ class _GradesScreenState extends State<GradesScreen> {
   }
 
   _updateBody() async {
-    await loadGrades();
+    await Grade.loadGrades();
     setState(() {
       _tabBarView = TabBarView(
         children: [
           ListView.builder(
-            itemCount: grades.length * 2 + 1,
+            itemCount: Grade.grades.length * 2 + 1,
             itemBuilder: (BuildContext context, int index) {
-              if (index == grades.length * 2) return const SizedBox(height: 76);
+              if (index == Grade.grades.length * 2) return const SizedBox(height: 76);
               if (index.isOdd) return const Divider();
 
-              Grade grade = grades[index ~/ 2];
+              Grade grade = Grade.grades[index ~/ 2];
               return grade.listTile(context, <Widget>[
                 OutlinedButton(
                   style: OutlinedButton.styleFrom(
@@ -62,7 +63,7 @@ class _GradesScreenState extends State<GradesScreen> {
                       GradeEditScreen.routeName,
                       arguments: {'grade': grade},
                     ).then((newGrade) {
-                      if (newGrade != null) editGrade(grade, newGrade as Grade);
+                      if (newGrade != null) Grade.editGrade(grade, newGrade as Grade);
                     });
 
                     if (!mounted) return;
@@ -83,7 +84,7 @@ class _GradesScreenState extends State<GradesScreen> {
                     ],
                   ),
                   onPressed: () {
-                    removeGrade(grade);
+                    Grade.removeGrade(grade);
                     Navigator.pop(context);
                     _updateBody();
                   },
@@ -98,7 +99,7 @@ class _GradesScreenState extends State<GradesScreen> {
 
               Course course = courses[index];
               return ListTile(
-                title: Text(course.displayName),
+                title: Text(course.subject.title),
                 leading: course.circleAvatar,
                 trailing: Text(
                   course.gradeAverage == -1 ? '/' : 'Ø${course.gradeAverage.toStringAsFixed(2)}',
@@ -114,6 +115,7 @@ class _GradesScreenState extends State<GradesScreen> {
               );
             },
           ),
+          const Center(child: Text('Coming Soon')),
         ],
       );
     });
@@ -123,14 +125,26 @@ class _GradesScreenState extends State<GradesScreen> {
   Widget build(BuildContext context) {
     return DefaultTabController(
       initialIndex: 0,
-      length: 2,
+      length: 3,
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Noten'),
+          actions: [
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: Text(
+                  Grade.totalAverage == -1 ? '/' : 'Ø${Grade.totalAverage.toStringAsFixed(2)}',
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                ),
+              ),
+            ),
+          ],
           bottom: const TabBar(
             tabs: [
               Tab(child: Text('Alle')),
               Tab(child: Text('Fächer')),
+              Tab(child: Text('Auswertung')),
             ],
           ),
         ),
@@ -143,7 +157,7 @@ class _GradesScreenState extends State<GradesScreen> {
               context,
               GradeEditScreen.routeName,
             ).then((newGrade) {
-              if (newGrade != null) addGrade(newGrade as Grade);
+              if (newGrade != null) Grade.addGrade(newGrade as Grade);
             });
 
             if (!mounted) return;
