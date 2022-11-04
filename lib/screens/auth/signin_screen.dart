@@ -1,5 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mcgapp/main.dart';
+import 'package:mcgapp/screens/auth/signup_screen.dart';
+import 'package:mcgapp/screens/home_screen.dart';
+import 'package:mcgapp/widgets/text_fields.dart';
+
+import '../../logic/auth.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -10,28 +16,19 @@ class SignInScreen extends StatefulWidget {
   State<SignInScreen> createState() => _SignInScreenState();
 }
 
-String? validateEmail(String? value) {
-  String pattern = r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-      r"{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]"
-      r"{0,253}[a-zA-Z0-9])?)*$";
-  RegExp regex = RegExp(pattern);
-  if (value == null || value.isEmpty) {
-    return 'E-Mail ist erforderlich';
-  } else if (!regex.hasMatch(value)) {
-    return 'Gib eine gültige E-Mail-Adresse ein';
-  } else {
-    return null;
-  }
-}
-
 class _SignInScreenState extends State<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  bool passwordObscured = true;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  String _firebaseMessage = '';
 
   @override
-  void initState() {
-    super.initState();
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 
   @override
@@ -45,70 +42,66 @@ class _SignInScreenState extends State<SignInScreen> {
             const Padding(
               padding: EdgeInsets.only(top: 64, bottom: 24),
               child: Center(
+                child: Text(
+                  'MCG-App',
+                  style: TextStyle(
+                    fontSize: 38,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: EmailField(controller: _emailController),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: PasswordField(controller: _passwordController),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                TextButton(
+                  style: ButtonStyle(padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.only())),
                   child: Text(
-                'MCG-App',
-                style: TextStyle(
-                  fontSize: 38,
-                  fontWeight: FontWeight.bold,
-                ),
-              )),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: TextFormField(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  labelText: 'E-Mail',
-                  prefixIcon: Icon(Icons.email),
-                ),
-                validator: (value) => validateEmail(value),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8),
-              child: TextFormField(
-                obscureText: passwordObscured,
-                enableSuggestions: false,
-                autocorrect: false,
-                decoration: InputDecoration(
-                  border: const OutlineInputBorder(),
-                  labelText: 'Passwort',
-                  prefixIcon: const Icon(Icons.lock),
-                  suffixIcon: IconButton(
-                    icon: Icon(passwordObscured ? Icons.visibility : Icons.visibility_off),
-                    onPressed: () => setState(() {
-                      passwordObscured = !passwordObscured;
-                    }),
+                    'Passwort zurücksetzen',
+                    style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color ?? themeManager.colorStroke),
                   ),
+                  onPressed: () {},
                 ),
-                validator: (String? value) {
-                  if ((value ?? '').trim().isEmpty) {
-                    return 'Passwort ist erforderlich';
-                  }
-                  return null;
-                },
-              ),
+                ElevatedButton(
+                  child: const Text('Einloggen'),
+                  onPressed: () async {
+                    setState(() {
+                      _firebaseMessage = '';
+                    });
+
+                    if (_formKey.currentState?.validate() ?? false) {
+                      dynamic response = await Auth().handleSignInWithEmailAndPassword(
+                          _emailController.text.trim(), _passwordController.text.trim());
+
+                      if (!mounted) return;
+
+                      if (response is String) {
+                        setState(() {
+                          _firebaseMessage = response;
+                        });
+                      } else if (response is User) {
+                        Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                      }
+                    }
+                  },
+                )
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(), //only(bottom: 16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  TextButton(
-                    style: ButtonStyle(padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.only())),
-                    child: Text(
-                      'Passwort zurücksetzen',
-                      style: TextStyle(color: themeManager.colorStroke),
-                    ),
-                    onPressed: () {},
-                  ),
-                  ElevatedButton(
-                    child: const Text('Einloggen'),
-                    onPressed: () {
-                      if (_formKey.currentState?.validate() ?? false) {}
-                    },
-                  )
-                ],
+            Center(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: Text(
+                  _firebaseMessage,
+                  style: TextStyle(color: Theme.of(context).errorColor, fontSize: 12),
+                ),
               ),
             ),
             Center(
@@ -122,7 +115,12 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                     Text('Neues Konto erstellen'),
                   ]),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      SignUpScreen.routeName,
+                    );
+                  },
                 ),
               ),
             ),

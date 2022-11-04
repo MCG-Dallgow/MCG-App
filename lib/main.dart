@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:mcgapp/firebase_options.dart';
 import 'package:mcgapp/screens/auth/signin_screen.dart';
+import 'package:mcgapp/screens/auth/signup_screen.dart';
 import 'package:mcgapp/screens/credits_screen.dart';
 import 'package:mcgapp/screens/grades/course_grades_screen.dart';
 import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
@@ -34,11 +36,17 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  String _initialRoute = SignInScreen.routeName;
 
   @override
   void initState() {
     themeManager.loadTheme();
     themeManager.addListener(themeListener);
+
+    if (FirebaseAuth.instance.currentUser != null) {
+      _initialRoute = HomeScreen.routeName;
+    }
+
     super.initState();
   }
 
@@ -50,9 +58,7 @@ class _MyAppState extends State<MyApp> {
 
   themeListener() {
     if (mounted) {
-      setState(() {
-
-      });
+      setState(() {});
     }
   }
 
@@ -64,9 +70,10 @@ class _MyAppState extends State<MyApp> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: themeManager.themeMode,
-      initialRoute: SignInScreen.routeName,
+      initialRoute: _initialRoute,
       routes: {
         SignInScreen.routeName: (context) => const SignInScreen(),
+        SignUpScreen.routeName: (context) => const SignUpScreen(),
         HomeScreen.routeName: (context) => const HomeScreen(),
         TimetableScreen.routeName: (context) => const TimetableScreen(),
         SubstitutionsScreen.routeName: (context) => const SubstitutionsScreen(),

@@ -1,8 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mcgapp/screens/auth/signin_screen.dart';
 import 'package:mcgapp/screens/home_screen.dart';
 import 'package:mcgapp/screens/substitutions_screen.dart';
 
-import '../screens/credits_screen.dart';
 import '../screens/grades/grades_screen.dart';
 import '../screens/roomplan_screen.dart';
 import '../screens/settings_screen.dart';
@@ -26,9 +27,9 @@ class MCGDrawer extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
               ),
-              child: const Text(
-                'MCG App',
-                style: TextStyle(
+              child: Text(
+                FirebaseAuth.instance.currentUser!.email!, //'MCG App',
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,
                 ),
@@ -58,7 +59,8 @@ class MCGDrawer extends StatelessWidget {
             title: const Text(
               'Stundenplan - Coming Soon',
               style: TextStyle(
-                color: Colors.grey, /*routeName == const TimetableScreen().routeName ? Colors.green : null*/),
+                color: Colors.grey, /*routeName == const TimetableScreen().routeName ? Colors.green : null*/
+              ),
             ),
             onTap: () {
               /*if (routeName == TimetableScreen.routeName) {
@@ -141,9 +143,7 @@ class MCGDrawer extends StatelessWidget {
               }
             },
           ),
-          const Divider(
-            color: Colors.black38,
-          ),
+          const Divider(indent: 10, endIndent: 10, thickness: 1),
           ListTile(
             leading: Icon(
               Icons.settings,
@@ -162,7 +162,7 @@ class MCGDrawer extends StatelessWidget {
               }
             },
           ),
-          ListTile(
+          /*ListTile(
             leading: Icon(
               Icons.account_balance,
               color: routeName == CreditsScreen.routeName ? Colors.green : null,
@@ -180,6 +180,16 @@ class MCGDrawer extends StatelessWidget {
               }
             },
           ),
+          const Divider(indent: 10, endIndent: 10, thickness: 1),*/
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text('Abmelden'),
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+
+              Navigator.pushNamedAndRemoveUntil(context, SignInScreen.routeName, (route) => false);
+            },
+          )
         ],
       ),
     );
