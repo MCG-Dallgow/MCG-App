@@ -17,13 +17,15 @@ String? _validateEmail(String? value) {
 }
 
 class NameField extends StatelessWidget {
-  const NameField({Key? key, required this.type}) : super(key: key);
+  const NameField({Key? key, required this.type, this.controller}) : super(key: key);
 
   final String type;
+  final TextEditingController? controller;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       decoration: InputDecoration(
         border: const OutlineInputBorder(),
         labelText: type,
@@ -40,7 +42,9 @@ class NameField extends StatelessWidget {
 }
 
 class ClassField extends StatefulWidget {
-  const ClassField({Key? key}) : super(key: key);
+  const ClassField({Key? key, this.controller}) : super(key: key);
+
+  final TextEditingController? controller;
 
   @override
   State<ClassField> createState() => _ClassFieldState();
@@ -49,10 +53,11 @@ class ClassField extends StatefulWidget {
 class _ClassFieldState extends State<ClassField> {
   final List<Group> _dropdownItems = Group.values;
   late Group _dropdownValue;
-  final TextEditingController _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController controller = widget.controller ?? TextEditingController();
+
     return DropdownButtonFormField(
       decoration: const InputDecoration(
         border: OutlineInputBorder(),
@@ -66,7 +71,7 @@ class _ClassFieldState extends State<ClassField> {
       onChanged: (Group? newValue) {
         setState(() {
           _dropdownValue = newValue ?? _dropdownValue;
-          _controller.text = _dropdownValue.name;
+          controller.text = _dropdownValue.name;
         });
       },
       validator: (Group? value) {

@@ -27,4 +27,11 @@ enum Group {
 
   const Group(this.name);
   final String name;
+
+  static Group? fromName(String name) {
+    for (Group group in values) {
+      if (group.name == name) return group;
+    }
+    return null;
+  }
 }

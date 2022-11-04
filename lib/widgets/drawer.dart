@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mcgapp/classes/user.dart';
 import 'package:mcgapp/screens/auth/signin_screen.dart';
 import 'package:mcgapp/screens/home_screen.dart';
 import 'package:mcgapp/screens/substitutions_screen.dart';
@@ -24,16 +25,23 @@ class MCGDrawer extends StatelessWidget {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
-              child: Text(
-                FirebaseAuth.instance.currentUser!.email!, //'MCG App',
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  '${AppUser.user.firstName} ${AppUser.user.lastName}',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 24,
+                  ),
                 ),
-              )),
+                Text(AppUser.user.email),
+              ],
+            ),
+          ),
           ListTile(
             leading: Icon(
               Icons.home,

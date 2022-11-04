@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mcgapp/classes/group.dart';
+import 'package:mcgapp/classes/user.dart';
 import 'package:mcgapp/logic/auth.dart';
 
 import '../../widgets/text_fields.dart';
@@ -17,6 +19,9 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
 
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _groupController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -42,17 +47,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: NameField(type: 'Vorname'),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: NameField(type: 'Vorname', controller: _firstNameController),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: NameField(type: 'Nachname'),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: NameField(type: 'Nachname', controller: _lastNameController),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: ClassField(),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8),
+              child: ClassField(controller: _groupController),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
@@ -86,6 +91,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         _firebaseMessage = response;
                       });
                     } else if (response is User) {
+                      AppUser user = AppUser(
+                        firstName: _firstNameController.text,
+                        lastName: _lastNameController.text,
+                        email: _emailController.text,
+                        group: Group.fromName(_groupController.text)!,
+                      );
+                      AppUser.saveUser(user);
+
                       Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
                     }
                   }
