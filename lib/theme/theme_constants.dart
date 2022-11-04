@@ -15,23 +15,31 @@ Color colorSecondaryDark = Colors.green.shade800;
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: colorPrimaryLight,
+  focusColor: colorPrimaryLight,
   appBarTheme: AppBarTheme(
     backgroundColor: colorPrimaryLight,
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: colorPrimaryLight,
     foregroundColor: Colors.white,
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(colorPrimaryLight)),
   ),
 );
 
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   primaryColor: colorPrimaryDark,
+  focusColor: colorPrimaryDark,
   appBarTheme: AppBarTheme(
     backgroundColor: colorPrimaryDark,
   ),
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: colorPrimaryDark,
     foregroundColor: Colors.white,
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(backgroundColor: MaterialStateProperty.all<Color>(colorPrimaryDark)),
   ),
 );

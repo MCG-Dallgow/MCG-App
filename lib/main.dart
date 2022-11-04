@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:mcgapp/firebase_options.dart';
+import 'package:mcgapp/screens/auth/signin_screen.dart';
 import 'package:mcgapp/screens/credits_screen.dart';
 import 'package:mcgapp/screens/grades/course_grades_screen.dart';
 import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
@@ -13,7 +16,11 @@ import 'package:mcgapp/screens/timetable_screen.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 import 'package:mcgapp/theme/theme_manager.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -57,8 +64,9 @@ class _MyAppState extends State<MyApp> {
       theme: lightTheme,
       darkTheme: darkTheme,
       themeMode: themeManager.themeMode,
-      initialRoute: HomeScreen.routeName,
+      initialRoute: SignInScreen.routeName,
       routes: {
+        SignInScreen.routeName: (context) => const SignInScreen(),
         HomeScreen.routeName: (context) => const HomeScreen(),
         TimetableScreen.routeName: (context) => const TimetableScreen(),
         SubstitutionsScreen.routeName: (context) => const SubstitutionsScreen(),
