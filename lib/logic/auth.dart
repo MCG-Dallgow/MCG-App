@@ -1,7 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 class Auth {
   final FirebaseAuth auth = FirebaseAuth.instance;
+
+  User? getFirebaseUser() {
+    User? user = FirebaseAuth.instance.currentUser;
+    return user;
+  }
 
   Future<dynamic> handleSignUpWithEmailAndPassword(String email, String password) async {
     try {
@@ -13,7 +19,12 @@ class Auth {
         return 'Das angebene Passwort ist zu schwach';
       } else if (e.code == 'email-already-in-use') {
         return 'Das Konto mit dieser E-Mail-Adresse existiert schon';
+      } else if (e.code == 'invalid-email') {
+        return 'Die angegebene E-Mail-Adresse ist ungültig';
       }
+      if (kDebugMode) print(e.code);
+    } catch (e) {
+      if (kDebugMode) print(e);
     }
     return 'Unbekannter Fehler';
   }
@@ -29,6 +40,9 @@ class Auth {
       } else if (e.code == 'wrong-password') {
         return 'Das angegebene Passwort ist falsch';
       }
+      if (kDebugMode) print(e.code);
+    } catch (e) {
+      if (kDebugMode) print(e);
     }
     return 'Unbekannter Fehler';
   }

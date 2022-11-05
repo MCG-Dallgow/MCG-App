@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:zxcvbn/zxcvbn.dart';
 
 import '../classes/group.dart';
+
+final Zxcvbn zxcvbn = Zxcvbn();
 
 String? _validateEmail(String? value) {
   String pattern = r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]"
@@ -13,6 +16,48 @@ String? _validateEmail(String? value) {
     return 'Gib eine gültige E-Mail-Adresse ein';
   } else {
     return null;
+  }
+}
+
+int _getPasswordStrength(String password) {
+  if (password.trim() == '') return 0;
+  Result result = zxcvbn.evaluate(password);
+  if (result.score == null) return 0;
+
+  return result.score!.toInt() + 1;
+}
+
+String _getStrengthDescription(int strength) {
+  switch (strength) {
+    case 1:
+      return 'Sehr schwach';
+    case 2:
+      return 'Schwach';
+    case 3:
+      return 'Normal';
+    case 4:
+      return 'Stark';
+    case 5:
+      return 'Sehr stark';
+    default:
+      return '';
+  }
+}
+
+Color _getStrengthColor(int strength) {
+  switch (strength) {
+    case 1:
+      return Colors.red;
+    case 2:
+      return Colors.orange;
+    case 3:
+      return Colors.yellow;
+    case 4:
+      return Colors.lightGreen;
+    case 5:
+      return Colors.green;
+    default:
+      return Colors.white;
   }
 }
 
@@ -64,10 +109,12 @@ class _ClassFieldState extends State<ClassField> {
         prefixIcon: Icon(Icons.tag),
       ),
       hint: const Text('Klasse'),
-      items: _dropdownItems.map((Group value) => DropdownMenuItem<Group>(
-            value: value,
-            child: Text(value.name),
-          )).toList(),
+      items: _dropdownItems
+          .map((Group value) => DropdownMenuItem<Group>(
+                value: value,
+                child: Text(value.name),
+              ))
+          .toList(),
       onChanged: (Group? newValue) {
         setState(() {
           _dropdownValue = newValue ?? _dropdownValue;
@@ -106,22 +153,23 @@ class EmailField extends StatelessWidget {
 }
 
 class PasswordField extends StatefulWidget {
-  const PasswordField({Key? key, this.controller}) : super(key: key);
+  const PasswordField({Key? key, this.controller, this.onChanged}) : super(key: key);
 
   final TextEditingController? controller;
+  final dynamic onChanged;
 
   @override
   State<PasswordField> createState() => _PasswordFieldState();
 }
 
 class _PasswordFieldState extends State<PasswordField> {
-  bool passwordObscured = true;
+  bool _passwordObscured = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       controller: widget.controller,
-      obscureText: passwordObscured,
+      obscureText: _passwordObscured,
       enableSuggestions: false,
       autocorrect: false,
       decoration: InputDecoration(
@@ -129,19 +177,60 @@ class _PasswordFieldState extends State<PasswordField> {
         labelText: 'Passwort',
         prefixIcon: const Icon(Icons.lock),
         suffixIcon: IconButton(
-          icon: Icon(passwordObscured ? Icons.visibility : Icons.visibility_off),
+          icon: Icon(_passwordObscured ? Icons.visibility : Icons.visibility_off),
           onPressed: () => setState(() {
-            passwordObscured = !passwordObscured;
+            _passwordObscured = !_passwordObscured;
           }),
         ),
       ),
+      onChanged: widget.onChanged,
       validator: (String? value) {
         if ((value ?? '').trim().isEmpty) {
           return 'Passwort ist erforderlich';
         }
+        if (_getPasswordStrength(value!) < 3) {
+          return 'Password ist zu schwach';
+        }
         return null;
       },
     );
+  }
+}
+
+class PasswordStrengthIndicator extends StatelessWidget {
+  const PasswordStrengthIndicator({Key? key, required this.password}) : super(key: key);
+
+  final String password;
+
+  @override
+  Widget build(BuildContext context) {
+    if (password.trim() == '') {
+      return const Padding(
+        padding: EdgeInsets.symmetric(vertical: 6),
+        child: LinearProgressIndicator(value: 0),
+      );
+    } else {
+      int passwordStrength = _getPasswordStrength(password);
+      Color strengthColor = _getStrengthColor(passwordStrength);
+
+      return Row(
+        children: [
+          Expanded(
+            child: LinearProgressIndicator(
+              value: passwordStrength.toDouble() / 5,
+              color: strengthColor,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 8),
+            child: Text(
+              _getStrengthDescription(passwordStrength),
+              style: TextStyle(color: strengthColor),
+            ),
+          ),
+        ],
+      );
+    }
   }
 }
 

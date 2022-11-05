@@ -25,6 +25,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  String _password = '';
+
   String _firebaseMessage = '';
 
   @override
@@ -65,8 +67,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: PasswordField(controller: _passwordController),
+              child: PasswordField(
+                controller: _passwordController,
+                onChanged: (value) => setState(() {
+                  _password = value;
+                }),
+              ),
             ),
+            PasswordStrengthIndicator(password: _password),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
               child: PasswordConfirmationField(passwordController: _passwordController),
