@@ -28,18 +28,22 @@ class MCGDrawer extends StatelessWidget {
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColor,
             ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  '${AppUser.user.firstName} ${AppUser.user.lastName}',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
+            child: Padding(
+              padding: const EdgeInsets.only(bottom: 8),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    '${AppUser.user.firstName} ${AppUser.user.lastName}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
                   ),
-                ),
-                Text(AppUser.user.email),
-              ],
+                  Text(AppUser.user.email, style: const TextStyle(color: Colors.white)),
+                ],
+              ),
             ),
           ),
           ListTile(

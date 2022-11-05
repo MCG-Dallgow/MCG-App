@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mcgapp/main.dart';
 import 'package:zxcvbn/zxcvbn.dart';
 
 import '../classes/group.dart';
@@ -51,7 +52,7 @@ Color _getStrengthColor(int strength) {
     case 2:
       return Colors.orange;
     case 3:
-      return Colors.yellow;
+      return Colors.yellow.shade600;
     case 4:
       return Colors.lightGreen;
     case 5:
@@ -205,9 +206,12 @@ class PasswordStrengthIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     if (password.trim() == '') {
-      return const Padding(
-        padding: EdgeInsets.symmetric(vertical: 6),
-        child: LinearProgressIndicator(value: 0),
+      return Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        child: LinearProgressIndicator(
+          value: 0,
+          backgroundColor: themeManager.themeMode != ThemeMode.dark ? Colors.grey.shade300 : null,
+        ),
       );
     } else {
       int passwordStrength = _getPasswordStrength(password);
@@ -219,6 +223,7 @@ class PasswordStrengthIndicator extends StatelessWidget {
             child: LinearProgressIndicator(
               value: passwordStrength.toDouble() / 5,
               color: strengthColor,
+              backgroundColor: themeManager.themeMode != ThemeMode.dark ? Colors.grey.shade300 : null,
             ),
           ),
           Padding(
