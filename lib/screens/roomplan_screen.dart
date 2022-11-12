@@ -254,7 +254,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
             },
             child: InteractiveViewer(
               transformationController: transformationController,
-              maxScale: 5,
+              maxScale: _screenHeight / _screenWidth * 3,
               scaleFactor: 2,
               child: Container(
                 constraints: const BoxConstraints.expand(),
