@@ -46,10 +46,8 @@ class ThemeManager with ChangeNotifier {
   }
 
   toggleTheme(bool isDark) async {
-    if (!kIsWeb) {
-      await _setThemeMode(isDark ? ThemeMode.dark : ThemeMode.light);
-      await loadTheme();
-    }
+    await _setThemeMode(isDark ? ThemeMode.dark : ThemeMode.light);
+    await loadTheme();
     _setColors(isDark);
     notifyListeners();
   }
