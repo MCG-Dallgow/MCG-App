@@ -23,6 +23,10 @@ enum Subject {
   sk('Seminarkurs', 'SK', Colors.blueGrey),
   spanish('Spanisch', 'Spa', Color(0xFFFF6D00)),
   pe('Sport', 'Spo', Colors.brown),
+  france('Französisch', 'Frz', Color.lightBlue.shade900),
+  econemy('Wirtschaft', 'Wirt', Color.lightGreenAccent),
+  technology('Technik', 'Tech', Color.cyan.shade200),
+  latein('Latein', 'Lat', Color.limeAccent),
   wat('Wirtschaft-Arbeit-Technik', 'WAT', Color(0xFFE0E0E0));
 
   const Subject(this.title, this.short, this.backgroundColor);
