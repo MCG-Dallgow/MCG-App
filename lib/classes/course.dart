@@ -10,7 +10,7 @@ enum Subject {
   german('Deutsch', 'Deu', Colors.red),
   english('Englisch', 'Eng', Colors.yellow),
   religionE('evangelische Religion', 'eRe', Color(0xFFBA68C8)),
-  french('Französisch', 'Fra', Colors.lightBlueAccent),
+  french('Französisch', 'Fra', Colors.lightBlueAccent),
   history('Geschichte', 'Ges', Color(0xFF8D6E63)),
   geography('Geographie', 'Geo', Colors.deepPurple),
   informatics('Informatik', 'Inf', Colors.teal),
