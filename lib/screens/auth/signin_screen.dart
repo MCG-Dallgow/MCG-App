@@ -88,7 +88,18 @@ class _SignInScreenState extends State<SignInScreen> {
                           _firebaseMessage = response;
                         });
                       } else if (response is User) {
-                        Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                        await Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false)
+                            .then((value) {
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            elevation: 6.0,
+                            backgroundColor: Theme.of(context).primaryColor,
+                            behavior: SnackBarBehavior.floating,
+                            content: const Text(
+                              'Willkommen, du bist jetzt angemeldet',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ));
+                        });
                       }
                     }
                   },

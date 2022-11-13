@@ -107,7 +107,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       );
                       AppUser.saveUser(user);
 
-                      Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                      await Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false)
+                          .then((value) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          elevation: 6.0,
+                          backgroundColor: Theme.of(context).primaryColor,
+                          behavior: SnackBarBehavior.floating,
+                          content: const Text(
+                            'Willkommen, du bist jetzt registriert',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ));
+                      });
                     }
                   }
                 },
