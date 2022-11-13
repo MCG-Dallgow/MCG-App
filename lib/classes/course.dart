@@ -16,7 +16,7 @@ enum Subject {
   informatics('Informatik', 'Inf', Colors.teal),
   religionK('katholische Religion', 'kRe', Color(0xFF7B1FA2)),
   art('Kunst', 'Kun', Colors.pinkAccent),
-  latin('Latein', 'Lat', Color.limeAccent),
+  latin('Latein', 'Lat', Colors.limeAccent),
   ler('LER', 'LER', Colors.purple),
   maths('Mathematik', 'Mat', Color(0xFF0D47A1)),
   music('Musik', 'Mus', Color(0xFF5D4037)),
