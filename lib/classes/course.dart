@@ -10,11 +10,13 @@ enum Subject {
   german('Deutsch', 'Deu', Colors.red),
   english('Englisch', 'Eng', Colors.yellow),
   religionE('evangelische Religion', 'eRe', Color(0xFFBA68C8)),
+  french('Französisch', 'Fra', Colors.lightBlueAccent),
   history('Geschichte', 'Ges', Color(0xFF8D6E63)),
   geography('Geographie', 'Geo', Colors.deepPurple),
   informatics('Informatik', 'Inf', Colors.teal),
   religionK('katholische Religion', 'kRe', Color(0xFF7B1FA2)),
   art('Kunst', 'Kun', Colors.pinkAccent),
+  latin('Latein', 'Lat', Color.limeAccent),
   ler('LER', 'LER', Colors.purple),
   maths('Mathematik', 'Mat', Color(0xFF0D47A1)),
   music('Musik', 'Mus', Color(0xFF5D4037)),
@@ -23,10 +25,7 @@ enum Subject {
   sk('Seminarkurs', 'SK', Colors.blueGrey),
   spanish('Spanisch', 'Spa', Color(0xFFFF6D00)),
   pe('Sport', 'Spo', Colors.brown),
-  france('Französisch', 'Frz', Color.lightBlue.shade900),
-  econemy('Wirtschaft', 'Wirt', Color.lightGreenAccent),
-  technology('Technik', 'Tech', Color.cyan.shade200),
-  latein('Latein', 'Lat', Color.limeAccent),
+  technology('Technik', 'Tec', Color(0xFF80DEEA)),
   wat('Wirtschaft-Arbeit-Technik', 'WAT', Color(0xFFE0E0E0));
 
   const Subject(this.title, this.short, this.backgroundColor);
