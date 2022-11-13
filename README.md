@@ -9,15 +9,15 @@ Die App ist leider noch nicht im Google Play Store oder Apple App Store verfügb
 Wenn ihr ein Android-Gerät benutzt, könnt ihr euch über die [Releases-Page](https://github.com/MCG-Dallgow/MCG-App/releases) hier auf GitHub eine APK-Version der App herunterladen. So könnt ihr die MCG-App direkt ohne den Google Play Store installieren. Wenn ihr zum ersten Mal eine APK-Datei installiert, müsst ihr zusätzlich das "Installieren von Apps aus unbekannten Quellen" o.Ä. in den Einstellungen aktivieren.
 
 ### Web App
-Wenn ihr ein iOS-Gerät oder einen PC benutzt, oder die APK-Version aus anderen Gründen keine Option ist, könnt ihr die App auch direkt ohne Installation im Browser als Web-App nutzen. Klickt hierzu auf folgenden Link: https://mcg-app.hafemann.xyz/
+Wenn ihr ein iOS-Gerät oder einen PC benutzt, oder die APK-Version aus anderen Gründen keine Option ist, könnt ihr die App auch direkt ohne Installation im Browser als Web-App nutzen. Klickt hierzu auf folgenden Link: [mcg-app.hafemann.xyz](https://mcg-app.hafemann.xyz/)
 
 ## Funktionen
 - Vertretungsplan mit Filterfunktion
 - Lehrerliste
 - Interaktiver Raumplan
+- Notenübersicht
 - *Stundenplan (Coming Soon)*
 - *Hausaufgaben- und Terminplaner (Coming Soon)*
-- *Notenübersicht (Coming Soon)*
 
 ### Vertretungsplan
 - Aktualisierender Vertretungsplan via WebUntis
@@ -37,11 +37,16 @@ Wenn ihr ein iOS-Gerät oder einen PC benutzt, oder die APK-Version aus anderen 
 - Mehr Informationen über jeden Raum
 - *Suchfunktion zum einfachen Finden von Räumen (Coming Soon)*
 
+### Notenübersicht
+- Hinzufügen, Bearbeiten & Löschen von Noten
+- Automatische Berechnung des Gesamtdurchschnitts
+- nach Fächern sortierte Liste mit Fächerdurchschnitten
+
 ### Einstellungen
 - Dark-Mode
 
 ## Discord
-Wir haben auch einen Discord-Server für Schüler des MCG erstellt, auf dem ihr euch mit Mitschülern austauschen und über dieses Projekt informiert bleiben könnt: https://discord.gg/5ShaVGtYuP
+Wir haben auch einen Discord-Server für Schüler des MCG erstellt, auf dem ihr euch mit Mitschülern austauschen und über dieses Projekt informiert bleiben könnt: [mcg-app.hafemann.xyz/discord](https://mcg-app.hafemann.xyz/discord)
 
 ## Credits
 
