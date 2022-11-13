@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             child: Text(
-              'Derzeitige Features: Vertretungsplan, Raumplan, Lehrerliste',
+              'Derzeitige Features: Vertretungsplan, Raumplan, Lehrerliste, Notenübersicht',
               style: TextStyle(fontSize: 16),
             ),
           ),
