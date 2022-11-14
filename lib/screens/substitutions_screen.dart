@@ -169,6 +169,24 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
     _updateTabViews();
   }
 
+  bool _isInFilter(SubstitutionEntry entry) {
+    if ((_groupFilter.isEmpty ||
+            _groupFilter.map((e) => entry.group.toLowerCase().contains(e.toLowerCase())).contains(true)) &&
+        (_courseFilter.isEmpty ||
+            _courseFilter.map((e) => (entry.courseNew ?? '').toLowerCase().contains(e.toLowerCase())).contains(true) ||
+            _courseFilter.map((e) => (entry.courseOld ?? '').toLowerCase().contains(e.toLowerCase())).contains(true)) &&
+        (_teacherFilter.isEmpty ||
+            _teacherFilter
+                .map((e) => (entry.teacherNew ?? '').toLowerCase().contains(e.toLowerCase()))
+                .contains(true) ||
+            _teacherFilter
+                .map((e) => (entry.teacherOld ?? '').toLowerCase().contains(e.toLowerCase()))
+                .contains(true))) {
+      return true;
+    }
+    return false;
+  }
+
   void _updateTabViews() {
     List<Widget> tabViews = [];
     for (int i = 0; i < _substitutionData.length; i++) {
@@ -180,13 +198,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
       }
 
       for (SubstitutionEntry entry in unfilteredEntries) {
-        if ((_groupFilter.isEmpty || _groupFilter.map((e) => e.toLowerCase()).contains(entry.group.toLowerCase())) &&
-            (_courseFilter.isEmpty ||
-                _courseFilter.map((e) => e.toLowerCase()).contains((entry.courseNew ?? '').toLowerCase()) ||
-                _courseFilter.map((e) => e.toLowerCase()).contains((entry.courseOld ?? '').toLowerCase())) &&
-            (_teacherFilter.isEmpty ||
-                _teacherFilter.map((e) => e.toLowerCase()).contains((entry.teacherNew ?? '').toLowerCase()) ||
-                _teacherFilter.map((e) => e.toLowerCase()).contains((entry.teacherOld ?? '').toLowerCase()))) {
+        if (_isInFilter(entry)) {
           filteredEntries.add(entry);
         }
       }
@@ -240,7 +252,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
             children: <Widget>[
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Text('Es werden nur Ergebnisse angezeigt, die auf alle Filter zutreffen.\n'
+                child: Text('Es werden nur Ergebnisse angezeigt, die auf alle drei Filter zutreffen.\n'
                     '\nMehrere Einträge sind durch Leerzeichen zu trennen.'),
               ),
               Padding(
