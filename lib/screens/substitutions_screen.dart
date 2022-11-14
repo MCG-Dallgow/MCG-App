@@ -289,27 +289,36 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
                 ),
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _resetFilters();
-                        _updateTabViews();
-                        Navigator.pop(context);
-                      }
-                      child: const Text('Zurücksetzen'),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 8, 8, 8),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _resetFilters();
+                          _updateTabViews();
+                          setState(() {
+                            groupFilterController.text = _groupFilter.join(' ');
+                            courseFilterController.text = _courseFilter.join(' ');
+                            teacherFilterController.text = _teacherFilter.join(' ');
+                          });
+                        },
+                        child: const Text('Leeren'),
+                      ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        _saveFilters();
-                        _updateTabViews();
-                        Navigator.pop(context);
-                      },
-                      child: const Text('Speichern'),
+                  Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(8, 8, 16, 8),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _saveFilters();
+                          _updateTabViews();
+                          Navigator.pop(context);
+                        },
+                        child: const Text('Speichern'),
+                      ),
                     ),
                   ),
                 ],
