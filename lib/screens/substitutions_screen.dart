@@ -133,6 +133,15 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
     });
   }
 
+  Future<void> _resetFilters() async {
+    setState(() {
+      _groupFilter = [];
+      _courseFilter = [];
+      _teacherFilter = [];
+    });
+    await _saveFilters();
+  }
+
   String _getDateFormat(String date) {
     String now = DateFormat('yyyyMMdd').format(DateTime.now());
     int nowInt = int.parse(now);
@@ -279,16 +288,31 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: ElevatedButton(
-                  onPressed: () {
-                    _saveFilters();
-                    _updateTabViews();
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('Speichern'),
-                ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _resetFilters();
+                        _updateTabViews();
+                        Navigator.pop(context);
+                      }
+                      child: const Text('Zurücksetzen'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        _saveFilters();
+                        _updateTabViews();
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Speichern'),
+                    ),
+                  ),
+                ],
               ),
             ],
           );
