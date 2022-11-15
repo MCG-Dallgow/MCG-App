@@ -14,18 +14,21 @@ void showMCGBottomSheet(BuildContext context, String? title, List<Widget>? body,
         children: [
           ((title ?? '') == '') && ((actions ?? []) == [])
               ? Container()
-              : Padding(
-                  padding: const EdgeInsets.fromLTRB(16, 4, 8, 0),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              : Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
                     Flexible(
-                      child: Text(
-                        title ?? '',
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                      child: Padding(
+                        padding: const EdgeInsets.all(16),
+                        child: Text(
+                          title ?? '',
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                        ),
                       ),
                     ),
                     Row(children: actions ?? []),
-                  ]),
+                  ],
                 ),
           ((title ?? '') == '') && ((actions ?? []) == []) ? Container() : const Divider(height: 4),
           body == null

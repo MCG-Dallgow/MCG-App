@@ -3,6 +3,7 @@ import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mcgapp/classes/room.dart';
 import 'package:mcgapp/main.dart';
+import 'package:mcgapp/widgets/bottom_sheet.dart';
 
 import '../widgets/drawer.dart';
 
@@ -80,7 +81,26 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   }
 
   void _showBottomSheet(context, Room room) {
-    showModalBottomSheet<dynamic>(
+    showMCGBottomSheet(
+      context,
+      room.name,
+      [
+        ListTile(
+          leading: const Icon(Icons.account_tree),
+          title: Text(room.type),
+        ),
+        ListTile(
+          leading: const Icon(Icons.numbers),
+          title: Text(room.number),
+        ),
+        ListTile(
+          leading: const Icon(Icons.person),
+          title: Text(room.teacher),
+        ),
+      ],
+      [],
+    );
+    /*showModalBottomSheet<dynamic>(
       context: context,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(topLeft: Radius.circular(18), topRight: Radius.circular(18)),
@@ -131,7 +151,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
           ],
         );
       },
-    );
+    );*/
   }
 
   @override
