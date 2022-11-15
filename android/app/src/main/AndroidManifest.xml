@@ -2,7 +2,7 @@
     package="xyz.hafemann.mcgapp.mcgapp">
     <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="MCG App"
+        android:label="MCG-App"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
