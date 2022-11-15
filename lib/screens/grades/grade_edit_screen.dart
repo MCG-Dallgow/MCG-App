@@ -179,10 +179,13 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
               absorbing: true,
               child: TextField(
                 controller: dateController,
-                decoration: const InputDecoration(border: OutlineInputBorder(), labelText: 'Datum'),
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Datum',
+                  icon: Icon(Icons.calendar_today),
+                ),
               ),
             ),
-            leading: const Icon(Icons.calendar_today),
             onTap: () async {
               DateTime? date = await _showDatePicker(context);
               if (date != null) {
