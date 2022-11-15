@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+
 class Room {
   late String number;
   late String name;
@@ -20,6 +24,19 @@ class Room {
     required this.endX,
     required this.endY,
   });
+
+  static Future<Map<String, Room>> getRooms() async {
+    var jsonText = await rootBundle.loadString('assets/data/rooms.json');
+
+    List data = json.decode(jsonText)['rooms'];
+    Map<String, Room> rooms = {};
+    for (int i = 0; i < data.length; i++) {
+      Room room = Room.fromJson(data, i);
+      rooms[room.number] = room;
+    }
+
+    return rooms;
+  }
 
   Room.fromJson(var json, int index) {
     number = json[index]['number'];

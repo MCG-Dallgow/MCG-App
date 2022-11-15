@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mcgapp/classes/room.dart';
@@ -31,14 +28,11 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
   late double _planWidth;
   late double _planHeight;
 
-  Future<void> loadJsonData() async {
-    var jsonText = await rootBundle.loadString('assets/data/rooms.json');
+  Future<void> _loadRooms() async {
+    Map<String, Room> rooms = await Room.getRooms();
 
     setState(() {
-      List data = json.decode(jsonText)['rooms'];
-      for (int i = 0; i < data.length; i++) {
-        Room room = Room.fromJson(data, i);
-
+      for (Room room in rooms.values) {
         if (room.number.startsWith('0')) {
           _rooms[0].add(room);
         } else if (room.number.startsWith('1')) {
@@ -46,14 +40,12 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
         }
       }
     });
-
-    _setSelectedPlan(0);
   }
 
   @override
   void initState() {
     super.initState();
-    loadJsonData();
+    _loadRooms().then((_) => _setSelectedPlan(0));
   }
 
   Widget _loadPlan(int floor) => Stack(
