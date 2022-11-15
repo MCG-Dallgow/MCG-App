@@ -107,7 +107,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
       setState(() {
         if (_substitutionData.length < _maxTabBarLength) {
           _substitutionData.add(data);
-          _planNames.add(_getDateFormat(planDate.toString()));
+          _planNames.add(_getDateFormat(planDate.toString(), false));
         }
       });
       _loadFilters();
@@ -142,16 +142,18 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
     await _saveFilters();
   }
 
-  String _getDateFormat(String date) {
+  String _getDateFormat(String date, bool onlyDates) {
     String now = DateFormat('yyyyMMdd').format(DateTime.now());
     int nowInt = int.parse(now);
     if (date != DateFormat('yyyyMMdd').format(DateTime.parse(date))) return 'Ungültiges Datum';
     int dateInt = int.parse(date);
 
-    if (date == now) return 'Heute';
-    if (dateInt == nowInt + 1) return 'Morgen';
-    if (dateInt == nowInt - 1) return 'Gestern';
-    if (dateInt > nowInt && dateInt < nowInt + 7) return DateFormat('EEEE', 'de').format(DateTime.parse(date));
+    if (!onlyDates) {
+      if (date == now) return 'Heute';
+      if (dateInt == nowInt + 1) return 'Morgen';
+      if (dateInt == nowInt - 1) return 'Gestern';
+      if (dateInt > nowInt && dateInt < nowInt + 7) return DateFormat('EEEE', 'de').format(DateTime.parse(date));
+    }
     return DateFormat('dd.MM.yyyy').format(DateTime.parse(date));
   }
 
@@ -203,13 +205,32 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
         }
       }
 
+      String lastUpdate = _substitutionData[i]['lastUpdate'];
+      String date = _getDateFormat(_substitutionData[i]['date'].toString(), true);
+
       tabViews.add(
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 10.0, top: 5.0, bottom: 5.0),
-              child: Text('Stand: ${_substitutionData[i]['lastUpdate']}'),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Flexible(
+                    child: Text(
+                      'Stand: ${lastUpdate.substring(0, lastUpdate.length - 3)}',
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  Flexible(
+                    child: Text(
+                      'Datum: $date',
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ],
+              ),
             ),
             unfilteredEntries.isEmpty
                 ? const Expanded(child: Center(child: Text('Keine Vertretungen')))
