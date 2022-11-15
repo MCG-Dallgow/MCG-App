@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../classes/teacher.dart';
+import '../../classes/teacher.dart';
 
 class TeacherDetailsScreen extends StatelessWidget {
   const TeacherDetailsScreen({Key? key}) : super(key: key);

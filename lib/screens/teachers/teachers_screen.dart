@@ -2,21 +2,21 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:mcgapp/screens/teacher_details_screen.dart';
+import 'package:mcgapp/screens/teachers/teacher_details_screen.dart';
 import 'package:mcgapp/widgets/drawer.dart';
 
-import '../classes/teacher.dart';
+import '../../classes/teacher.dart';
 
-class TeacherListScreen extends StatefulWidget {
-  const TeacherListScreen({Key? key}) : super(key: key);
+class TeachersScreen extends StatefulWidget {
+  const TeachersScreen({Key? key}) : super(key: key);
 
   static const String routeName = '/teachers';
 
   @override
-  State<TeacherListScreen> createState() => _TeacherListScreenState();
+  State<TeachersScreen> createState() => _TeachersScreenState();
 }
 
-class _TeacherListScreenState extends State<TeacherListScreen> {
+class _TeachersScreenState extends State<TeachersScreen> {
   final List<Teacher> _teachers = [];
   final List<Teacher> _entries = [];
   final List<String> sekretariat = [];
@@ -129,10 +129,10 @@ class _TeacherListScreenState extends State<TeacherListScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: _isSearching ? const BackButton() : null,
-        title: _isSearching ? _buildSearchField() : const Text('Lehrerliste'),
+        title: _isSearching ? _buildSearchField() : const Text('Lehrer'),
         actions: _buildActions(),
       ),
-      drawer: const MCGDrawer(routeName: TeacherListScreen.routeName),
+      drawer: const MCGDrawer(routeName: TeachersScreen.routeName),
       body: _entries.isNotEmpty
           ? ListView.builder(
               padding: const EdgeInsets.all(8),

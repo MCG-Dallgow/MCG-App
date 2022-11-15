@@ -7,7 +7,7 @@ import '../screens/credits_screen.dart';
 import '../screens/grades/grades_screen.dart';
 import '../screens/roomplan_screen.dart';
 import '../screens/settings_screen.dart';
-import '../screens/teacher_list_screen.dart';
+import '../screens/teachers/teachers_screen.dart';
 
 class MCGDrawer extends StatelessWidget {
   const MCGDrawer({
@@ -110,18 +110,18 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.person,
-              color: routeName == TeacherListScreen.routeName ? Colors.green : null,
+              color: routeName == TeachersScreen.routeName ? Colors.green : null,
             ),
             title: Text(
-              'Lehrerliste',
-              style: TextStyle(color: routeName == TeacherListScreen.routeName ? Colors.green : null),
+              'Lehrer',
+              style: TextStyle(color: routeName == TeachersScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              if (routeName == TeacherListScreen.routeName) {
+              if (routeName == TeachersScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
-                Navigator.pushNamed(context, TeacherListScreen.routeName);
+                Navigator.pushNamed(context, TeachersScreen.routeName);
               }
             },
           ),

@@ -7,8 +7,8 @@ import 'package:mcgapp/screens/home_screen.dart';
 import 'package:mcgapp/screens/roomplan_screen.dart';
 import 'package:mcgapp/screens/settings_screen.dart';
 import 'package:mcgapp/screens/substitutions_screen.dart';
-import 'package:mcgapp/screens/teacher_details_screen.dart';
-import 'package:mcgapp/screens/teacher_list_screen.dart';
+import 'package:mcgapp/screens/teachers/teacher_details_screen.dart';
+import 'package:mcgapp/screens/teachers/teachers_screen.dart';
 import 'package:mcgapp/screens/timetable_screen.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 import 'package:mcgapp/theme/theme_manager.dart';
@@ -66,7 +66,7 @@ class _MyAppState extends State<MyApp> {
         TimetableScreen.routeName: (context) => const TimetableScreen(),
         SubstitutionsScreen.routeName: (context) => const SubstitutionsScreen(),
         RoomplanScreen.routeName: (context) => const RoomplanScreen(),
-        TeacherListScreen.routeName: (context) => const TeacherListScreen(),
+        TeachersScreen.routeName: (context) => const TeachersScreen(),
         TeacherDetailsScreen.routeName: (context) => const TeacherDetailsScreen(),
         SekretariatScreen.routeName: (context) => const SekretariatScreen(),
         GradesScreen.routeName: (context) => const GradesScreen(),
