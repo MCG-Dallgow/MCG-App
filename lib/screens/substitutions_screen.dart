@@ -23,7 +23,7 @@ class SubstitutionsScreen extends StatefulWidget {
 class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  final int _maxTabBarLength = 3;
+  final int _maxTabBarLength = 5;
   List<Map> _substitutionData = [];
   List<String> _planNames = [];
 
@@ -49,7 +49,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
     });
 
     var dio = Dio();
-    for (int offset = 0; offset < 3; offset++) {
+    for (int offset = 0; offset < _maxTabBarLength; offset++) {
       DateTime now = DateTime.now();
       DateFormat format = DateFormat('yyyyMMdd');
       Map data;
@@ -163,7 +163,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
     if (tabs.isEmpty) tabs.add(const Tab(child: Text('Wird geladen...')));
 
     setState(() {
-      _tabBar = TabBar(tabs: tabs);
+      _tabBar = TabBar(tabs: tabs, isScrollable: true);
       _tabBarLength = tabs.length;
     });
     _updateTabViews();
