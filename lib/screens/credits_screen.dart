@@ -12,6 +12,9 @@ class CreditsScreen extends StatefulWidget {
 }
 
 class _CreditsScreenState extends State<CreditsScreen> {
+  final TextStyle _normalStyle = const TextStyle(fontSize: 16);
+  final TextStyle _headlineStyle = const TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,23 +26,32 @@ class _CreditsScreenState extends State<CreditsScreen> {
         padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 20, 10),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const <Widget>[
-            Text('Projektleitung', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text('Sven Luca Hafemann', style: TextStyle(fontSize: 16)),
-            Text(''),
-            Text('Programmierung', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text('Sven Luca Hafemann', style: TextStyle(fontSize: 16)),
-            Text('Tamino Mende', style: TextStyle(fontSize: 16)),
-            Text('Lukas Löffelmann', style: TextStyle(fontSize: 16)),
-            Text(''),
-            Text('Digitalisierung des Raumplans', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text('Linus Wettach', style: TextStyle(fontSize: 16)),
-            Text('Lars Kuhr', style: TextStyle(fontSize: 16)),
-            Text('Luka Braunholz', style: TextStyle(fontSize: 16)),
-            Text(''),
-            Text('Informationsbeschaffung', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            Text('Michael Hennig', style: TextStyle(fontSize: 16)),
-            Text('Lukas Löffelmann', style: TextStyle(fontSize: 16)),
+          children: <Widget>[
+            Text('Projektleitung', style: _headlineStyle),
+            Text(
+              '\u2022 Sven Luca Hafemann\n',
+              style: _normalStyle,
+            ),
+            Text('Programmierung', style: _headlineStyle),
+            Text(
+              '\u2022 Sven Luca Hafemann\n'
+              '\u2022 Tamino Mende\n'
+              '\u2022 Lukas Löffelmann\n',
+              style: _normalStyle,
+            ),
+            Text('Digitalisierung des Raumplans', style: _headlineStyle),
+            Text(
+              '\u2022 Linus Wettach\n'
+              '\u2022 Lars Kuhr\n'
+              '\u2022 Luka Braunholz\n',
+              style: _normalStyle,
+            ),
+            Text('Informationsbeschaffung', style: _headlineStyle),
+            Text(
+              '\u2022 Michael Hennig\n'
+              '\u2022 Lukas Löffelmann\n',
+              style: _normalStyle,
+            ),
           ],
         ),
       ),
