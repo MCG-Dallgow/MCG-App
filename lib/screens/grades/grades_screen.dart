@@ -6,7 +6,6 @@ import 'package:mcgapp/widgets/drawer.dart';
 
 import '../../classes/course.dart';
 import '../../classes/grade.dart';
-import '../../main.dart';
 
 class GradesScreen extends StatefulWidget {
   const GradesScreen({Key? key}) : super(key: key);
@@ -44,18 +43,8 @@ class _GradesScreenState extends State<GradesScreen> {
 
               Grade grade = Grade.grades[index ~/ 2];
               return grade.listTile(context, <Widget>[
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-                    foregroundColor: themeManager.colorStroke,
-                  ),
-                  child: Row(
-                    children: const [
-                      Icon(Icons.edit),
-                      SizedBox(width: 8),
-                      Text('Bearbeiten'),
-                    ],
-                  ),
+                IconButton(
+                  icon: const Icon(Icons.edit, color: Colors.grey),
                   onPressed: () async {
                     Navigator.pop(context);
                     await Navigator.pushNamed(
@@ -70,19 +59,8 @@ class _GradesScreenState extends State<GradesScreen> {
                     _updateBody();
                   },
                 ),
-                const SizedBox(width: 8),
-                OutlinedButton(
-                  style: OutlinedButton.styleFrom(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-                    foregroundColor: themeManager.colorStroke,
-                  ),
-                  child: Row(
-                    children: const [
-                      Icon(Icons.delete),
-                      SizedBox(width: 8),
-                      Text('Löschen'),
-                    ],
-                  ),
+                IconButton(
+                  icon: const Icon(Icons.delete, color: Colors.grey),
                   onPressed: () {
                     Grade.removeGrade(grade);
                     Navigator.pop(context);

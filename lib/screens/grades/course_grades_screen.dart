@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../classes/course.dart';
 import '../../classes/grade.dart';
-import '../../main.dart';
 import 'grade_edit_screen.dart';
 
 class CourseGradesScreen extends StatefulWidget {
@@ -30,18 +29,8 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
 
           Grade grade = course.courseGrades[index ~/ 2];
           return grade.listTile(context, <Widget>[
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-                foregroundColor: themeManager.colorStroke,
-              ),
-              child: Row(
-                children: const [
-                  Icon(Icons.edit),
-                  SizedBox(width: 8),
-                  Text('Bearbeiten'),
-                ],
-              ),
+            IconButton(
+              icon: const Icon(Icons.edit, color: Colors.grey),
               onPressed: () async {
                 Navigator.pop(context);
                 await Navigator.pushNamed(
@@ -54,19 +43,8 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
                 _updateBody();
               },
             ),
-            const SizedBox(width: 8),
-            OutlinedButton(
-              style: OutlinedButton.styleFrom(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
-                foregroundColor: themeManager.colorStroke,
-              ),
-              child: Row(
-                children: const [
-                  Icon(Icons.delete),
-                  SizedBox(width: 8),
-                  Text('Löschen'),
-                ],
-              ),
+            IconButton(
+              icon: const Icon(Icons.delete, color: Colors.grey),
               onPressed: () {
                 Grade.removeGrade(grade);
                 Navigator.pop(context);

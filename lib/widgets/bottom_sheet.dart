@@ -12,25 +12,26 @@ void showMCGBottomSheet(BuildContext context, String? title, List<Widget>? body,
     builder: (BuildContext context) {
       return Wrap(
         children: [
-          title == null
+          ((title ?? '') == '') && ((actions ?? []) == [])
               ? Container()
-              : ListTile(
-                  title: Text(
-                  title,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                )),
+              : Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 4, 8, 0),
+                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                    Flexible(
+                      child: Text(
+                        title ?? '',
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                      ),
+                    ),
+                    Row(children: actions ?? []),
+                  ]),
+                ),
+          ((title ?? '') == '') && ((actions ?? []) == []) ? Container() : const Divider(height: 4),
           body == null
               ? Container()
               : Column(
                   children: body,
-                ),
-          const SizedBox(height: 32),
-          actions == null
-              ? Container()
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: actions,
                 ),
         ],
       );
