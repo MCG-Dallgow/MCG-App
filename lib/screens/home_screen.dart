@@ -22,47 +22,36 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: const MCGDrawer(routeName: HomeScreen.routeName),
       body: ListView(
         children: [
-          Stack(
-            children: [
-              Image.asset(
-                'assets/images/mcg_seite.jpg',
-                width: double.infinity,
-                fit: BoxFit.cover,
-              ),
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Image.asset(
-                  'assets/images/mcg_logo.png',
-                  height: 100,
-                ),
-              ),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Image.asset(
+              'assets/images/mcg-panorama.jpg',
+              width: 50,
+              //fit: BoxFit.cover,
+            ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             child: Text(
-              'Eine App, die Schülern des Marie-Curie-Gymnasiums Dallgow-Döberitz in ihrem Alltag hilft.',
+              'Eine App, die Schülern des Marie-Curie-Gymnasiums Dallgow-Döberitz ihren Alltag erleichtert.',
               style: TextStyle(fontSize: 16),
             ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.0),
             child: Text(
-              'Diese App ist während der Projektwoche zum 20. Jahrestag des Marie-Curie-Gymnasiums erstellt worden, wird jedoch in Zukunft weiterentwickelt werden.',
+              'Diese App wurde in der Projektwoche zum 20. Jahrestag des Marie-Curie-Gymnasiums erstellt und wird '
+              'seitdem aktiv weiterentwickelt.',
               style: TextStyle(fontSize: 16),
             ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             child: Text(
-              'Derzeitige Features: Vertretungsplan, Raumplan, Lehrerliste, Notenübersicht',
+              'Derzeitige Features: \n\u2022 Vertretungsplan \n\u2022 Raumplan \n\u2022 Lehrerliste \n\u2022 '
+              'Notenübersicht',
               style: TextStyle(fontSize: 16),
             ),
-          ),
-          Image.asset(
-            'assets/images/mcg_oben.jpg',
-            width: double.infinity,
-            fit: BoxFit.cover,
           ),
         ],
       ),
