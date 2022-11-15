@@ -23,17 +23,33 @@ class MCGDrawer extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
+          SizedBox(
+            height: 150,
+            child: DrawerHeader(
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
               ),
-              child: Text(
-                appName,
-                style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
-              )),
+              padding: const EdgeInsets.all(16),
+              child: Row(
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(right: 16),
+                    child: CircleAvatar(
+                      foregroundImage: AssetImage('assets/images/mcg-icon.jpg'),
+                      radius: 35,
+                    ),
+                  ),
+                  Text(
+                    appName,
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
           ListTile(
             leading: Icon(
               Icons.home,
