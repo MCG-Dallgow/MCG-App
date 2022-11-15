@@ -69,7 +69,7 @@ class MCGDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: const Icon(
-              Icons.book,
+              Icons.calendar_month,
               color: Colors.grey, //routeName == const TimetableScreen().routeName ? Colors.green : null,
             ),
             title: const Text(
@@ -89,7 +89,7 @@ class MCGDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              Icons.calendar_today,
+              Icons.edit_calendar,
               color: routeName == SubstitutionsScreen.routeName ? Colors.green : null,
             ),
             title: Text(
@@ -107,7 +107,7 @@ class MCGDrawer extends StatelessWidget {
           ),
           ListTile(
             leading: Icon(
-              Icons.room_outlined,
+              Icons.room,
               color: routeName == RoomplanScreen.routeName ? Colors.green : null,
             ),
             title: Text(
@@ -199,7 +199,7 @@ class MCGDrawer extends StatelessWidget {
             },
           ),
           AboutListTile(
-            icon: const Icon(Icons.info_outline),
+            icon: const Icon(Icons.info),
             applicationName: appName,
             applicationVersion: appVersion,
             applicationLegalese: 'Sven Luca Hafemann',
