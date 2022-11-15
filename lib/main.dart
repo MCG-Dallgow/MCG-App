@@ -17,6 +17,9 @@ void main() {
   runApp(const MyApp());
 }
 
+String get appName => 'MCG-App';
+String get appVersion => '0.2.1-beta.3';
+
 ThemeManager themeManager = ThemeManager();
 
 class MyApp extends StatefulWidget {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mcgapp/main.dart';
 
 import '../widgets/drawer.dart';
 
@@ -16,7 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MCG App'),
+        title: Text(appName),
       ),
       drawer: const MCGDrawer(routeName: HomeScreen.routeName),
       body: ListView(

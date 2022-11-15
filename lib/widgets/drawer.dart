@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mcgapp/main.dart';
 import 'package:mcgapp/screens/home_screen.dart';
 import 'package:mcgapp/screens/substitutions_screen.dart';
 
@@ -26,9 +27,9 @@ class MCGDrawer extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
               ),
-              child: const Text(
-                'MCG App',
-                style: TextStyle(
+              child: Text(
+                appName,
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,
                 ),
@@ -58,7 +59,8 @@ class MCGDrawer extends StatelessWidget {
             title: const Text(
               'Stundenplan - Coming Soon',
               style: TextStyle(
-                color: Colors.grey, /*routeName == const TimetableScreen().routeName ? Colors.green : null*/),
+                color: Colors.grey, /*routeName == const TimetableScreen().routeName ? Colors.green : null*/
+              ),
             ),
             onTap: () {
               /*if (routeName == TimetableScreen.routeName) {
@@ -179,6 +181,28 @@ class MCGDrawer extends StatelessWidget {
                 Navigator.pushNamed(context, CreditsScreen.routeName);
               }
             },
+          ),
+          AboutListTile(
+            icon: const Icon(Icons.info_outline),
+            applicationName: appName,
+            applicationVersion: appVersion,
+            applicationLegalese: 'Sven Luca Hafemann',
+            applicationIcon: const CircleAvatar(foregroundImage: AssetImage('assets/images/mcg-icon.jpg'), radius: 35),
+            aboutBoxChildren: const [
+              Text(
+                '\nDiese App wurde nicht von der Schulleitung des Marie-Curie-Gymnasiums Dallgow-Döberitz in Auftrag '
+                'gegeben und wird nicht von ihr betreut.\n\n'
+                'Es besteht keinerlei Garantie auf Richtigkeit oder Vollständigkeit der angezeigten Informationen in '
+                'allen derzeitigen und künftigen Elementen dieser App. Dies trifft unter Anderem auf den '
+                'Vertretungsplan, den Raumplan, die Lehrerliste und jegliche Funktionen der Notenübersicht zu.\n\n'
+                'Diese App ist unter der GNU General Public Licence v3.0 lizenziert.',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.grey,
+                ),
+              ),
+            ],
+            child: const Text('Über MCG-App'),
           ),
         ],
       ),
