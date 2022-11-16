@@ -218,7 +218,7 @@ class MCGDrawer extends StatelessWidget {
                 ),
               ),
             ],
-            child: const Text('Über MCG-App'),
+            child: Text('Über $appName'),
           ),
         ],
       ),

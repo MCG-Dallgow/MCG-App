@@ -35,41 +35,43 @@ class _GradesScreenState extends State<GradesScreen> {
     setState(() {
       _tabBarView = TabBarView(
         children: [
-          ListView.builder(
-            itemCount: Grade.grades.length * 2 + 1,
-            itemBuilder: (BuildContext context, int index) {
-              if (index == Grade.grades.length * 2) return const SizedBox(height: 76);
-              if (index.isOdd) return const Divider();
+          Grade.grades.isEmpty
+              ? const Center(child: Text('Keine Noten'))
+              : ListView.builder(
+                  itemCount: Grade.grades.length * 2 + 1,
+                  itemBuilder: (BuildContext context, int index) {
+                    if (index == Grade.grades.length * 2) return const SizedBox(height: 76);
+                    if (index.isOdd) return const Divider();
 
-              Grade grade = Grade.grades[index ~/ 2];
-              return grade.listTile(context, <Widget>[
-                IconButton(
-                  icon: const Icon(Icons.edit, color: Colors.grey),
-                  onPressed: () async {
-                    Navigator.pop(context);
-                    await Navigator.pushNamed(
-                      context,
-                      GradeEditScreen.routeName,
-                      arguments: {'grade': grade},
-                    ).then((newGrade) {
-                      if (newGrade != null) Grade.editGrade(grade, newGrade as Grade);
-                    });
+                    Grade grade = Grade.grades[index ~/ 2];
+                    return grade.listTile(context, <Widget>[
+                      IconButton(
+                        icon: const Icon(Icons.edit, color: Colors.grey),
+                        onPressed: () async {
+                          Navigator.pop(context);
+                          await Navigator.pushNamed(
+                            context,
+                            GradeEditScreen.routeName,
+                            arguments: {'grade': grade},
+                          ).then((newGrade) {
+                            if (newGrade != null) Grade.editGrade(grade, newGrade as Grade);
+                          });
 
-                    if (!mounted) return;
-                    _updateBody();
+                          if (!mounted) return;
+                          _updateBody();
+                        },
+                      ),
+                      IconButton(
+                        icon: const Icon(Icons.delete, color: Colors.grey),
+                        onPressed: () {
+                          Grade.removeGrade(grade);
+                          Navigator.pop(context);
+                          _updateBody();
+                        },
+                      ),
+                    ]);
                   },
                 ),
-                IconButton(
-                  icon: const Icon(Icons.delete, color: Colors.grey),
-                  onPressed: () {
-                    Grade.removeGrade(grade);
-                    Navigator.pop(context);
-                    _updateBody();
-                  },
-                ),
-              ]);
-            },
-          ),
           ListView.builder(
             itemCount: courses.length + 1,
             itemBuilder: (BuildContext context, int index) {

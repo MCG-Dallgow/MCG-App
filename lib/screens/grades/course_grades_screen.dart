@@ -21,39 +21,43 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
   _updateBody() async {
     await Grade.loadGrades();
     setState(() {
-      _body = ListView.builder(
-        itemCount: course.courseGrades.length * 2 + 1,
-        itemBuilder: (BuildContext context, int index) {
-          if (index == course.courseGrades.length * 2) return const SizedBox(height: 76);
-          if (index.isOdd) return const Divider();
+      _body = course.courseGrades.isEmpty
+          ? const Center(child: Text('Keine Noten in diesem Fach'))
+          : ListView.builder(
+              itemCount: course.courseGrades.length * 2 + 1,
+              itemBuilder: (BuildContext context, int index) {
+                if (index == course.courseGrades.length * 2) return const SizedBox(height: 76);
+                if (index.isOdd) return const Divider();
 
-          Grade grade = course.courseGrades[index ~/ 2];
-          return grade.listTile(context, <Widget>[
-            IconButton(
-              icon: const Icon(Icons.edit, color: Colors.grey),
-              onPressed: () async {
-                Navigator.pop(context);
-                await Navigator.pushNamed(
-                  context,
-                  GradeEditScreen.routeName,
-                  arguments: {'grade': grade},
-                ).then((newGrade) { if (newGrade != null) Grade.editGrade(grade, newGrade as Grade); });
+                Grade grade = course.courseGrades[index ~/ 2];
+                return grade.listTile(context, <Widget>[
+                  IconButton(
+                    icon: const Icon(Icons.edit, color: Colors.grey),
+                    onPressed: () async {
+                      Navigator.pop(context);
+                      await Navigator.pushNamed(
+                        context,
+                        GradeEditScreen.routeName,
+                        arguments: {'grade': grade},
+                      ).then((newGrade) {
+                        if (newGrade != null) Grade.editGrade(grade, newGrade as Grade);
+                      });
 
-                if (!mounted) return;
-                _updateBody();
+                      if (!mounted) return;
+                      _updateBody();
+                    },
+                  ),
+                  IconButton(
+                    icon: const Icon(Icons.delete, color: Colors.grey),
+                    onPressed: () {
+                      Grade.removeGrade(grade);
+                      Navigator.pop(context);
+                      _updateBody();
+                    },
+                  ),
+                ]);
               },
-            ),
-            IconButton(
-              icon: const Icon(Icons.delete, color: Colors.grey),
-              onPressed: () {
-                Grade.removeGrade(grade);
-                Navigator.pop(context);
-                _updateBody();
-              },
-            ),
-          ]);
-        },
-      );
+            );
     });
   }
 
@@ -92,7 +96,9 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
             context,
             GradeEditScreen.routeName,
             arguments: {'course': course},
-          ).then((newGrade) { if (newGrade != null) Grade.addGrade(newGrade as Grade); });
+          ).then((newGrade) {
+            if (newGrade != null) Grade.addGrade(newGrade as Grade);
+          });
 
           if (!mounted) return;
           _updateBody();
