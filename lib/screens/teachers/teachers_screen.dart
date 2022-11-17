@@ -6,6 +6,7 @@ import 'package:mcgapp/screens/teachers/teacher_details_screen.dart';
 import 'package:mcgapp/widgets/drawer.dart';
 
 import '../../classes/teacher.dart';
+import '../../widgets/app_bar.dart';
 
 class TeachersScreen extends StatefulWidget {
   const TeachersScreen({Key? key}) : super(key: key);
@@ -127,7 +128,7 @@ class _TeachersScreenState extends State<TeachersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: MCGAppBar(
         leading: _isSearching ? const BackButton() : null,
         title: _isSearching ? _buildSearchField() : const Text('Lehrer'),
         actions: _buildActions(),

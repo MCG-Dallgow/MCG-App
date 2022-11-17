@@ -6,6 +6,7 @@ import 'package:mcgapp/widgets/drawer.dart';
 
 import '../../classes/course.dart';
 import '../../classes/grade.dart';
+import '../../widgets/app_bar.dart';
 
 class GradesScreen extends StatefulWidget {
   const GradesScreen({Key? key}) : super(key: key);
@@ -107,7 +108,7 @@ class _GradesScreenState extends State<GradesScreen> {
       initialIndex: 0,
       length: 3,
       child: Scaffold(
-        appBar: AppBar(
+        appBar: MCGAppBar(
           title: const Text('Noten'),
           actions: [
             Center(

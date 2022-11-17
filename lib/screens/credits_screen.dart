@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
 class CreditsScreen extends StatefulWidget {
@@ -18,9 +19,7 @@ class _CreditsScreenState extends State<CreditsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Credits'),
-      ),
+      appBar: MCGAppBar(title: const Text('Credits')),
       drawer: const MCGDrawer(routeName: CreditsScreen.routeName),
       body: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 20, 10),

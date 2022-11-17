@@ -5,6 +5,7 @@ import 'package:mcgapp/classes/room.dart';
 import 'package:mcgapp/main.dart';
 import 'package:mcgapp/widgets/bottom_sheet.dart';
 
+import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
 class RoomplanScreen extends StatefulWidget {
@@ -100,64 +101,12 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
       ],
       [],
     );
-    /*showModalBottomSheet<dynamic>(
-      context: context,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(18), topRight: Radius.circular(18)),
-      ),
-      builder: (BuildContext context) {
-        return Wrap(
-          children: [
-            Align(
-              alignment: Alignment.topRight,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10, top: 10),
-                child: IconButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  icon: const Icon(Icons.close),
-                  color: Colors.black,
-                  alignment: Alignment.topRight,
-                ),
-              ),
-            ),
-            const Divider(),
-            Align(
-              alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10, top: 5),
-                child: Text(
-                  room.name,
-                  style: const TextStyle(
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.account_tree),
-              title: Text(room.type),
-            ),
-            ListTile(
-              leading: const Icon(Icons.numbers),
-              title: Text(room.number),
-            ),
-            ListTile(
-              leading: const Icon(Icons.person),
-              title: Text(room.teacher),
-            )
-          ],
-        );
-      },
-    );*/
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: MCGAppBar(
         title: Text(_appBarTitle),
         actions: [
           IconButton(
