@@ -98,7 +98,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
       context: context,
       initialDate: _date ?? now,
       firstDate: DateTime(now.year - 1),
-      lastDate: DateTime(now.year + 2),
+      lastDate: now,
     );
   }
 
