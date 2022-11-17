@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../classes/course.dart';
 import '../../classes/grade.dart';
+import '../../widgets/app_bar.dart';
 import 'grade_edit_screen.dart';
 
 class CourseGradesScreen extends StatefulWidget {
@@ -72,7 +73,7 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
     course = ModalRoute.of(context)!.settings.arguments as Course;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: MCGAppBar(
         title: Text(course.subject.title),
         backgroundColor: course.subject.backgroundColor,
         foregroundColor: course.subject.foregroundColor,

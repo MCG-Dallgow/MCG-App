@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../classes/teacher.dart';
+import '../../widgets/app_bar.dart';
 
 class TeacherDetailsScreen extends StatelessWidget {
   const TeacherDetailsScreen({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class TeacherDetailsScreen extends StatelessWidget {
     final teacher = ModalRoute.of(context)!.settings.arguments as Teacher;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: MCGAppBar(
         title: Text('${teacher.anrede} ${teacher.nachname}'),
       ),
       body: ListView(
@@ -57,7 +58,7 @@ class SekretariatScreen extends StatelessWidget {
     final data = ModalRoute.of(context)!.settings.arguments as List<String>;
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: MCGAppBar(
         title: const Text('Sekretariat'),
       ),
       body: ListView(

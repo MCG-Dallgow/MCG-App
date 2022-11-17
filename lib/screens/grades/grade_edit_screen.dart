@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import 'package:mcgapp/classes/course.dart';
 import 'package:mcgapp/classes/grade.dart';
 
+import '../../widgets/app_bar.dart';
+
 class GradeEditScreen extends StatefulWidget {
   const GradeEditScreen({Key? key}) : super(key: key);
 
@@ -127,7 +129,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text(grade == null ? 'Neue Note' : 'Note bearbeiten')),
+      appBar: MCGAppBar(title: Text(grade == null ? 'Neue Note' : 'Note bearbeiten')),
       floatingActionButton: FloatingActionButton.extended(
         label: const Text('Fertig'),
         icon: const Icon(Icons.done),

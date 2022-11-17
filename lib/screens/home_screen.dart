@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mcgapp/main.dart';
 
+import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -16,9 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(appName),
-      ),
+      appBar: MCGAppBar(title: Text(appName)),
       drawer: const MCGDrawer(routeName: HomeScreen.routeName),
       body: ListView(
         children: [

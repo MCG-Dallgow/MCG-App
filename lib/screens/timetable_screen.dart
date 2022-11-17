@@ -10,30 +10,26 @@ class TimetableScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-        initialIndex: 0,
-        length: 2,
-        child: Scaffold(
-            appBar: AppBar(
-              title: const Text('Stundenplan'),
-              bottom: const TabBar(
-                tabs: <Widget>[
-                  Tab(text: 'A-Woche'),
-                  Tab(text: 'B-Woche'),
-                ],
-              ),
-            ),
-            drawer: const MCGDrawer(routeName: TimetableScreen.routeName),
-            body: const TabBarView(
-              children: <Widget>[
-                Center(
-                  child: Text('Stundenplan A-Woche')
-                ),
-                Center(
-                  child: Text('Stundenplan B-Woche')
-                ),
-              ],
-            )
-        )
+      initialIndex: 0,
+      length: 2,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Stundenplan'),
+          bottom: const TabBar(
+            tabs: <Widget>[
+              Tab(text: 'A-Woche'),
+              Tab(text: 'B-Woche'),
+            ],
+          ),
+        ),
+        drawer: const MCGDrawer(routeName: TimetableScreen.routeName),
+        body: const TabBarView(
+          children: <Widget>[
+            Center(child: Text('Stundenplan A-Woche')),
+            Center(child: Text('Stundenplan B-Woche')),
+          ],
+        ),
+      ),
     );
   }
 }
