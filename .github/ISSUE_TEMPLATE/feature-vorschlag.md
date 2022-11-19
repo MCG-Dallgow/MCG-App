@@ -13,9 +13,8 @@ Eine klare und präzise Beschreibung, was das Problem ist. Z.B.: Ich bin immer f
 **Beschreibe deinen Lösungsvorschlag**
 Eine klare und präzise Beschreibung, was passieren soll.
 
-**Describe alternatives you've considered**
-**Beschreibe Alternativen, die du erwägt hast**
+**Beschreibe Alternativen, die du in Erwägung gezogen hast**
 Eine klare und präzise Beschreibung jeglicher alternativer Lösungen, über die du nachgedacht hast.
 
 **Zusätzlicher Kontext**
-Füge hier jeglichen zusätzlichen Kontext oder Screenshots über den Vorschlag hinzu.
+Füge hier jeglichen zusätzlichen Kontext oder Screenshots über den Vorschlag ein.
