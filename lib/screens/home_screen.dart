@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mcgapp/classes/course.dart';
 import 'package:mcgapp/main.dart';
+import 'package:mcgapp/widgets/course_dialog.dart';
+import 'package:mcgapp/widgets/group_dialog.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
+import '../classes/group.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
@@ -14,6 +19,28 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.remove('group');
+      group = prefs.getString('group') != null ? Group.fromName(prefs.getString('group')!) : null;
+
+      if (!mounted) return;
+      group ??= await showGroupChoosingDialog(context);
+      prefs.setString('group', group!.name);
+
+      courses = await Course.getCourses(group!.level);
+
+      userCourses =
+          prefs.getStringList('courses-${group!.level}')?.map((title) => Course.fromTitle(title)).toList() ?? [];
+      if (!mounted) return;
+      if (userCourses.isEmpty) userCourses = await showCourseChoosingDialog(context);
+      prefs.setStringList('courses-${group!.level}', userCourses.map((course) => course.title).toList());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             child: Text(
-              'Derzeitige Features: \n\u2022 Vertretungsplan \n\u2022 Raumplan \n\u2022 Lehrerliste \n\u2022 '
-              'Notenübersicht',
+              'Derzeitige Features:\n\u2022 Stundenplan\n\u2022 Vertretungsplan\n\u2022 Raumplan\n\u2022 Lehrerliste'
+              '\n\u2022 Notenübersicht',
               style: TextStyle(fontSize: 16),
             ),
           ),

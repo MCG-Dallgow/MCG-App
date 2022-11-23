@@ -55,7 +55,7 @@ class Grade {
     List<String> encodedGrades = [];
     for (Grade grade in grades) {
       encodedGrades
-          .add('${grade.title}|${grade.course.subject.title}|${grade.grade}|${DateFormat('yyyy-MM-dd').format(grade.date)}');
+          .add('${grade.title}|${grade.course.title}|${grade.grade}|${DateFormat('yyyy-MM-dd').format(grade.date)}');
     }
     prefs.setStringList('grades', encodedGrades);
   }
@@ -68,7 +68,7 @@ class Grade {
       List<String> gradeParameters = encodedGrade.split('|');
       decodedGrades.add(Grade(
         title: gradeParameters[0],
-        course: Course.fromTitle(gradeParameters[1])!,
+        course: Course.fromTitle(gradeParameters[1]),
         format: GradeFormat.format15,
         grade: int.parse(gradeParameters[2]),
         date: DateTime.parse(gradeParameters[3]),
@@ -101,7 +101,7 @@ class Grade {
           Icons.school,
           color: course.subject.backgroundColor,
         ),
-        title: Text(course.subject.title),
+        title: Text('${course.subject.name} (${course.title})'),
       ),
       ListTile(
         leading: const Icon(Icons.star),
@@ -133,7 +133,7 @@ class Grade {
             ),
           ),
           Text(
-            course.subject.title,
+            course.subject.name,
             overflow: TextOverflow.ellipsis,
             style: const TextStyle(
               color: Colors.grey,

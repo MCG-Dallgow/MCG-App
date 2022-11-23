@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 
+Map<String, Room> rooms = {};
+
 class Room {
   late String number;
   late String name;
@@ -36,6 +38,20 @@ class Room {
     }
 
     return rooms;
+  }
+
+  Room.fromNumber(String number) {
+    Room? room = rooms[number];
+
+    this.number = room?.number ?? '0.00';
+    name = room?.name ?? 'Unbekannter Raum';
+    teacher = room?.teacher ?? '';
+    image = room?.image ?? '';
+    type = room?.type ?? '';
+    startX = room?.startX ?? 0;
+    startY = room?.startY ?? 0;
+    endX = room?.endX ?? 0;
+    endY = room?.endY ?? 0;
   }
 
   Room.fromJson(var json, int index) {

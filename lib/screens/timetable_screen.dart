@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:mcgapp/widgets/drawer.dart';
 
+import '../widgets/app_bar.dart';
+import '../widgets/timetable.dart';
+
 class TimetableScreen extends StatelessWidget {
   const TimetableScreen({Key? key}) : super(key: key);
 
@@ -13,7 +16,7 @@ class TimetableScreen extends StatelessWidget {
       initialIndex: 0,
       length: 2,
       child: Scaffold(
-        appBar: AppBar(
+        appBar: MCGAppBar(
           title: const Text('Stundenplan'),
           bottom: const TabBar(
             tabs: <Widget>[
@@ -25,8 +28,8 @@ class TimetableScreen extends StatelessWidget {
         drawer: const MCGDrawer(routeName: TimetableScreen.routeName),
         body: const TabBarView(
           children: <Widget>[
-            Center(child: Text('Stundenplan A-Woche')),
-            Center(child: Text('Stundenplan B-Woche')),
+            Timetable(week: 'A'),
+            Timetable(week: 'B'),
           ],
         ),
       ),

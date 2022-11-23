@@ -8,6 +8,7 @@ import '../screens/grades/grades_screen.dart';
 import '../screens/roomplan_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/teachers/teachers_screen.dart';
+import '../screens/timetable_screen.dart';
 
 class MCGDrawer extends StatelessWidget {
   const MCGDrawer({
@@ -69,23 +70,22 @@ class MCGDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: const Icon(
+            leading: Icon(
               Icons.calendar_month,
-              color: Colors.grey, //routeName == const TimetableScreen().routeName ? Colors.green : null,
+              color: routeName == TimetableScreen.routeName ? Colors.green : null,
             ),
-            title: const Text(
-              'Stundenplan - Coming Soon',
+            title: Text(
+              'Stundenplan',
               style: TextStyle(
-                color: Colors.grey, /*routeName == const TimetableScreen().routeName ? Colors.green : null*/
-              ),
+                color: routeName == TimetableScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              /*if (routeName == TimetableScreen.routeName) {
+              if (routeName == TimetableScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
                 Navigator.pushNamed(context, TimetableScreen.routeName);
-              }*/
+              }
             },
           ),
           ListTile(
@@ -210,8 +210,8 @@ class MCGDrawer extends StatelessWidget {
                 '\nDiese App wurde nicht von der Schulleitung des Marie-Curie-Gymnasiums Dallgow-Döberitz in Auftrag '
                 'gegeben und wird nicht von ihr betreut.\n\n'
                 'Es besteht keinerlei Garantie auf Richtigkeit oder Vollständigkeit der angezeigten Informationen in '
-                'allen derzeitigen und künftigen Elementen dieser App. Dies trifft unter Anderem auf den '
-                'Vertretungsplan, den Raumplan, die Lehrerliste und jegliche Funktionen der Notenübersicht zu.\n\n'
+                'allen derzeitigen und künftigen Elementen dieser App. Dies trifft unter Anderem auf den Stundenplan, '
+                'den Vertretungsplan, den Raumplan, die Lehrerliste und jegliche Funktionen der Notenübersicht zu.\n\n'
                 'Diese App ist unter der GNU General Public Licence v3.0 lizenziert.',
                 style: TextStyle(
                   fontSize: 12,

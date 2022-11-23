@@ -13,12 +13,15 @@ import 'package:mcgapp/screens/timetable_screen.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 import 'package:mcgapp/theme/theme_manager.dart';
 
+import 'classes/room.dart';
+import 'classes/teacher.dart';
+
 void main() {
   runApp(const MyApp());
 }
 
 String get appName => 'MCG-App';
-String get appVersion => '0.2.1';
+String get appVersion => '0.3.0-alpha.6';
 
 ThemeManager themeManager = ThemeManager();
 
@@ -30,9 +33,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Future<void> _loadValuesFromJson() async {
+    teachers = await Teacher.getTeachers();
+    rooms = await Room.getRooms();
+  }
 
   @override
   void initState() {
+    _loadValuesFromJson();
     themeManager.loadTheme();
     themeManager.addListener(themeListener);
     super.initState();
@@ -46,16 +54,14 @@ class _MyAppState extends State<MyApp> {
 
   themeListener() {
     if (mounted) {
-      setState(() {
-
-      });
+      setState(() {});
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'MCG App',
+      title: appName,
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       darkTheme: darkTheme,

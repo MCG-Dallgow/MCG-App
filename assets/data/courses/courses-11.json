@@ -1,0 +1,888 @@
+{
+  "courses": [
+    {
+      "title": "MaG11-1",
+      "subject": "Mat",
+      "teacher": ["Hans Thorsten", "Steil"],
+      "times": [
+        ["AMi2", "1.30"],
+        ["AFr2", "1.30"],
+        ["BMo1", "1.30"],
+        ["BMi3", "1.30"]
+      ]
+    },
+    {
+      "title": "MaG11-2",
+      "subject": "Mat",
+      "teacher": ["Helder", "Marchetto"],
+      "times": [
+        ["AMo2", "1.28"],
+        ["ADo3", "1.28"],
+        ["BDi2", "1.28"],
+        ["BMi3", "1.28"]
+      ]
+    },
+    {
+      "title": "MaG11-3",
+      "subject": "Mat",
+      "teacher": ["Tino", "Rublack"],
+      "times": [
+        ["AMo2", "1.27"],
+        ["ADo3", "1.27"],
+        ["BDi2", "1.27"],
+        ["BMi3", "1.27"]
+      ]
+    },
+    {
+      "title": "MaG11-4",
+      "subject": "Mat",
+      "teacher": [
+        "Andreas",
+        "Sydow"
+      ],
+      "times": [
+        ["AMo2", "1.25"],
+        ["ADo3", "1.25"],
+        ["BDi2", "1.25"],
+        ["BMi3", "1.25"]
+      ]
+    },
+    {
+      "title": "MaL11",
+      "subject": "Mat",
+      "teacher": ["Marko", "Gruber"],
+      "times": [
+        ["AMo3", "1.29"],
+        ["ADo1", "1.29"],
+        ["BMo4", "1.29"],
+        ["BMi1", "1.29"],
+        ["BDo3", "1.29"]
+      ]
+    },
+    {
+      "title": "DeG11-1",
+      "subject": "Deu",
+      "teacher": ["Florian Magnus", "Urschel-Sochaczewski"],
+      "times": [
+        ["AMi2", "1.18"],
+        ["AFr2", "1.18"],
+        ["BMo1", "1.18"]
+      ]
+    },
+    {
+      "title": "DeG11-2",
+      "subject": "Deu",
+      "teacher": ["Rebecca", "Schaulies"],
+      "times": [
+        ["AMi2", "1.16"],
+        ["AFr2", "1.16"],
+        ["BMo1", "1.16"]
+      ]
+    },
+    {
+      "title": "DeG11-3",
+      "subject": "Deu",
+      "teacher": ["Christian", "Steinhauer"],
+      "times": [
+        ["AMo2", "1.20"],
+        ["ADo3", "1.20"],
+        ["BDi2", "1.20"]
+      ]
+    },
+    {
+      "title": "DeL11-1",
+      "subject": "Deu",
+      "teacher": ["Astrid", "Hoßfeld"],
+      "times": [
+        ["AMo1", "1.17"],
+        ["ADi2", "1.17"],
+        ["AFr1", "1.17"],
+        ["BDi1", "1.17"],
+        ["BFr3", "1.17"]
+      ]
+    },
+    {
+      "title": "DeL11-2",
+      "subject": "Deu",
+      "teacher": ["Florian Magnus", "Urschel-Sochaczewski"],
+      "times": [
+        ["AMo3", "1.16"],
+        ["ADo1", "1.16"],
+        ["BMo4", "1.16"],
+        ["BMi1", "1.16"],
+        ["BDo3", "1.16"]
+      ]
+    },
+    {
+      "title": "EnG11-1",
+      "subject": "Eng",
+      "teacher": ["Elisabeth", "Pelczyk"],
+      "times": [
+        ["AMi2", "1.64"],
+        ["AFr2", "1.64"],
+        ["BMo1", "1.64"]
+      ]
+    },
+    {
+      "title": "EnG11-2",
+      "subject": "Eng",
+      "teacher": ["Anne", "Roggelin"],
+      "times": [
+        ["AMo2", "1.65"],
+        ["ADo3", "1.65"],
+        ["BDi2", "1.65"]
+      ]
+    },
+    {
+      "title": "EnL11-1",
+      "subject": "Eng",
+      "teacher": ["Constance", "Dornbrach"],
+      "times": [
+        ["AMo3", "1.63"],
+        ["ADo1", "1.63"],
+        ["BMo4", "1.63"],
+        ["BMi1", "1.63"],
+        ["BDo3", "1.63"]
+      ]
+    },
+    {
+      "title": "EnL11-2",
+      "subject": "Eng",
+      "teacher": ["Carola", "Schulz"],
+      "times": [
+        ["AMo1", "1.63"],
+        ["ADi2", "1.63"],
+        ["AFr1", "1.63"],
+        ["BDi1", "1.63"],
+        ["BFr3", "1.63"]
+      ]
+    },
+    {
+      "title": "BioG11-1",
+      "subject": "Bio",
+      "teacher": ["Rebecca", "Schaulies"],
+      "times": [
+        ["ADo4", "0.19"],
+        ["BMo3", "0.19"],
+        ["BFr2", "0.19"]
+      ]
+    },
+    {
+      "title": "BioG11-2",
+      "subject": "Bio",
+      "teacher": ["Mathias", "Woizick"],
+      "times": [
+        ["AMi1", "0.24"],
+        ["AFr4", "0.24"],
+        ["BDo4", "0.24"]
+      ]
+    },
+    {
+      "title": "BioL11-1",
+      "subject": "Bio",
+      "teacher": ["Oliver", "Götting"],
+      "times": [
+        ["AMo3", "0.24"],
+        ["ADo1", "0.24"],
+        ["BMo4", "0.24"],
+        ["BMi1", "0.24"],
+        ["BDo3", "0.24"]
+      ]
+    },
+    {
+      "title": "BioL11-2",
+      "subject": "Bio",
+      "teacher": ["Petra", "Woizick"],
+      "times": [
+        ["AMo1", "0.24"],
+        ["ADi2", "0.24"],
+        ["AFr1", "0.24"],
+        ["BDi1", "0.24"],
+        ["BFr3", "0.24"]
+      ]
+    },
+    {
+      "title": "PhG11",
+      "subject": "Phy",
+      "teacher": ["Tino", "Rublack"],
+      "times": [
+        ["ADo4", "0.25"],
+        ["BMo3", "0.25"],
+        ["BFr2", "0.25"]
+      ]
+    },
+    {
+      "title": "PhL11",
+      "subject": "Phy",
+      "teacher": ["Johannes Paul", "Haberjoh"],
+      "times": [
+        ["AMo1", "0.21"],
+        ["ADi2", "0.21"],
+        ["AFr1", "0.21"],
+        ["BDi1", "0.21"],
+        ["BFr3", "0.21"]
+      ]
+    },
+    {
+      "title": "ChG11-1",
+      "subject": "Che",
+      "teacher": ["Petra", "Woizick"],
+      "times": [
+        ["ADo4", "0.65"],
+        ["BMo3", "0.65"],
+        ["BFr2", "0.65"]
+      ]
+    },
+    {
+      "title": "ChG11-2",
+      "subject": "Che",
+      "teacher": ["Alexander", "Tillner"],
+      "times": [
+        ["AMi1", "0.63"],
+        ["AFr4", "0.63"],
+        ["BDo4", "0.63"]
+      ]
+    },
+    {
+      "title": "GeoG11-1",
+      "subject": "Geo",
+      "teacher": [
+        "Ralf",
+        "Lüdemann"
+      ],
+      "times": [
+        ["AFr3", "1.12"],
+        ["BMo2", "1.12"],
+        ["BFr4", "1.12"]
+      ]
+    },
+    {
+      "title": "GeoG11-2",
+      "subject": "Geo",
+      "teacher": ["Anne", "Roggelin"],
+      "times": [
+        ["AMo4", "1.12"],
+        ["AMi3", "1.12"],
+        ["BDo2", "1.12"]
+      ]
+    },
+    {
+      "title": "GeoL11",
+      "subject": "Geo",
+      "teacher": ["Nannette Florentine", "Kirschke"],
+      "times": [
+        ["AMo1", "1.15"],
+        ["ADi2", "1.15"],
+        ["AFr1", "1.15"],
+        ["BDi1", "1.15"],
+        ["BFr3", "1.15"]
+      ]
+    },
+    {
+      "title": "PBG11-1",
+      "subject": "PB",
+      "teacher": ["Franziska", "Kieper"],
+      "times": [
+        ["AFr3", "1.14"],
+        ["BMo2", "1.14"],
+        ["BFr4", "1.14"]
+      ]
+    },
+    {
+      "title": "PBG11-2",
+      "subject": "PB",
+      "teacher": ["Tina", "Rinkau"],
+      "times": [
+        ["AMo4", "1.13"],
+        ["AMi3", "1.13"],
+        ["BDo2", "1.13"]
+      ]
+    },
+    {
+      "title": "PBL11",
+      "subject": "PB",
+      "teacher": ["Franziska", "Kieper"],
+      "times": [
+        ["AMo3", "1.14"],
+        ["ADo1", "1.14"],
+        ["BMo4", "1.14"],
+        ["BMi1", "1.14"],
+        ["BDo3", "1.14"]
+      ]
+    },
+    {
+      "title": "GeG11-1",
+      "subject": "Ges",
+      "teacher": ["Florian Magnus", "Urschel-Sochaczewski"],
+      "times": [
+        ["AMi4", "1.13"],
+        ["BDi3", "1.68"],
+        ["BDo1", "1.68"]
+      ]
+    },
+    {
+      "title": "GeG11-2",
+      "subject": "Ges",
+      "teacher": ["Alexander", "Tillner"],
+      "times": [
+        ["AMi4", "1.69"],
+        ["BDi3", "1.69"],
+        ["BDo1", "1.69"]
+      ]
+    },
+    {
+      "title": "GeG11-3",
+      "subject": "Ges",
+      "teacher": ["Ralf", "Lüdemann"],
+      "times": [
+        ["AMi4", "1.12"],
+        ["BDi3", "1.12"],
+        ["BDo1", "1.12"]
+      ]
+    },
+    {
+      "title": "GeG11-4",
+      "subject": "Ges",
+      "teacher": ["Jörg", "Möbius"
+      ],
+      "times": [
+        ["ADi3", "1.12"],
+        ["ADo2", "1.12"],
+        ["BMi2", "1.12"]
+      ]
+    },
+    {
+      "title": "GeG11-5",
+      "subject": "Ges",
+      "teacher": ["Christian", "Steinhauer"],
+      "times": [
+        ["ADi3", "1.13"],
+        ["ADo2", "1.13"],
+        ["BMi2", "1.13"]
+      ]
+    },
+    {
+      "title": "FrzG11",
+      "subject": "Fra",
+      "teacher": ["Anika", "Försterling"],
+      "times": [
+        ["ADi1", "1.66"],
+        ["BMi4", "1.66"],
+        ["BFr1", "1.66"]
+      ]
+    },
+    {
+      "title": "SpaG11",
+      "subject": "Spa",
+      "teacher": ["Antje", "Willimzik"],
+      "times": [
+        ["ADi1", "1.65"],
+        ["BMi4", "1.65"],
+        ["BFr1", "1.65"]
+      ]
+    },
+    {
+      "title": "LatG11",
+      "subject": "Lat",
+      "teacher": [
+        "Claudia",
+        "Bohse"
+      ],
+      "times": [
+        ["ADi1", "1.60"],
+        ["BMi4", "1.03"],
+        ["BFr1", "1.03"]
+      ]
+    },
+    {
+      "title": "IfL11",
+      "subject": "Inf",
+      "teacher": ["Stefan", "Plaumann"],
+      "times": [
+        ["AMo1", "0.17"],
+        ["ADi2", "0.17"],
+        ["AFr1", "0.17"],
+        ["BDi1", "0.17"],
+        ["BFr3", "0.17"]
+      ]
+    },
+    {
+      "title": "TeG11",
+      "subject": "Tec",
+      "teacher": ["Stefan", "Plaumann"],
+      "times": [
+        ["ADo4", "0.17"],
+        ["BMo3", "0.17"],
+        ["BFr2", "0.17"]
+      ]
+    },
+    {
+      "title": "KuG11-1",
+      "subject": "Kun",
+      "teacher": ["Karin", "Kurth"],
+      "times": [
+        ["AFr3", "0.46"],
+        ["BMo2", "0.46"],
+        ["BFr4", "0.46"]
+      ]
+    },
+    {
+      "title": "KuG11-2",
+      "subject": "Kun",
+      "teacher": ["Erika", "Kohler"],
+      "times": [
+        ["AMi4", "0.48"],
+        ["BDi3", "0.48"],
+        ["BDo1", "0.48"]
+      ]
+    },
+    {
+      "title": "KuG11-3",
+      "subject": "Kun",
+      "teacher": ["Karin", "Kurth"],
+      "times": [
+        ["AMo4", "0.46"],
+        ["AMi3", "0.46"],
+        ["BDo2", "0.46"]
+      ]
+    },
+    {
+      "title": "KuG11-4",
+      "subject": "Kun",
+      "teacher": ["Erika", "Kohler"],
+      "times": [
+        ["AMi4", "0.48"],
+        ["BDi3", "0.48"],
+        ["BDo1", "0.48"]
+      ]
+    },
+    {
+      "title": "MuG11",
+      "subject": "Mus",
+      "teacher": ["Nina", "Roska"],
+      "times": [
+        ["AMi4", "0.41"],
+        ["BDi3", "0.41"],
+        ["BDo1", "0.41"]
+      ]
+    },
+    {
+      "title": "SpG11-1",
+      "subject": "Spo",
+      "teacher": ["Jörg", "Möbius"],
+      "times": [
+        ["AMi4", "0.Sporthalle"],
+        ["BDi3", "0.Sporthalle"],
+        ["BDo1", "0.Sporthalle"]
+      ]
+    },
+    {
+      "title": "SpG11-2",
+      "subject": "Spo",
+      "teacher": ["Christian", "Schulze"],
+      "times": [
+        ["AMi4", "0.Sporthalle"],
+        ["BDi3", "0.Sporthalle"],
+        ["BDo1", "0.Sporthalle"]
+      ]
+    },
+    {
+      "title": "SpG11-3",
+      "subject": "Spo",
+      "teacher": ["Jens", "Krüger"],
+      "times": [
+        ["ADi3", "0.Sporthalle"],
+        ["ADo2", "0.Sporthalle"],
+        ["BMi2", "0.Sporthalle"]
+      ]
+    },
+    {
+      "title": "SpG11-4",
+      "subject": "Spo",
+      "teacher": ["Anke", "Kössler"],
+      "times": [
+        ["ADi3", "0.Sporthalle"],
+        ["ADo2", "0.Sporthalle"],
+        ["BMi2", "0.Sporthalle"]
+      ]
+    },
+    {
+      "title": "SpG11-5",
+      "subject": "Spo",
+      "teacher": ["Christian", "Schulze"],
+      "times": [
+        ["ADi3", "0.Sporthalle"],
+        ["ADo2", "0.Sporthalle"],
+        ["BMi2", "0.Sporthalle"]
+      ]
+    },
+    {
+      "title": "SK11-1",
+      "subject": "SK",
+      "teacher": ["Astrid", "Hoßfeld"],
+      "times": [
+        ["ADi4", "1.17"],
+        ["BDi4", "1.17"]
+      ],
+      "group": "11-1"
+    },
+    {
+      "title": "SK11-2",
+      "subject": "SK",
+      "teacher": ["Johannes Paul", "Haberjoh"],
+      "times": [
+        ["ADi4", "0.25"],
+        ["BDi4", "0.25"]
+      ],
+      "group": "11-2"
+    },
+    {
+      "title": "SK11-3",
+      "subject": "SK",
+      "teacher": ["Nannette Florentine", "Kirschke"],
+      "times": [
+        ["ADi4", "0.21"],
+        ["BDi4", "0.19"]
+      ],
+      "group": "11-3"
+    },
+    {
+      "title": "SK11-4",
+      "subject": "SK",
+      "teacher": ["Petra", "Woizick"],
+      "times": [
+        ["ADi4", "0.24"],
+        ["BDi4", "0.24"]
+      ],
+      "group": "11-4"
+    },
+    {
+      "title": "SK11-5",
+      "subject": "SK",
+      "teacher": ["Carola", "Schulz"],
+      "times": [
+        ["ADi4", "1.05"],
+        ["BDi4", "1.05"]
+      ],
+      "group": "11-5"
+    }
+  ],
+  "12": [
+    {
+      "title": "GeG12-3",
+      "subject": "Ges",
+      "teacher": ["Alexander", "Tillner"],
+      "times": [
+        ["AMo1", ""],
+        ["ADo4", ""],
+        ["BMo4", ""]
+      ]
+    },
+    {
+      "title": "KuG12-2",
+      "subject": "Kun",
+      "teacher": ["Erika", "Kohler"],
+      "times": [
+        ["AMo1", ""],
+        ["ADo4", ""],
+        ["BMo4", ""]
+      ]
+    },
+    {
+      "title": "DeL12",
+      "subject": "Deu",
+      "teacher": ["Astrid", "Hoßfeld"],
+      "times": [
+        ["AMo2", "1.17"],
+        ["AMi1", "1.17"],
+        ["AFr3", "1.17"],
+        ["BMo2", "1.17"],
+        ["BMi3", "1.17"]
+      ]
+    },
+    {
+      "title": "MaL12-2",
+      "subject": "Mat",
+      "teacher": ["Susan", "Gärtner"],
+      "times": [
+        ["AMo2", "1.26"],
+        ["AMi1", "1.26"],
+        ["AFr3", "1.26"],
+        ["BMo2", "1.26"],
+        ["BMi3", "1.26"]
+      ]
+    },
+    {
+      "title": "EnL12-2",
+      "subject": "Eng",
+      "teacher": ["Constance", "Dornbach"],
+      "times": [
+        ["AMo2", "1.05"],
+        ["AMi1", "1.05"],
+        ["AFr3", "1.05"],
+        ["BMo2", "1.05"],
+        ["BMi3", "1.05"]
+      ]
+    },
+    {
+      "title": "EnL12-3",
+      "subject": "Eng",
+      "teacher": ["Elisabeth", "Pelczyk"],
+      "times": [
+        ["AMo2", "1.01"],
+        ["AMi1", "1.01"],
+        ["AFr3", "1.01"],
+        ["BMo2", "1.01"],
+        ["BMi3", "1.01"]
+      ]
+    },
+    {
+      "title": "IfL12-2",
+      "subject": "Inf",
+      "teacher": ["Stefan", "Plaumann"],
+      "times": [
+        ["AMo2", "0.17"],
+        ["AMi1", "0.17"],
+        ["AFr3", "0.17"],
+        ["BMo2", "0.17"],
+        ["BMi3", "0.17"]
+      ]
+    },
+    {
+      "title": "BioL12-2",
+      "subject": "Bio",
+      "teacher": ["Alla", "Gatz"],
+      "times": [
+        ["AMo2", "0.24"],
+        ["AMi1", "0.24"],
+        ["AFr3", "0.24"],
+        ["BMo2", "0.24"],
+        ["BMi3", "0.24"]
+      ]
+    },
+    {
+      "title": "MuG12",
+      "subject": "Mus",
+      "teacher": ["Nick", "Schauberg"],
+      "times": [
+        ["AMo3", "0.41"],
+        ["AFr4", "0.41"],
+        ["BDi1", "0.41"]
+      ]
+    },
+    {
+      "title": "KuG12-3",
+      "subject": "Kun",
+      "teacher": ["Erika", "Kohler"],
+      "times": [
+        ["AMo3", "0.48"],
+        ["AFr4", "0.48"],
+        ["BDi1", "0.48"]
+      ]
+    },
+    {
+      "title": "KuG12-4",
+      "subject": "Kun",
+      "teacher": ["Karin", "Kurth"],
+      "times": [
+        ["AMo3", "0.46"],
+        ["AFr4", "0.46"],
+        ["BDi1", "0.46"]
+      ]
+    },
+    {
+      "title": "MuG12",
+      "subject": "Mus",
+      "teacher": ["Rebecca", "Schaulies"],
+      "times": [
+        ["AMo3", "0.19"],
+        ["AFr4", "0.19"],
+        ["BDi1", "0.19"]
+      ]
+    },
+    {
+      "title": "SpG12-4",
+      "subject": "Spo",
+      "teacher": ["Anke", "Kössler"],
+      "times": [
+        ["AMo4", "0.Sporthalle"],
+        ["AMi3", "0.Sporthalle"],
+        ["BFr4", "0.Sporthalle"]
+      ]
+    },
+    {
+      "title": "SpG12-5",
+      "subject": "Spo",
+      "teacher": ["Jens", "Krüger"],
+      "times": [
+        ["AMo4", "0.Sporthalle"],
+        ["AMi3", "0.Sporthalle"],
+        ["BFr4", "0.Sporthalle"]
+      ]
+    },
+    {
+      "title": "ChG12",
+      "subject": "Che",
+      "teacher": ["Petra", "Woizick"],
+      "times": [
+        ["AMo4", "0.65"],
+        ["AMi3", "0.65"],
+        ["BFr4", "0.65"]
+      ]
+    },
+    {
+      "title": "BioG12-2",
+      "subject": "Bio",
+      "teacher": ["Alla", "Gatz"],
+      "times": [
+        ["AMo4", "0.24"],
+        ["AMi3", "0.24"],
+        ["BFr4", "0.24"]
+      ]
+    },
+    {
+      "title": "TeG12",
+      "subject": "Tec",
+      "teacher": ["Stefan", "Plaumann"],
+      "times": [
+        ["AMo4", "0.17"],
+        ["AMi3", "0.17"],
+        ["BFr4", "0.17"]
+      ]
+    },
+    {
+      "title": "MaL12-1",
+      "subject": "Mat",
+      "teacher": ["Andrea", "Gutschmidt"],
+      "times": [
+        ["ADi1", "1.30"],
+        ["AFr2", "1.30"],
+        ["BMo1", "1.30"],
+        ["BDi3", "1.30"],
+        ["BFr2", "1.30"]
+      ]
+    },
+    {
+      "title": "EnL12-1",
+      "subject": "Eng",
+      "teacher": ["Carola", "Schulz"],
+      "times": [
+        ["ADi1", "1.05"],
+        ["AFr2", "1.05"],
+        ["BMo1", "1.05"],
+        ["BDi3", "1.05"],
+        ["BFr2", "1.05"]
+      ]
+    },
+    {
+      "title": "BioL12-1",
+      "subject": "Bio",
+      "teacher": ["Mathias", "Woizick"],
+      "times": [
+        ["ADi1", "0.24"],
+        ["AFr2", "0.24"],
+        ["BMo1", "0.24"],
+        ["BDi3", "0.24"],
+        ["BFr2", "0.24"]
+      ]
+    },
+    {
+      "title": "PBL12",
+      "subject": "PB",
+      "teacher": ["Franziska", "Kieper"],
+      "times": [
+        ["ADi1", "1.14"],
+        ["AFr2", "1.14"],
+        ["BMo1", "1.14"],
+        ["BDi3", "1.14"],
+        ["BFr2", "1.14"]
+      ]
+    },
+    {
+      "title": "PhL12",
+      "subject": "Phy",
+      "teacher": ["Johannes Paul", "Haberjoh"],
+      "times": [
+        ["ADi1", "0.21"],
+        ["AFr2", "0.21"],
+        ["BMo1", "0.21"],
+        ["BDi3", "0.21"],
+        ["BFr2", "0.21"]
+      ]
+    },
+    {
+      "title": "IfL12-1",
+      "subject": "Inf",
+      "teacher": ["Andreas", "Sydow"],
+      "times": [
+        ["ADi1", "0.62"],
+        ["AFr2", "0.62"],
+        ["BMo1", "0.62"],
+        ["BDi3", "0.62"],
+        ["BFr2", "0.62"]
+      ]
+    },
+    {
+      "title": "GeoL12",
+      "subject": "Geo",
+      "teacher": ["Jens", "Krüger"],
+      "times": [
+        ["ADi1", "1.12"],
+        ["AFr2", "1.12"],
+        ["BMo1", "1.12"],
+        ["BDi3", "1.12"],
+        ["BFr2", "1.12"]
+      ]
+    },
+    {
+      "title": "MaG12-4",
+      "subject": "Mat",
+      "teacher": ["Andrea", "Gutschmidt"],
+      "times": [
+        ["ADi1", "1.30"],
+        ["AFr2", "1.30"],
+        ["BMo1", "1.30"]
+      ]
+    },
+    {
+      "title": "MaG12-1",
+      "subject": "Mat",
+      "teacher": ["Susan", "Gärtner"],
+      "times": [
+        ["ADi1", "1.26"],
+        ["AFr2", "1.26"],
+        ["BMo1", "1.26"]
+      ]
+    },
+    {
+      "title": "MaG12-2",
+      "subject": "Mat",
+      "teacher": ["Marko", "Gruber"],
+      "times": [
+        ["ADi1", "1.29"],
+        ["AFr2", "1.29"],
+        ["BMo1", "1.29"]
+      ]
+    },
+    {
+      "title": "MaG12-3",
+      "subject": "Mat",
+      "teacher": ["Tina", "Rinkau"],
+      "times": [
+        ["ADi1", "1.28"],
+        ["AFr2", "1.28"],
+        ["BMo1", "1.28"]
+      ]
+    },
+    {
+      "title": "GeG12-2",
+      "subject": "Mat",
+      "teacher": ["Ralf", "Lüdemann"],
+      "times": [
+        ["ADi1", "1.12"],
+        ["AFr2", "1.12"],
+        ["BMo1", "1.12"]
+      ]
+    }
+  ]
+}
