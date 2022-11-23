@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 class _PreferredAppBarSize extends Size {
@@ -33,7 +34,7 @@ class MCGAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: title,
-      titleTextStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+      titleTextStyle: kIsWeb ? null : const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
       centerTitle: true,
       bottom: bottom,
       actions: actions,
