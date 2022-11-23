@@ -22,6 +22,9 @@ ThemeData lightTheme = ThemeData(
     backgroundColor: colorPrimaryLight,
     foregroundColor: Colors.white,
   ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(backgroundColor: colorPrimaryLight)
+  ),
 );
 
 ThemeData darkTheme = ThemeData(
@@ -33,5 +36,8 @@ ThemeData darkTheme = ThemeData(
   floatingActionButtonTheme: FloatingActionButtonThemeData(
     backgroundColor: colorPrimaryDark,
     foregroundColor: Colors.white,
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(backgroundColor: colorPrimaryDark)
   ),
 );
