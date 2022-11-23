@@ -13,18 +13,19 @@ class Grade {
 
   static List<Grade> _grades = [];
   static final List<int> _gradeEntries = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
-  
+
   static List<Grade> get grades => _grades;
   static List<int> get gradeEntries => _gradeEntries;
 
   static double get totalAverage {
     if (grades.isEmpty) return -1;
-    List<int> gradeList = grades.map((e) => e.grade).toList();
 
-    int sum = 0;
-    for (var element in gradeList) { sum += element; }
+    double sum = 0;
+    for (Course course in userCourses) {
+      sum += course.gradeAverage;
+    }
 
-    return sum / gradeList.length;
+    return sum / userCourses.length;
   }
 
   static void sortGrades() {
