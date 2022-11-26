@@ -1,1297 +1,1219 @@
-{"rooms":
-	[
-		{
-			"number":"0.63",
-			"name":"Lorenz",
-			"teacher":"",
-			"image":"assets/bilder/lorenz.jpg",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 1.1,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 27.1,
-				"y": 17.2
-			}
-		},{
-			"number":"0.64",
-			"name":"Vorbereitungsraum",
-			"teacher":"",
-			"image":"",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 28.3,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 47.0,
-				"y": 17.2
-			}
-		},{
-			"number":"0.65",
-			"name":"Röntgen",
-			"teacher":"Frau Woizick",
-			"image":"assets/bilder/roentgen.jpg",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 48.2,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 68.0,
-				"y": 17.1
-			}
-		},{
-			"number":"0.66",
-			"name":"Sammlungsraum",
-			"teacher":"",
-			"image":"",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 69.3,
-				"y": 1.3
-			},
-			"endpos": {
-				"x": 76.8,
-				"y": 17.2
-			}
-		},{
-			"number":"0.19",
-			"name":"Ostwald",
-			"teacher":"Herr Götting",
-			"image":"assets/bilder/ostwald.jpg",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 78.0,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 17.2
-			}
-		},{
-			"number":"0.20",
-			"name":"Chemievorbereitung",
-			"teacher":"",
-			"image":"",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 97.8,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 109.0,
-				"y": 17.2
-			}
-		},{
-			"number":"0.21",
-			"name":"Fleming",
-			"teacher":"Herr Schulze/Plaumann",
-			"image":"assets/bilder/fleming.jpg",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 110.2,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 131.2,
-				"y": 17.2
-			}
-		},{
-			"number":"0.24",
-			"name":"Watson",
-			"teacher":"Herr Woizick",
-			"image":"assets/bilder/watson.jpg",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 133.8,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 157.4,
-				"y": 39.6
-			}
-		},{
-			"number":"0.23",
-			"name":"Physikvorbereitung",
-			"teacher":"",
-			"image":"",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 132.5,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 143.8,
-				"y": 17.2
-			}
-		},{
-			"number":"0.25",
-			"name":"Einstein",
-			"teacher":"Herr Schubert",
-			"image":"assets/bilder/einstein.jpg",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 145.0,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 164.9,
-				"y": 17.2
-			}
-		},{
-			"number":"0.22",
-			"name":"unbekannt",
-			"teacher":"unbekannt",
-			"image":"assets/bilder/einstein.jpg",
-			"type": "Naturwissenschaften",
-			"startpos": {
-				"x": 121.4,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 132.6,
-				"y": 39.6
-			}
-		},
-
-		{
-			"number":"0.15",
-			"name":"Einzelarbeitsplätze",
-			"teacher":"",
-			"image":"",
-			"type":"Informatik",
-			"startpos": {
-				"x": 82.4,
-				"y": 80.4
-			},
-			"endpos": {
-				"x": 96.7,
-				"y": 94.2
-			}
-		},{
-			"number":"0.16",
-			"name":"Infovorbereitung",
-			"teacher":"",
-			"image":"",
-			"type":"Informatik",
-			"startpos": {
-				"x": 82.4,
-				"y": 73.0
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 79.1
-			}
-		},{
-			"number":"0.17",
-			"name":"Kilby",
-			"teacher":"Herr Plaumann",
-			"image":"assets/bilder/kilby.jpg",
-			"type":"Informatik",
-			"startpos": {
-				"x": 82.4,
-				"y": 45.8
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 71.8
-			}
-		},{
-			"number":"0.60",
-			"name":"",
-			"teacher":"Frau Kössler/Herr Sydow",
-			"image":"",
-			"type":"Informatik",
-			"startpos": {
-				"x": 4.8,
-				"y": 53.2
-			},
-			"endpos": {
-				"x": 22.2,
-				"y": 70.6
-			}
-		},{
-			"number":"0.61",
-			"name":"Infovorbereitung",
-			"teacher":"",
-			"image":"",
-			"type":"Informatik",
-			"startpos": {
-				"x": 4.8,
-				"y": 45.7
-			},
-			"endpos": {
-				"x": 17.2,
-				"y": 51.9
-			}
-		},{
-			"number":"0.62",
-			"name":"",
-			"teacher":"Frau Schlosshauer",
-			"image":"",
-			"type":"Informatik",
-			"startpos": {
-				"x": 4.8,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 22.2,
-				"y": 44.5
-			}
-		},
-
-		{
-			"number":"0.62.",
-			"name":"Feld C",
-			"teacher":"",
-			"image":"",
-			"type":"Sportumkleiden",
-			"startpos": {
-				"x": 287.6,
-				"y": 33.3
-			},
-			"endpos": {
-				"x": 298.9,
-				"y": 56.9
-			}
-		},{
-			"number":"0.63.",
-			"name":"Damen Feld B",
-			"teacher":"",
-			"image":"",
-			"type":"Sportumkleiden",
-			"startpos": {
-				"x": 287.6,
-				"y": 34.3
-			},
-			"endpos": {
-				"x": 298.9,
-				"y": 96.7
-			}
-
-		},{
-			"number":"0.65.",
-			"name":"Feld A",
-			"teacher":"",
-			"image":"",
-			"type":"Sportumkleiden",
-			"startpos": {
-				"x": 287.6,
-				"y": 97.8
-			},
-			"endpos": {
-				"x": 298.8,
-				"y": 117.7
-			}
-		},{
-			"number":"0.67.",
-			"name":"Hallenwart",
-			"teacher":"",
-			"image":"",
-			"type":"Sportumkleiden",
-			"startpos": {
-				"x": 287.6,
-				"y": 118.9
-			},
-			"endpos": {
-				"x": 298.9,
-				"y": 124.0
-			}
-		},{
-			"number":"0.Sporthalle",
-			"name":"Sporthalle",
-			"teacher":"",
-			"image":"",
-			"type":"Sporthalle",
-			"startpos": {
-				"x": 226.8,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 281.5,
-				"y": 117.7
-			}
-		},
-
-		{
-			"number":"0.41",
-			"name":"Musik",
-			"teacher":"Herr Schauberg",
-			"image":"",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 199.6,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 219.6,
-				"y": 17.3
-			}
-		},{
-			"number":"0.45",
-			"name":"Musikvorbereitung",
-			"teacher":"",
-			"image":"",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 220.7,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 229.5,
-				"y": 17.3
-			}
-		},{
-			"number":"0.46",
-			"name":"Kunst",
-			"teacher":"Frau Kurth",
-			"image":"",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 230.6,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 250.6,
-				"y": 17.3
-			}
-		},{
-			"number":"0.47",
-			"name":"WAT-Vorbereitung/Maschinenraum",
-			"teacher":"",
-			"image":"",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 251.7,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 263.0,
-				"y": 17.3
-			}
-		},{
-			"number":"0.48",
-			"name":"Fachraum Arbeitslehre",
-			"teacher":"Frau Kohler",
-			"image":"",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 264.2,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 282.9,
-				"y": 17.3
-			}
-		},{	"number":"1.67",
-		"name":"unbekannt",
-		"teacher":"",
-		"image":"assets/bilder/koch.jpg",
-		"type":"kreativer Unterricht",
-		"startpos": {
-			"x": 22.2,
-			"y": 1.1
-		},
-		"endpos": {
-			"x": 36.4,
-			"y": 17.2
-		}
-		},{	"number":"1.66",
-			"name":"Koch",
-			"teacher":"Herr Schauberg",
-			"image":"assets/bilder/koch.jpg",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 1.1,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 20.9,
-				"y": 17.2
-			}
-		},{
-			"number":"1.65",
-			"name":"Morgan",
-			"teacher":"Frau Willimzik",
-			"image":"assets/bilder/morgan.jpg",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 4.8,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 22.2,
-				"y": 40.0
-			}
-		},{
-			"number":"1.64",
-			"name":"Zur Hausen",
-			"teacher":"Frau Pelcyk",
-			"image":"assets/bilder/zurhausen.jpg",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 4.8,
-				"y": 41.2
-			},
-			"endpos": {
-				"x": 22.2,
-				"y": 55.3
-			}
-		},{
-			"number":"1.63",
-			"name":"Heisenberg",
-			"teacher":"Frau Dornbrach",
-			"image":"assets/bilder/heisenberg.jpg",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 4.8,
-				"y": 56.5
-			},
-			"endpos": {
-				"x": 22.2,
-				"y": 70.6
-			}
-		},{
-			"number":"1.62",
-			"name":"Curie",
-			"teacher":"Herr Fischer",
-			"image":"assets/bilder/curie.jpg",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 4.8,
-				"y": 71.8
-			},
-			"endpos": {
-				"x": 22.2,
-				"y": 85.9
-			}
-		},{
-			"number":"1.61",
-			"name":"Merrifield",
-			"teacher":"Frau Tigör",
-			"image":"assets/bilder/merrifield.jpg",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 4.8,
-				"y": 87.1
-			},
-			"endpos": {
-				"x": 22.2,
-				"y": 101.2
-			}
-		},{
-			"number":"1.60",
-			"name":"Appletone",
-			"teacher":"Frau Raabe",
-			"image":"assets/bilder/appletone.jpg",
-			"type":"kreativer Unterricht",
-			"startpos": {
-				"x": 4.8,
-				"y": 102.4
-			},
-			"endpos": {
-				"x": 22.2,
-				"y": 116.5
-			}
-		},
-
-		{
-			"number":"0.01",
-			"name":"Haustechniker",
-			"teacher":"Herr Hes/Lache",
-			"image":"",
-			"type":"Verwaltung",
-			"startpos": {
-				"x": 174.8,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 179.8,
-				"y": 111.5
-			}
-		},
-		{
-			"number":"0.02",
-			"name":"Erste Hilfe",
-			"teacher":"",
-			"image":"",
-			"type":"Verwaltung",
-			"startpos": {
-				"x": 168.6,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 173.6,
-				"y": 111.5
-			}
-		},{
-			"number":"0.03",
-			"name":"Oberstufenkoordinatorin",
-			"teacher":"Frau Gutschmidt",
-			"image":"",
-			"type":"Verwaltung",
-			"startpos": {
-				"x": 162.4,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 167.4,
-				"y": 111.5
-			}
-		},{
-			"number":"0.04",
-			"name":"Archiv",
-			"teacher":"",
-			"image":"",
-			"type":"Verwaltung",
-			"startpos": {
-				"x": 152.4,
-				"y": 152.4
-			},
-			"endpos": {
-				"x": 164.9,
-				"y": 120.2
-			}
-		},{
-			"number":"0.05",
-			"name":"Büro stellvertretende Schulleitung",
-			"teacher":"Frau Gatz",
-			"image":"",
-			"type":"Verwaltung",
-			"startpos": {
-				"x": 156.2,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 161.2,
-				"y": 111.5
-			}
-		},{
-			"number":"0.06",
-			"name":"Teeküche",
-			"teacher":"",
-			"image":"",
-			"type":"Verwaltung",
-			"startpos": {
-				"x": 145.0,
-				"y": 115.2
-			},
-			"endpos": {
-				"x": 151.2,
-				"y": 120.2
-			}
-		},{
-			"number":"0.07",
-			"name":"Sekretariat",
-			"teacher":"",
-			"image":"",
-			"type":"Verwaltung",
-			"startpos": {
-				"x": 143.8,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 154.9,
-				"y": 111.5
-			}
-		},{
-			"number":"0.08",
-			"name":"Kopierraum",
-			"teacher":"",
-			"image":"",
-			"type":"Verwaltung",
-			"startpos": {
-				"x": 137.6,
-				"y": 115.2
-			},
-			"endpos": {
-				"x": 143.8,
-				"y": 120.2
-			}
-		},{
-			"number":"0.09",
-			"name":"Büro Schulleitung",
-			"teacher":"Herr Steil",
-			"image":"",
-			"type":"Verwaltung",
-			"startpos": {
-				"x": 131.4,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 142.5,
-				"y": 111.5
-			}
-		},{
-			"number":"0.10",
-			"name":"Lehrerzimmer",
-			"teacher":"",
-			"image":"",
-			"type":"Verwaltung",
-			"startpos": {
-				"x": 97.9,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 130.1,
-				"y": 120.2
-			}
-		},
-
-		{
-			"number":"0.69",
-			"name":"WC Damen",
-			"teacher":"",
-			"image":"",
-			"type":"WC",
-			"startpos": {
-				"x": 28.4,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 37.0,
-				"y": 39.6
-			}
-		},{
-			"number":"0.12",
-			"name":"WC",
-			"teacher":"",
-			"image":"",
-			"type":"WC",
-			"startpos": {
-				"x": 88.6,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 96.7,
-				"y": 116.6
-			}
-		},{
-			"number":"0.40",
-			"name":"WC",
-			"teacher":"",
-			"image":"",
-			"type":"WC",
-			"startpos": {
-				"x": 199.6,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 217.0,
-				"y": 39.6
-			}
-		},
-		{
-			"number":"0.44",
-			"name":"WC Lehrer",
-			"teacher":"",
-			"image":"",
-			"type":"WC",
-			"startpos": {
-				"x": 218.2,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 222.0,
-				"y": 39.6
-			}
-		},{
-			"number":"0.60.",
-			"name":"WC Behindert",
-			"teacher":"",
-			"image":"",
-			"type":"WC",
-			"startpos": {
-				"x": 287.6,
-				"y": 58.1
-			},
-			"endpos": {
-				"x": 298.8,
-				"y": 63.1
-			}
-		},{
-			"number":"1.72",
-			"name":"WC Herren",
-			"teacher":"",
-			"image":"",
-			"type":"WC",
-			"startpos": {
-				"x": 28.4,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 38.4,
-				"y": 39.7
-			}
-		},
-
-		{
-			"number":"0.67a",
-			"name":"Lehreraufenthaltsraum",
-			"teacher":"",
-			"image":"",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 54.4,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 68.1,
-				"y": 39.6
-			}
-		},{
-			"number":"0.67b",
-			"name":"Schülercafe",
-			"teacher":"",
-			"image":"assets/bilder/schuelercafe.jpg",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 38.3,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 53.2,
-				"y": 39.6
-			}
-		},{
-			"number":"0.18",
-			"name":"Lehrmittel",
-			"teacher":"",
-			"image":"",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 82.4,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 44.6
-			}
-		},{
-			"number":"0.22a",
-			"name":"Lager",
-			"teacher":"",
-			"image":"",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 97.9,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 116.5,
-				"y": 29.6
-			}
-		},{
-			"number":"0.26",
-			"name":"Mediathek/Bibliothek",
-			"teacher":"",
-			"image":"assets/bilder/mediathek.jpg",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 158.7,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 182.2,
-				"y": 39.6
-			}
-		},{
-			"number":"0.33",
-			"name":"Technikraum",
-			"teacher":"",
-			"image":"",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 199.6,
-				"y": 95.4
-			},
-			"endpos": {
-				"x": 204.6,
-				"y": 101.6
-			}
-		},{
-			"number":"0.30",
-			"name":"Sozialraum",
-			"teacher":"",
-			"image":"",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 183.5,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 187.9,
-				"y": 39.6
-			}
-		},{
-			"number":"0.37",
-			"name":"Aula",
-			"teacher":"",
-			"image":"",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 199.6,
-				"y": 48.2
-			},
-			"endpos": {
-				"x": 225.6,
-				"y": 94.2
-			}
-		},{
-			"number":"0.34",
-			"name":"Cafeteria",
-			"teacher":"",
-			"image":"",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 205.8,
-				"y": 95.4
-			},
-			"endpos": {
-				"x": 225.6,
-				"y": 101.6
-			}
-		},{
-			"number":"0.14",
-			"name":"Schülervertretung",
-			"teacher":"",
-			"image":"",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 82.4,
-				"y": 95.4
-			},
-			"endpos": {
-				"x": 96.7,
-				"y": 101.7
-			}
-		},{
-			"number":"1.71",
-			"name":"Lehrmittelraum",
-			"teacher":"",
-			"image":"",
-			"type":"Sonstiges",
-			"startpos": {
-				"x": 39.5,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 53.2,
-				"y": 39.6
-			}
-		},
-
-		{
-			"number":"1.01",
-			"name":"Todd",
-			"teacher":"Frau Gutschmidt",
-			"image":"assets/bilder/todd.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 165.8,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 179.8,
-				"y": 120.2
-			}
-		},{
-			"number":"1.02",
-			"name":"Bethe",
-			"teacher":"",
-			"image":"assets/bilder/bethe.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 153.1,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 164.5,
-				"y": 120.2
-			}
-		},{
-			"number":"1.03",
-			"name":"Berg",
-			"teacher":"Frau Bohse",
-			"image":"assets/bilder/bethe.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 138.2,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 151.8,
-				"y": 120.2
-			}
-		},{
-			"number":"1.04",
-			"name":"Klitzing",
-			"teacher":"Frau Schärff",
-			"image":"assets/bilder/klitzing.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 125.8,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 136.9,
-				"y": 120.2
-			}
-		},{
-			"number":"1.05",
-			"name":"Charpak",
-			"teacher":"Frau Dornbrach",
-			"image":"assets/bilder/charpak.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 110.3,
-				"y":102.8
-			},
-			"endpos": {
-				"x": 124.5,
-				"y": 120.2
-			}
-		},{
-			"number":"1.06",
-			"name":"Mullis",
-			"teacher":"Herr Rohde",
-			"image":"assets/bilder/mullis.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 97.9,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 109.0,
-				"y": 120.2
-			}
-		},{
-			"number":"1.07",
-			"name":"Stellraum",
-			"teacher":"",
-			"image":"",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 88.6,
-				"y": 102.8
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 120.2
-			}
-		},{
-			"number":"1.10",
-			"name":"Reines",
-			"teacher":"",
-			"image":"assets/bilder/reines.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 82.3,
-				"y": 87.6
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 101.6
-			}
-		},{
-			"number":"1.11",
-			"name":"Molina",
-			"teacher":"Frau Schärff",
-			"image":"assets/bilder/molina.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 82.3,
-				"y": 72.3
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 86.4
-			}
-		},{
-			"number":"1.12",
-			"name":"Skou",
-			"teacher":"Herr Schulze /Herr Krüger",
-			"image":"assets/bilder/skou.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 82.3,
-				"y": 57.1
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 71.1
-			}
-		},{
-			"number":"1.13",
-			"name":"Blobel",
-			"teacher":"Herr Reppich",
-			"image":"assets/bilder/blobel.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 82.3,
-				"y": 41.8
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 55.9
-			}
-		},{
-			"number":"1.14",
-			"name":"Hunt",
-			"teacher":"Frau Kieper",
-			"image":"assets/bilder/hunt.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 82.3,
-				"y": 26.6
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 40.6
-			}
-		},{
-			"number":"1.15",
-			"name":"Agre",
-			"teacher":"Herr Lasch",
-			"image":"assets/bilder/agre.jpg",
-			"type":"Oberstufenspezifische Räume",
-			"startpos": {
-				"x": 82.3,
-				"y": 11.3
-			},
-			"endpos": {
-				"x": 96.6,
-				"y": 25.3
-			}
-
-		},
-
-		{
-			"number":"1.69",
-			"name":"Golgi",
-			"teacher":"Herr Tiller",
-			"image":"assets/bilder/golgi.jpg",
-			"type":"Gesellschaftiche Räume",
-			"startpos": {
-				"x": 53.2,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 68.1,
-				"y": 17.2
-			}
-
-
-		},{
-			"number":"1.70",
-			"name":"Lehreraufenthalsraum",
-			"teacher":"",
-			"image":"",
-			"type":"Gesellschaftiche Räume",
-			"startpos": {
-				"x": 54.4,
-				"y": 25.9
-			},
-			"endpos": {
-				"x": 68.1,
-				"y": 39.6
-			}
-		},{
-			"number":"1.68",
-			"name":"Hounsfield",
-			"teacher":"Herr Spangenberg",
-			"image":"assets/bilder/hounsfield.jpg",
-			"type":"Gesellschaftiche Räume",
-			"startpos": {
-				"x": 37.7,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 51.9,
-				"y": 17.2
-			}
-		},
-
-		{
-			"number":"1.16",
-			"name":"Rutherford",
-			"teacher":"Frau Schaulies",
-			"image":"assets/bilder/rutherford.jpg",
-			"type":"Deutschräume",
-			"startpos": {
-				"x": 199.6,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 213.3,
-				"y":17.2
-			}
-		},{
-			"number":"1.17",
-			"name":"Plack",
-			"teacher":"Frau Hoßfeld",
-			"image":"assets/bilder/plack.jpg",
-			"type":"Deutschräume",
-			"startpos": {
-				"x": 214.5,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 228.4,
-				"y": 17.2
-			}
-
-		},{
-			"number":"1.18",
-			"name":"Bohr",
-			"teacher":"Frau Schütz",
-			"image":"assets/bilder/bohr.jpg",
-			"type":"Deutschräume",
-			"startpos": {
-				"x": 229.7,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 243.5,
-				"y": 17.2
-			}
-		},{
-
-			"number":"1.19",
-			"name":"Landsteiner",
-			"teacher":"Frau Kurth",
-			"image":"assets/bilder/landsteiner.jpg",
-			"type":"Deutschräume",
-			"startpos": {
-				"x": 244.8,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 258.7,
-				"y": 17.2
-			}
-		},{
-
-			"number":"1.20",
-			"name":"Chadwick",
-			"teacher":"Frau Kammel",
-			"image":"assets/bilder/chadwick.jpg",
-			"type":"Deutschräume",
-			"startpos": {
-				"x": 259.9,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 273.8,
-				"y": 17.2
-			}
-
-		},{
-			"number":"1.21",
-			"name":"Besprechungsraum",
-			"teacher":"",
-			"image":"",
-			"type":"Deutschräume",
-			"startpos": {
-				"x": 275.0,
-				"y": 1.1
-			},
-			"endpos": {
-				"x": 288.9,
-				"y": 17.2
-			}
-
-		},
-
-		{
-			"number":"1.25",
-			"name":"Hahn",
-			"teacher":"",
-			"image":"assets/bilder/hahn.jpg",
-			"type":"Matheräume",
-			"startpos": {
-				"x": 287.6,
-				"y": 32.0
-			},
-			"endpos": {
-				"x": 298.8,
-				"y": 46.3
-			}
-
-		},{
-			"number":"1.26",
-			"name":"Pauling",
-			"teacher":"Frau Schilling",
-			"image":"assets/bilder/pauling.jpg",
-			"type":"Matheräume",
-			"startpos": {
-				"x": 287.6,
-				"y": 47.5
-			},
-			"endpos": {
-				"x": 298.8,
-				"y": 61.9
-			}
-
-		},{
-			"number":"1.27",
-			"name":"Calvin",
-			"teacher":"Frau Pischke",
-			"image":"assets/bilder/calvin.jpg",
-			"type":"Matheräume",
-			"startpos": {
-				"x": 287.6,
-				"y": 63.1
-			},
-			"endpos": {
-				"x": 298.8,
-				"y": 77.4
-			}
-		},{
-			"number":"1.28",
-			"name":"Eigen",
-			"teacher":"Frau Hoffmann",
-			"image":"assets/bilder/eigen.jpg",
-			"type":"Matheräume",
-			"startpos": {
-				"x": 287.6,
-				"y": 78.6
-			},
-			"endpos": {
-				"x": 298.8,
-				"y": 92.9
-			}
-
-		},{
-			"number":"1.29",
-			"name":"Mitschel",
-			"teacher":"Frau Gärtner",
-			"image":"assets/bilder/mitschel.jpg",
-			"type":"Matheräume",
-			"startpos": {
-				"x": 287.6,
-				"y": 94.1
-			},
-			"endpos": {
-				"x": 298.8,
-				"y": 108.4
-			}
-		},{
-			"number":"1.30",
-			"name":"unbekannt",
-			"teacher":"unbekannt",
-			"image":"assets/bilder/mitschel.jpg",
-			"type":"Matheräume",
-			"startpos": {
-				"x": 287.6,
-				"y": 109.6
-			},
-			"endpos": {
-				"x": 298.8,
-				"y": 124.0
-			}
-		}
-	]
+{
+  "rooms": [
+    {
+      "number": "0.63",
+      "name": "Raum 0.63 - \"Lorenz\"",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 1.1,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 27.1,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "0.64",
+      "name": "Vorbereitungsraum",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 28.3,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 47.0,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "0.65",
+      "name": "Raum 0.65 - \"Röntgen\"",
+      "teacher": "Frau Woizick",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 48.2,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 68.0,
+        "y": 17.1
+      }
+    },
+    {
+      "number": "0.66",
+      "name": "Sammlungsraum",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 69.3,
+        "y": 1.3
+      },
+      "endpos": {
+        "x": 76.8,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "0.19",
+      "name": "Raum 0.19 - \"Ostwald\"",
+      "teacher": "Herr Götting",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 78.0,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "0.20",
+      "name": "Chemievorbereitung",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 97.8,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 109.0,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "0.21",
+      "name": "Raum 0.21 - \"Fleming\"",
+      "teacher": "Herr Schulze/Plaumann",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 110.2,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 131.2,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "0.24",
+      "name": "Raum 0.24 - \"Watson\"",
+      "teacher": "Herr Woizick",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 133.8,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 157.4,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "0.23",
+      "name": "Raum 0.23 - \"Physikvorbereitung\"",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 132.5,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 143.8,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "0.25",
+      "name": "Raum 0.25 - \"Einstein\"",
+      "teacher": "Herr Schubert",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 145,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 164.9,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "0.22",
+      "name": "unbekannt",
+      "teacher": "unbekannt",
+      "type": "Naturwissenschaften",
+      "startpos": {
+        "x": 121.4,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 132.6,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "0.15",
+      "name": "Einzelarbeitsplätze",
+      "type": "Informatik",
+      "startpos": {
+        "x": 82.4,
+        "y": 80.4
+      },
+      "endpos": {
+        "x": 96.7,
+        "y": 94.2
+      }
+    },
+    {
+      "number": "0.16",
+      "name": "Infovorbereitung",
+      "type": "Informatik",
+      "startpos": {
+        "x": 82.4,
+        "y": 73.0
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 79.1
+      }
+    },
+    {
+      "number": "0.17",
+      "name": "Raum 0.17 - \"Kilby\"",
+      "teacher": "Herr Plaumann",
+      "type": "Informatik",
+      "startpos": {
+        "x": 82.4,
+        "y": 45.8
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 71.8
+      }
+    },
+    {
+      "number": "0.60",
+      "name": "Informatikraum",
+      "teacher": "Frau Kössler/Herr Sydow",
+      "type": "Informatik",
+      "startpos": {
+        "x": 4.8,
+        "y": 53.2
+      },
+      "endpos": {
+        "x": 22.2,
+        "y": 70.6
+      }
+    },
+    {
+      "number": "0.61",
+      "name": "Infovorbereitung",
+      "type": "Informatik",
+      "startpos": {
+        "x": 4.8,
+        "y": 45.7
+      },
+      "endpos": {
+        "x": 17.2,
+        "y": 51.9
+      }
+    },
+    {
+      "number": "0.62",
+      "name": "Informatikraum",
+      "teacher": "Frau Schlosshauer",
+      "type": "Informatik",
+      "startpos": {
+        "x": 4.8,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 22.2,
+        "y": 44.5
+      }
+    },
+    {
+      "number": "0.62.",
+      "name": "Feld C",
+      "type": "Sportumkleiden",
+      "startpos": {
+        "x": 287.6,
+        "y": 33.3
+      },
+      "endpos": {
+        "x": 298.9,
+        "y": 56.9
+      }
+    },
+    {
+      "number": "0.63.",
+      "name": "Damen Feld B",
+      "type": "Sportumkleiden",
+      "startpos": {
+        "x": 287.6,
+        "y": 34.3
+      },
+      "endpos": {
+        "x": 298.9,
+        "y": 96.7
+      }
+    },
+    {
+      "number": "0.65.",
+      "name": "Feld A",
+      "type": "Sportumkleiden",
+      "startpos": {
+        "x": 287.6,
+        "y": 97.8
+      },
+      "endpos": {
+        "x": 298.8,
+        "y": 117.7
+      }
+    },
+    {
+      "number": "0.67.",
+      "name": "Hallenwart",
+      "type": "Sportumkleiden",
+      "startpos": {
+        "x": 287.6,
+        "y": 118.9
+      },
+      "endpos": {
+        "x": 298.9,
+        "y": 124.0
+      }
+    },
+    {
+      "number": "TH",
+      "name": "Sporthalle",
+      "type": "Sporthalle",
+      "startpos": {
+        "x": 226.8,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 281.5,
+        "y": 117.7
+      }
+    },
+    {
+      "number": "0.41",
+      "name": "Musik",
+      "teacher": "Herr Schauberg",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 199.6,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 219.6,
+        "y": 17.3
+      }
+    },
+    {
+      "number": "0.45",
+      "name": "Musikvorbereitung",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 220.7,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 229.5,
+        "y": 17.3
+      }
+    },
+    {
+      "number": "0.46",
+      "name": "Kunst",
+      "teacher": "Frau Kurth",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 230.6,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 250.6,
+        "y": 17.3
+      }
+    },
+    {
+      "number": "0.47",
+      "name": "WAT-Vorbereitung/Maschinenraum",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 251.7,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 263.0,
+        "y": 17.3
+      }
+    },
+    {
+      "number": "0.48",
+      "name": "Fachraum Arbeitslehre",
+      "teacher": "Frau Kohler",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 264.2,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 282.9,
+        "y": 17.3
+      }
+    },
+    {
+      "number": "1.67",
+      "name": "unbekannt",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 22.2,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 36.4,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "1.66",
+      "name": "Raum 1.66 - \"Koch\"",
+      "teacher": "Herr Schauberg",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 1.1,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 20.9,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "1.65",
+      "name": "Raum 1.65 - \"Morgan\"",
+      "teacher": "Frau Willimzik",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 4.8,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 22.2,
+        "y": 40.0
+      }
+    },
+    {
+      "number": "1.64",
+      "name": "Raum 1.64 - \"Zur Hausen\"",
+      "teacher": "Frau Pelcyk",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 4.8,
+        "y": 41.2
+      },
+      "endpos": {
+        "x": 22.2,
+        "y": 55.3
+      }
+    },
+    {
+      "number": "1.63",
+      "name": "Raum 1.63 - \"Heisenberg\"",
+      "teacher": "Frau Dornbrach",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 4.8,
+        "y": 56.5
+      },
+      "endpos": {
+        "x": 22.2,
+        "y": 70.6
+      }
+    },
+    {
+      "number": "1.62",
+      "name": "Raum 1.62 - \"Curie\"",
+      "teacher": "Herr Fischer",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 4.8,
+        "y": 71.8
+      },
+      "endpos": {
+        "x": 22.2,
+        "y": 85.9
+      }
+    },
+    {
+      "number": "1.61",
+      "name": "Raum 1.61 - \"Merrifield\"",
+      "teacher": "Frau Tigör",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 4.8,
+        "y": 87.1
+      },
+      "endpos": {
+        "x": 22.2,
+        "y": 101.2
+      }
+    },
+    {
+      "number": "1.60",
+      "name": "Raum 1.60 - \"Appletone\"",
+      "teacher": "Frau Raabe",
+      "type": "kreativer Unterricht",
+      "startpos": {
+        "x": 4.8,
+        "y": 102.4
+      },
+      "endpos": {
+        "x": 22.2,
+        "y": 116.5
+      }
+    },
+    {
+      "number": "0.01",
+      "name": "Haustechniker",
+      "teacher": "Herr Hes/Lache",
+      "type": "Verwaltung",
+      "startpos": {
+        "x": 174.8,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 179.8,
+        "y": 111.5
+      }
+    },
+    {
+      "number": "0.02",
+      "name": "Erste Hilfe",
+      "type": "Verwaltung",
+      "startpos": {
+        "x": 168.6,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 173.6,
+        "y": 111.5
+      }
+    },
+    {
+      "number": "0.03",
+      "name": "Oberstufenkoordinatorin",
+      "teacher": "Frau Gutschmidt",
+      "type": "Verwaltung",
+      "startpos": {
+        "x": 162.4,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 167.4,
+        "y": 111.5
+      }
+    },
+    {
+      "number": "0.04",
+      "name": "Archiv",
+      "type": "Verwaltung",
+      "startpos": {
+        "x": 152.4,
+        "y": 152.4
+      },
+      "endpos": {
+        "x": 164.9,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "0.05",
+      "name": "Büro stellvertretende Schulleitung",
+      "teacher": "Frau Gatz",
+      "type": "Verwaltung",
+      "startpos": {
+        "x": 156.2,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 161.2,
+        "y": 111.5
+      }
+    },
+    {
+      "number": "0.06",
+      "name": "Teeküche",
+      "type": "Verwaltung",
+      "startpos": {
+        "x": 145.0,
+        "y": 115.2
+      },
+      "endpos": {
+        "x": 151.2,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "0.07",
+      "name": "Sekretariat",
+      "type": "Verwaltung",
+      "startpos": {
+        "x": 143.8,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 154.9,
+        "y": 111.5
+      }
+    },
+    {
+      "number": "0.08",
+      "name": "Kopierraum",
+      "type": "Verwaltung",
+      "startpos": {
+        "x": 137.6,
+        "y": 115.2
+      },
+      "endpos": {
+        "x": 143.8,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "0.09",
+      "name": "Büro Schulleitung",
+      "teacher": "Herr Steil",
+      "type": "Verwaltung",
+      "startpos": {
+        "x": 131.4,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 142.5,
+        "y": 111.5
+      }
+    },
+    {
+      "number": "0.10",
+      "name": "Lehrerzimmer",
+      "type": "Verwaltung",
+      "startpos": {
+        "x": 97.9,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 130.1,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "0.69",
+      "name": "WC Damen",
+      "type": "WC",
+      "startpos": {
+        "x": 28.4,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 37.0,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "0.12",
+      "name": "WC",
+      "type": "WC",
+      "startpos": {
+        "x": 88.6,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 96.7,
+        "y": 116.6
+      }
+    },
+    {
+      "number": "0.40",
+      "name": "WC",
+      "type": "WC",
+      "startpos": {
+        "x": 199.6,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 217.0,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "0.44",
+      "name": "WC Lehrer",
+      "type": "WC",
+      "startpos": {
+        "x": 218.2,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 222.0,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "0.60.",
+      "name": "WC Behindert",
+      "type": "WC",
+      "startpos": {
+        "x": 287.6,
+        "y": 58.1
+      },
+      "endpos": {
+        "x": 298.8,
+        "y": 63.1
+      }
+    },
+    {
+      "number": "1.72",
+      "name": "WC Herren",
+      "type": "WC",
+      "startpos": {
+        "x": 28.4,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 38.4,
+        "y": 39.7
+      }
+    },
+    {
+      "number": "0.67a",
+      "name": "Lehreraufenthaltsraum",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 54.4,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 68.1,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "0.67b",
+      "name": "Schülercafe",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 38.3,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 53.2,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "0.18",
+      "name": "Lehrmittel",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 82.4,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 44.6
+      }
+    },
+    {
+      "number": "0.22a",
+      "name": "Lager",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 97.9,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 116.5,
+        "y": 29.6
+      }
+    },
+    {
+      "number": "0.26",
+      "name": "Mediathek/Bibliothek",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 158.7,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 182.2,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "0.33",
+      "name": "Technikraum",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 199.6,
+        "y": 95.4
+      },
+      "endpos": {
+        "x": 204.6,
+        "y": 101.6
+      }
+    },
+    {
+      "number": "0.30",
+      "name": "Sozialraum",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 183.5,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 187.9,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "0.37",
+      "name": "Aula",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 199.6,
+        "y": 48.2
+      },
+      "endpos": {
+        "x": 225.6,
+        "y": 94.2
+      }
+    },
+    {
+      "number": "0.34",
+      "name": "Cafeteria",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 205.8,
+        "y": 95.4
+      },
+      "endpos": {
+        "x": 225.6,
+        "y": 101.6
+      }
+    },
+    {
+      "number": "0.14",
+      "name": "Schülervertretung",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 82.4,
+        "y": 95.4
+      },
+      "endpos": {
+        "x": 96.7,
+        "y": 101.7
+      }
+    },
+    {
+      "number": "1.71",
+      "name": "Lehrmittelraum",
+      "type": "Sonstiges",
+      "startpos": {
+        "x": 39.5,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 53.2,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "1.01",
+      "name": "Raum 1.01 - \"Todd\"",
+      "teacher": "Frau Gutschmidt",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 165.8,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 179.8,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "1.02",
+      "name": "Raum 1.02 - \"Bethe\"",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 153.1,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 164.5,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "1.03",
+      "name": "Raum 1.03 - \"Berg\"",
+      "teacher": "Frau Bohse",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 138.2,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 151.8,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "1.04",
+      "name": "Raum 1.04 - \"Klitzing\"",
+      "teacher": "Frau Schärff",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 125.8,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 136.9,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "1.05",
+      "name": "Raum 1.05 - \"Charpak\"",
+      "teacher": "Frau Dornbrach",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 110.3,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 124.5,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "1.06",
+      "name": "Raum 1.06 - \"Mullis\"",
+      "teacher": "Herr Rohde",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 97.9,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 109,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "1.07",
+      "name": "Stellraum",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 88.6,
+        "y": 102.8
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 120.2
+      }
+    },
+    {
+      "number": "1.10",
+      "name": "Raum 1.10 - \"Reines\"",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 82.3,
+        "y": 87.6
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 101.6
+      }
+    },
+    {
+      "number": "1.11",
+      "name": "Raum 1.11 - \"Molina\"",
+      "teacher": "Frau Schärff",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 82.3,
+        "y": 72.3
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 86.4
+      }
+    },
+    {
+      "number": "1.12",
+      "name": "Raum 1.12 - \"Skou\"",
+      "teacher": "Herr Schulze /Herr Krüger",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 82.3,
+        "y": 57.1
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 71.1
+      }
+    },
+    {
+      "number": "1.13",
+      "name": "Raum 1.13 - \"Blobel\"",
+      "teacher": "Herr Reppich",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 82.3,
+        "y": 41.8
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 55.9
+      }
+    },
+    {
+      "number": "1.14",
+      "name": "Raum 1.14 - \"Hunt\"",
+      "teacher": "Frau Kieper",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 82.3,
+        "y": 26.6
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 40.6
+      }
+    },
+    {
+      "number": "1.15",
+      "name": "Raum 1.15 - \"Agre\"",
+      "teacher": "Herr Lasch",
+      "type": "Oberstufenspezifische Räume",
+      "startpos": {
+        "x": 82.3,
+        "y": 11.3
+      },
+      "endpos": {
+        "x": 96.6,
+        "y": 25.3
+      }
+    },
+    {
+      "number": "1.69",
+      "name": "Raum 1.69 - \"Golgi\"",
+      "teacher": "Herr Tiller",
+      "type": "Gesellschaftiche Räume",
+      "startpos": {
+        "x": 53.2,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 68.1,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "1.70",
+      "name": "Lehreraufenthalsraum",
+      "type": "Gesellschaftiche Räume",
+      "startpos": {
+        "x": 54.4,
+        "y": 25.9
+      },
+      "endpos": {
+        "x": 68.1,
+        "y": 39.6
+      }
+    },
+    {
+      "number": "1.68",
+      "name": "Raum 1.68 - \"Hounsfield\"",
+      "teacher": "Herr Spangenberg",
+      "type": "Gesellschaftiche Räume",
+      "startpos": {
+        "x": 37.7,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 51.9,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "1.16",
+      "name": "Raum 1.16 - \"Rutherford\"",
+      "teacher": "Frau Schaulies",
+      "type": "Deutschräume",
+      "startpos": {
+        "x": 199.6,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 213.3,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "1.17",
+      "name": "Raum 1.17 - \"Plack\"",
+      "teacher": "Frau Hoßfeld",
+      "type": "Deutschräume",
+      "startpos": {
+        "x": 214.5,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 228.4,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "1.18",
+      "name": "Raum 1.18 - \"Bohr\"",
+      "teacher": "Frau Schütz",
+      "type": "Deutschräume",
+      "startpos": {
+        "x": 229.7,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 243.5,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "1.19",
+      "name": "Raum 1.19 - \"Landsteiner\"",
+      "teacher": "Frau Kurth",
+      "type": "Deutschräume",
+      "startpos": {
+        "x": 244.8,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 258.7,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "1.20",
+      "name": "Raum 1.20 - \"Chadwick\"",
+      "teacher": "Frau Kammel",
+      "type": "Deutschräume",
+      "startpos": {
+        "x": 259.9,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 273.8,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "1.21",
+      "name": "Besprechungsraum",
+      "type": "Deutschräume",
+      "startpos": {
+        "x": 275,
+        "y": 1.1
+      },
+      "endpos": {
+        "x": 288.9,
+        "y": 17.2
+      }
+    },
+    {
+      "number": "1.25",
+      "name": "Raum 1.25 - \"Hahn\"",
+      "type": "Matheräume",
+      "startpos": {
+        "x": 287.6,
+        "y": 32.0
+      },
+      "endpos": {
+        "x": 298.8,
+        "y": 46.3
+      }
+    },
+    {
+      "number": "1.26",
+      "name": "Raum 1.26 - \"Pauling\"",
+      "teacher": "Frau Schilling",
+      "type": "Matheräume",
+      "startpos": {
+        "x": 287.6,
+        "y": 47.5
+      },
+      "endpos": {
+        "x": 298.8,
+        "y": 61.9
+      }
+    },
+    {
+      "number": "1.27",
+      "name": "Raum 1.27 - \"Calvin\"",
+      "teacher": "Frau Pischke",
+      "type": "Matheräume",
+      "startpos": {
+        "x": 287.6,
+        "y": 63.1
+      },
+      "endpos": {
+        "x": 298.8,
+        "y": 77.4
+      }
+    },
+    {
+      "number": "1.28",
+      "name": "Raum 1.28 - \"Eigen\"",
+      "teacher": "Frau Hoffmann",
+      "type": "Matheräume",
+      "startpos": {
+        "x": 287.6,
+        "y": 78.6
+      },
+      "endpos": {
+        "x": 298.8,
+        "y": 92.9
+      }
+    },
+    {
+      "number": "1.29",
+      "name": "Raum 1.29 - \"Mitschel\"",
+      "teacher": "Frau Gärtner",
+      "type": "Matheräume",
+      "startpos": {
+        "x": 287.6,
+        "y": 94.1
+      },
+      "endpos": {
+        "x": 298.8,
+        "y": 108.4
+      }
+    },
+    {
+      "number": "1.30",
+      "name": "unbekannt",
+      "teacher": "unbekannt",
+      "type": "Matheräume",
+      "startpos": {
+        "x": 287.6,
+        "y": 109.6
+      },
+      "endpos": {
+        "x": 298.8,
+        "y": 124.0
+      }
+    }
+  ]
 }

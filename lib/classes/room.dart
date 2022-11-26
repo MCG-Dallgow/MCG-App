@@ -8,7 +8,6 @@ class Room {
   late String number;
   late String name;
   late String teacher;
-  late String image;
   late String type;
   late double startX;
   late double startY;
@@ -19,7 +18,6 @@ class Room {
     required this.number,
     required this.name,
     required this.teacher,
-    required this.image,
     required this.type,
     required this.startX,
     required this.startY,
@@ -46,7 +44,6 @@ class Room {
     this.number = room?.number ?? '0.00';
     name = room?.name ?? 'Unbekannter Raum';
     teacher = room?.teacher ?? '';
-    image = room?.image ?? '';
     type = room?.type ?? '';
     startX = room?.startX ?? 0;
     startY = room?.startY ?? 0;
@@ -57,12 +54,11 @@ class Room {
   Room.fromJson(var json, int index) {
     number = json[index]['number'];
     name = json[index]['name'];
-    teacher = json[index]['teacher'];
-    image = json[index]['image'];
+    teacher = json[index]['teacher'] ?? '';
     type = json[index]['type'];
-    startX = json[index]['startpos']['x'];
-    startY = json[index]['startpos']['y'];
-    endX = json[index]['endpos']['x'];
-    endY = json[index]['endpos']['y'];
+    startX = json[index]['startpos']['x'].toDouble();
+    startY = json[index]['startpos']['y'].toDouble();
+    endX = json[index]['endpos']['x'].toDouble();
+    endY = json[index]['endpos']['y'].toDouble();
   }
 }
