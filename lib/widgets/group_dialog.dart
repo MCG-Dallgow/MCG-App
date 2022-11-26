@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mcgapp/classes/course.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../classes/group.dart';
 
-Future<Group> showGroupChoosingDialog(BuildContext context) async {
+Future<void> chooseGroup(BuildContext context) async {
+  group = await _showGroupChoosingDialog(context);
+  courses = await Course.getCourses(group!);
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString('group', group!.name);
+  userCourses = prefs.getStringList('courses-${group!.name}')?.map((title) => Course.fromTitle(title)).toList() ?? [];
+}
+
+Future<Group> _showGroupChoosingDialog(BuildContext context) async {
   Group group = await showDialog(
     barrierDismissible: false,
     context: context,

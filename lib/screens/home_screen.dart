@@ -24,20 +24,12 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-      prefs.remove('group');
-      group = prefs.getString('group') != null ? Group.fromName(prefs.getString('group')!) : null;
+      if (prefs.getString('group') != null) group = Group.fromName(prefs.getString('group')!);
 
       if (!mounted) return;
-      group ??= await showGroupChoosingDialog(context);
-      prefs.setString('group', group!.name);
-
-      courses = await Course.getCourses(group!.level);
-
-      userCourses =
-          prefs.getStringList('courses-${group!.level}')?.map((title) => Course.fromTitle(title)).toList() ?? [];
+      if (group == null) await chooseGroup(context);
       if (!mounted) return;
-      if (userCourses.isEmpty) userCourses = await showCourseChoosingDialog(context);
-      prefs.setStringList('courses-${group!.level}', userCourses.map((course) => course.title).toList());
+      if (userCourses.isEmpty) await chooseCourses(context);
     });
   }
 

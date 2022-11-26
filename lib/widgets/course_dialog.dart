@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../classes/course.dart';
 
-Future<List<Course>> showCourseChoosingDialog(BuildContext context) async {
+Future<void> chooseCourses(BuildContext context) async {
+  await _showCourseChoosingDialog(context);
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setStringList('courses-${group!.name}', userCourses.map((course) => course.title).toList());
+}
+
+Future<List<Course>> _showCourseChoosingDialog(BuildContext context) async {
   List<Course> courses = await showDialog(
     barrierDismissible: false,
     context: context,
@@ -24,13 +31,23 @@ class _CourseChoosingDialog extends StatefulWidget {
 
 class _CourseChoosingDialogState extends State<_CourseChoosingDialog> {
   final List<Course> _selectedCourses = userCourses;
+  final List<Course> _requiredCourses = [];
 
+  @override
+  void initState() {
+    super.initState();
+    for (Course course in courses.values) {
+      if (course.required) _requiredCourses.add(course);
+    }
+    _selectedCourses.addAll(_requiredCourses);
+  }
+  
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async => false,
       child: SimpleDialog(
-        title: const Text('Wähle deine Kurse'),
+        title: Text('Wähle deine ${group!.level > 10 ? 'Kurse' : 'Fächer'}'),
         children: [
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -43,11 +60,12 @@ class _CourseChoosingDialogState extends State<_CourseChoosingDialog> {
                   itemBuilder: (BuildContext context, int index) {
                     Course course = courses.values.toList()[index];
                     return CheckboxListTile(
+                      enabled: !course.required,
                       title: Row(children: [
-                        Text(course.title),
+                        Text(group!.level > 10 ? course.title : course.subject.name),
                         Flexible(
                           child: Text(
-                            ' (${course.teacher.nachname})',
+                            ' (${course.teacher.lastname})',
                             style: const TextStyle(color: Colors.grey),
                             overflow: TextOverflow.ellipsis,
                           ),
@@ -85,6 +103,7 @@ class _CourseChoosingDialogState extends State<_CourseChoosingDialog> {
                           if (_selectedCourses.isNotEmpty) {
                             setState(() {
                               _selectedCourses.clear();
+                              _selectedCourses.addAll(_requiredCourses);
                             });
                           }
                         },
@@ -99,7 +118,7 @@ class _CourseChoosingDialogState extends State<_CourseChoosingDialog> {
                         style: ElevatedButton.styleFrom(backgroundColor: _selectedCourses.isEmpty ? Colors.grey : null),
                         onPressed: () {
                           if (_selectedCourses.isNotEmpty) {
-                            setUserCourses(_selectedCourses);
+                            _selectedCourses.sort((a, b) => a.title.compareTo(b.title));
                             Navigator.pop(context, _selectedCourses);
                           }
                         },

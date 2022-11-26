@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:mcgapp/widgets/course_dialog.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../classes/course.dart';
 import '../main.dart';
 
@@ -41,27 +40,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: const Text('Klasse/Tutoriat wählen'),
             leading: const Icon(Icons.tag),
             onTap: () async {
-              group = await showGroupChoosingDialog(context);
-              courses = await Course.getCourses(group!.level);
-
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              userCourses =
-                  prefs.getStringList('courses-${group!.level}')?.map((title) => Course.fromTitle(title)).toList() ?? [];
+              await chooseGroup(context);
               if (!mounted) return;
-              if (userCourses.isEmpty) userCourses = await showCourseChoosingDialog(context);
-              prefs.setStringList('courses-${group!.level}', userCourses.map((course) => course.title).toList());
+              if (userCourses.isEmpty) await chooseCourses(context);
             },
           ),
           ListTile(
             title: const Text('Kurse wählen'),
             leading: const Icon(Icons.school),
             onTap: () async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              userCourses =
-                  prefs.getStringList('courses-${group!.level}')?.map((title) => Course.fromTitle(title)).toList() ?? [];
-              if (!mounted) return;
-              userCourses = await showCourseChoosingDialog(context);
-              prefs.setStringList('courses-${group!.level}', userCourses.map((course) => course.title).toList());
+              await chooseCourses(context);
             },
           ),
         ],
