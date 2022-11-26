@@ -94,10 +94,10 @@ class _TeachersScreenState extends State<TeachersScreen> {
 
       _entries.clear();
       for (Teacher teacher in _teachers) {
-        if (teacher.nachname.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
-            '${teacher.anrede} ${teacher.nachname}'.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
-            teacher.vorname.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
-            teacher.kuerzel.toLowerCase().startsWith(searchQuery.toLowerCase())) {
+        if (teacher.lastname.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
+            '${teacher.title} ${teacher.lastname}'.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
+            teacher.firstname.toLowerCase().startsWith(searchQuery.toLowerCase()) ||
+            teacher.short.toLowerCase().startsWith(searchQuery.toLowerCase())) {
           _entries.add(teacher);
         }
       }
@@ -157,7 +157,7 @@ class _TeachersScreenState extends State<TeachersScreen> {
                 int teacherIndex = index ~/ 2 - ((_entries.isNotEmpty && !_isSearching || searchQuery == '') ? 1 : 0);
                 return ListTile(
                   //leading: CircleAvatar(),
-                  title: Text('${_entries[teacherIndex].anrede} ${_entries[teacherIndex].nachname}'),
+                  title: Text('${_entries[teacherIndex].title} ${_entries[teacherIndex].lastname}'),
                   onTap: () {
                     Navigator.pushNamed(
                       context,

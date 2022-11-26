@@ -14,25 +14,25 @@ class TeacherDetailsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: MCGAppBar(
-        title: Text('${teacher.anrede} ${teacher.nachname}'),
+        title: Text('${teacher.title} ${teacher.lastname}'),
       ),
       body: ListView(
         children: [
           ListTile(
-            title: Text('${teacher.vorname} ${teacher.nachname}' != ''
-                ? '${teacher.vorname} ${teacher.nachname}'
+            title: Text('${teacher.firstname} ${teacher.lastname}' != ''
+                ? '${teacher.firstname} ${teacher.lastname}'
                 : 'kein vermerkter Name'),
             leading: const Icon(Icons.person),
           ),
           ListTile(
-            title: Text(teacher.faecher != ''
-                ? teacher.faecher
+            title: Text(teacher.subjects.isNotEmpty
+                ? teacher.subjects.map((e) => e.name).join(', ')
                 : 'keine vermerkten Fächer'),
             leading: const Icon(Icons.subject),
           ),
           ListTile(
-            title: Text(teacher.kuerzel != ''
-                ? teacher.kuerzel
+            title: Text(teacher.short != ''
+                ? teacher.short
                 : 'kein vermerkes Kürzel'),
             leading: const Icon(Icons.tag),
           ),

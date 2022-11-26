@@ -1,23 +1,24 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:mcgapp/classes/subject.dart';
 
 Map<String, Teacher> teachers = {};
 
 class Teacher {
-  late String anrede;
-  late String vorname;
-  late String nachname;
-  late String kuerzel;
-  late String faecher;
+  late String title;
+  late String firstname;
+  late String lastname;
+  late String short;
+  late List<Subject> subjects;
   late String email;
 
   Teacher({
-    required this.anrede,
-    required this.vorname,
-    required this.nachname,
-    required this.kuerzel,
-    required this.faecher,
+    required this.title,
+    required this.firstname,
+    required this.lastname,
+    required this.short,
+    required this.subjects,
     required this.email,
   });
 
@@ -28,29 +29,29 @@ class Teacher {
     Map<String, Teacher> teachers = {};
     for (int i = 0; i < data.length; i++) {
       Teacher teacher = Teacher.fromJson(data, i);
-      teachers['${teacher.vorname} ${teacher.nachname}'] = teacher;
+      teachers['${teacher.firstname} ${teacher.lastname}'] = teacher;
     }
 
     return teachers;
   }
 
-  Teacher.fromFirstAndLastName(String vorname, String nachname) {
-    Teacher? teacher = teachers['$vorname $nachname'];
+  Teacher.fromFirstAndLastName(String firstname, String lastname) {
+    Teacher? teacher = teachers['$firstname $lastname'];
 
-    anrede = teacher?.anrede ?? 'Herr';
-    this.vorname = teacher?.vorname ?? 'Unbekannter';
-    this.nachname = teacher?.nachname ?? 'Lehrer';
-    kuerzel = teacher?.kuerzel ?? '-----';
-    faecher = teacher?.faecher ?? '';
+    title = teacher?.title ?? 'Herr';
+    this.firstname = teacher?.firstname ?? 'Unbekannter';
+    this.lastname = teacher?.lastname ?? 'Lehrer';
+    short = teacher?.short ?? '-----';
+    subjects = teacher?.subjects ?? [];
     email = teacher?.email ?? '';
   }
 
   Teacher.fromJson(var json, int index) {
-    anrede = json[index]['anrede'];
-    vorname = json[index]['vorname'];
-    nachname = json[index]['nachname'];
-    kuerzel = json[index]['kuerzel'];
-    faecher = json[index]['faecher'];
+    title = json[index]['title'];
+    firstname = json[index]['firstname'];
+    lastname = json[index]['lastname'];
+    short = json[index]['short'];
+    subjects = (json[index]['subjects'] as List).map((e) => Subject.fromShort(e)).toList();
     email = json[index]['email'];
   }
 }
