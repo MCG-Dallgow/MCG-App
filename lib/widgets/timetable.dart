@@ -47,59 +47,32 @@ class Timetable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        Row(
+    return ListView.builder(
+      itemCount: 5,
+      itemBuilder: (BuildContext context, int index) {
+        if (index == 0) {
+          return Row(
+            children: [
+              Container(height: 32, width: 28, color: rowColor),
+              _dayHeader('Mo'),
+              _dayHeader('Di'),
+              _dayHeader('Mi'),
+              _dayHeader('Do'),
+              _dayHeader('Fr'),
+            ],
+          );
+        }
+        return Row(
           children: [
-            Container(height: 32, width: 28, color: rowColor),
-            _dayHeader('Mo'),
-            _dayHeader('Di'),
-            _dayHeader('Mi'),
-            _dayHeader('Do'),
-            _dayHeader('Fr'),
+            _lessonHeader('$index'),
+            TimetableEntry(course: _getCourse('${week}Mo$index'), week: week, weekday: 'Montag', lesson: index),
+            TimetableEntry(course: _getCourse('${week}Di$index'), week: week, weekday: 'Dienstag', lesson: index),
+            TimetableEntry(course: _getCourse('${week}Mi$index'), week: week, weekday: 'Mittwoch', lesson: index),
+            TimetableEntry(course: _getCourse('${week}Do$index'), week: week, weekday: 'Donnerstag', lesson: index),
+            TimetableEntry(course: _getCourse('${week}Fr$index'), week: week, weekday: 'Freitag', lesson: index),
           ],
-        ),
-        Row(
-          children: [
-            _lessonHeader('1'),
-            TimetableEntry(course: _getCourse('${week}Mo1'), week: week, weekday: 'Montag', lesson: 1),
-            TimetableEntry(course: _getCourse('${week}Di1'), week: week, weekday: 'Dienstag', lesson: 1),
-            TimetableEntry(course: _getCourse('${week}Mi1'), week: week, weekday: 'Mittwoch', lesson: 1),
-            TimetableEntry(course: _getCourse('${week}Do1'), week: week, weekday: 'Donnerstag', lesson: 1),
-            TimetableEntry(course: _getCourse('${week}Fr1'), week: week, weekday: 'Freitag', lesson: 1),
-          ],
-        ),
-        Row(
-          children: [
-            _lessonHeader('2'),
-            TimetableEntry(course: _getCourse('${week}Mo2'), week: week, weekday: 'Montag', lesson: 2),
-            TimetableEntry(course: _getCourse('${week}Di2'), week: week, weekday: 'Dienstag', lesson: 2),
-            TimetableEntry(course: _getCourse('${week}Mi2'), week: week, weekday: 'Mittwoch', lesson: 2),
-            TimetableEntry(course: _getCourse('${week}Do2'), week: week, weekday: 'Donnerstag', lesson: 2),
-            TimetableEntry(course: _getCourse('${week}Fr2'), week: week, weekday: 'Freitag', lesson: 2),
-          ],
-        ),
-        Row(
-          children: [
-            _lessonHeader('3'),
-            TimetableEntry(course: _getCourse('${week}Mo3'), week: week, weekday: 'Montag', lesson: 3),
-            TimetableEntry(course: _getCourse('${week}Di3'), week: week, weekday: 'Dienstag', lesson: 3),
-            TimetableEntry(course: _getCourse('${week}Mi3'), week: week, weekday: 'Mittwoch', lesson: 3),
-            TimetableEntry(course: _getCourse('${week}Do3'), week: week, weekday: 'Donnerstag', lesson: 3),
-            TimetableEntry(course: _getCourse('${week}Fr3'), week: week, weekday: 'Freitag', lesson: 3),
-          ],
-        ),
-        Row(
-          children: [
-            _lessonHeader('4'),
-            TimetableEntry(course: _getCourse('${week}Mo4'), week: week, weekday: 'Montag', lesson: 4),
-            TimetableEntry(course: _getCourse('${week}Di4'), week: week, weekday: 'Dienstag', lesson: 4),
-            TimetableEntry(course: _getCourse('${week}Mi4'), week: week, weekday: 'Mittwoch', lesson: 4),
-            TimetableEntry(course: _getCourse('${week}Do4'), week: week, weekday: 'Donnerstag', lesson: 4),
-            TimetableEntry(course: _getCourse('${week}Fr4'), week: week, weekday: 'Freitag', lesson: 4),
-          ],
-        ),
-      ],
+        );
+      }
     );
   }
 }
@@ -155,7 +128,7 @@ class TimetableEntry extends StatelessWidget {
         leading: const Icon(Icons.access_time_outlined),
       ),
       ListTile(
-        title: Text('${course!.teacher.anrede} ${course!.teacher.nachname}'),
+        title: Text('${course!.teacher.title} ${course!.teacher.lastname}'),
         leading: const Icon(Icons.person),
       ),
       ListTile(
@@ -176,16 +149,7 @@ class TimetableEntry extends StatelessWidget {
                   context,
                   '$weekday, $lesson. Block ($week)',
                   _details,
-                  [
-                    IconButton(
-                      icon: const Icon(Icons.edit, color: Colors.grey),
-                      onPressed: () {},
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.delete, color: Colors.grey),
-                      onPressed: () {},
-                    ),
-                  ],
+                  [],
                 );
               },
               child: Padding(
@@ -207,7 +171,7 @@ class TimetableEntry extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          _room?.number == '0.Sporthalle' ? 'TH' : _room?.number ?? '',
+                          _room?.number ?? '',
                           style: TextStyle(color: course!.subject.foregroundColor),
                         ),
                       ],
