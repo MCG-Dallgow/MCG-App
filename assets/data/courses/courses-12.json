@@ -3,7 +3,7 @@
     {
       "title": "GeG12-3",
       "subject": "Ges",
-      "teacher": ["Alexander", "Tillner"],
+      "teacher": "TillA",
       "times": [
         ["AMo1", ""],
         ["ADo4", ""],
@@ -13,7 +13,7 @@
     {
       "title": "KuG12-2",
       "subject": "Kun",
-      "teacher": ["Erika", "Kohler"],
+      "teacher": "KohlE",
       "times": [
         ["AMo1", ""],
         ["ADo4", ""],
@@ -23,7 +23,7 @@
     {
       "title": "DeL12",
       "subject": "Deu",
-      "teacher": ["Astrid", "Hoßfeld"],
+      "teacher": "HossA",
       "times": [
         ["AMo2", "1.17"],
         ["AMi1", "1.17"],
@@ -35,7 +35,7 @@
     {
       "title": "MaL12-2",
       "subject": "Mat",
-      "teacher": ["Susan", "Gärtner"],
+      "teacher": "GärtS",
       "times": [
         ["AMo2", "1.26"],
         ["AMi1", "1.26"],
@@ -47,7 +47,7 @@
     {
       "title": "EnL12-2",
       "subject": "Eng",
-      "teacher": ["Constance", "Dornbach"],
+      "teacher": "DornC",
       "times": [
         ["AMo2", "1.05"],
         ["AMi1", "1.05"],
@@ -59,7 +59,7 @@
     {
       "title": "EnL12-3",
       "subject": "Eng",
-      "teacher": ["Elisabeth", "Pelczyk"],
+      "teacher": "PelcE",
       "times": [
         ["AMo2", "1.01"],
         ["AMi1", "1.01"],
@@ -71,7 +71,7 @@
     {
       "title": "IfL12-2",
       "subject": "Inf",
-      "teacher": ["Stefan", "Plaumann"],
+      "teacher": "PlauS",
       "times": [
         ["AMo2", "0.17"],
         ["AMi1", "0.17"],
@@ -83,7 +83,7 @@
     {
       "title": "BioL12-2",
       "subject": "Bio",
-      "teacher": ["Alla", "Gatz"],
+      "teacher": "GatzA",
       "times": [
         ["AMo2", "0.24"],
         ["AMi1", "0.24"],
@@ -95,7 +95,7 @@
     {
       "title": "MuG12",
       "subject": "Mus",
-      "teacher": ["Nick", "Schauberg"],
+      "teacher": "SchaN",
       "times": [
         ["AMo3", "0.41"],
         ["AFr4", "0.41"],
@@ -105,7 +105,7 @@
     {
       "title": "KuG12-3",
       "subject": "Kun",
-      "teacher": ["Erika", "Kohler"],
+      "teacher": "KohlE",
       "times": [
         ["AMo3", "0.48"],
         ["AFr4", "0.48"],
@@ -115,7 +115,7 @@
     {
       "title": "KuG12-4",
       "subject": "Kun",
-      "teacher": ["Karin", "Kurth"],
+      "teacher": "KurtK",
       "times": [
         ["AMo3", "0.46"],
         ["AFr4", "0.46"],
@@ -125,7 +125,7 @@
     {
       "title": "MuG12",
       "subject": "Mus",
-      "teacher": ["Rebecca", "Schaulies"],
+      "teacher": "SchaR",
       "times": [
         ["AMo3", "0.19"],
         ["AFr4", "0.19"],
@@ -135,7 +135,7 @@
     {
       "title": "SpG12-4",
       "subject": "Spo",
-      "teacher": ["Anke", "Kössler"],
+      "teacher": "KössA",
       "times": [
         ["AMo4", "0.Sporthalle"],
         ["AMi3", "0.Sporthalle"],
@@ -145,7 +145,7 @@
     {
       "title": "SpG12-5",
       "subject": "Spo",
-      "teacher": ["Jens", "Krüger"],
+      "teacher": "KrügJ",
       "times": [
         ["AMo4", "0.Sporthalle"],
         ["AMi3", "0.Sporthalle"],
@@ -155,7 +155,7 @@
     {
       "title": "ChG12",
       "subject": "Che",
-      "teacher": ["Petra", "Woizick"],
+      "teacher": "WoizP",
       "times": [
         ["AMo4", "0.65"],
         ["AMi3", "0.65"],
@@ -165,7 +165,7 @@
     {
       "title": "BioG12-2",
       "subject": "Bio",
-      "teacher": ["Alla", "Gatz"],
+      "teacher": "GatzA",
       "times": [
         ["AMo4", "0.24"],
         ["AMi3", "0.24"],
@@ -175,7 +175,7 @@
     {
       "title": "TeG12",
       "subject": "Tec",
-      "teacher": ["Stefan", "Plaumann"],
+      "teacher": "PlauS",
       "times": [
         ["AMo4", "0.17"],
         ["AMi3", "0.17"],
@@ -185,7 +185,7 @@
     {
       "title": "MaL12-1",
       "subject": "Mat",
-      "teacher": ["Andrea", "Gutschmidt"],
+      "teacher": "GutsA",
       "times": [
         ["ADi1", "1.30"],
         ["AFr2", "1.30"],
@@ -197,7 +197,7 @@
     {
       "title": "EnL12-1",
       "subject": "Eng",
-      "teacher": ["Carola", "Schulz"],
+      "teacher": "SchulC",
       "times": [
         ["ADi1", "1.05"],
         ["AFr2", "1.05"],
@@ -209,7 +209,7 @@
     {
       "title": "BioL12-1",
       "subject": "Bio",
-      "teacher": ["Mathias", "Woizick"],
+      "teacher": "WoizM",
       "times": [
         ["ADi1", "0.24"],
         ["AFr2", "0.24"],
@@ -221,7 +221,7 @@
     {
       "title": "PBL12",
       "subject": "PB",
-      "teacher": ["Franziska", "Kieper"],
+      "teacher": "KiepF",
       "times": [
         ["ADi1", "1.14"],
         ["AFr2", "1.14"],
@@ -233,7 +233,7 @@
     {
       "title": "PhL12",
       "subject": "Phy",
-      "teacher": ["Johannes Paul", "Haberjoh"],
+      "teacher": "HabeJ",
       "times": [
         ["ADi1", "0.21"],
         ["AFr2", "0.21"],
@@ -245,7 +245,7 @@
     {
       "title": "IfL12-1",
       "subject": "Inf",
-      "teacher": ["Andreas", "Sydow"],
+      "teacher": "SydoA",
       "times": [
         ["ADi1", "0.62"],
         ["AFr2", "0.62"],
@@ -257,7 +257,7 @@
     {
       "title": "GeoL12",
       "subject": "Geo",
-      "teacher": ["Jens", "Krüger"],
+      "teacher": "KrügJ",
       "times": [
         ["ADi1", "1.12"],
         ["AFr2", "1.12"],
@@ -269,7 +269,7 @@
     {
       "title": "MaG12-4",
       "subject": "Mat",
-      "teacher": ["Andrea", "Gutschmidt"],
+      "teacher": "GutsA",
       "times": [
         ["ADi1", "1.30"],
         ["AFr2", "1.30"],
@@ -279,7 +279,7 @@
     {
       "title": "MaG12-1",
       "subject": "Mat",
-      "teacher": ["Susan", "Gärtner"],
+      "teacher": "GärtS",
       "times": [
         ["ADi1", "1.26"],
         ["AFr2", "1.26"],
@@ -289,7 +289,7 @@
     {
       "title": "MaG12-2",
       "subject": "Mat",
-      "teacher": ["Marko", "Gruber"],
+      "teacher": "GrubM",
       "times": [
         ["ADi1", "1.29"],
         ["AFr2", "1.29"],
@@ -299,7 +299,7 @@
     {
       "title": "MaG12-3",
       "subject": "Mat",
-      "teacher": ["Tina", "Rinkau"],
+      "teacher": "RinkT",
       "times": [
         ["ADi1", "1.28"],
         ["AFr2", "1.28"],
@@ -309,7 +309,7 @@
     {
       "title": "GeG12-2",
       "subject": "Mat",
-      "teacher": ["Ralf", "Lüdemann"],
+      "teacher": "LüdeR",
       "times": [
         ["ADi1", "1.12"],
         ["AFr2", "1.12"],

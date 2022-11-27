@@ -117,14 +117,14 @@ class Course {
     }
     this.title = course?.title ?? 'Unbekannter Kurs';
     subject = course?.subject ?? Subject.error;
-    teacher = course?.teacher ?? Teacher.fromFirstAndLastName('', '');
+    teacher = course?.teacher ?? Teacher.fromShort('');
     times = course?.times ?? [[], []];
   }
 
   Course.fromJson(var json) {
     title = json['title'];
     subject = Subject.fromShort(json['subject']);
-    teacher = Teacher.fromFirstAndLastName(json['teacher'][0], json['teacher'][1]);
+    teacher = Teacher.fromShort(json['teacher']);
 
     List<List<String>> times = [];
     for (var time in json['times']) {
