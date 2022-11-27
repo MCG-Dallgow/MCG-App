@@ -82,7 +82,8 @@ String _getTimesFromLesson(int lesson) {
     case 2:
       return '9:50 - 11:20';
     case 3:
-      return '11:30 - 13:00';
+      if (group!.level >= 10) return '11:30 - 13:00';
+      return '12:00 - 13:30';
     case 4:
       return '13:40 - 15:10';
     case 5:
