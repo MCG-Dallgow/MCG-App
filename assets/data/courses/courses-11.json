@@ -1,7 +1,7 @@
 {
   "courses": [
     {
-      "title": "MaG11-1",
+      "title": "MaG11_1",
       "subject": "Mat",
       "teacher": "SteiT",
       "times": [
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "title": "MaG11-2",
+      "title": "MaG11_2",
       "subject": "Mat",
       "teacher": "MarcH",
       "times": [
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "title": "MaG11-3",
+      "title": "MaG11_3",
       "subject": "Mat",
       "teacher": "RublT",
       "times": [
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "title": "MaG11-4",
+      "title": "MaG11_4",
       "subject": "Mat",
       "teacher": "SydoA",
       "times": [
@@ -57,7 +57,7 @@
       ]
     },
     {
-      "title": "DeG11-1",
+      "title": "DeG11_1",
       "subject": "Deu",
       "teacher": "UrSoF",
       "times": [
@@ -67,7 +67,7 @@
       ]
     },
     {
-      "title": "DeG11-2",
+      "title": "DeG11_2",
       "subject": "Deu",
       "teacher": "SchaR",
       "times": [
@@ -77,7 +77,7 @@
       ]
     },
     {
-      "title": "DeG11-3",
+      "title": "DeG11_3",
       "subject": "Deu",
       "teacher": "SteiC",
       "times": [
@@ -87,7 +87,7 @@
       ]
     },
     {
-      "title": "DeL11-1",
+      "title": "DeL11_1",
       "subject": "Deu",
       "teacher": "HossA",
       "times": [
@@ -99,7 +99,7 @@
       ]
     },
     {
-      "title": "DeL11-2",
+      "title": "DeL11_2",
       "subject": "Deu",
       "teacher": "UrSoF",
       "times": [
@@ -111,7 +111,7 @@
       ]
     },
     {
-      "title": "EnG11-1",
+      "title": "EnG11_1",
       "subject": "Eng",
       "teacher": "PelcE",
       "times": [
@@ -121,7 +121,7 @@
       ]
     },
     {
-      "title": "EnG11-2",
+      "title": "EnG11_2",
       "subject": "Eng",
       "teacher": "RoggA",
       "times": [
@@ -131,7 +131,7 @@
       ]
     },
     {
-      "title": "EnL11-1",
+      "title": "EnL11_1",
       "subject": "Eng",
       "teacher": "DornC",
       "times": [
@@ -143,7 +143,7 @@
       ]
     },
     {
-      "title": "EnL11-2",
+      "title": "EnL11_2",
       "subject": "Eng",
       "teacher": "SchulC",
       "times": [
@@ -155,7 +155,7 @@
       ]
     },
     {
-      "title": "BioG11-1",
+      "title": "BioG11_1",
       "subject": "Bio",
       "teacher": "SchaR",
       "times": [
@@ -165,7 +165,7 @@
       ]
     },
     {
-      "title": "BioG11-2",
+      "title": "BioG11_2",
       "subject": "Bio",
       "teacher": "WoizM",
       "times": [
@@ -175,7 +175,7 @@
       ]
     },
     {
-      "title": "BioL11-1",
+      "title": "BioL11_1",
       "subject": "Bio",
       "teacher": "GöttO",
       "times": [
@@ -187,7 +187,7 @@
       ]
     },
     {
-      "title": "BioL11-2",
+      "title": "BioL11_2",
       "subject": "Bio",
       "teacher": "WoizP",
       "times": [
@@ -221,7 +221,7 @@
       ]
     },
     {
-      "title": "ChG11-1",
+      "title": "ChG11_1",
       "subject": "Che",
       "teacher": "WoizP",
       "times": [
@@ -231,7 +231,7 @@
       ]
     },
     {
-      "title": "ChG11-2",
+      "title": "ChG11_2",
       "subject": "Che",
       "teacher": "TillA",
       "times": [
@@ -241,7 +241,7 @@
       ]
     },
     {
-      "title": "GeoG11-1",
+      "title": "GeoG11_1",
       "subject": "Geo",
       "teacher": "LüdeR",
       "times": [
@@ -251,7 +251,7 @@
       ]
     },
     {
-      "title": "GeoG11-2",
+      "title": "GeoG11_2",
       "subject": "Geo",
       "teacher": "RoggA",
       "times": [
@@ -273,7 +273,7 @@
       ]
     },
     {
-      "title": "PBG11-1",
+      "title": "PBG11_1",
       "subject": "PB",
       "teacher": "KiepF",
       "times": [
@@ -283,7 +283,7 @@
       ]
     },
     {
-      "title": "PBG11-2",
+      "title": "PBG11_2",
       "subject": "PB",
       "teacher": "RinkT",
       "times": [
@@ -305,7 +305,7 @@
       ]
     },
     {
-      "title": "GeG11-1",
+      "title": "GeG11_1",
       "subject": "Ges",
       "teacher": "UrSoF",
       "times": [
@@ -315,7 +315,7 @@
       ]
     },
     {
-      "title": "GeG11-2",
+      "title": "GeG11_2",
       "subject": "Ges",
       "teacher": "TillA",
       "times": [
@@ -325,7 +325,7 @@
       ]
     },
     {
-      "title": "GeG11-3",
+      "title": "GeG11_3",
       "subject": "Ges",
       "teacher": "LüdeR",
       "times": [
@@ -335,7 +335,7 @@
       ]
     },
     {
-      "title": "GeG11-4",
+      "title": "GeG11_4",
       "subject": "Ges",
       "teacher": "MöbiJ",
       "times": [
@@ -345,7 +345,7 @@
       ]
     },
     {
-      "title": "GeG11-5",
+      "title": "GeG11_5",
       "subject": "Ges",
       "teacher": "SteiC",
       "times": [
@@ -407,7 +407,7 @@
       ]
     },
     {
-      "title": "KuG11-1",
+      "title": "KuG11_1",
       "subject": "Kun",
       "teacher": "KurtK",
       "times": [
@@ -417,7 +417,7 @@
       ]
     },
     {
-      "title": "KuG11-2",
+      "title": "KuG11_2",
       "subject": "Kun",
       "teacher": "KohlE",
       "times": [
@@ -427,7 +427,7 @@
       ]
     },
     {
-      "title": "KuG11-3",
+      "title": "KuG11_3",
       "subject": "Kun",
       "teacher": "KurtK",
       "times": [
@@ -437,7 +437,7 @@
       ]
     },
     {
-      "title": "KuG11-4",
+      "title": "KuG11_4",
       "subject": "Kun",
       "teacher": "KohlE",
       "times": [
@@ -457,7 +457,7 @@
       ]
     },
     {
-      "title": "SpG11-1",
+      "title": "SpG11_1",
       "subject": "Spo",
       "teacher": "MöbiJ",
       "times": [
@@ -467,7 +467,7 @@
       ]
     },
     {
-      "title": "SpG11-2",
+      "title": "SpG11_2",
       "subject": "Spo",
       "teacher": "SchuC",
       "times": [
@@ -477,7 +477,7 @@
       ]
     },
     {
-      "title": "SpG11-3",
+      "title": "SpG11_3",
       "subject": "Spo",
       "teacher": "KrügJ",
       "times": [
@@ -487,7 +487,7 @@
       ]
     },
     {
-      "title": "SpG11-4",
+      "title": "SpG11_4",
       "subject": "Spo",
       "teacher": "KössA",
       "times": [
@@ -497,7 +497,7 @@
       ]
     },
     {
-      "title": "SpG11-5",
+      "title": "SpG11_5",
       "subject": "Spo",
       "teacher": "SchuC",
       "times": [
@@ -507,58 +507,58 @@
       ]
     },
     {
-      "title": "SK11-1",
+      "title": "SK11_1",
       "subject": "SK",
       "teacher": "HossA",
       "times": [
         ["ADi4", "1.17"],
         ["BDi4", "1.17"]
       ],
-      "only": ["11-1"],
+      "only": ["11_1"],
       "required": true
     },
     {
-      "title": "SK11-2",
+      "title": "SK11_2",
       "subject": "SK",
       "teacher": "HabeJ",
       "times": [
         ["ADi4", "0.25"],
         ["BDi4", "0.25"]
       ],
-      "only": ["11-2"],
+      "only": ["11_2"],
       "required": true
     },
     {
-      "title": "SK11-3",
+      "title": "SK11_3",
       "subject": "SK",
       "teacher": "KirsN",
       "times": [
         ["ADi4", "0.21"],
         ["BDi4", "0.19"]
       ],
-      "only": ["11-3"],
+      "only": ["11_3"],
       "required": true
     },
     {
-      "title": "SK11-4",
+      "title": "SK11_4",
       "subject": "SK",
       "teacher": "WoizP",
       "times": [
         ["ADi4", "0.24"],
         ["BDi4", "0.24"]
       ],
-      "only": ["11-4"],
+      "only": ["11_4"],
       "required": true
     },
     {
-      "title": "SK11-5",
+      "title": "SK11_5",
       "subject": "SK",
       "teacher": "SchulC",
       "times": [
         ["ADi4", "1.05"],
         ["BDi4", "1.05"]
       ],
-      "only": ["11-5"],
+      "only": ["11_5"],
       "required": true
     }
   ]

@@ -22,16 +22,16 @@ enum Group {
   class10c('10c', 10),
   class10d('10d', 10),
   class10e('10e', 10),*/
-  class11_1('11-1', 11, 'HossA'),
-  class11_2('11-2', 11, 'HabeJ'),
-  class11_3('11-3', 11, 'KirsN'),
-  class11_4('11-4', 11, 'WoizP'),
-  class11_5('11-5', 11, 'SchulC')/*,
-  class12_1('12-1', 12),
-  class12_2('12-2', 12),
-  class12_3('12-3', 12),
-  class12_4('12-4', 12),
-  class12_5('12-5', 12)*/;
+  class11_1('11_1', 11, 'HossA'),
+  class11_2('11_2', 11, 'HabeJ'),
+  class11_3('11_3', 11, 'KirsN'),
+  class11_4('11_4', 11, 'WoizP'),
+  class11_5('11_5', 11, 'SchulC')/*,
+  class12_1('12_1', 12),
+  class12_2('12_2', 12),
+  class12_3('12_3', 12),
+  class12_4('12_4', 12),
+  class12_5('12_5', 12)*/;
 
   const Group(this.name, this.level, this._teacher);
   final String name;
