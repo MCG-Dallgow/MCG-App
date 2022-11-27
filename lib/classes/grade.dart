@@ -21,11 +21,11 @@ class Grade {
     if (grades.isEmpty) return -1;
 
     double sum = 0;
-    for (Course course in userCourses) {
+    for (Course course in userCourses.where((e) => e.gradeAverage != -1)) {
       sum += course.gradeAverage;
     }
 
-    return sum / userCourses.length;
+    return sum / userCourses.where((e) => e.gradeAverage != -1).length;
   }
 
   static void sortGrades() {
