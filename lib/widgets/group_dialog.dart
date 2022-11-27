@@ -54,7 +54,12 @@ class _GroupChoosingDialogState extends State<_GroupChoosingDialog> {
                   itemBuilder: (BuildContext context, int index) {
                     Group group = _groups[index];
                     return RadioListTile(
-                      title: Text(group.name),
+                      title: Row(
+                        children: [
+                          Text(group.name),
+                          Text(' (${group.teacher.lastname})', style: const TextStyle(color: Colors.grey)),
+                        ],
+                      ),
                       value: _groups[index],
                       groupValue: _selectedGroup,
                       onChanged: (Group? value) {
