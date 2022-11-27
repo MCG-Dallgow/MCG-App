@@ -35,7 +35,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
 
     setState(() {
       for (Room room in rooms.values) {
-        if (room.number.startsWith('0')) {
+        if (room.number.startsWith('0') || room.number == 'TH') {
           _rooms[0].add(room);
         } else if (room.number.startsWith('1')) {
           _rooms[1].add(room);
