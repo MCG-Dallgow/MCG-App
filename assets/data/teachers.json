@@ -384,7 +384,7 @@
       "title": "Herr",
       "firstname": "Nick",
       "lastname": "Schauberg",
-      "short": "SchaN",
+      "short": "SchbN",
       "subjects": ["Mus", "Ges"],
       "email": "nick.schauberg@lk.brandenburg.de"
     },
@@ -485,9 +485,9 @@
       "email": "alexander.tillner@lk.brandenburg.de"
     },
     {
-      "title": "Herr/Frau",
-      "firstname": "N.",
-      "lastname": "Tres.",
+      "title": "Herr",
+      "firstname": "Niklas",
+      "lastname": "Tresch",
       "short": "TresN",
       "subjects": [],
       "email": ""
