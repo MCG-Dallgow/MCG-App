@@ -4,7 +4,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../classes/course.dart';
 
 Future<void> chooseCourses(BuildContext context) async {
-  await _showCourseChoosingDialog(context);
+  userCourses = await _showCourseChoosingDialog(context);
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setStringList('courses-${group!.name}', userCourses.map((course) => course.title).toList());
 }

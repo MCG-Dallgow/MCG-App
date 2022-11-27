@@ -40,7 +40,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: const Text('Klasse/Tutoriat wählen'),
             leading: const Icon(Icons.tag),
             onTap: () async {
-              await chooseGroup(context);
+              await chooseGroup(context, true);
               if (!mounted) return;
               if (userCourses.isEmpty) await chooseCourses(context);
             },

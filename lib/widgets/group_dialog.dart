@@ -4,8 +4,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../classes/group.dart';
 
-Future<void> chooseGroup(BuildContext context) async {
-  group = await _showGroupChoosingDialog(context);
+Future<void> chooseGroup(BuildContext context, bool overwrite) async {
+  if (group == null || overwrite) group = await _showGroupChoosingDialog(context);
   courses = await Course.getCourses(group!);
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setString('group', group!.name);

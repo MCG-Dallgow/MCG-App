@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       if (prefs.getString('group') != null) group = Group.fromName(prefs.getString('group')!);
 
       if (!mounted) return;
-      if (group == null) await chooseGroup(context);
+      await chooseGroup(context, false);
       if (!mounted) return;
       if (userCourses.isEmpty) await chooseCourses(context);
     });
