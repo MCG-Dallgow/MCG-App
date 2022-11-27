@@ -13,13 +13,11 @@ class Timetable extends StatelessWidget {
 
   final String week;
 
-  static final Color rowColor = themeManager.themeMode == ThemeMode.dark ? Colors.grey.shade800 : Colors.grey.shade400;
-
   Widget _dayHeader(String day) {
     return Expanded(
       child: Container(
         height: 32,
-        color: rowColor,
+        color: themeManager.colorTimetableRow,
         child: Center(child: Text(day, style: const TextStyle(fontWeight: FontWeight.bold))),
       ),
     );
@@ -29,7 +27,7 @@ class Timetable extends StatelessWidget {
     return Container(
       height: height + padding * 2,
       width: 28,
-      color: rowColor,
+      color: themeManager.colorTimetableRow,
       child: Center(
         child: Text(lesson, style: const TextStyle(fontWeight: FontWeight.bold)),
       ),
@@ -53,7 +51,7 @@ class Timetable extends StatelessWidget {
         if (index == 0) {
           return Row(
             children: [
-              Container(height: 32, width: 28, color: rowColor),
+              Container(height: 32, width: 28, color: themeManager.colorTimetableRow),
               _dayHeader('Mo'),
               _dayHeader('Di'),
               _dayHeader('Mi'),

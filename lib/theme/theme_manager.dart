@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,11 +8,13 @@ class ThemeManager with ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.light;
   Color _colorStroke = colorStrokeLight;
   Color _colorSecondary = colorSecondaryLight;
+  Color _colorTimetableRow = colorTimetableRowLight;
 
   get themeMode => _themeMode;
 
   get colorStroke => _colorStroke;
   get colorSecondary => _colorSecondary;
+  get colorTimetableRow => _colorTimetableRow;
 
   Future<ThemeMode> _getThemeMode() async {
     final SharedPreferences prefs = await _prefs;
@@ -38,10 +39,12 @@ class ThemeManager with ChangeNotifier {
       _themeMode = ThemeMode.dark;
       _colorStroke = colorStrokeDark;
       _colorSecondary = colorSecondaryDark;
+      _colorTimetableRow = colorTimetableRowDark;
     } else {
       _themeMode = ThemeMode.light;
       _colorStroke = colorStrokeLight;
       _colorSecondary = colorSecondaryLight;
+      _colorTimetableRow = colorTimetableRowLight;
     }
   }
 

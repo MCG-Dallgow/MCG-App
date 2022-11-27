@@ -12,6 +12,9 @@ Color colorStrokeDark = Colors.white;
 Color colorSecondaryLight = Colors.green.shade300;
 Color colorSecondaryDark = Colors.green.shade800;
 
+Color colorTimetableRowLight = Colors.grey.shade400;
+Color colorTimetableRowDark = Colors.grey.shade800;
+
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: colorPrimaryLight,
