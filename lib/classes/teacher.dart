@@ -29,19 +29,19 @@ class Teacher {
     Map<String, Teacher> teachers = {};
     for (int i = 0; i < data.length; i++) {
       Teacher teacher = Teacher.fromJson(data, i);
-      teachers['${teacher.firstname} ${teacher.lastname}'] = teacher;
+      teachers[teacher.short] = teacher;
     }
 
     return teachers;
   }
 
-  Teacher.fromFirstAndLastName(String firstname, String lastname) {
-    Teacher? teacher = teachers['$firstname $lastname'];
+  Teacher.fromShort(String short) {
+    Teacher? teacher = teachers[short];
 
     title = teacher?.title ?? 'Herr';
-    this.firstname = teacher?.firstname ?? 'Unbekannter';
-    this.lastname = teacher?.lastname ?? 'Lehrer';
-    short = teacher?.short ?? '-----';
+    firstname = teacher?.firstname ?? 'Unbekannter';
+    lastname = teacher?.lastname ?? 'Lehrer';
+    this.short = teacher?.short ?? '-----';
     subjects = teacher?.subjects ?? [];
     email = teacher?.email ?? '';
   }

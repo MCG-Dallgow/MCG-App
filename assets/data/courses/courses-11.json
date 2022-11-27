@@ -3,7 +3,7 @@
     {
       "title": "MaG11-1",
       "subject": "Mat",
-      "teacher": ["Hanns-Thorsten", "Steil"],
+      "teacher": "SteiT",
       "times": [
         ["AMi2", "1.30"],
         ["AFr2", "1.30"],
@@ -14,7 +14,7 @@
     {
       "title": "MaG11-2",
       "subject": "Mat",
-      "teacher": ["Helder", "Marchetto"],
+      "teacher": "MarcH",
       "times": [
         ["AMo2", "1.28"],
         ["ADo3", "1.28"],
@@ -25,7 +25,7 @@
     {
       "title": "MaG11-3",
       "subject": "Mat",
-      "teacher": ["Tino", "Rublack"],
+      "teacher": "RublT",
       "times": [
         ["AMo2", "1.27"],
         ["ADo3", "1.27"],
@@ -36,10 +36,7 @@
     {
       "title": "MaG11-4",
       "subject": "Mat",
-      "teacher": [
-        "Andreas",
-        "Sydow"
-      ],
+      "teacher": "SydoA",
       "times": [
         ["AMo2", "1.25"],
         ["ADo3", "1.25"],
@@ -50,7 +47,7 @@
     {
       "title": "MaL11",
       "subject": "Mat",
-      "teacher": ["Marko", "Gruber"],
+      "teacher": "GrubM",
       "times": [
         ["AMo3", "1.29"],
         ["ADo1", "1.29"],
@@ -62,7 +59,7 @@
     {
       "title": "DeG11-1",
       "subject": "Deu",
-      "teacher": ["Florian Magnus", "Urschel-Sochaczewski"],
+      "teacher": "UrSoF",
       "times": [
         ["AMi2", "1.18"],
         ["AFr2", "1.18"],
@@ -72,7 +69,7 @@
     {
       "title": "DeG11-2",
       "subject": "Deu",
-      "teacher": ["Rebecca", "Schaulies"],
+      "teacher": "SchaR",
       "times": [
         ["AMi2", "1.16"],
         ["AFr2", "1.16"],
@@ -82,7 +79,7 @@
     {
       "title": "DeG11-3",
       "subject": "Deu",
-      "teacher": ["Christian", "Steinhauer"],
+      "teacher": "SteiC",
       "times": [
         ["AMo2", "1.20"],
         ["ADo3", "1.20"],
@@ -92,7 +89,7 @@
     {
       "title": "DeL11-1",
       "subject": "Deu",
-      "teacher": ["Astrid", "Hoßfeld"],
+      "teacher": "HossA",
       "times": [
         ["AMo1", "1.17"],
         ["ADi2", "1.17"],
@@ -104,7 +101,7 @@
     {
       "title": "DeL11-2",
       "subject": "Deu",
-      "teacher": ["Florian Magnus", "Urschel-Sochaczewski"],
+      "teacher": "UrSoF",
       "times": [
         ["AMo3", "1.16"],
         ["ADo1", "1.16"],
@@ -116,7 +113,7 @@
     {
       "title": "EnG11-1",
       "subject": "Eng",
-      "teacher": ["Elisabeth", "Pelczyk"],
+      "teacher": "PelcE",
       "times": [
         ["AMi2", "1.64"],
         ["AFr2", "1.64"],
@@ -126,7 +123,7 @@
     {
       "title": "EnG11-2",
       "subject": "Eng",
-      "teacher": ["Anne", "Roggelin"],
+      "teacher": "RoggA",
       "times": [
         ["AMo2", "1.65"],
         ["ADo3", "1.65"],
@@ -136,7 +133,7 @@
     {
       "title": "EnL11-1",
       "subject": "Eng",
-      "teacher": ["Constance", "Dornbrach"],
+      "teacher": "DornC",
       "times": [
         ["AMo3", "1.63"],
         ["ADo1", "1.63"],
@@ -148,7 +145,7 @@
     {
       "title": "EnL11-2",
       "subject": "Eng",
-      "teacher": ["Carola", "Schulz"],
+      "teacher": "SchulC",
       "times": [
         ["AMo1", "1.63"],
         ["ADi2", "1.63"],
@@ -160,7 +157,7 @@
     {
       "title": "BioG11-1",
       "subject": "Bio",
-      "teacher": ["Rebecca", "Schaulies"],
+      "teacher": "SchaR",
       "times": [
         ["ADo4", "0.19"],
         ["BMo3", "0.19"],
@@ -170,7 +167,7 @@
     {
       "title": "BioG11-2",
       "subject": "Bio",
-      "teacher": ["Mathias", "Woizick"],
+      "teacher": "WoizM",
       "times": [
         ["AMi1", "0.24"],
         ["AFr4", "0.24"],
@@ -180,7 +177,7 @@
     {
       "title": "BioL11-1",
       "subject": "Bio",
-      "teacher": ["Oliver", "Götting"],
+      "teacher": "GöttO",
       "times": [
         ["AMo3", "0.24"],
         ["ADo1", "0.24"],
@@ -192,7 +189,7 @@
     {
       "title": "BioL11-2",
       "subject": "Bio",
-      "teacher": ["Petra", "Woizick"],
+      "teacher": "WoizP",
       "times": [
         ["AMo1", "0.24"],
         ["ADi2", "0.24"],
@@ -204,7 +201,7 @@
     {
       "title": "PhG11",
       "subject": "Phy",
-      "teacher": ["Tino", "Rublack"],
+      "teacher": "RublT",
       "times": [
         ["ADo4", "0.25"],
         ["BMo3", "0.25"],
@@ -214,7 +211,7 @@
     {
       "title": "PhL11",
       "subject": "Phy",
-      "teacher": ["Johannes Paul", "Haberjoh"],
+      "teacher": "HabeJ",
       "times": [
         ["AMo1", "0.21"],
         ["ADi2", "0.21"],
@@ -226,7 +223,7 @@
     {
       "title": "ChG11-1",
       "subject": "Che",
-      "teacher": ["Petra", "Woizick"],
+      "teacher": "WoizP",
       "times": [
         ["ADo4", "0.65"],
         ["BMo3", "0.65"],
@@ -236,7 +233,7 @@
     {
       "title": "ChG11-2",
       "subject": "Che",
-      "teacher": ["Alexander", "Tillner"],
+      "teacher": "TillA",
       "times": [
         ["AMi1", "0.63"],
         ["AFr4", "0.63"],
@@ -246,10 +243,7 @@
     {
       "title": "GeoG11-1",
       "subject": "Geo",
-      "teacher": [
-        "Ralf",
-        "Lüdemann"
-      ],
+      "teacher": "LüdeR",
       "times": [
         ["AFr3", "1.12"],
         ["BMo2", "1.12"],
@@ -259,7 +253,7 @@
     {
       "title": "GeoG11-2",
       "subject": "Geo",
-      "teacher": ["Anne", "Roggelin"],
+      "teacher": "RoggA",
       "times": [
         ["AMo4", "1.12"],
         ["AMi3", "1.12"],
@@ -269,7 +263,7 @@
     {
       "title": "GeoL11",
       "subject": "Geo",
-      "teacher": ["Nannette Florentine", "Kirschke"],
+      "teacher": "KirsN",
       "times": [
         ["AMo1", "1.15"],
         ["ADi2", "1.15"],
@@ -281,7 +275,7 @@
     {
       "title": "PBG11-1",
       "subject": "PB",
-      "teacher": ["Franziska", "Kieper"],
+      "teacher": "KiepF",
       "times": [
         ["AFr3", "1.14"],
         ["BMo2", "1.14"],
@@ -291,7 +285,7 @@
     {
       "title": "PBG11-2",
       "subject": "PB",
-      "teacher": ["Tina", "Rinkau"],
+      "teacher": "RinkT",
       "times": [
         ["AMo4", "1.13"],
         ["AMi3", "1.13"],
@@ -301,7 +295,7 @@
     {
       "title": "PBL11",
       "subject": "PB",
-      "teacher": ["Franziska", "Kieper"],
+      "teacher": "KiepF",
       "times": [
         ["AMo3", "1.14"],
         ["ADo1", "1.14"],
@@ -313,7 +307,7 @@
     {
       "title": "GeG11-1",
       "subject": "Ges",
-      "teacher": ["Florian Magnus", "Urschel-Sochaczewski"],
+      "teacher": "UrSoF",
       "times": [
         ["AMi4", "1.13"],
         ["BDi3", "1.68"],
@@ -323,7 +317,7 @@
     {
       "title": "GeG11-2",
       "subject": "Ges",
-      "teacher": ["Alexander", "Tillner"],
+      "teacher": "TillA",
       "times": [
         ["AMi4", "1.69"],
         ["BDi3", "1.69"],
@@ -333,7 +327,7 @@
     {
       "title": "GeG11-3",
       "subject": "Ges",
-      "teacher": ["Ralf", "Lüdemann"],
+      "teacher": "LüdeR",
       "times": [
         ["AMi4", "1.12"],
         ["BDi3", "1.12"],
@@ -343,8 +337,7 @@
     {
       "title": "GeG11-4",
       "subject": "Ges",
-      "teacher": ["Jörg", "Möbius"
-      ],
+      "teacher": "MöbiJ",
       "times": [
         ["ADi3", "1.12"],
         ["ADo2", "1.12"],
@@ -354,7 +347,7 @@
     {
       "title": "GeG11-5",
       "subject": "Ges",
-      "teacher": ["Christian", "Steinhauer"],
+      "teacher": "SteiC",
       "times": [
         ["ADi3", "1.13"],
         ["ADo2", "1.13"],
@@ -364,7 +357,7 @@
     {
       "title": "FrzG11",
       "subject": "Fra",
-      "teacher": ["Anika", "Försterling"],
+      "teacher": "FoerA",
       "times": [
         ["ADi1", "1.66"],
         ["BMi4", "1.66"],
@@ -374,7 +367,7 @@
     {
       "title": "SpaG11",
       "subject": "Spa",
-      "teacher": ["Antje", "Willimzik"],
+      "teacher": "WillA",
       "times": [
         ["ADi1", "1.65"],
         ["BMi4", "1.65"],
@@ -384,10 +377,7 @@
     {
       "title": "LatG11",
       "subject": "Lat",
-      "teacher": [
-        "Claudia",
-        "Bohse"
-      ],
+      "teacher": "BohsC",
       "times": [
         ["ADi1", "1.60"],
         ["BMi4", "1.03"],
@@ -397,7 +387,7 @@
     {
       "title": "IfL11",
       "subject": "Inf",
-      "teacher": ["Stefan", "Plaumann"],
+      "teacher": "PlauS",
       "times": [
         ["AMo1", "0.17"],
         ["ADi2", "0.17"],
@@ -409,7 +399,7 @@
     {
       "title": "TeG11",
       "subject": "Tec",
-      "teacher": ["Stefan", "Plaumann"],
+      "teacher": "PlauS",
       "times": [
         ["ADo4", "0.17"],
         ["BMo3", "0.17"],
@@ -419,7 +409,7 @@
     {
       "title": "KuG11-1",
       "subject": "Kun",
-      "teacher": ["Karin", "Kurth"],
+      "teacher": "KurtK",
       "times": [
         ["AFr3", "0.46"],
         ["BMo2", "0.46"],
@@ -429,7 +419,7 @@
     {
       "title": "KuG11-2",
       "subject": "Kun",
-      "teacher": ["Erika", "Kohler"],
+      "teacher": "KohlE",
       "times": [
         ["AMi4", "0.48"],
         ["BDi3", "0.48"],
@@ -439,7 +429,7 @@
     {
       "title": "KuG11-3",
       "subject": "Kun",
-      "teacher": ["Karin", "Kurth"],
+      "teacher": "KurtK",
       "times": [
         ["AMo4", "0.46"],
         ["AMi3", "0.46"],
@@ -449,7 +439,7 @@
     {
       "title": "KuG11-4",
       "subject": "Kun",
-      "teacher": ["Erika", "Kohler"],
+      "teacher": "KohlE",
       "times": [
         ["AMi4", "0.48"],
         ["BDi3", "0.48"],
@@ -459,7 +449,7 @@
     {
       "title": "MuG11",
       "subject": "Mus",
-      "teacher": ["Nina", "Roska"],
+      "teacher": "RoskN",
       "times": [
         ["AMi4", "0.41"],
         ["BDi3", "0.41"],
@@ -469,7 +459,7 @@
     {
       "title": "SpG11-1",
       "subject": "Spo",
-      "teacher": ["Jörg", "Möbius"],
+      "teacher": "MöbiJ",
       "times": [
         ["AMi4", "TH"],
         ["BDi3", "TH"],
@@ -479,7 +469,7 @@
     {
       "title": "SpG11-2",
       "subject": "Spo",
-      "teacher": ["Christian", "Schulze"],
+      "teacher": "SchuC",
       "times": [
         ["AMi4", "TH"],
         ["BDi3", "TH"],
@@ -489,7 +479,7 @@
     {
       "title": "SpG11-3",
       "subject": "Spo",
-      "teacher": ["Jens", "Krüger"],
+      "teacher": "KrügJ",
       "times": [
         ["ADi3", "TH"],
         ["ADo2", "TH"],
@@ -499,7 +489,7 @@
     {
       "title": "SpG11-4",
       "subject": "Spo",
-      "teacher": ["Anke", "Kössler"],
+      "teacher": "KössA",
       "times": [
         ["ADi3", "TH"],
         ["ADo2", "TH"],
@@ -509,7 +499,7 @@
     {
       "title": "SpG11-5",
       "subject": "Spo",
-      "teacher": ["Christian", "Schulze"],
+      "teacher": "SchuC",
       "times": [
         ["ADi3", "TH"],
         ["ADo2", "TH"],
@@ -519,7 +509,7 @@
     {
       "title": "SK11-1",
       "subject": "SK",
-      "teacher": ["Astrid", "Hoßfeld"],
+      "teacher": "HossA",
       "times": [
         ["ADi4", "1.17"],
         ["BDi4", "1.17"]
@@ -530,7 +520,7 @@
     {
       "title": "SK11-2",
       "subject": "SK",
-      "teacher": ["Johannes Paul", "Haberjoh"],
+      "teacher": "HabeJ",
       "times": [
         ["ADi4", "0.25"],
         ["BDi4", "0.25"]
@@ -541,7 +531,7 @@
     {
       "title": "SK11-3",
       "subject": "SK",
-      "teacher": ["Nannette Florentine", "Kirschke"],
+      "teacher": "KirsN",
       "times": [
         ["ADi4", "0.21"],
         ["BDi4", "0.19"]
@@ -552,7 +542,7 @@
     {
       "title": "SK11-4",
       "subject": "SK",
-      "teacher": ["Petra", "Woizick"],
+      "teacher": "WoizP",
       "times": [
         ["ADi4", "0.24"],
         ["BDi4", "0.24"]
@@ -563,7 +553,7 @@
     {
       "title": "SK11-5",
       "subject": "SK",
-      "teacher": ["Carola", "Schulz"],
+      "teacher": "SchulC",
       "times": [
         ["ADi4", "1.05"],
         ["BDi4", "1.05"]

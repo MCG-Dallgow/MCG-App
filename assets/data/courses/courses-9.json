@@ -3,7 +3,7 @@
     {
       "title": "Bio9c",
       "subject": "Bio",
-      "teacher": ["Oliver", "Götting"],
+      "teacher": "GöttO",
       "times": [
         ["ADi4", "0.19"],
         ["BDi2", "0.19"]
@@ -14,7 +14,7 @@
     {
       "title": "Ch9c",
       "subject": "Che",
-      "teacher": ["Oliver", "Götting"],
+      "teacher": "GöttO",
       "times": [
         ["AMo1", "0.65"],
         ["BDo2", "0.63"]
@@ -25,7 +25,7 @@
     {
       "title": "De9c",
       "subject": "Deu",
-      "teacher": ["Thomas", "Böhle"],
+      "teacher": "BöhlT",
       "times": [
         ["AMo2", "1.18"],
         ["AFr1", "1.18"],
@@ -38,7 +38,7 @@
     {
       "title": "En9c",
       "subject": "Eng",
-      "teacher": ["Thomas", "Böhle"],
+      "teacher": "BöhlT",
       "times": [
         ["ADi2", "1.18"],
         ["ADo1", "1.18"],
@@ -51,7 +51,7 @@
     {
       "title": "eR9c",
       "subject": "eRe",
-      "teacher": ["Uwe", "Rohde"],
+      "teacher": "RohdU",
       "times": [
         ["BMi4", "1.04"]
       ],
@@ -60,7 +60,7 @@
     {
       "title": "Frz9",
       "subject": "Fra",
-      "teacher": ["Yvonne", "Schärff"],
+      "teacher": "SchäY",
       "times": [
         ["ADi3", "1.67"],
         ["AMi1", "1.63"],
@@ -72,7 +72,7 @@
     {
       "title": "Geo9c",
       "subject": "Geo",
-      "teacher": ["Anne", "Roggelin"],
+      "teacher": "RoggA",
       "times": [
         ["BMo1", "1.68"]
       ],
@@ -82,7 +82,7 @@
     {
       "title": "Ge9c",
       "subject": "Ges",
-      "teacher": ["Joshua", "Knuth"],
+      "teacher": "KnutJ",
       "times": [
         ["ADo3", "1.68"]
       ],
@@ -92,7 +92,7 @@
     {
       "title": "If9c",
       "subject": "Inf",
-      "teacher": ["Frank", "Möller"],
+      "teacher": "MöllF",
       "times": [
         ["AMi3", "0.60"]
       ],
@@ -102,7 +102,7 @@
     {
       "title": "Ku9c",
       "subject": "Kun",
-      "teacher": ["Karin", "Kurth"],
+      "teacher": "KurtK",
       "times": [
         ["BDo1", "0.46"]
       ],
@@ -112,7 +112,7 @@
     {
       "title": "Lat9",
       "subject": "Lat",
-      "teacher": ["Patrick", "Arthur"],
+      "teacher": "ArthP",
       "times": [
         ["ADi3", "1.60"],
         ["AMi1", "1.60"],
@@ -124,7 +124,7 @@
     {
       "title": "LER9c",
       "subject": "LER",
-      "teacher": ["Frank", "Spangenberg"],
+      "teacher": "SpanF",
       "times": [
         ["BFr4", "1.13"]
       ],
@@ -133,7 +133,7 @@
     {
       "title": "Ma9c",
       "subject": "Mat",
-      "teacher": ["Andreas", "Sydow"],
+      "teacher": "SydoA",
       "times": [
         ["AMo4", "1.25"],
         ["AMi2", "1.28"],
@@ -146,7 +146,7 @@
     {
       "title": "Mu9c",
       "subject": "Mus",
-      "teacher": ["Nina", "Roska"],
+      "teacher": "RoskN",
       "times": [
         ["AFr2", "0.41"]
       ],
@@ -156,7 +156,7 @@
     {
       "title": "PB9c",
       "subject": "PB",
-      "teacher": ["Tina", "Rinkau"],
+      "teacher": "RinkT",
       "times": [
         ["ADi1", "1.68"],
         ["BMo2", "1.68"]
@@ -167,7 +167,7 @@
     {
       "title": "Ph9c",
       "subject": "Phy",
-      "teacher": ["Nannette Florentine", "Kirschke"],
+      "teacher": "KirsN",
       "times": [
         ["AMo3", "0.25"],
         ["BMi3", "0.21"]
@@ -178,7 +178,7 @@
     {
       "title": "Spa9",
       "subject": "Spa",
-      "teacher": ["Claudia", "Bohse"],
+      "teacher": "BohsC",
       "times": [
         ["ADi3", "1.62"],
         ["AMi1", "1.69"],
@@ -190,7 +190,7 @@
     {
       "title": "Sp9c",
       "subject": "Spo",
-      "teacher": ["Jens", "Krüger"],
+      "teacher": "KrügJ",
       "times": [
         ["AMi4", "TH"],
         ["AFr3", "TH"],
@@ -202,7 +202,7 @@
     {
       "title": "WAT9c",
       "subject": "WAT",
-      "teacher": ["Franziska", "Kieper"],
+      "teacher": "KiepF",
       "times": [
         ["ADo2", "0.48"]
       ],
