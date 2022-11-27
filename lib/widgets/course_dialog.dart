@@ -119,7 +119,7 @@ class _CourseChoosingDialogState extends State<_CourseChoosingDialog> {
                         onPressed: () {
                           if (_selectedCourses.isNotEmpty) {
                             _selectedCourses.sort((a, b) => a.title.compareTo(b.title));
-                            Navigator.pop(context, _selectedCourses);
+                            Navigator.pop(context, _selectedCourses.toSet().toList());
                           }
                         },
                         child: const Text('Fertig'),
