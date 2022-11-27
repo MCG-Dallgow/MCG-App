@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:dio/dio.dart';
+import 'package:mcgapp/classes/course.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../classes/substitution_entry.dart';
@@ -320,6 +321,31 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
                       _teacherFilter = text.trim() == '' ? [] : text.trim().split(' ');
                     });
                   },
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: ElevatedButton(
+                  onPressed: () {
+                    if (group!.level > 10) {
+                      setState(() {
+                        _groupFilter = [];
+                        _courseFilter = userCourses.map((e) => e.title.replaceAll('-', '_')).toList();
+                        _teacherFilter = [];
+                      });
+                    } else {
+                      setState(() {
+                        _groupFilter = [group!.name];
+                        _courseFilter = [];
+                        _teacherFilter = [];
+                      });
+                    }
+                    _saveFilters();
+                    groupFilterController.text = _groupFilter.join(' ');
+                    courseFilterController.text = _courseFilter.join(' ');
+                    teacherFilterController.text = _teacherFilter.join(' ');
+                  },
+                  child: Text('Auf ${group!.level > 10 ? 'Kurse' : 'Klasse'} anpassen'),
                 ),
               ),
               Row(
