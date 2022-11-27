@@ -10,12 +10,15 @@ enum GradeFormat { format15, format6 }
 enum GradeType { test, exam }
 
 class Grade {
-
   static List<Grade> _grades = [];
-  static final List<int> _gradeEntries = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
+  static final List<int> _gradeEntriesSekI = [1, 2, 3, 4, 5, 6];
+  static final List<int> _gradeEntriesSekII = [15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
 
   static List<Grade> get grades => _grades;
-  static List<int> get gradeEntries => _gradeEntries;
+  static List<int> get gradeEntries {
+    if (group!.level > 10) return _gradeEntriesSekII;
+    return _gradeEntriesSekI;
+  }
 
   static double get totalAverage {
     List<Course> coursesWithGrades = userCourses.where((e) => e.gradeAverage != -1).toList();
