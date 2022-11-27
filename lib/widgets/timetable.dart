@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:mcgapp/main.dart';
 import 'package:mcgapp/widgets/bottom_sheet.dart';
 
 import '../classes/course.dart';
 import '../classes/room.dart';
 
-double height = 60;
+double height = 80;
+double headerHeight = 42;
+double headerWidth = 42;
 double padding = 1;
 
 class Timetable extends StatelessWidget {
@@ -15,21 +16,26 @@ class Timetable extends StatelessWidget {
 
   Widget _dayHeader(String day) {
     return Expanded(
-      child: Container(
-        height: 32,
-        color: themeManager.colorTimetableRow,
+      child: SizedBox(
+        height: headerHeight,
         child: Center(child: Text(day, style: const TextStyle(fontWeight: FontWeight.bold))),
       ),
     );
   }
 
-  Widget _lessonHeader(String lesson) {
-    return Container(
+  Widget _lessonHeader(int lesson) {
+    return SizedBox(
       height: height + padding * 2,
-      width: 28,
-      color: themeManager.colorTimetableRow,
+      width: headerWidth,
       child: Center(
-        child: Text(lesson, style: const TextStyle(fontWeight: FontWeight.bold)),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(_getTimesFromLesson(lesson).split(' - ')[0], style: const TextStyle(fontSize: 12, color: Colors.grey)),
+            Text('$lesson', style: const TextStyle(fontWeight: FontWeight.bold)),
+            Text(_getTimesFromLesson(lesson).split(' - ')[1], style: const TextStyle(fontSize: 12, color: Colors.grey)),
+          ],
+        ),
       ),
     );
   }
@@ -46,32 +52,31 @@ class Timetable extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (BuildContext context, int index) {
-        if (index == 0) {
+        itemCount: 5,
+        itemBuilder: (BuildContext context, int index) {
+          if (index == 0) {
+            return Row(
+              children: [
+                SizedBox(height: headerHeight, width: headerWidth),
+                _dayHeader('Mo'),
+                _dayHeader('Di'),
+                _dayHeader('Mi'),
+                _dayHeader('Do'),
+                _dayHeader('Fr'),
+              ],
+            );
+          }
           return Row(
             children: [
-              Container(height: 32, width: 28, color: themeManager.colorTimetableRow),
-              _dayHeader('Mo'),
-              _dayHeader('Di'),
-              _dayHeader('Mi'),
-              _dayHeader('Do'),
-              _dayHeader('Fr'),
+              _lessonHeader(index),
+              TimetableEntry(course: _getCourse('${week}Mo$index'), week: week, weekday: 'Montag', lesson: index),
+              TimetableEntry(course: _getCourse('${week}Di$index'), week: week, weekday: 'Dienstag', lesson: index),
+              TimetableEntry(course: _getCourse('${week}Mi$index'), week: week, weekday: 'Mittwoch', lesson: index),
+              TimetableEntry(course: _getCourse('${week}Do$index'), week: week, weekday: 'Donnerstag', lesson: index),
+              TimetableEntry(course: _getCourse('${week}Fr$index'), week: week, weekday: 'Freitag', lesson: index),
             ],
           );
-        }
-        return Row(
-          children: [
-            _lessonHeader('$index'),
-            TimetableEntry(course: _getCourse('${week}Mo$index'), week: week, weekday: 'Montag', lesson: index),
-            TimetableEntry(course: _getCourse('${week}Di$index'), week: week, weekday: 'Dienstag', lesson: index),
-            TimetableEntry(course: _getCourse('${week}Mi$index'), week: week, weekday: 'Mittwoch', lesson: index),
-            TimetableEntry(course: _getCourse('${week}Do$index'), week: week, weekday: 'Donnerstag', lesson: index),
-            TimetableEntry(course: _getCourse('${week}Fr$index'), week: week, weekday: 'Freitag', lesson: index),
-          ],
-        );
-      }
-    );
+        });
   }
 }
 
@@ -163,15 +168,20 @@ class TimetableEntry extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
+                          course!.teacher.short,
+                          style: TextStyle(fontSize: 10, color: course!.subject.foregroundColor),
+                        ),
+                        Text(
                           course!.subject.short,
                           style: TextStyle(
+                            fontSize: 16,
                             fontWeight: FontWeight.bold,
                             color: course!.subject.foregroundColor,
                           ),
                         ),
                         Text(
                           _room?.number ?? '',
-                          style: TextStyle(color: course!.subject.foregroundColor),
+                          style: TextStyle(fontSize: 10, color: course!.subject.foregroundColor),
                         ),
                       ],
                     ),

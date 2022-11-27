@@ -8,13 +8,11 @@ class ThemeManager with ChangeNotifier {
   ThemeMode _themeMode = ThemeMode.light;
   Color _colorStroke = colorStrokeLight;
   Color _colorSecondary = colorSecondaryLight;
-  Color _colorTimetableRow = colorTimetableRowLight;
 
   get themeMode => _themeMode;
 
   get colorStroke => _colorStroke;
   get colorSecondary => _colorSecondary;
-  get colorTimetableRow => _colorTimetableRow;
 
   Future<ThemeMode> _getThemeMode() async {
     final SharedPreferences prefs = await _prefs;
@@ -39,12 +37,10 @@ class ThemeManager with ChangeNotifier {
       _themeMode = ThemeMode.dark;
       _colorStroke = colorStrokeDark;
       _colorSecondary = colorSecondaryDark;
-      _colorTimetableRow = colorTimetableRowDark;
     } else {
       _themeMode = ThemeMode.light;
       _colorStroke = colorStrokeLight;
       _colorSecondary = colorSecondaryLight;
-      _colorTimetableRow = colorTimetableRowLight;
     }
   }
 
