@@ -18,14 +18,15 @@ class Grade {
   static List<int> get gradeEntries => _gradeEntries;
 
   static double get totalAverage {
-    if (grades.isEmpty) return -1;
+    List<Course> coursesWithGrades = userCourses.where((e) => e.gradeAverage != -1).toList();
+    if (coursesWithGrades.isEmpty) return -1;
 
     double sum = 0;
-    for (Course course in userCourses.where((e) => e.gradeAverage != -1)) {
+    for (Course course in coursesWithGrades) {
       sum += course.gradeAverage;
     }
 
-    return sum / userCourses.where((e) => e.gradeAverage != -1).length;
+    return sum / coursesWithGrades.length;
   }
 
   static void sortGrades() {
