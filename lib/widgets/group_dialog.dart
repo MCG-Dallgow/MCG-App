@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mcgapp/classes/course.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../classes/group.dart';
+import '../enums/group.dart';
 
 Future<void> chooseGroup(BuildContext context, bool overwrite) async {
   if (group == null || overwrite) group = await _showGroupChoosingDialog(context);

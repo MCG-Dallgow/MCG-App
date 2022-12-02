@@ -3,11 +3,10 @@ import 'package:intl/intl.dart';
 import 'package:mcgapp/widgets/bottom_sheet.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../enums/grade_type.dart';
 import 'course.dart';
 
 enum GradeFormat { format15, format6 }
-
-enum GradeType { test, exam }
 
 class Grade {
   static List<Grade> _grades = [];
@@ -60,7 +59,7 @@ class Grade {
     List<String> encodedGrades = [];
     for (Grade grade in grades) {
       encodedGrades
-          .add('${grade.title}|${grade.course.title}|${grade.grade}|${DateFormat('yyyy-MM-dd').format(grade.date)}');
+          .add('${grade.title}|${grade.course.title}|${grade.grade}|${DateFormat('yyyy-MM-dd').format(grade.date)}|${grade.type}');
     }
     prefs.setStringList('grades', encodedGrades);
   }
@@ -77,7 +76,7 @@ class Grade {
         format: GradeFormat.format15,
         grade: int.parse(gradeParameters[2]),
         date: DateTime.parse(gradeParameters[3]),
-        type: GradeType.test,
+        type: GradeType.fromName(gradeParameters[4]),
       ));
     }
     _grades = decodedGrades;
@@ -117,7 +116,7 @@ class Grade {
         title: Text(DateFormat('EEEE, d. MMMM yyyy', 'de').format(date)),
       ),
       ListTile(
-        leading: const Icon(Icons.text_fields),
+        leading: type.icon,
         title: Text(type.name),
       ),
     ];
