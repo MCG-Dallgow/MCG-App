@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:mcgapp/main.dart';
 import 'package:mcgapp/widgets/bottom_sheet.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import '../classes/course.dart';
 import '../classes/room.dart';
+import '../screens/timetable_screen.dart';
 
 double height = 80;
 double headerHeight = 42;
@@ -18,7 +22,16 @@ class Timetable extends StatelessWidget {
     return Expanded(
       child: SizedBox(
         height: headerHeight,
-        child: Center(child: Text(day, style: const TextStyle(fontWeight: FontWeight.bold))),
+        child: Center(
+          child: week == weekType && day == DateFormat('E', 'de').format(DateTime.now())
+              ? CircleAvatar(
+                  radius: 16,
+                  backgroundColor: themeManager.colorSecondary,
+                  foregroundColor: themeManager.colorStroke,
+                  child: Text(day, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 14)),
+                )
+              : Text(day, style: const TextStyle(fontWeight: FontWeight.bold)),
+        ),
       ),
     );
   }
@@ -51,6 +64,7 @@ class Timetable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    initializeDateFormatting('de_DE');
     return ListView.builder(
         itemCount: 5,
         itemBuilder: (BuildContext context, int index) {
