@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:mcgapp/classes/grade.dart';
 import 'package:mcgapp/classes/room.dart';
-import 'package:mcgapp/classes/subject.dart';
+import 'package:mcgapp/enums/subject.dart';
 import 'package:mcgapp/classes/teacher.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'group.dart';
+import '../enums/group.dart';
 
 Map<String, Course> courses = {};
 List<Course> userCourses = [];
@@ -56,7 +56,7 @@ class Course {
     List<Grade> courseGrades = [];
 
     for (Grade grade in Grade.grades) {
-      if (grade.course.title == title) courseGrades.add(grade);
+      if (grade.course == this) courseGrades.add(grade);
     }
     courseGrades.sort((a, b) =>
         int.parse(DateFormat('yyyyMMdd').format(b.date)).compareTo(int.parse(DateFormat('yyyyMMdd').format(a.date))));
@@ -65,14 +65,38 @@ class Course {
 
   double get gradeAverage {
     if (courseGrades.isEmpty) return -1;
-    List<int> gradeList = courseGrades.map((e) => e.grade).toList();
+    Map<int, double> typeAverages = {};
 
-    int sum = 0;
-    for (var element in gradeList) {
-      sum += element;
+    for (int typeId in gradeTypes.keys) {
+      List<Grade> typeGrades = courseGrades.where((element) => element.type.id == typeId).toList();
+      if (typeGrades.isNotEmpty) {
+        int sum = 0;
+        for (var element in typeGrades) {
+          sum += element.grade;
+        }
+        double average = sum / typeGrades.length;
+        typeAverages[typeId] = average;
+      }
     }
 
-    return sum / gradeList.length;
+    double average = 0;
+    for (int typeId in typeAverages.keys) {
+      average += typeAverages[typeId]! * (typeAverages.values.length > 1 ? gradeTypes[typeId]! : 1);
+    }
+    return average;
+  }
+
+  Map<int, double> get gradeTypes {
+    Map<int, double> gradeTypes = {};
+
+    if (group!.level > 10) {
+      gradeTypes[0] = 0.67;
+      gradeTypes[2] = 0.33;
+    } else {
+      gradeTypes[0] = 1;
+    }
+
+    return gradeTypes;
   }
 
   Widget get circleAvatar {

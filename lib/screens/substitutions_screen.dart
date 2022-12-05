@@ -330,7 +330,7 @@ class _SubstitutionsScreenState extends State<SubstitutionsScreen> {
                     if (group!.level > 10) {
                       setState(() {
                         _groupFilter = [];
-                        _courseFilter = userCourses.map((e) => e.title.replaceAll('-', '_')).toList();
+                        _courseFilter = userCourses.map((e) => e.title).toList();
                         _teacherFilter = [];
                       });
                     } else {

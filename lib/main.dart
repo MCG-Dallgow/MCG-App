@@ -21,7 +21,7 @@ void main() {
 }
 
 String get appName => 'MCG-App';
-String get appVersion => '0.3.0-alpha.6';
+String get appVersion => '0.3.0-beta.3';
 
 ThemeManager themeManager = ThemeManager();
 

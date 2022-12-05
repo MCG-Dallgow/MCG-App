@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:mcgapp/classes/subject.dart';
+import 'package:mcgapp/enums/subject.dart';
 
 Map<String, Teacher> teachers = {};
 

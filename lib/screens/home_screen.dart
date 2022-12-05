@@ -5,7 +5,7 @@ import 'package:mcgapp/widgets/course_dialog.dart';
 import 'package:mcgapp/widgets/group_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import '../classes/group.dart';
+import '../enums/group.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 

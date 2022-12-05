@@ -208,10 +208,12 @@ class MCGDrawer extends StatelessWidget {
             aboutBoxChildren: const [
               Text(
                 '\nDiese App wurde nicht von der Schulleitung des Marie-Curie-Gymnasiums Dallgow-Döberitz in Auftrag '
-                'gegeben und wird nicht von ihr betreut.\n\n'
-                'Es besteht keinerlei Garantie auf Richtigkeit oder Vollständigkeit der angezeigten Informationen in '
-                'allen derzeitigen und künftigen Elementen dieser App. Dies trifft unter Anderem auf den Stundenplan, '
-                'den Vertretungsplan, den Raumplan, die Lehrerliste und jegliche Funktionen der Notenübersicht zu.\n\n'
+                'gegeben und wird nicht von ihr betreut. Die Schulleitung ist in keiner Weise für jegliche sich aus '
+                'der Veröffentlichung sowie der Verwendung ergebende Folgen verantwortlich.\n\n'
+                'Die Nutzung der App erfolgt auf eigene Gefahr und Verantwortung. Es besteht keinerlei Garantie auf '
+                'Richtigkeit, Vollständigkeit oder Verfügbarkeit der angezeigten Informationen in allen derzeitigen '
+                'und künftigen Elementen dieser App. Dies trifft unter Anderem auf den Stundenplan, den '
+                'Vertretungsplan, den Raumplan, die Lehrerliste und jegliche Funktionen der Notenübersicht zu.\n\n'
                 'Diese App ist unter der GNU General Public Licence v3.0 lizenziert.',
                 style: TextStyle(
                   fontSize: 12,

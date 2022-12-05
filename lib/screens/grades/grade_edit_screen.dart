@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:mcgapp/classes/course.dart';
 import 'package:mcgapp/classes/grade.dart';
 
+import '../../enums/grade_type.dart';
 import '../../widgets/app_bar.dart';
 
 class GradeEditScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
   late TextEditingController titleController;
   late TextEditingController dateController;
 
-  bool fistChange = true;
+  bool firstChange = true;
 
   String? _title;
   Course? _course;
@@ -90,6 +91,35 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
     );
   }
 
+  _showGradeTypeSelectionBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        List<GradeType> gradeTypes = [];
+        for (int typeId in _course!.gradeTypes.keys) {
+          gradeTypes.addAll(GradeType.fromType(typeId));
+        }
+
+        return ListView.builder(
+          itemCount: gradeTypes.length,
+          itemBuilder: (BuildContext context, int index) {
+            GradeType gradeType = gradeTypes[index];
+            return ListTile(
+              title: Text(gradeType.name),
+              leading: gradeType.icon,
+              onTap: () {
+                setState(() {
+                  _type = gradeType;
+                });
+                Navigator.of(context).pop();
+              },
+            );
+          },
+        );
+      },
+    );
+  }
+
   Future<DateTime?> _showDatePicker(BuildContext context) {
     DateTime now = DateTime.now();
     return showDatePicker(
@@ -113,7 +143,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
     Map? args = ModalRoute.of(context)!.settings.arguments as Map?;
     Grade? grade = args?['grade'];
 
-    if (fistChange) {
+    if (firstChange) {
       _title = grade?.title;
       _course = grade?.course ?? args?['course'];
       _gradeValue = grade?.grade;
@@ -123,7 +153,7 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
       if (_title != null) titleController.text = _title!;
       if (_date != null) dateController.text = format.format(_date!);
 
-      fistChange = false;
+      firstChange = false;
     }
 
     return Scaffold(
@@ -132,14 +162,19 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
         label: const Text('Fertig'),
         icon: const Icon(Icons.done),
         onPressed: () {
-          if (_title != null && _title != '' && _course != null && _gradeValue != null && _date != null) {
+          if (_title != null &&
+              _title != '' &&
+              _course != null &&
+              _gradeValue != null &&
+              _date != null &&
+              _type != null) {
             Grade newGrade = Grade(
               title: _title!,
               course: _course!,
               grade: _gradeValue!,
               format: _gradeFormat,
               date: _date!,
-              type: _type ?? GradeType.test,
+              type: _type!,
             );
 
             Navigator.pop(context, newGrade);
@@ -195,6 +230,12 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
                 dateController.text = format.format(_date!);
               }
             },
+          ),
+          const Divider(),
+          ListTile(
+            title: Text(_type == null ? 'Typ' : _type!.name),
+            leading: _type == null ? const Icon(Icons.text_fields) : _type!.icon,
+            onTap: () => (_course != null) ? _showGradeTypeSelectionBottomSheet(context) : {},
           ),
           const Divider(),
         ],
