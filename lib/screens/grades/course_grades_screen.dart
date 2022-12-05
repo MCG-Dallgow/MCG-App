@@ -4,6 +4,7 @@ import 'package:mcgapp/enums/grade_type.dart';
 import '../../classes/course.dart';
 import '../../classes/grade.dart';
 import '../../widgets/app_bar.dart';
+import '../../widgets/confirmation_dialog.dart';
 import 'grade_edit_screen.dart';
 
 class CourseGradesScreen extends StatefulWidget {
@@ -69,9 +70,19 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
                               IconButton(
                                 icon: const Icon(Icons.delete, color: Colors.grey),
                                 onPressed: () {
-                                  Grade.removeGrade(e);
-                                  Navigator.pop(context);
-                                  _updateBody();
+                                  showConfirmationDialog(
+                                    context,
+                                    'Löschen',
+                                    '',
+                                    'ABBRECHEN',
+                                    'LÖSCHEN',
+                                        () {
+                                      Grade.removeGrade(e);
+                                      Navigator.pop(context);
+                                      Navigator.pop(context);
+                                      _updateBody();
+                                    },
+                                  );
                                 },
                               ),
                             ]))

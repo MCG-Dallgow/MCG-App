@@ -58,8 +58,8 @@ class Grade {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> encodedGrades = [];
     for (Grade grade in grades) {
-      encodedGrades
-          .add('${grade.title}|${grade.course.title}|${grade.grade}|${DateFormat('yyyy-MM-dd').format(grade.date)}|${grade.type}');
+      encodedGrades.add('${grade.title}|${grade.course.title}|${grade.grade}|'
+                        '${DateFormat('yyyy-MM-dd').format(grade.date)}|${grade.type}');
     }
     prefs.setStringList('grades', encodedGrades);
   }

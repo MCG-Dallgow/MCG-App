@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:mcgapp/screens/grades/course_grades_screen.dart';
 import 'package:mcgapp/screens/grades/grade_edit_screen.dart';
+import 'package:mcgapp/widgets/confirmation_dialog.dart';
 import 'package:mcgapp/widgets/drawer.dart';
 
 import '../../classes/course.dart';
@@ -65,9 +66,19 @@ class _GradesScreenState extends State<GradesScreen> {
                       IconButton(
                         icon: const Icon(Icons.delete, color: Colors.grey),
                         onPressed: () {
-                          Grade.removeGrade(grade);
-                          Navigator.pop(context);
-                          _updateBody();
+                          showConfirmationDialog(
+                            context,
+                            'Löschen',
+                            '',
+                            'ABBRECHEN',
+                            'LÖSCHEN',
+                            () {
+                              Grade.removeGrade(grade);
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                              _updateBody();
+                            },
+                          );
                         },
                       ),
                     ]);
