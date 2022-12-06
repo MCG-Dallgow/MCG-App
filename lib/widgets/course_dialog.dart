@@ -61,6 +61,7 @@ class _CourseChoosingDialogState extends State<_CourseChoosingDialog> {
                     Course course = courses.values.toList()[index];
                     return CheckboxListTile(
                       enabled: !course.required,
+                      controlAffinity: ListTileControlAffinity.leading,
                       title: Row(children: [
                         Text(group!.level > 10 ? course.title : course.subject.name),
                         Flexible(
