@@ -13,6 +13,15 @@ double headerHeight = 42;
 double headerWidth = 42;
 double padding = 1;
 
+Course? getCourse(String time) {
+  for (Course course in userCourses) {
+    for (List<String> t in course.times) {
+      if (t[0] == time) return course;
+    }
+  }
+  return null;
+}
+
 class Timetable extends StatelessWidget {
   const Timetable({Key? key, required this.week}) : super(key: key);
 
@@ -23,7 +32,7 @@ class Timetable extends StatelessWidget {
       child: SizedBox(
         height: headerHeight,
         child: Center(
-          child: week == weekType && day == DateFormat('E', 'de').format(DateTime.now())
+          child: week == weekType() && day == DateFormat('E', 'de').format(DateTime.now())
               ? CircleAvatar(
                   radius: 16,
                   backgroundColor: themeManager.colorSecondary,
@@ -53,15 +62,6 @@ class Timetable extends StatelessWidget {
     );
   }
 
-  Course? _getCourse(String time) {
-    for (Course course in userCourses) {
-      for (List<String> t in course.times) {
-        if (t[0] == time) return course;
-      }
-    }
-    return null;
-  }
-
   @override
   Widget build(BuildContext context) {
     initializeDateFormatting('de_DE');
@@ -83,11 +83,11 @@ class Timetable extends StatelessWidget {
           return Row(
             children: [
               _lessonHeader(index),
-              TimetableEntry(course: _getCourse('${week}Mo$index'), week: week, weekday: 'Montag', lesson: index),
-              TimetableEntry(course: _getCourse('${week}Di$index'), week: week, weekday: 'Dienstag', lesson: index),
-              TimetableEntry(course: _getCourse('${week}Mi$index'), week: week, weekday: 'Mittwoch', lesson: index),
-              TimetableEntry(course: _getCourse('${week}Do$index'), week: week, weekday: 'Donnerstag', lesson: index),
-              TimetableEntry(course: _getCourse('${week}Fr$index'), week: week, weekday: 'Freitag', lesson: index),
+              TimetableEntry(course: getCourse('${week}Mo$index'), week: week, weekday: 'Montag', lesson: index),
+              TimetableEntry(course: getCourse('${week}Di$index'), week: week, weekday: 'Dienstag', lesson: index),
+              TimetableEntry(course: getCourse('${week}Mi$index'), week: week, weekday: 'Mittwoch', lesson: index),
+              TimetableEntry(course: getCourse('${week}Do$index'), week: week, weekday: 'Donnerstag', lesson: index),
+              TimetableEntry(course: getCourse('${week}Fr$index'), week: week, weekday: 'Freitag', lesson: index),
             ],
           );
         });

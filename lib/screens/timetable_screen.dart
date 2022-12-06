@@ -6,14 +6,15 @@ import 'package:mcgapp/widgets/drawer.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/timetable.dart';
 
-int get weekNumber {
-  DateTime now = DateTime.now();
-  int dayOfYear = int.parse(DateFormat('D').format(now));
-  return ((dayOfYear - now.weekday + 10) / 7).floor();
+int weekNumber({DateTime? date}) {
+  date ??= DateTime.now();
+  int dayOfYear = int.parse(DateFormat('D').format(date));
+  return ((dayOfYear - date.weekday + 10) / 7).floor();
 }
 
-String get weekType {
-  return weekNumber.isEven ? 'A' : 'B';
+String weekType({int? week}) {
+  week ??= weekNumber();
+  return week.isEven ? 'A' : 'B';
 }
 
 class TimetableScreen extends StatelessWidget {
@@ -24,7 +25,7 @@ class TimetableScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      initialIndex: weekType == 'A' ? 0 : 1,
+      initialIndex: weekType() == 'A' ? 0 : 1,
       length: 2,
       child: Scaffold(
         appBar: MCGAppBar(
@@ -35,8 +36,8 @@ class TimetableScreen extends StatelessWidget {
                 child: Text(
                   'A-Woche',
                   style: TextStyle(
-                    fontSize: weekType == 'A' ? 16 : 14,
-                    fontWeight: weekType == 'A' ? FontWeight.bold : FontWeight.normal,
+                    fontSize: weekType() == 'A' ? 16 : 14,
+                    fontWeight: weekType() == 'A' ? FontWeight.bold : FontWeight.normal,
                   ),
                 ),
               ),
@@ -44,8 +45,8 @@ class TimetableScreen extends StatelessWidget {
                 child: Text(
                   'B-Woche',
                   style: TextStyle(
-                    fontSize: weekType == 'B' ? 16 : 14,
-                    fontWeight: weekType == 'B' ? FontWeight.bold : FontWeight.normal,
+                    fontSize: weekType() == 'B' ? 16 : 14,
+                    fontWeight: weekType() == 'B' ? FontWeight.bold : FontWeight.normal,
                   ),
                 ),
               ),
