@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mcgapp/main.dart';
 
 showConfirmationDialog(BuildContext context, String title, String content, String no, String yes, dynamic action) {
   showDialog(
@@ -10,7 +11,7 @@ showConfirmationDialog(BuildContext context, String title, String content, Strin
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text(no, style: const TextStyle(color: Colors.white)),
+            child: Text(no, style: TextStyle(color: themeManager.colorStroke)),
           ),
           ElevatedButton(
             style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
