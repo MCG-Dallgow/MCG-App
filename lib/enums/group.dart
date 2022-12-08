@@ -18,9 +18,9 @@ enum Group {
   class9c('9c', 9, 'GöttO'),
   /*class9d('9d', 9, 'SpanF'),
   class9e('9e', 9, 'WillA'),
-  class10a('10a', 10, 'PlauS'),
+  class10a('10a', 10, 'PlauS'),*/
   class10b('10b', 10, 'SchbN'),
-  class10c('10c', 10, 'KrügJ'),
+  /*class10c('10c', 10, 'KrügJ'),
   class10d('10d', 10, 'KössA'),
   class10e('10e', 10, 'PelcE'),*/
   class11_1('11_1', 11, 'HossA'),
