@@ -11,7 +11,7 @@ import '../screens/timetable_screen.dart';
 double height = 80;
 double headerHeight = 42;
 double headerWidth = 42;
-double padding = 1;
+double padding = 2;
 
 Course? getCourse(String time) {
   for (Course course in userCourses) {
@@ -53,9 +53,9 @@ class Timetable extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(_getTimesFromLesson(lesson).split(' - ')[0], style: const TextStyle(fontSize: 12, color: Colors.grey)),
+            Text(getTimesFromLesson(lesson).split(' - ')[0], style: const TextStyle(fontSize: 12, color: Colors.grey)),
             Text('$lesson', style: const TextStyle(fontWeight: FontWeight.bold)),
-            Text(_getTimesFromLesson(lesson).split(' - ')[1], style: const TextStyle(fontSize: 12, color: Colors.grey)),
+            Text(getTimesFromLesson(lesson).split(' - ')[1], style: const TextStyle(fontSize: 12, color: Colors.grey)),
           ],
         ),
       ),
@@ -94,7 +94,7 @@ class Timetable extends StatelessWidget {
   }
 }
 
-String _getTimesFromLesson(int lesson) {
+String getTimesFromLesson(int lesson) {
   switch (lesson) {
     case 1:
       return '8:00 - 9:30';
@@ -142,7 +142,7 @@ class TimetableEntry extends StatelessWidget {
         leading: Icon(Icons.school, color: course!.subject.backgroundColor),
       ),
       ListTile(
-        title: Text(_getTimesFromLesson(lesson)),
+        title: Text(getTimesFromLesson(lesson)),
         leading: const Icon(Icons.access_time_outlined),
       ),
       ListTile(
@@ -161,43 +161,48 @@ class TimetableEntry extends StatelessWidget {
     return Expanded(
       child: course == null
           ? Container(height: height, width: double.infinity, color: Theme.of(context).canvasColor)
-          : GestureDetector(
-              onTap: () {
-                showMCGBottomSheet(
-                  context,
-                  '$weekday, $lesson. Block ($week)',
-                  _details,
-                  [],
-                );
-              },
-              child: Padding(
-                padding: EdgeInsets.all(padding),
-                child: Container(
-                  height: height,
-                  decoration: BoxDecoration(
-                      borderRadius: const BorderRadius.all(Radius.circular(8)), color: course!.subject.backgroundColor),
-                  child: Padding(
-                    padding: const EdgeInsets.all(4),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          course!.teacher.short,
-                          style: TextStyle(fontSize: 10, color: course!.subject.foregroundColor),
-                        ),
-                        Text(
-                          course!.subject.short,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: course!.subject.foregroundColor,
+          : Padding(
+              padding: EdgeInsets.all(padding),
+              child: Ink(
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  color: course!.subject.backgroundColor,
+                ),
+                child: InkWell(
+                  borderRadius: const BorderRadius.all(Radius.circular(8)),
+                  onTap: () {
+                    showMCGBottomSheet(
+                      context,
+                      '$weekday, $lesson. Block ($week)',
+                      _details,
+                      [],
+                    );
+                  },
+                  child: SizedBox(
+                    height: height,
+                    child: Padding(
+                      padding: const EdgeInsets.all(4),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            course!.teacher.short,
+                            style: TextStyle(fontSize: 10, color: course!.subject.foregroundColor),
                           ),
-                        ),
-                        Text(
-                          _room?.number ?? '',
-                          style: TextStyle(fontSize: 10, color: course!.subject.foregroundColor),
-                        ),
-                      ],
+                          Text(
+                            course!.subject.short,
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: course!.subject.foregroundColor,
+                            ),
+                          ),
+                          Text(
+                            _room?.number ?? '',
+                            style: TextStyle(fontSize: 10, color: course!.subject.foregroundColor),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
