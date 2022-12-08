@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
+import 'package:mcgapp/classes/course.dart';
 
 Map<String, Room> rooms = {};
 
@@ -49,6 +50,15 @@ class Room {
     startY = room?.startY ?? 0;
     endX = room?.endX ?? 0;
     endY = room?.endY ?? 0;
+  }
+
+  static Room? fromTime(String time) {
+    for (Course course in courses.values) {
+      for (List<String> t in course.times) {
+        if (t[0] == time) return Room.fromNumber(t[1]);
+      }
+    }
+    return null;
   }
 
   Room.fromJson(var json, int index) {

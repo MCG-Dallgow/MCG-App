@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
+import 'package:mcgapp/classes/room.dart';
 import 'package:mcgapp/screens/timetable_screen.dart';
 import 'package:mcgapp/widgets/app_bar.dart';
 import 'package:mcgapp/widgets/drawer.dart';
@@ -8,6 +9,7 @@ import 'package:mcgapp/widgets/timetable.dart';
 
 import '../classes/course.dart';
 import '../main.dart';
+import '../widgets/bottom_sheet.dart';
 
 class TimelineScreen extends StatefulWidget {
   const TimelineScreen({Key? key}) : super(key: key);
@@ -113,23 +115,49 @@ class TimelineSubject extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(4),
-      child: Container(
-        padding: const EdgeInsets.all(2),
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(32)),
-          border: Border.all(color: course.subject.backgroundColor, width: 2),
+      child: InkWell(
+        borderRadius: const BorderRadius.all(Radius.circular(32)),
+        onTap: () {
+          showMCGBottomSheet(
+            context,
+            '$day, $lesson. Block ($week)',
+            [
+              ListTile(
+                title: Text('${course.subject.name} (${course.title})'),
+                leading: Icon(Icons.school, color: course.subject.backgroundColor),
+              ),
+              ListTile(
+                title: Text(getTimesFromLesson(lesson)),
+                leading: const Icon(Icons.access_time_outlined),
+              ),
+              ListTile(
+                title: Text('${course.teacher.title} ${course.teacher.lastname}'),
+                leading: const Icon(Icons.person),
+              ),
+              ListTile(
+                title: Text(Room.fromTime('$week${day.substring(0, 2)}$lesson')!.number),
+                leading: const Icon(Icons.place),
+              ),
+            ],
+            [],
+          );
+        },
+        child: Container(
+          padding: const EdgeInsets.all(2),
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(32)),
+            border: Border.all(color: course.subject.backgroundColor, width: 2),
+          ),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(4),
+                child: Text('$lesson', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+              ),
+              course.circleAvatar,
+            ],
+          ),
         ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(4),
-              child: Text('$lesson', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
-            ),
-            course.circleAvatar,
-          ],
-        ),
-
-        //Text(subject.short, style: TextStyle(color: subject.foregroundColor)),
       ),
     );
   }
