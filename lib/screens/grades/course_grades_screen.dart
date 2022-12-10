@@ -3,6 +3,7 @@ import 'package:mcgapp/enums/grade_type.dart';
 
 import '../../classes/course.dart';
 import '../../classes/grade.dart';
+import '../../main.dart';
 import '../../widgets/app_bar.dart';
 import '../../widgets/confirmation_dialog.dart';
 import 'grade_edit_screen.dart';
@@ -43,7 +44,10 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
                     padding: const EdgeInsets.all(8),
                     child: Text(
                       GradeType.getTypeName(typeId),
-                      style: TextStyle(fontSize: 16, color: Colors.grey.shade300),
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: themeManager.themeMode == ThemeMode.dark ? Colors.grey.shade400 : Colors.grey.shade600,
+                      ),
                     ),
                   );
                 }
@@ -76,7 +80,7 @@ class _CourseGradesScreenState extends State<CourseGradesScreen> {
                                     '',
                                     'ABBRECHEN',
                                     'LÖSCHEN',
-                                        () {
+                                    () {
                                       Grade.removeGrade(e);
                                       Navigator.pop(context);
                                       Navigator.pop(context);

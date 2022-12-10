@@ -9,6 +9,7 @@ import 'package:mcgapp/screens/settings_screen.dart';
 import 'package:mcgapp/screens/substitutions_screen.dart';
 import 'package:mcgapp/screens/teachers/teacher_details_screen.dart';
 import 'package:mcgapp/screens/teachers/teachers_screen.dart';
+import 'package:mcgapp/screens/timeline_screen.dart';
 import 'package:mcgapp/screens/timetable_screen.dart';
 import 'package:mcgapp/theme/theme_constants.dart';
 import 'package:mcgapp/theme/theme_manager.dart';
@@ -69,6 +70,7 @@ class _MyAppState extends State<MyApp> {
       initialRoute: HomeScreen.routeName,
       routes: {
         HomeScreen.routeName: (context) => const HomeScreen(),
+        TimelineScreen.routeName: (context) => const TimelineScreen(),
         TimetableScreen.routeName: (context) => const TimetableScreen(),
         SubstitutionsScreen.routeName: (context) => const SubstitutionsScreen(),
         RoomplanScreen.routeName: (context) => const RoomplanScreen(),

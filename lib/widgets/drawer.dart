@@ -8,6 +8,7 @@ import '../screens/grades/grades_screen.dart';
 import '../screens/roomplan_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/teachers/teachers_screen.dart';
+import '../screens/timeline_screen.dart';
 import '../screens/timetable_screen.dart';
 
 class MCGDrawer extends StatelessWidget {
@@ -66,6 +67,25 @@ class MCGDrawer extends StatelessWidget {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+              }
+            },
+          ),
+          ListTile(
+            leading: Icon(
+              Icons.timeline,
+              color: routeName == TimelineScreen.routeName ? Colors.green : null,
+            ),
+            title: Text(
+              'Timeline',
+              style: TextStyle(
+                  color: routeName == TimelineScreen.routeName ? Colors.green : null),
+            ),
+            onTap: () {
+              if (routeName == TimelineScreen.routeName) {
+                Navigator.pop(context);
+              } else {
+                Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+                Navigator.pushNamed(context, TimelineScreen.routeName);
               }
             },
           ),
