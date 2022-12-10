@@ -12,6 +12,9 @@ Color colorStrokeDark = Colors.white;
 Color colorSecondaryLight = Colors.green.shade300;
 Color colorSecondaryDark = Colors.green.shade800;
 
+Color colorCancelledLight = Colors.red.shade300;
+Color colorCancelledDark = Colors.red.shade900;
+
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: colorPrimaryLight,

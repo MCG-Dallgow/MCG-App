@@ -39,10 +39,48 @@ class SubstitutionEntry extends StatelessWidget {
     return parsedString;
   }
 
+  static String _parseLesson(String lesson) {
+    switch (lesson) {
+      case '1-2':
+      case '1':
+      case '2':
+        return '1. Block';
+      case '3-4':
+      case '3':
+      case '4':
+        return '2. Block';
+      case '4-6':
+      case '5-6':
+      case '5':
+      case '6':
+        return '3. Block';
+      case '7-8':
+      case '7':
+      case '8':
+        return '4. Block';
+      default:
+        return 'Fehler';
+    }
+  }
+
+  static String _parseRoom(String room) {
+    room = room.replaceAll('(', '').replaceAll(')', '').trim();
+
+    RegExp regex = RegExp(r'[0-9]{3}');
+    Iterable<RegExpMatch?> matches = regex.allMatches(room);
+
+    for (RegExpMatch? match in matches) {
+      if (match != null) {
+        room = room.replaceAll(room, '${room[0]}.${room.substring(1)}');
+      }
+    }
+    return room;
+  }
+
   factory SubstitutionEntry.fromJson(var data) {
-    RegExp old = RegExp(r'\([a-zA-Z0-9.]{0,20}\)');
+    RegExp old = RegExp(r'\([a-zA-Z0-9.-]{0,20}\)');
     String group = data['group'];
-    String lesson = data['data'][0].toString().replaceAll(' ', '');
+    String lesson = _parseLesson(data['data'][0].toString().replaceAll(' ', ''));
     String times = data['data'][1];
 
     RegExpMatch? courseMatch = old.firstMatch(data['data'][3]);
@@ -51,7 +89,8 @@ class SubstitutionEntry extends StatelessWidget {
 
     RegExpMatch? roomMatch = old.firstMatch(_parseHtmlString(data['data'][4]));
     String roomOld = roomMatch != null ? roomMatch[0] ?? '' : '';
-    String roomNew = _parseHtmlString(data['data'][4]).replaceAll(roomOld, '');
+    String roomNew = _parseRoom(_parseHtmlString(data['data'][4]).replaceAll(roomOld, ''));
+    roomOld = _parseRoom(roomOld);
 
     RegExpMatch? teacherMatch = old.firstMatch(_parseHtmlString(data['data'][5]));
     String teacherOld = teacherMatch != null ? teacherMatch[0] ?? '' : '';
@@ -85,59 +124,148 @@ class SubstitutionEntry extends StatelessWidget {
       fontSize: fontSize,
     );
 
-    return Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5.0), color: themeManager.colorSecondary),
-      padding: const EdgeInsets.all(10.0),
+    return Card(
+      color: isCancelled ? themeManager.colorCancelled : themeManager.colorSecondary,
       margin: const EdgeInsets.fromLTRB(10, 0, 10, 10),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(group, style: headerStyle),
-              Text(type ?? '', style: headerStyle),
-              Text(lesson, style: headerStyle),
-            ],
-          ),
-          Divider(color: themeManager.colorStroke),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                children: [
-                  Text(teacherNew ?? '', style: TextStyle(
-                    decoration: isCancelled ? TextDecoration.lineThrough : null,
-                    fontWeight: teacherOld != '' ? FontWeight.bold : null,
-                    fontSize: fontSize,
-                  )),
-                  Text(teacherOld ?? '', style: normalStyle),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(roomNew ?? '', style: TextStyle(
-                    decoration: isCancelled ? TextDecoration.lineThrough : null,
-                    fontWeight: roomOld != '' ? FontWeight.bold : null,
-                    fontSize: fontSize,
-                  )),
-                  Text(roomOld ?? '', style: normalStyle),
-                ],
-              ),
-              Column(
-                children: [
-                  Text(courseNew ?? '', style: TextStyle(
-                    decoration: isCancelled ? TextDecoration.lineThrough : null,
-                    fontWeight: courseOld != '' ? FontWeight.bold : null,
-                    fontSize: fontSize,
-                  )),
-                  Text(courseOld ?? '', style: normalStyle),
-                ],
-              ),
-            ],
-          ),
-          Divider(color: themeManager.colorStroke),
-          Text(description ?? '', style: normalStyle),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Text(
+                    group,
+                    style: headerStyle,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    type ?? '',
+                    style: headerStyle,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                Expanded(
+                  child: Text(
+                    lesson,
+                    style: headerStyle,
+                    textAlign: TextAlign.right,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+            Divider(color: themeManager.colorStroke),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          (teacherNew ?? '').startsWith('(')
+                              ? (teacherNew ?? '').replaceAll('(', '').replaceAll(')', '').trim()
+                              : teacherNew ?? '',
+                          style: TextStyle(
+                            decoration:
+                                isCancelled | (teacherNew ?? '').startsWith('(') ? TextDecoration.lineThrough : null,
+                            fontWeight: teacherOld != '' ? FontWeight.bold : null,
+                            fontSize: fontSize,
+                          ),
+                          textAlign: TextAlign.left,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          (teacherOld ?? '').startsWith('(')
+                              ? (teacherOld ?? '').replaceAll('(', '').replaceAll(')', '').trim()
+                              : teacherOld ?? '',
+                          style: (teacherOld ?? '').startsWith('(')
+                              ? const TextStyle(fontSize: fontSize, decoration: TextDecoration.lineThrough)
+                              : normalStyle,
+                          textAlign: TextAlign.left,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Text(
+                        roomNew ?? '',
+                        style: TextStyle(
+                          decoration: isCancelled ? TextDecoration.lineThrough : null,
+                          fontWeight: roomOld != '' ? FontWeight.bold : null,
+                          fontSize: fontSize,
+                        ),
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Text(
+                        roomOld ?? '',
+                        style: roomNew == ''
+                            ? normalStyle
+                            : const TextStyle(
+                                decoration: TextDecoration.lineThrough,
+                                fontSize: fontSize,
+                              ),
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: Column(
+                    children: [
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          courseNew ?? '',
+                          style: TextStyle(
+                            decoration: isCancelled ? TextDecoration.lineThrough : null,
+                            fontWeight: courseOld != '' ? FontWeight.bold : null,
+                            fontSize: fontSize,
+                          ),
+                          textAlign: TextAlign.right,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                          courseOld ?? '',
+                          style: normalStyle,
+                          textAlign: TextAlign.right,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            (description ?? '') == ''
+                ? Container()
+                : Column(
+                    children: [
+                      Divider(color: themeManager.colorStroke),
+                      Text(description ?? '', style: normalStyle),
+                    ],
+                  )
+          ],
+        ),
       ),
     );
   }
