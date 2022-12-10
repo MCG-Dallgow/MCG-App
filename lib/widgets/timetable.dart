@@ -160,7 +160,7 @@ class TimetableEntry extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: course == null
-          ? Container(height: height, width: double.infinity, color: Theme.of(context).canvasColor)
+          ? SizedBox(height: height)
           : Padding(
               padding: EdgeInsets.all(padding),
               child: Ink(
@@ -192,7 +192,7 @@ class TimetableEntry extends StatelessWidget {
                           Text(
                             course!.subject.short,
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold,
                               color: course!.subject.foregroundColor,
                             ),
