@@ -1,16 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import '../../classes/teacher.dart';
 import '../../widgets/app_bar.dart';
 
-class TeacherDetailsScreen extends StatelessWidget {
+class TeacherDetailsScreen extends StatefulWidget {
   const TeacherDetailsScreen({Key? key}) : super(key: key);
 
   static const String routeName = '/teachers/details';
 
   @override
+  State<TeacherDetailsScreen> createState() => _TeacherDetailsScreenState();
+}
+
+class _TeacherDetailsScreenState extends State<TeacherDetailsScreen> {
+  Widget _teacherImage = Container();
+
+  Future<void> _loadTeacherImage(Teacher teacher) async {
+    String path = 'assets/images/teachers/${teacher.short}.jpg';
+
+    Widget teacherImage = await rootBundle.load(path).then((value) {
+      return SizedBox(child: Image.asset(path));
+    }).catchError((_) {
+      return const SizedBox();
+    });
+
+    setState(() {
+      _teacherImage = teacherImage;
+    });
+}
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final teacher = ModalRoute.of(context)!.settings.arguments as Teacher;
+    _loadTeacherImage(teacher);
 
     return Scaffold(
       appBar: MCGAppBar(
@@ -18,6 +46,7 @@ class TeacherDetailsScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          _teacherImage,
           ListTile(
             title: Text('${teacher.firstname} ${teacher.lastname}' != ''
                 ? '${teacher.firstname} ${teacher.lastname}'
@@ -63,6 +92,7 @@ class SekretariatScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
+          Image.asset('assets/images/mcg-icon.png'),
           ListTile(
             title: Text(data[0]),
             leading: const Icon(Icons.email),

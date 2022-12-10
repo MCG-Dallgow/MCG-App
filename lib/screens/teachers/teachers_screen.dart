@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:mcgapp/main.dart';
 import 'package:mcgapp/screens/teachers/teacher_details_screen.dart';
 import 'package:mcgapp/widgets/drawer.dart';
 
@@ -21,19 +22,33 @@ class _TeachersScreenState extends State<TeachersScreen> {
   final List<Teacher> _teachers = [];
   final List<Teacher> _entries = [];
   final List<String> sekretariat = [];
+  final Map<String, CircleAvatar> _teacherImages = {};
 
-  Future<void> loadJsonData() async {
+  Future<void> _loadTeachers() async {
     var jsonText = await rootBundle.loadString('assets/data/teachers.json');
+    Map<String, Teacher> teachers = await Teacher.getTeachers();
     setState(() {
-      List data = json.decode(jsonText)['teachers'];
-      for (int i = 0; i < data.length; i++) {
-        _teachers.add(Teacher.fromJson(data, i));
-      }
+      _teachers.addAll(teachers.values);
       _entries.addAll(_teachers);
 
       sekretariat.add(json.decode(jsonText)['sekretariat']['email'] as String);
       sekretariat.add(json.decode(jsonText)['sekretariat']['phone'] as String);
     });
+
+    for (Teacher teacher in _teachers) {
+      String path = 'assets/images/teachers/${teacher.short}.jpg';
+      CircleAvatar teacherImage = await rootBundle.load(path).then((value) {
+        return CircleAvatar(backgroundImage: AssetImage(path), radius: 24);
+      }).catchError((_) {
+        return CircleAvatar(
+          backgroundColor: themeManager.colorSecondary,
+          child: Icon(Icons.person, color: themeManager.colorStroke),
+        );
+      });
+      setState(() {
+        _teacherImages[teacher.short] = teacherImage;
+      });
+    }
   }
 
   final TextEditingController _searchQueryController = TextEditingController();
@@ -122,7 +137,7 @@ class _TeachersScreenState extends State<TeachersScreen> {
   @override
   void initState() {
     super.initState();
-    loadJsonData();
+    _loadTeachers();
   }
 
   @override
@@ -142,6 +157,7 @@ class _TeachersScreenState extends State<TeachersScreen> {
                 if (index == 0 && (!_isSearching || searchQuery == '')) {
                   return ListTile(
                     title: const Text('Sekretariat'),
+                    leading: const CircleAvatar(backgroundImage: AssetImage('assets/images/mcg-icon.jpg'), radius: 24),
                     onTap: () {
                       Navigator.pushNamed(
                         context,
@@ -155,9 +171,11 @@ class _TeachersScreenState extends State<TeachersScreen> {
                   return const Divider();
                 }
                 int teacherIndex = index ~/ 2 - ((_entries.isNotEmpty && !_isSearching || searchQuery == '') ? 1 : 0);
+                Teacher teacher = _entries[teacherIndex];
+
                 return ListTile(
-                  //leading: CircleAvatar(),
-                  title: Text('${_entries[teacherIndex].title} ${_entries[teacherIndex].lastname}'),
+                  title: Text('${teacher.title} ${teacher.lastname}'),
+                  leading: _teacherImages[teacher.short],
                   onTap: () {
                     Navigator.pushNamed(
                       context,
@@ -171,4 +189,3 @@ class _TeachersScreenState extends State<TeachersScreen> {
     );
   }
 }
-
