@@ -38,11 +38,15 @@ class _TeachersScreenState extends State<TeachersScreen> {
     for (Teacher teacher in _teachers) {
       String path = 'assets/images/teachers/${teacher.short}.jpg';
       CircleAvatar teacherImage = await rootBundle.load(path).then((value) {
-        return CircleAvatar(backgroundImage: AssetImage(path), radius: 24);
+        return CircleAvatar(
+          backgroundImage: AssetImage(path),
+          radius: 24,
+        );
       }).catchError((_) {
         return CircleAvatar(
           backgroundColor: themeManager.colorSecondary,
-          child: Icon(Icons.person, color: themeManager.colorStroke),
+          radius: 24,
+          child: Icon(Icons.person_rounded, color: themeManager.colorStroke, size: 32),
         );
       });
       setState(() {
