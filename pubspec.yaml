@@ -70,6 +70,7 @@ flutter:
     - assets/
     - assets/data/
     - assets/images/
+    - assets/images/room_plan/
     - assets/images/teachers/
     - assets/data/courses/
   #   - images/a_dot_burr.jpeg

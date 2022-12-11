@@ -60,7 +60,7 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
             top: _offsetY,
             child: SvgPicture.asset(
               fit: BoxFit.fill,
-              'assets/images/roomplan$floor-${themeManager.themeMode == ThemeMode.dark ? 'dark' : 'light'}.svg',
+              'assets/images/room_plan/room_plan_${floor}_${themeManager.themeMode == ThemeMode.dark ? 'dark' : 'light'}.svg',
               width: 300,
               height: 125,
             ),
