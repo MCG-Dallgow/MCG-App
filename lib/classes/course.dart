@@ -93,7 +93,8 @@ class Course {
       gradeTypes[0] = 0.67;
       gradeTypes[2] = 0.33;
     } else {
-      gradeTypes[0] = 1;
+      gradeTypes[0] = 0.75;
+      gradeTypes[1] = 0.25;
     }
 
     return gradeTypes;
