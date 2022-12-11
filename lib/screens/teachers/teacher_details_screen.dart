@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mcgapp/main.dart';
 
 import '../../classes/teacher.dart';
 import '../../widgets/app_bar.dart';
@@ -71,6 +72,24 @@ class _TeacherDetailsScreenState extends State<TeacherDetailsScreen> {
           ListTile(
             title: Text(teacher.email != '' ? teacher.email : 'keine vermerkte E-Mail-Adresse'),
             leading: const Icon(Icons.email),
+            trailing: IconButton(
+              icon: const Icon(Icons.copy),
+              onPressed: () async {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    elevation: 6,
+                    backgroundColor: themeManager.colorSecondary,
+                    behavior: SnackBarBehavior.floating,
+                    content: Text(
+                      'E-Mail-Adresse kopiert',
+                      style: TextStyle(color: themeManager.colorStroke),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
+                await Clipboard.setData(ClipboardData(text: teacher.email));
+              },
+            ),
           )
         ],
       ),
