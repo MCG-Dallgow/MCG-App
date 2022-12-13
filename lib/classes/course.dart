@@ -93,7 +93,18 @@ class Course {
       gradeTypes[0] = 0.67;
       gradeTypes[2] = 0.33;
     } else {
-      gradeTypes[0] = 1;
+      switch (subject) {
+        case Subject.deu:
+        case Subject.mat:
+        case Subject.eng:
+        case Subject.spa:
+          gradeTypes[0] = 0.5;
+          gradeTypes[1] = 0.5;
+          break;
+        default:
+          gradeTypes[0] = 1;
+          break;
+      }
     }
 
     return gradeTypes;

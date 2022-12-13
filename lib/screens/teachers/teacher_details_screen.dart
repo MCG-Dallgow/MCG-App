@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mcgapp/main.dart';
 
 import '../../classes/teacher.dart';
 import '../../widgets/app_bar.dart';
@@ -20,7 +21,12 @@ class _TeacherDetailsScreenState extends State<TeacherDetailsScreen> {
     String path = 'assets/images/teachers/${teacher.short}.jpg';
 
     Widget teacherImage = await rootBundle.load(path).then((value) {
-      return SizedBox(child: Image.asset(path));
+      return SizedBox(
+        child: Align(
+          alignment: Alignment.centerLeft,
+          child: Image.asset(path, fit: BoxFit.contain, width: 500),
+        ),
+      );
     }).catchError((_) {
       return const SizedBox();
     });
@@ -28,7 +34,7 @@ class _TeacherDetailsScreenState extends State<TeacherDetailsScreen> {
     setState(() {
       _teacherImage = teacherImage;
     });
-}
+  }
 
   @override
   void initState() {
@@ -60,16 +66,30 @@ class _TeacherDetailsScreenState extends State<TeacherDetailsScreen> {
             leading: const Icon(Icons.subject),
           ),
           ListTile(
-            title: Text(teacher.short != ''
-                ? teacher.short
-                : 'kein vermerkes Kürzel'),
+            title: Text(teacher.short != '' ? teacher.short : 'kein vermerkes Kürzel'),
             leading: const Icon(Icons.tag),
           ),
           ListTile(
-            title: Text(teacher.email != ''
-                ? teacher.email
-                : 'keine vermerkte E-Mail-Adresse'),
+            title: Text(teacher.email != '' ? teacher.email : 'keine vermerkte E-Mail-Adresse'),
             leading: const Icon(Icons.email),
+            trailing: IconButton(
+              icon: const Icon(Icons.copy),
+              onPressed: () async {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    elevation: 6,
+                    backgroundColor: themeManager.colorSecondary,
+                    behavior: SnackBarBehavior.floating,
+                    content: Text(
+                      'E-Mail-Adresse kopiert',
+                      style: TextStyle(color: themeManager.colorStroke),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                );
+                await Clipboard.setData(ClipboardData(text: teacher.email));
+              },
+            ),
           )
         ],
       ),
@@ -92,7 +112,7 @@ class SekretariatScreen extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Image.asset('assets/images/mcg-icon.png'),
+          Align(alignment: Alignment.centerLeft, child: Image.asset('assets/images/mcg-icon.png', width: 500)),
           ListTile(
             title: Text(data[0]),
             leading: const Icon(Icons.email),
