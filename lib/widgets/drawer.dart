@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mcgapp/main.dart';
+import 'package:mcgapp/classes/user.dart';
+import 'package:mcgapp/screens/auth/signin_screen.dart';
 import 'package:mcgapp/screens/home_screen.dart';
 import 'package:mcgapp/screens/substitutions_screen.dart';
 
@@ -41,13 +44,19 @@ class MCGDrawer extends StatelessWidget {
                       radius: 35,
                     ),
                   ),
-                  Text(
-                    appName,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24,
-                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${AppUser.user.firstName} ${AppUser.user.lastName}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                        ),
+                      ),
+                      Text(AppUser.user.email, style: const TextStyle(color: Colors.white)),
+                    ],
                   ),
                 ],
               ),
@@ -77,8 +86,7 @@ class MCGDrawer extends StatelessWidget {
             ),
             title: Text(
               'Timeline',
-              style: TextStyle(
-                  color: routeName == TimelineScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: routeName == TimelineScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
               if (routeName == TimelineScreen.routeName) {
@@ -96,8 +104,7 @@ class MCGDrawer extends StatelessWidget {
             ),
             title: Text(
               'Stundenplan',
-              style: TextStyle(
-                color: routeName == TimetableScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: routeName == TimetableScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
               if (routeName == TimetableScreen.routeName) {
@@ -180,9 +187,7 @@ class MCGDrawer extends StatelessWidget {
               }
             },
           ),
-          const Divider(
-            color: Colors.black38,
-          ),
+          const Divider(indent: 10, endIndent: 10, thickness: 1),
           ListTile(
             leading: Icon(
               Icons.settings,
@@ -242,6 +247,16 @@ class MCGDrawer extends StatelessWidget {
               ),
             ],
             child: Text('Über $appName'),
+          ),
+          const Divider(indent: 10, endIndent: 10, thickness: 1),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text('Abmelden'),
+            onTap: () {
+              FirebaseAuth.instance.signOut();
+
+              Navigator.pushNamedAndRemoveUntil(context, SignInScreen.routeName, (route) => false);
+            },
           ),
         ],
       ),

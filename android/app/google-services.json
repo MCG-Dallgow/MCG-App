@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "852777786427",
+    "project_id": "mcg-app-998e9",
+    "storage_bucket": "mcg-app-998e9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:852777786427:android:0f0d5e131c28a23477901e",
+        "android_client_info": {
+          "package_name": "xyz.hafemann.mcgapp.mcgapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "852777786427-7m94plt68rhnacste718584tdtojk7n2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDYYgprAD9vKA5MPPVTdVJQsVgYyGEWass"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "852777786427-7m94plt68rhnacste718584tdtojk7n2.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "852777786427-o9vh4nmo9gv1a6hnl6ddin466088erqr.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "xyz.hafemann.mcgapp.mcgapp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

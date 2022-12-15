@@ -18,6 +18,7 @@ Color colorCancelledDark = Colors.red.shade900;
 ThemeData lightTheme = ThemeData(
   brightness: Brightness.light,
   primaryColor: colorPrimaryLight,
+  focusColor: colorPrimaryLight,
   appBarTheme: AppBarTheme(
     backgroundColor: colorPrimaryLight,
   ),
@@ -26,13 +27,14 @@ ThemeData lightTheme = ThemeData(
     foregroundColor: Colors.white,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
-    style: ElevatedButton.styleFrom(backgroundColor: colorPrimaryLight)
+    style: ElevatedButton.styleFrom(backgroundColor: colorPrimaryLight),
   ),
 );
 
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
   primaryColor: colorPrimaryDark,
+  focusColor: colorPrimaryDark,
   appBarTheme: AppBarTheme(
     backgroundColor: colorPrimaryDark,
   ),
@@ -41,6 +43,6 @@ ThemeData darkTheme = ThemeData(
     foregroundColor: Colors.white,
   ),
   elevatedButtonTheme: ElevatedButtonThemeData(
-      style: ElevatedButton.styleFrom(backgroundColor: colorPrimaryDark)
+      style: ElevatedButton.styleFrom(backgroundColor: colorPrimaryDark),
   ),
 );
