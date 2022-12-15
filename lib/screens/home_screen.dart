@@ -66,8 +66,8 @@ class _HomeScreenState extends State<HomeScreen> {
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
             child: Text(
-              'Derzeitige Features:\n\u2022 Stundenplan\n\u2022 Vertretungsplan\n\u2022 Raumplan\n\u2022 Lehrerliste'
-              '\n\u2022 Notenübersicht',
+              'Derzeitige Features:\n\u2022 Timeline\n\u2022 Stundenplan (aktuell nur für einige Klassen verfügbar)'
+              '\n\u2022 Vertretungsplan\n\u2022 Raumplan\n\u2022 Lehrerliste\n\u2022 Notenübersicht',
               style: TextStyle(fontSize: 16),
             ),
           ),
