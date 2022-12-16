@@ -41,7 +41,7 @@
       "firstname": "Helen",
       "lastname": "Börner",
       "short": "BörnH",
-      "subjects": [],
+      "subjects": ["Phy"],
       "email": "helen.boerner@lk.brandenburg.de"
     },
     {
@@ -409,7 +409,7 @@
       "firstname": "Carola",
       "lastname": "Schulz",
       "short": "SchulC",
-      "subjects": [],
+      "subjects": ["Lat"],
       "email": "carola.schulz@lk.brandenburg.de"
     },
     {
@@ -505,7 +505,7 @@
       "firstname": "Alina",
       "lastname": "Vasylenko",
       "short": "VasyA",
-      "subjects": [],
+      "subjects": ["Fra"],
       "email": "alina.vasylenko@lk.brandenburg.de"
     },
     {

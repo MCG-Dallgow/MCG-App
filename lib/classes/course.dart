@@ -98,6 +98,8 @@ class Course {
         case Subject.mat:
         case Subject.eng:
         case Subject.spa:
+        case Subject.fra:
+        case Subject.lat:
           gradeTypes[0] = 0.5;
           gradeTypes[1] = 0.5;
           break;
