@@ -41,7 +41,7 @@ enum Group {
 
   Teacher get teacher => Teacher.fromShort(_teacher);
 
-  static Group fromName(String name) {
+  static Group? fromName(String name) {
     return Group.values.firstWhere((e) => e.name == name);
   }
 }

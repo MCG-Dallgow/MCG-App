@@ -1,13 +1,13 @@
-import 'package:mcgapp/classes/group.dart';
+import 'package:mcgapp/enums/group.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppUser {
-  late String firstName;
-  late String lastName;
+  late String firstname;
+  late String lastname;
   late String email;
   late Group group;
 
-  AppUser({required this.firstName, required this.lastName, required this.email, required this.group});
+  AppUser({required this.firstname, required this.lastname, required this.email, required this.group});
 
   static late AppUser _user;
 
@@ -18,7 +18,7 @@ class AppUser {
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    List<String> encodedUser = [user.firstName, user.lastName, user.email, user.group.name];
+    List<String> encodedUser = [user.firstname, user.lastname, user.email, user.group.name];
     prefs.setStringList('user', encodedUser);
   }
 
@@ -34,8 +34,8 @@ class AppUser {
     List<String> encodedUser = prefs.getStringList('user') ?? [];
     if (encodedUser.length == 4 && Group.fromName(encodedUser[3]) != null) {
       _user = AppUser(
-        firstName: encodedUser[0],
-        lastName: encodedUser[1],
+        firstname: encodedUser[0],
+        lastname: encodedUser[1],
         email: encodedUser[2],
         group: Group.fromName(encodedUser[3])!,
       );

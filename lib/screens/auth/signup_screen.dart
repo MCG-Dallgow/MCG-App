@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:mcgapp/classes/group.dart';
+import 'package:mcgapp/enums/group.dart';
 import 'package:mcgapp/classes/user.dart';
 import 'package:mcgapp/logic/auth.dart';
 
@@ -19,8 +19,8 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _firstNameController = TextEditingController();
-  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _firstnameController = TextEditingController();
+  final TextEditingController _lastnameController = TextEditingController();
   final TextEditingController _groupController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -51,11 +51,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: NameField(type: 'Vorname', controller: _firstNameController),
+              child: NameField(type: 'Vorname', controller: _firstnameController),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: NameField(type: 'Nachname', controller: _lastNameController),
+              child: NameField(type: 'Nachname', controller: _lastnameController),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
@@ -89,8 +89,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   });
 
                   if (_formKey.currentState?.validate() ?? false) {
-                    dynamic response =
-                        await Auth().handleSignUpWithEmailAndPassword(_emailController.text, _passwordController.text);
+                    dynamic response = await Auth().handleSignUpWithEmailAndPassword(
+                      _emailController.text,
+                      _passwordController.text,
+                      _firstnameController.text,
+                      _lastnameController.text,
+                      _groupController.text,
+                    );
 
                     if (!mounted) return;
 
@@ -100,8 +105,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       });
                     } else if (response is User) {
                       AppUser user = AppUser(
-                        firstName: _firstNameController.text,
-                        lastName: _lastNameController.text,
+                        firstname: _firstnameController.text,
+                        lastname: _lastnameController.text,
                         email: _emailController.text,
                         group: Group.fromName(_groupController.text)!,
                       );

@@ -34,6 +34,7 @@ void main() async {
 
 String get appName => 'MCG-App';
 String get appVersion => '1.0.0-alpha.1';
+String get apiBaseURL => 'http://10.0.2.2:5000';
 
 ThemeManager themeManager = ThemeManager();
 

@@ -49,13 +49,19 @@ class MCGDrawer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        '${AppUser.user.firstName} ${AppUser.user.lastName}',
+                        '${AppUser.user.firstname} ${AppUser.user.lastname}',
                         style: const TextStyle(
                           color: Colors.white,
-                          fontSize: 24,
+                          fontSize: 18,
                         ),
                       ),
-                      Text(AppUser.user.email, style: const TextStyle(color: Colors.white)),
+                      Text(
+                        AppUser.user.email,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
+                      ),
                     ],
                   ),
                 ],

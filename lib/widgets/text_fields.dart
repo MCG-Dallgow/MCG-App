@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mcgapp/main.dart';
 import 'package:zxcvbn/zxcvbn.dart';
 
-import '../classes/group.dart';
+import '../enums/group.dart';
 
 final Zxcvbn zxcvbn = Zxcvbn();
 
