@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mcgapp/main.dart';
 import 'package:mcgapp/classes/user.dart';
@@ -44,25 +43,12 @@ class MCGDrawer extends StatelessWidget {
                       radius: 35,
                     ),
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${AppUser.user.firstname} ${AppUser.user.lastname}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Text(
-                        AppUser.user.email,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 12,
-                        ),
-                      ),
-                    ],
+                  Text(
+                    '${AppUser.user!.firstname} ${AppUser.user!.lastname}',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
                   ),
                 ],
               ),
@@ -259,8 +245,7 @@ class MCGDrawer extends StatelessWidget {
             leading: const Icon(Icons.logout),
             title: const Text('Abmelden'),
             onTap: () {
-              FirebaseAuth.instance.signOut();
-
+              AppUser.clearUser();
               Navigator.pushNamedAndRemoveUntil(context, SignInScreen.routeName, (route) => false);
             },
           ),

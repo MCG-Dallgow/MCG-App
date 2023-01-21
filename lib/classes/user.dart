@@ -2,23 +2,36 @@ import 'package:mcgapp/enums/group.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AppUser {
+  late String username;
+  late String password;
   late String firstname;
   late String lastname;
-  late String email;
   late Group group;
 
-  AppUser({required this.firstname, required this.lastname, required this.email, required this.group});
+  AppUser({
+    required this.username,
+    required this.password,
+    required this.firstname,
+    required this.lastname,
+    required this.group,
+  });
 
-  static late AppUser _user;
+  static AppUser? _user;
 
-  static AppUser get user => _user;
+  static AppUser? get user => _user;
 
   static Future<void> saveUser(AppUser user) async {
     _user = user;
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    List<String> encodedUser = [user.firstname, user.lastname, user.email, user.group.name];
+    List<String> encodedUser = [
+      user.username,
+      user.password,
+      user.firstname,
+      user.lastname,
+      user.group.name,
+    ];
     prefs.setStringList('user', encodedUser);
   }
 
@@ -32,12 +45,13 @@ class AppUser {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     List<String> encodedUser = prefs.getStringList('user') ?? [];
-    if (encodedUser.length == 4 && Group.fromName(encodedUser[3]) != null) {
+    if (encodedUser.length == 5 && Group.fromName(encodedUser[3]) != null) {
       _user = AppUser(
-        firstname: encodedUser[0],
-        lastname: encodedUser[1],
-        email: encodedUser[2],
-        group: Group.fromName(encodedUser[3])!,
+        username: encodedUser[0],
+        password: encodedUser[1],
+        firstname: encodedUser[2],
+        lastname: encodedUser[3],
+        group: Group.fromName(encodedUser[4])!,
       );
     }
   }

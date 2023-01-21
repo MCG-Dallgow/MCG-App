@@ -1,49 +1,64 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart' show kDebugMode;
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:mcgapp/classes/user.dart';
+import 'package:mcgapp/enums/group.dart';
+
+import '../main.dart';
 
 class Auth {
-  final FirebaseAuth auth = FirebaseAuth.instance;
+  static final dio = Dio();
 
-  User? getFirebaseUser() {
-    User? user = FirebaseAuth.instance.currentUser;
-    return user;
+  static Future<String> signup(String username, String encryptedPassword) async {
+    try {
+      var response = await dio.post(
+        '$apiBaseURL/auth/signup',
+        options: Options(headers: {
+          'username': username,
+          'encrypted_password': encryptedPassword,
+        }),
+      );
+      var data = response.data;
+      if (kDebugMode) print(data);
+
+      return 'success';
+    } on DioError catch (e) {
+      switch (e.response?.statusCode) {
+        case 403: return 'invalid credentials';
+        case 409: return 'user exists';
+        default: return 'error';
+      }
+    }
   }
 
-  Future<dynamic> handleSignUpWithEmailAndPassword(String email, String password) async {
+  static Future<String> login(String username, String encryptedPassword) async {
     try {
-      final credential = await auth.createUserWithEmailAndPassword(email: email, password: password);
-      final User user = credential.user!;
-      return user;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        return 'Das angebene Passwort ist zu schwach';
-      } else if (e.code == 'email-already-in-use') {
-        return 'Das Konto mit dieser E-Mail-Adresse existiert schon';
-      } else if (e.code == 'invalid-email') {
-        return 'Die angegebene E-Mail-Adresse ist ungültig';
-      }
-      if (kDebugMode) print(e.code);
-    } catch (e) {
-      if (kDebugMode) print(e);
-    }
-    return 'Unbekannter Fehler';
-  }
+      var response = await dio.post(
+        '$apiBaseURL/auth/login',
+        options: Options(headers: {
+          'username': username,
+          'encrypted_password': encryptedPassword,
+        }),
+      );
+      var data = response.data;
+      if (kDebugMode) print(data);
 
-  Future<dynamic> handleSignInWithEmailAndPassword(String email, String password) async {
-    try {
-      final credential = await auth.signInWithEmailAndPassword(email: email, password: password);
-      final User user = credential.user!;
-      return user;
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        return 'Es gibt kein Konto mit dieser E-Mail-Adresse';
-      } else if (e.code == 'wrong-password') {
-        return 'Das angegebene Passwort ist falsch';
+      AppUser user = AppUser(
+        username: username,
+        password: encryptedPassword,
+        firstname: data['firstname'],
+        lastname: data['lastname'],
+        group: Group.fromName(data['group'])!,
+      );
+
+      AppUser.saveUser(user);
+
+      return 'success';
+    } on DioError catch (e) {
+      switch (e.response?.statusCode) {
+        case 403: return 'invalid credentials';
+        case 404: return 'user does not exist';
+        default: return 'error';
       }
-      if (kDebugMode) print(e.code);
-    } catch (e) {
-      if (kDebugMode) print(e);
     }
-    return 'Unbekannter Fehler';
   }
 }

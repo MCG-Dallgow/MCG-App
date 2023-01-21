@@ -1,11 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:mcgapp/main.dart';
-import 'package:mcgapp/screens/auth/signup_screen.dart';
-import 'package:mcgapp/screens/home_screen.dart';
 import 'package:mcgapp/widgets/text_fields.dart';
+import 'package:mcgapp/logic/auth.dart';
 
-import '../../logic/auth.dart';
+import '../home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
@@ -19,14 +17,14 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  String _firebaseMessage = '';
+  String _errorMessage = '';
 
   @override
   void dispose() {
-    _emailController.dispose();
+    _usernameController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -53,11 +51,11 @@ class _SignInScreenState extends State<SignInScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: EmailField(controller: _emailController),
+              child: NameField(label: 'WebUntis-Benutzername', controller: _usernameController),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8),
-              child: PasswordField(controller: _passwordController),
+              child: PasswordField(label: 'WebUntis-Passwort', controller: _passwordController),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -73,34 +71,55 @@ class _SignInScreenState extends State<SignInScreen> {
                 ElevatedButton(
                   child: const Text('Einloggen'),
                   onPressed: () async {
-                    setState(() {
-                      _firebaseMessage = '';
-                    });
-
                     if (_formKey.currentState?.validate() ?? false) {
-                      dynamic response = await Auth().handleSignInWithEmailAndPassword(
-                          _emailController.text.trim(), _passwordController.text.trim());
+                      String username = _usernameController.text.trim();
+                      String password = _passwordController.text.trim();
+                      // log in logic
+                      String loginResponse = await Auth.login(username, password);
 
-                      if (!mounted) return;
-
-                      if (response is String) {
-                        setState(() {
-                          _firebaseMessage = response;
-                        });
-                      } else if (response is User) {
-                        await Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false)
-                            .then((value) {
-                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            elevation: 6.0,
-                            backgroundColor: Theme.of(context).primaryColor,
-                            behavior: SnackBarBehavior.floating,
-                            content: const Text(
-                              'Willkommen, du bist jetzt angemeldet',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                          ));
-                        });
+                      switch (loginResponse) {
+                        case 'user does not exist':
+                          String signupResponse = await Auth.signup(username, password);
+                          switch (signupResponse) {
+                            case 'success':
+                              await Auth.login(username, password);
+                              break;
+                            case 'invalid credentials':
+                              setState(() {
+                                _errorMessage = 'Die eingegebenen Anmeldedaten sind ungültig';
+                              });
+                              return;
+                            case 'error':
+                              setState(() {
+                                _errorMessage = 'Ein Fehler ist aufgetreten';
+                              });
+                              return;
+                          }
+                          break;
+                        case 'invalid credentials':
+                          setState(() {
+                            _errorMessage = 'Die eingegebenen Anmeldedaten sind ungültig';
+                          });
+                          return;
+                        case 'error':
+                          setState(() {
+                            _errorMessage = 'Ein Fehler ist aufgetreten';
+                          });
+                          return;
                       }
+                      if (!mounted) return;
+                      await Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false)
+                          .then((value) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          elevation: 6.0,
+                          backgroundColor: Theme.of(context).primaryColor,
+                          behavior: SnackBarBehavior.floating,
+                          content: const Text(
+                            'Willkommen, du bist jetzt angemeldet',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ));
+                      });
                     }
                   },
                 )
@@ -110,28 +129,8 @@ class _SignInScreenState extends State<SignInScreen> {
               child: Padding(
                 padding: const EdgeInsets.only(top: 16),
                 child: Text(
-                  _firebaseMessage,
+                  _errorMessage,
                   style: TextStyle(color: Theme.of(context).errorColor, fontSize: 12),
-                ),
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 32),
-                child: ElevatedButton(
-                  child: Row(mainAxisSize: MainAxisSize.min, children: const [
-                    Padding(
-                      padding: EdgeInsets.only(right: 8),
-                      child: Icon(Icons.add),
-                    ),
-                    Text('Neues Konto erstellen'),
-                  ]),
-                  onPressed: () {
-                    Navigator.pushNamed(
-                      context,
-                      SignUpScreen.routeName,
-                    );
-                  },
                 ),
               ),
             ),
