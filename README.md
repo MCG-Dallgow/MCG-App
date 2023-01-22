@@ -12,18 +12,28 @@ Wenn ihr ein Android-Gerät benutzt, könnt ihr euch über die [Releases-Page](h
 Wenn ihr ein iOS-Gerät oder einen PC benutzt, oder die APK-Version aus anderen Gründen keine Option ist, könnt ihr die App auch direkt ohne Installation im Browser als Web-App nutzen. Klickt hierzu auf folgenden Link: [mcg-app.hafemann.xyz](https://mcg-app.hafemann.xyz/)
 
 ## Funktionen
+- Stundenplan (Beta)
 - Vertretungsplan mit Filterfunktion
+- Notenübersicht
 - Lehrerliste
 - Interaktiver Raumplan
-- Notenübersicht
-- *Stundenplan (Coming Soon)*
 - *Hausaufgaben- und Terminplaner (Coming Soon)*
+- *Schülerzeitung (Coming Soon)*
+
+### Stundenplan (Beta)
+- Automatisch generierter, personalisierter Stundenplan via WebUntis
+- Zwei Ansichten: in Tabellenform und als Timeline
 
 ### Vertretungsplan
 - Aktualisierender Vertretungsplan via WebUntis
 - Pläne für die nächsten drei Schultage
 - Übersichtliche Darstellung
 - Filterfunktion nach Klassen, Kursen und Lehrern
+
+### Notenübersicht
+- Hinzufügen, Bearbeiten & Löschen von Noten
+- Automatische Berechnung des Gesamtdurchschnitts
+- nach Fächern sortierte Liste mit Fächerdurchschnitten
 
 ### Lehrerliste
 - Auflistung aller 66 Lehrer des MCG
@@ -36,11 +46,6 @@ Wenn ihr ein iOS-Gerät oder einen PC benutzt, oder die APK-Version aus anderen 
 - Übersichtliches Layout
 - Mehr Informationen über jeden Raum
 - *Suchfunktion zum einfachen Finden von Räumen (Coming Soon)*
-
-### Notenübersicht
-- Hinzufügen, Bearbeiten & Löschen von Noten
-- Automatische Berechnung des Gesamtdurchschnitts
-- nach Fächern sortierte Liste mit Fächerdurchschnitten
 
 ### Einstellungen
 - Dark-Mode
