@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:collection/collection.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'package:mcgapp/classes/room.dart';
+import 'package:mcgapp/logic/api.dart';
 import 'package:mcgapp/screens/timetable_screen.dart';
 import 'package:mcgapp/widgets/app_bar.dart';
 import 'package:mcgapp/widgets/drawer.dart';
-import 'package:mcgapp/widgets/timetable.dart';
 
-import '../classes/course.dart';
+import '../classes/timetable_entry.dart';
 import '../main.dart';
 import '../widgets/bottom_sheet.dart';
+
+Map<DateTime, List<TimetableEntry>> _timetable = {};
 
 class TimelineScreen extends StatefulWidget {
   const TimelineScreen({Key? key}) : super(key: key);
@@ -21,16 +23,55 @@ class TimelineScreen extends StatefulWidget {
 }
 
 class _TimelineScreenState extends State<TimelineScreen> {
+  final ScrollController _scrollController = ScrollController();
+
+  DateTime today = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  DateFormat format = DateFormat('yyyyMMdd');
+
+  Widget _body = ListView.builder(
+    itemBuilder: (BuildContext context, int index) {
+      DateTime date = DateTime.now().add(Duration(days: index));
+      return TimelineEntry(date: date);
+    },
+  );
+
+  _loadTimetable() async {
+    int start = int.parse(format.format(today));
+    int end = int.parse(format.format(today.add(const Duration(days: 100))));
+
+    _timetable.addAll(await API.getTimetable(start, end));
+
+    setState(() {
+      _body = ListView.builder(
+        controller: _scrollController,
+        itemBuilder: (BuildContext context, int index) {
+          DateTime date = today.add(Duration(days: index));
+          return TimelineEntry(date: date);
+        },
+      );
+    });
+  }
+
+  @override
+  void initState() {
+    _scrollController.addListener(() {
+      var triggerFetchMoreSize = 0.9 * _scrollController.position.maxScrollExtent;
+
+      if (_scrollController.position.pixels > triggerFetchMoreSize) {
+        // TODO: load more timetable data
+      }
+    });
+
+    _loadTimetable();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MCGAppBar(title: const Text('Timeline')),
       drawer: const MCGDrawer(routeName: TimelineScreen.routeName),
-      body: ListView.builder(
-        itemBuilder: (BuildContext context, int index) {
-          return TimelineEntry(date: DateTime.now().add(Duration(days: index)));
-        },
-      ),
+      body: _body,
     );
   }
 }
@@ -45,11 +86,13 @@ class TimelineEntry extends StatelessWidget {
     initializeDateFormatting('de_DE');
 
     String week = weekType(week: weekNumber(date: date));
-    String day = DateFormat('EEEE', 'de').format(date);
 
     return Card(
       margin: const EdgeInsets.fromLTRB(8, 8, 8, 0),
       color: themeManager.themeMode == ThemeMode.dark ? const Color(0xFF424242) : Colors.grey[300],
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8.0),
+      ),
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
@@ -83,10 +126,10 @@ class TimelineEntry extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TimelineSubject(week: week, day: day, lesson: 1),
-                TimelineSubject(week: week, day: day, lesson: 2),
-                TimelineSubject(week: week, day: day, lesson: 3),
-                TimelineSubject(week: week, day: day, lesson: 4),
+                TimelineSubject(data: _timetable[date]?.firstWhereOrNull((e) => e.lesson == 1)),
+                TimelineSubject(data: _timetable[date]?.firstWhereOrNull((e) => e.lesson == 2)),
+                TimelineSubject(data: _timetable[date]?.firstWhereOrNull((e) => e.lesson == 3)),
+                TimelineSubject(data: _timetable[date]?.firstWhereOrNull((e) => e.lesson == 4)),
               ],
             ),
           ],
@@ -97,21 +140,16 @@ class TimelineEntry extends StatelessWidget {
 }
 
 class TimelineSubject extends StatelessWidget {
-  const TimelineSubject({
-    Key? key,
-    required this.week,
-    required this.day,
-    required this.lesson,
-  }) : super(key: key);
+  const TimelineSubject({Key? key, required this.data}) : super(key: key);
 
-  final String week;
-  final String day;
-  final int lesson;
+  final TimetableEntry? data;
 
   @override
   Widget build(BuildContext context) {
-    Course? course = getCourse('$week${day.substring(0, 2)}$lesson');
-    if (course == null) return Container();
+    if (data == null) return Container();
+
+    String week = weekType(week: weekNumber(date: data!.date));
+    String day = DateFormat('EEEE', 'de').format(data!.date);
 
     return Padding(
       padding: const EdgeInsets.all(4),
@@ -120,22 +158,22 @@ class TimelineSubject extends StatelessWidget {
         onTap: () {
           showMCGBottomSheet(
             context,
-            '$day, $lesson. Block ($week)',
+            '$day, ${data!.lesson}. Block ($week)',
             [
               ListTile(
-                title: Text('${course.subject.name} (${course.title})'),
-                leading: Icon(Icons.school, color: course.subject.backgroundColor),
+                title: Text('${data!.course.subject.name} (${data!.course.title})'),
+                leading: Icon(Icons.school, color: data!.course.subject.backgroundColor),
               ),
               ListTile(
-                title: Text(getTimesFromLesson(lesson)),
+                title: Text('${data!.start} - ${data!.end}'),
                 leading: const Icon(Icons.access_time_outlined),
               ),
               ListTile(
-                title: Text('${course.teacher.title} ${course.teacher.lastname}'),
+                title: Text('${data!.regTeacher.title} ${data!.regTeacher.lastname}'),
                 leading: const Icon(Icons.person),
               ),
               ListTile(
-                title: Text(Room.fromTime('$week${day.substring(0, 2)}$lesson')!.number),
+                title: Text(data!.regRoom.number),
                 leading: const Icon(Icons.place),
               ),
             ],
@@ -146,15 +184,15 @@ class TimelineSubject extends StatelessWidget {
           padding: const EdgeInsets.all(2),
           decoration: BoxDecoration(
             borderRadius: const BorderRadius.all(Radius.circular(32)),
-            border: Border.all(color: course.subject.backgroundColor, width: 2),
+            border: Border.all(color: data!.course.subject.backgroundColor, width: 2),
           ),
           child: Column(
             children: [
               Padding(
                 padding: const EdgeInsets.all(4),
-                child: Text('$lesson', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                child: Text('${data!.lesson}', style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
               ),
-              course.circleAvatar,
+              data!.course.circleAvatar,
             ],
           ),
         ),

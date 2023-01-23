@@ -1,7 +1,4 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 import 'package:mcgapp/classes/grade.dart';
 import 'package:mcgapp/classes/room.dart';
@@ -28,29 +25,14 @@ class Course {
   late String title;
   late Subject subject;
   late Teacher teacher;
-  late List<List<String>> times;
-  late List only;
-  late bool required;
+  late List<Room> rooms;
 
   Course({
     required this.title,
     required this.subject,
     required this.teacher,
-    required this.times,
-    required this.only,
-    required this.required,
+    required this.rooms,
   });
-
-  List<Room> get rooms {
-    List<Room> rooms = [];
-    for (List<String> time in times) {
-      Room room = Room.fromNumber(time[1]);
-      if (!rooms.contains(room)) {
-        rooms.add(room);
-      }
-    }
-    return rooms;
-  }
 
   List<Grade> get courseGrades {
     List<Grade> courseGrades = [];
@@ -131,22 +113,6 @@ class Course {
   @override
   int get hashCode => title.hashCode;
 
-  static Future<Map<String, Course>> getCourses(Group group) async {
-    var jsonText = await rootBundle.loadString('assets/data/courses/courses-${group.level}.json');
-
-    List data = json.decode(jsonText)['courses'];
-    Map<String, Course> courses = {};
-    for (int i = 0; i < data.length; i++) {
-      Course course = Course.fromJson(data[i]);
-
-      if (course.only.isEmpty || course.only.contains(group.name)) {
-        courses[course.title] = course;
-      }
-    }
-
-    return courses;
-  }
-
   Course.fromTitle(String title) {
     Course? course;
     for (Course c in courses.values) {
@@ -155,21 +121,6 @@ class Course {
     this.title = course?.title ?? 'Unbekannter Kurs';
     subject = course?.subject ?? Subject.error;
     teacher = course?.teacher ?? Teacher.fromShort('');
-    times = course?.times ?? [[], []];
-  }
-
-  Course.fromJson(var json) {
-    title = json['title'];
-    subject = Subject.fromShort(json['subject']);
-    teacher = Teacher.fromShort(json['teacher']);
-
-    List<List<String>> times = [];
-    for (var time in json['times']) {
-      times.add([time[0], time[1]]);
-    }
-    this.times = times;
-
-    only = json['only'] ?? [];
-    required = json['required'] ?? false;
+    rooms = course?.rooms ?? [];
   }
 }

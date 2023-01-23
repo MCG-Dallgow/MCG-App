@@ -44,18 +44,11 @@ class _MyAppState extends State<MyApp> {
     rooms = await Room.getRooms();
   }
 
-  String _initialRoute = SignInScreen.routeName;
-
   @override
   void initState() {
     _loadValuesFromJson();
     themeManager.loadTheme();
     themeManager.addListener(themeListener);
-
-    AppUser.loadUser();
-    if (AppUser.user != null) {
-      _initialRoute = HomeScreen.routeName;
-    }
 
     super.initState();
   }
@@ -71,6 +64,8 @@ class _MyAppState extends State<MyApp> {
       setState(() {});
     }
   }
+
+  final String _initialRoute = SignInScreen.routeName;
 
   @override
   Widget build(BuildContext context) {

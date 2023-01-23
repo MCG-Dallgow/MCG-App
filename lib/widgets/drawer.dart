@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:mcgapp/main.dart';
 import 'package:mcgapp/classes/user.dart';
 import 'package:mcgapp/screens/auth/signin_screen.dart';
@@ -13,7 +14,7 @@ import '../screens/teachers/teachers_screen.dart';
 import '../screens/timeline_screen.dart';
 import '../screens/timetable_screen.dart';
 
-class MCGDrawer extends StatelessWidget {
+class MCGDrawer extends StatefulWidget {
   const MCGDrawer({
     Key? key,
     required this.routeName,
@@ -21,6 +22,11 @@ class MCGDrawer extends StatelessWidget {
 
   final String routeName;
 
+  @override
+  State<MCGDrawer> createState() => _MCGDrawerState();
+}
+
+class _MCGDrawerState extends State<MCGDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -57,14 +63,14 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.home,
-              color: routeName == HomeScreen.routeName ? Colors.green : null,
+              color: widget.routeName == HomeScreen.routeName ? Colors.green : null,
             ),
             title: Text(
               'Home',
-              style: TextStyle(color: routeName == HomeScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: widget.routeName == HomeScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              if (routeName == HomeScreen.routeName) {
+              if (widget.routeName == HomeScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
@@ -74,14 +80,14 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.timeline,
-              color: routeName == TimelineScreen.routeName ? Colors.green : null,
+              color: widget.routeName == TimelineScreen.routeName ? Colors.green : null,
             ),
             title: Text(
               'Timeline',
-              style: TextStyle(color: routeName == TimelineScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: widget.routeName == TimelineScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              if (routeName == TimelineScreen.routeName) {
+              if (widget.routeName == TimelineScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
@@ -92,14 +98,14 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.calendar_month,
-              color: routeName == TimetableScreen.routeName ? Colors.green : null,
+              color: widget.routeName == TimetableScreen.routeName ? Colors.green : null,
             ),
             title: Text(
               'Stundenplan',
-              style: TextStyle(color: routeName == TimetableScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: widget.routeName == TimetableScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              if (routeName == TimetableScreen.routeName) {
+              if (widget.routeName == TimetableScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
@@ -110,14 +116,14 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.edit_calendar,
-              color: routeName == SubstitutionsScreen.routeName ? Colors.green : null,
+              color: widget.routeName == SubstitutionsScreen.routeName ? Colors.green : null,
             ),
             title: Text(
               'Vertretungsplan',
-              style: TextStyle(color: routeName == SubstitutionsScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: widget.routeName == SubstitutionsScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              if (routeName == SubstitutionsScreen.routeName) {
+              if (widget.routeName == SubstitutionsScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
@@ -128,14 +134,14 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.room,
-              color: routeName == RoomplanScreen.routeName ? Colors.green : null,
+              color: widget.routeName == RoomplanScreen.routeName ? Colors.green : null,
             ),
             title: Text(
               'Raumplan',
-              style: TextStyle(color: routeName == RoomplanScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: widget.routeName == RoomplanScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              if (routeName == RoomplanScreen.routeName) {
+              if (widget.routeName == RoomplanScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
@@ -146,14 +152,14 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.person,
-              color: routeName == TeachersScreen.routeName ? Colors.green : null,
+              color: widget.routeName == TeachersScreen.routeName ? Colors.green : null,
             ),
             title: Text(
               'Lehrer',
-              style: TextStyle(color: routeName == TeachersScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: widget.routeName == TeachersScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              if (routeName == TeachersScreen.routeName) {
+              if (widget.routeName == TeachersScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
@@ -164,14 +170,14 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.star,
-              color: routeName == GradesScreen.routeName ? Colors.green : null,
+              color: widget.routeName == GradesScreen.routeName ? Colors.green : null,
             ),
             title: Text(
               'Noten',
-              style: TextStyle(color: routeName == GradesScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: widget.routeName == GradesScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              if (routeName == GradesScreen.routeName) {
+              if (widget.routeName == GradesScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
@@ -183,14 +189,14 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.settings,
-              color: routeName == SettingsScreen.routeName ? Colors.green : null,
+              color: widget.routeName == SettingsScreen.routeName ? Colors.green : null,
             ),
             title: Text(
               'Einstellungen',
-              style: TextStyle(color: routeName == SettingsScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: widget.routeName == SettingsScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              if (routeName == SettingsScreen.routeName) {
+              if (widget.routeName == SettingsScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
@@ -201,14 +207,14 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: Icon(
               Icons.account_balance,
-              color: routeName == CreditsScreen.routeName ? Colors.green : null,
+              color: widget.routeName == CreditsScreen.routeName ? Colors.green : null,
             ),
             title: Text(
               'Credits',
-              style: TextStyle(color: routeName == CreditsScreen.routeName ? Colors.green : null),
+              style: TextStyle(color: widget.routeName == CreditsScreen.routeName ? Colors.green : null),
             ),
             onTap: () {
-              if (routeName == CreditsScreen.routeName) {
+              if (widget.routeName == CreditsScreen.routeName) {
                 Navigator.pop(context);
               } else {
                 Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
@@ -244,8 +250,10 @@ class MCGDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.logout),
             title: const Text('Abmelden'),
-            onTap: () {
-              AppUser.clearUser();
+            onTap: () async {
+              await AppUser.clearUser();
+
+              if (!mounted) return;
               Navigator.pushNamedAndRemoveUntil(context, SignInScreen.routeName, (route) => false);
             },
           ),

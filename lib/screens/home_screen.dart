@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mcgapp/classes/course.dart';
 import 'package:mcgapp/main.dart';
-import 'package:mcgapp/widgets/course_dialog.dart';
-import 'package:mcgapp/widgets/group_dialog.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import '../enums/group.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
@@ -20,20 +15,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      if (prefs.getString('group') != null) group = Group.fromName(prefs.getString('group')!);
-
-      if (!mounted) return;
-      await chooseGroup(context, false);
-      if (!mounted) return;
-      if (userCourses.isEmpty) await chooseCourses(context);
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MCGAppBar(title: Text(appName)),
@@ -45,7 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Image.asset(
               'assets/images/mcg-panorama.jpg',
               width: 50,
-              //fit: BoxFit.cover,
             ),
           ),
           const Padding(

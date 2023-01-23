@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mcgapp/main.dart';
 import 'package:mcgapp/widgets/text_fields.dart';
-import 'package:mcgapp/logic/auth.dart';
+import 'package:mcgapp/logic/api.dart';
 
+import '../../classes/course.dart';
+import '../../classes/user.dart';
 import '../home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -21,6 +23,22 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordController = TextEditingController();
 
   String _errorMessage = '';
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) async {
+      await AppUser.loadUser();
+      if (AppUser.user != null) {
+        group = AppUser.user!.group;
+        courses = await API.getCourses();
+        userCourses = courses.values.toList();
+
+        if (!mounted) return;
+        await Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);
+      }
+    });
+    super.initState();
+  }
 
   @override
   void dispose() {
@@ -75,14 +93,14 @@ class _SignInScreenState extends State<SignInScreen> {
                       String username = _usernameController.text.trim();
                       String password = _passwordController.text.trim();
                       // log in logic
-                      String loginResponse = await Auth.login(username, password);
+                      String loginResponse = await API.login(username, password);
 
                       switch (loginResponse) {
                         case 'user does not exist':
-                          String signupResponse = await Auth.signup(username, password);
+                          String signupResponse = await API.signup(username, password);
                           switch (signupResponse) {
                             case 'success':
-                              await Auth.login(username, password);
+                              await API.login(username, password);
                               break;
                             case 'invalid credentials':
                               setState(() {

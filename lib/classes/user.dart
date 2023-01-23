@@ -39,13 +39,14 @@ class AppUser {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     prefs.setStringList('user', []);
+    _user = null;
   }
 
   static Future<void> loadUser() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
     List<String> encodedUser = prefs.getStringList('user') ?? [];
-    if (encodedUser.length == 5 && Group.fromName(encodedUser[3]) != null) {
+    if (encodedUser.length == 5 && Group.fromName(encodedUser[4]) != null) {
       _user = AppUser(
         username: encodedUser[0],
         password: encodedUser[1],
