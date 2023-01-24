@@ -29,10 +29,10 @@ class TimetableScreen extends StatefulWidget {
 }
 
 class _TimetableScreenState extends State<TimetableScreen> {
-  Widget _body = TabBarView(
+  Widget _body = const TabBarView(
     children: <Widget>[
-      Container(),
-      Container(),
+      Center(child: Text('Wird geladen...')),
+      Center(child: Text('Wird geladen...')),
     ],
   );
 
