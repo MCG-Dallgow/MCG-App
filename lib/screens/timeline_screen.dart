@@ -150,7 +150,7 @@ class TimelineSubject extends StatelessWidget {
             '$day, ${data!.lesson}. Block ($week)',
             [
               ListTile(
-                title: Text('${data!.course.subject.name} (${data!.course.title})'),
+                title: Text('${data!.course.subject.name} (${data!.course.name})'),
                 leading: Icon(Icons.school, color: data!.course.subject.backgroundColor),
               ),
               ListTile(

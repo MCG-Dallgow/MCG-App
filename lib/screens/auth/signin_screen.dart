@@ -30,8 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
       await AppUser.loadUser();
       if (AppUser.user != null) {
         group = AppUser.user!.group;
-        courses = await API.getCourses();
-        userCourses = courses.values.toList();
+        loadCourses();
 
         if (!mounted) return;
         await Navigator.pushNamedAndRemoveUntil(context, HomeScreen.routeName, (route) => false);

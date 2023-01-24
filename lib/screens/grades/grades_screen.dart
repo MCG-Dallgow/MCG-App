@@ -85,11 +85,11 @@ class _GradesScreenState extends State<GradesScreen> {
                   },
                 ),
           ListView.builder(
-            itemCount: userCourses.length + 1,
+            itemCount: courses.length + 1,
             itemBuilder: (BuildContext context, int index) {
-              if (index == userCourses.length) return const SizedBox(height: 76);
+              if (index == courses.length) return const SizedBox(height: 76);
 
-              Course course = userCourses[index];
+              Course course = courses.values.toList()[index];
               return ListTile(
                 title: Text(course.subject.name),
                 leading: course.circleAvatar,

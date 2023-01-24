@@ -1,34 +1,70 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mcgapp/classes/grade.dart';
 import 'package:mcgapp/classes/room.dart';
 import 'package:mcgapp/enums/subject.dart';
 import 'package:mcgapp/classes/teacher.dart';
+import 'package:mcgapp/logic/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../enums/group.dart';
 
 Map<String, Course> courses = {};
-List<Course> userCourses = [];
 Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
 Group? group;
 
-setUserCourses(List<Course> courses) async {
-  userCourses = courses;
-
+saveCourses(Map<String, Course> courses) async {
   SharedPreferences prefs = await _prefs;
-  prefs.setStringList('courses-${group!.level}', userCourses.map((course) => course.title).toList());
+  
+  List<String> encodedCourses = [];
+  for (Course course in courses.values) {
+    encodedCourses.add(jsonEncode({
+      'name': course.name,
+      'subject': course.subject.short,
+      'teacher': course.teacher.short,
+      'rooms': course.rooms.map((e) => e.number).toList(),
+    }));
+  }
+  
+  prefs.setString('courses', jsonEncode(encodedCourses));
+}
+
+loadCourses() async {
+  SharedPreferences prefs = await _prefs;
+  String? courseData = prefs.getString('courses');
+  if (courseData == null) {
+    courses = await API.getCourses();
+    saveCourses(courses);
+  } else {
+    List<dynamic> encodedCourses = jsonDecode(courseData);
+    for (String encodedCourse in encodedCourses) {
+      Map<String, dynamic> course = jsonDecode(encodedCourse);
+      List<Room> rooms = [];
+      for (var room in course['rooms']) {
+        rooms.add(Room.fromNumber(room as String));
+      }
+      
+      courses[course['name']] = Course(
+        name: course['name'],
+        subject: Subject.fromShort(course['subject']),
+        teacher: Teacher.fromShort(course['teacher']),
+        rooms: rooms,
+      );
+    }
+  }
 }
 
 class Course {
-  late String title;
+  late String name;
   late Subject subject;
   late Teacher teacher;
   late List<Room> rooms;
 
   Course({
-    required this.title,
+    required this.name,
     required this.subject,
     required this.teacher,
     required this.rooms,
@@ -108,17 +144,17 @@ class Course {
   }
 
   @override
-  bool operator ==(covariant Course other) => other.title == title;
+  bool operator ==(covariant Course other) => other.name == name;
 
   @override
-  int get hashCode => title.hashCode;
+  int get hashCode => name.hashCode;
 
-  Course.fromTitle(String title) {
+  Course.fromName(String name) {
     Course? course;
     for (Course c in courses.values) {
-      if (c.title == title) course = c;
+      if (c.name == name) course = c;
     }
-    this.title = course?.title ?? 'Unbekannter Kurs';
+    this.name = course?.name ?? 'Unbekannter Kurs';
     subject = course?.subject ?? Subject.error;
     teacher = course?.teacher ?? Teacher.fromShort('');
     rooms = course?.rooms ?? [];

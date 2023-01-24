@@ -20,7 +20,7 @@ class Grade {
   }
 
   static double get totalAverage {
-    List<Course> coursesWithGrades = userCourses.where((e) => e.gradeAverage != -1).toList();
+    List<Course> coursesWithGrades = courses.values.where((e) => e.gradeAverage != -1).toList();
     if (coursesWithGrades.isEmpty) return -1;
 
     double sum = 0;
@@ -58,7 +58,7 @@ class Grade {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     List<String> encodedGrades = [];
     for (Grade grade in grades) {
-      encodedGrades.add('${grade.title}|${grade.course.title}|${grade.grade}|'
+      encodedGrades.add('${grade.title}|${grade.course.name}|${grade.grade}|'
                         '${DateFormat('yyyy-MM-dd').format(grade.date)}|${grade.type}');
     }
     prefs.setStringList('grades', encodedGrades);
@@ -72,7 +72,7 @@ class Grade {
       List<String> gradeParameters = encodedGrade.split('|');
       decodedGrades.add(Grade(
         title: gradeParameters[0],
-        course: Course.fromTitle(gradeParameters[1]),
+        course: Course.fromName(gradeParameters[1]),
         format: GradeFormat.format15,
         grade: int.parse(gradeParameters[2]),
         date: DateTime.parse(gradeParameters[3]),
@@ -105,7 +105,7 @@ class Grade {
           Icons.school,
           color: course.subject.backgroundColor,
         ),
-        title: Text('${course.subject.name} (${course.title})'),
+        title: Text('${course.subject.name} (${course.name})'),
       ),
       ListTile(
         leading: const Icon(Icons.star),

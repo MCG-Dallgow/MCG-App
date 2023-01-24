@@ -41,11 +41,11 @@ class _GradeEditScreenState extends State<GradeEditScreen> {
       ),
       builder: (BuildContext context) {
         return ListView.builder(
-          itemCount: userCourses.length * 2,
+          itemCount: courses.length * 2,
           itemBuilder: (BuildContext context, int index) {
             if (index.isOdd) return const Divider();
 
-            Course course = userCourses[index ~/ 2];
+            Course course = courses.values.toList()[index ~/ 2];
             return ListTile(
               title: Text(course.subject.name),
               leading: course.circleAvatar,

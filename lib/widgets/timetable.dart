@@ -131,7 +131,7 @@ class TimetableEntry extends StatelessWidget {
   List<Widget> get _details {
     return [
       ListTile(
-        title: Text('${entry!.course.subject.name} (${entry!.course.title})'),
+        title: Text('${entry!.course.subject.name} (${entry!.course.name})'),
         leading: Icon(Icons.school, color: entry!.course.subject.backgroundColor),
       ),
       ListTile(

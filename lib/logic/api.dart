@@ -85,7 +85,7 @@ class API {
     Map<String, Course> courses = {};
     for (Map<String, dynamic> course in data.values) {
       courses[course['name']] = Course(
-        title: course['name'],
+        name: course['name'],
         subject: Subject.fromShort(course['subject']),
         teacher: Teacher.fromShort(course['teacher']),
         rooms: (course['rooms'] as List<dynamic>).map((e) => Room.fromNumber(e as String)).toList(),
@@ -118,7 +118,7 @@ class API {
             start: lesson['start'],
             end: lesson['end'],
             lesson: lesson['lesson'],
-            course: Course.fromTitle(lesson['course']),
+            course: Course.fromName(lesson['course']),
             teacher: Teacher.fromShort(lesson['teacher']),
             room: Room.fromNumber(lesson['room']),
           ));
@@ -152,7 +152,7 @@ class API {
           start: lesson['start'],
           end: lesson['end'],
           lesson: lesson['lesson'],
-          course: Course.fromTitle(lesson['course']),
+          course: Course.fromName(lesson['course']),
           regTeacher: Teacher.fromShort(lesson['reg_teacher']),
           subTeacher: Teacher.fromShort(lesson['sub_teacher']),
           regRoom: Room.fromNumber(lesson['reg_room']),
