@@ -6,6 +6,7 @@ import 'package:mcgapp/main.dart';
 import 'package:mcgapp/widgets/bottom_sheet.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
+import '../classes/course.dart';
 import '../screens/timetable_screen.dart';
 
 double height = 80;
@@ -46,7 +47,30 @@ class Timetable extends StatelessWidget {
     );
   }
 
-  Widget _lessonHeader(RegularTimetableEntry entry) {
+  Widget _lessonHeader(int lesson) {
+    List<String> times = [];
+    switch (lesson) {
+      case 1:
+        times = ['8:00', '9:30'];
+        break;
+      case 2:
+        times = ['9:50', '11:20'];
+        break;
+      case 3:
+        if (group!.level >= 10) times = ['11:30', '13:00'];
+        times = ['12:00', '13:30'];
+        break;
+      case 4:
+        times = ['13:40', '15:10'];
+        break;
+      case 5:
+        times = ['15:15', '16:45'];
+        break;
+      default:
+        times = ['0:00', '0:00'];
+    }
+
+
     return SizedBox(
       height: height + padding * 2,
       width: headerWidth,
@@ -54,9 +78,9 @@ class Timetable extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(entry.start, style: const TextStyle(fontSize: 12, color: Colors.grey)),
-            Text('${entry.lesson}', style: const TextStyle(fontWeight: FontWeight.bold)),
-            Text(entry.end, style: const TextStyle(fontSize: 12, color: Colors.grey)),
+            Text(times[0], style: const TextStyle(fontSize: 12, color: Colors.grey)),
+            Text('$lesson', style: const TextStyle(fontWeight: FontWeight.bold)),
+            Text(times[1], style: const TextStyle(fontSize: 12, color: Colors.grey)),
           ],
         ),
       ),
@@ -83,7 +107,7 @@ class Timetable extends StatelessWidget {
         }
         return Row(
           children: [
-            _lessonHeader(timetable['0']![1]),
+            _lessonHeader(index),
             TimetableEntry(entry: timetable['0']!.firstWhereOrNull((e) => e.lesson == index)),
             TimetableEntry(entry: timetable['1']!.firstWhereOrNull((e) => e.lesson == index)),
             TimetableEntry(entry: timetable['2']!.firstWhereOrNull((e) => e.lesson == index)),
