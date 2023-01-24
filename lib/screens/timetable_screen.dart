@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 
 import 'package:mcgapp/widgets/drawer.dart';
 
+import '../classes/timetable_entry.dart';
+import '../logic/api.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/timetable.dart';
 
@@ -17,11 +19,45 @@ String weekType({int? week}) {
   return week.isEven ? 'A' : 'B';
 }
 
-class TimetableScreen extends StatelessWidget {
+class TimetableScreen extends StatefulWidget {
   const TimetableScreen({Key? key}) : super(key: key);
 
   static const String routeName = '/timetable';
 
+  @override
+  State<TimetableScreen> createState() => _TimetableScreenState();
+}
+
+class _TimetableScreenState extends State<TimetableScreen> {
+  Widget _body = TabBarView(
+    children: <Widget>[
+      Container(),
+      Container(),
+    ],
+  );
+
+  Map<String, Map<String, List<RegularTimetableEntry>>> _timetable = {};
+
+  DateTime today = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
+  DateFormat format = DateFormat('yyyyMMdd');
+
+  _loadTimetable() async {
+    _timetable = await API.getRegularTimetable();
+    setState(() {
+      _body = TabBarView(
+        children: <Widget>[
+          Timetable(timetable: _timetable['A']!),
+          Timetable(timetable: _timetable['B']!),
+        ],
+      );
+    });
+  }
+
+  @override
+  void initState() {
+    _loadTimetable();
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -54,12 +90,7 @@ class TimetableScreen extends StatelessWidget {
           ),
         ),
         drawer: const MCGDrawer(routeName: TimetableScreen.routeName),
-        body: const TabBarView(
-          children: <Widget>[
-            Timetable(week: 'A'),
-            Timetable(week: 'B'),
-          ],
-        ),
+        body: _body,
       ),
     );
   }

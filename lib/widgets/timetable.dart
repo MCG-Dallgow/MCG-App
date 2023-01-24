@@ -2,7 +2,6 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:mcgapp/classes/timetable_entry.dart';
-import 'package:mcgapp/logic/api.dart';
 import 'package:mcgapp/main.dart';
 import 'package:mcgapp/widgets/bottom_sheet.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -24,86 +23,17 @@ _getWeekdayName(int weekday) {
   }
 }
 
-class Timetable extends StatefulWidget {
-  const Timetable({Key? key, required this.week}) : super(key: key);
+class Timetable extends StatelessWidget {
+  const Timetable({Key? key, required this.timetable}) : super(key: key);
 
-  final String week;
-
-  @override
-  State<Timetable> createState() => _TimetableState();
-}
-
-class _TimetableState extends State<Timetable> {
-  Map<String, Map<String, List<RegularTimetableEntry>>> _timetable = {};
-
-  Widget _body = Container();
-
-  DateTime today = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
-  DateFormat format = DateFormat('yyyyMMdd');
-
-  _loadTimetable() async {
-    _timetable = await API.getRegularTimetable();
-    setState(() {
-      _body = ListView.builder(
-        itemCount: 5,
-        itemBuilder: (BuildContext context, int index) {
-          if (index == 0) {
-            return Row(
-              children: [
-                SizedBox(height: headerHeight, width: headerWidth),
-                _dayHeader('Mo'),
-                _dayHeader('Di'),
-                _dayHeader('Mi'),
-                _dayHeader('Do'),
-                _dayHeader('Fr'),
-              ],
-            );
-          }
-          return Row(
-            children: [
-              _lessonHeader(_timetable[widget.week]!['0']![1]),
-              TimetableEntry(entry: _timetable[widget.week]!['0']!.firstWhereOrNull((e) => e.lesson == index)),
-              TimetableEntry(entry: _timetable[widget.week]!['1']!.firstWhereOrNull((e) => e.lesson == index)),
-              TimetableEntry(entry: _timetable[widget.week]!['2']!.firstWhereOrNull((e) => e.lesson == index)),
-              TimetableEntry(entry: _timetable[widget.week]!['3']!.firstWhereOrNull((e) => e.lesson == index)),
-              TimetableEntry(entry: _timetable[widget.week]!['4']!.firstWhereOrNull((e) => e.lesson == index)),
-            ],
-          );
-        },
-      );
-    });
-  }
-
-  @override
-  void initState() {
-    _body = ListView.builder(
-      itemCount: 5,
-      itemBuilder: (BuildContext context, int index) {
-        if (index == 0) {
-          return Row(
-            children: [
-              SizedBox(height: headerHeight, width: headerWidth),
-              _dayHeader('Mo'),
-              _dayHeader('Di'),
-              _dayHeader('Mi'),
-              _dayHeader('Do'),
-              _dayHeader('Fr'),
-            ],
-          );
-        }
-        return Container();
-      },
-    );
-    _loadTimetable();
-    super.initState();
-  }
+  final Map<String, List<RegularTimetableEntry>> timetable;
 
   Widget _dayHeader(String day) {
     return Expanded(
       child: SizedBox(
         height: headerHeight,
         child: Center(
-          child: widget.week == weekType() && day == DateFormat('E', 'de').format(DateTime.now())
+          child: timetable['0']![0].week == weekType() && day == DateFormat('E', 'de').format(DateTime.now())
               ? CircleAvatar(
                   radius: 16,
                   backgroundColor: themeManager.colorSecondary,
@@ -136,7 +66,33 @@ class _TimetableState extends State<Timetable> {
   @override
   Widget build(BuildContext context) {
     initializeDateFormatting('de_DE');
-    return _body;
+    return ListView.builder(
+      itemCount: 5,
+      itemBuilder: (BuildContext context, int index) {
+        if (index == 0) {
+          return Row(
+            children: [
+              SizedBox(height: headerHeight, width: headerWidth),
+              _dayHeader('Mo'),
+              _dayHeader('Di'),
+              _dayHeader('Mi'),
+              _dayHeader('Do'),
+              _dayHeader('Fr'),
+            ],
+          );
+        }
+        return Row(
+          children: [
+            _lessonHeader(timetable['0']![1]),
+            TimetableEntry(entry: timetable['0']!.firstWhereOrNull((e) => e.lesson == index)),
+            TimetableEntry(entry: timetable['1']!.firstWhereOrNull((e) => e.lesson == index)),
+            TimetableEntry(entry: timetable['2']!.firstWhereOrNull((e) => e.lesson == index)),
+            TimetableEntry(entry: timetable['3']!.firstWhereOrNull((e) => e.lesson == index)),
+            TimetableEntry(entry: timetable['4']!.firstWhereOrNull((e) => e.lesson == index)),
+          ],
+        );
+      },
+    );
   }
 }
 
