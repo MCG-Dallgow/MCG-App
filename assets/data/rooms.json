@@ -283,7 +283,7 @@
       }
     },
     {
-      "number": "THC",
+      "number": "TH",
       "name": "Sporthalle",
       "type": "Sporthalle",
       "startpos": {
@@ -293,6 +293,45 @@
       "endpos": {
         "x": 281.5,
         "y": 117.7
+      }
+    },
+    {
+      "number": "THA",
+      "name": "Sporthalle",
+      "type": "Sporthalle",
+      "startpos": {
+        "x": 0,
+        "y": 0
+      },
+      "endpos": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "number": "THB",
+      "name": "Sporthalle",
+      "type": "Sporthalle",
+      "startpos": {
+        "x": 0,
+        "y": 0
+      },
+      "endpos": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "number": "THC",
+      "name": "Sporthalle",
+      "type": "Sporthalle",
+      "startpos": {
+        "x": 0,
+        "y": 0
+      },
+      "endpos": {
+        "x": 0,
+        "y": 0
       }
     },
     {
