@@ -23,8 +23,6 @@ class TimelineScreen extends StatefulWidget {
 }
 
 class _TimelineScreenState extends State<TimelineScreen> {
-  final ScrollController _scrollController = ScrollController();
-
   DateTime today = DateTime(DateTime.now().year, DateTime.now().month, DateTime.now().day);
   DateFormat format = DateFormat('yyyyMMdd');
 
@@ -37,13 +35,12 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
   _loadTimetable() async {
     int start = int.parse(format.format(today));
-    int end = int.parse(format.format(today.add(const Duration(days: 100))));
+    int end = 20230712; // The end of the school year
 
     _timetable.addAll(await API.getTimetable(start, end));
 
     setState(() {
       _body = ListView.builder(
-        controller: _scrollController,
         itemBuilder: (BuildContext context, int index) {
           DateTime date = today.add(Duration(days: index));
           return TimelineEntry(date: date);
@@ -54,14 +51,6 @@ class _TimelineScreenState extends State<TimelineScreen> {
 
   @override
   void initState() {
-    _scrollController.addListener(() {
-      var triggerFetchMoreSize = 0.9 * _scrollController.position.maxScrollExtent;
-
-      if (_scrollController.position.pixels > triggerFetchMoreSize) {
-        // TODO: load more timetable data
-      }
-    });
-
     _loadTimetable();
     super.initState();
   }
