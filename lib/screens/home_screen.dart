@@ -4,21 +4,16 @@ import 'package:mcgapp/main.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
   static const String routeName = '/home';
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MCGAppBar(title: Text(appName)),
-      drawer: const MCGDrawer(routeName: HomeScreen.routeName),
+      drawer: const MCGDrawer(routeName: routeName),
       body: ListView(
         children: [
           Padding(

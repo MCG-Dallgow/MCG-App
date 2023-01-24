@@ -3,24 +3,20 @@ import 'package:flutter/material.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
-class CreditsScreen extends StatefulWidget {
+class CreditsScreen extends StatelessWidget {
   const CreditsScreen({Key? key}) : super(key: key);
 
   static const String routeName = '/credits';
 
-  @override
-  State<CreditsScreen> createState() => _CreditsScreenState();
-}
-
-class _CreditsScreenState extends State<CreditsScreen> {
   final TextStyle _normalStyle = const TextStyle(fontSize: 16);
+
   final TextStyle _headlineStyle = const TextStyle(fontSize: 20, fontWeight: FontWeight.bold);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: MCGAppBar(title: const Text('Credits')),
-      drawer: const MCGDrawer(routeName: CreditsScreen.routeName),
+      drawer: const MCGDrawer(routeName: routeName),
       body: Padding(
         padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 20, 10),
         child: Column(
