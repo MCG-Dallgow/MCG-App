@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'package:mcgapp/main.dart';
 import 'package:mcgapp/classes/user.dart';
 import 'package:mcgapp/screens/auth/signin_screen.dart';
@@ -49,12 +48,25 @@ class _MCGDrawerState extends State<MCGDrawer> {
                       radius: 35,
                     ),
                   ),
-                  Text(
-                    '${AppUser.user!.firstname} ${AppUser.user!.lastname}',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                    ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${AppUser.user!.firstname} ${AppUser.user!.lastname}',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                        ),
+                      ),
+                      Text(
+                        AppUser.user!.group.name,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
