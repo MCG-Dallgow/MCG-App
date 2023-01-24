@@ -12,13 +12,13 @@ import '../main.dart';
 class API {
   static final dio = Dio();
 
-  static Future<String> signup(String username, String encryptedPassword) async {
+  static Future<String> signup(String username, String password) async {
     try {
       await dio.post(
         '$apiBaseURL/auth/signup',
         options: Options(headers: {
           'username': username,
-          'encrypted_password': encryptedPassword,
+          'password': password,
         }),
       );
       return 'success';
@@ -34,20 +34,20 @@ class API {
     }
   }
 
-  static Future<String> login(String username, String encryptedPassword) async {
+  static Future<String> login(String username, String password) async {
     try {
       var response = await dio.post(
         '$apiBaseURL/auth/login',
         options: Options(headers: {
           'username': username,
-          'encrypted_password': encryptedPassword,
+          'password': password,
         }),
       );
       var data = response.data;
 
       AppUser user = AppUser(
         username: username,
-        password: encryptedPassword,
+        password: password,
         firstname: data['firstname'],
         lastname: data['lastname'],
         group: Group.fromName(data['group'])!,
@@ -73,7 +73,7 @@ class API {
       '$apiBaseURL/user/courses',
       options: Options(headers: {
         'username': AppUser.user!.username,
-        'encrypted_password': AppUser.user!.password,
+        'password': AppUser.user!.password,
       }),
     );
     Map<String, dynamic> data = response.data;
@@ -95,7 +95,7 @@ class API {
       '$apiBaseURL/user/reg_timetable',
       options: Options(headers: {
         'username': AppUser.user!.username,
-        'encrypted_password': AppUser.user!.password,
+        'password': AppUser.user!.password,
       }),
     );
     var data = response.data;
@@ -128,7 +128,7 @@ class API {
       '$apiBaseURL/user/timetable?start=$start&end=$end',
       options: Options(headers: {
         'username': AppUser.user!.username,
-        'encrypted_password': AppUser.user!.password,
+        'password': AppUser.user!.password,
       }),
     );
     var data = response.data;
