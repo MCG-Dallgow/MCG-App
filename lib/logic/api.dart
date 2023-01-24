@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
 import 'package:mcgapp/classes/timetable_entry.dart';
 import 'package:mcgapp/classes/user.dart';
 import 'package:mcgapp/enums/group.dart';
@@ -15,16 +14,13 @@ class API {
 
   static Future<String> signup(String username, String encryptedPassword) async {
     try {
-      var response = await dio.post(
+      await dio.post(
         '$apiBaseURL/auth/signup',
         options: Options(headers: {
           'username': username,
           'encrypted_password': encryptedPassword,
         }),
       );
-      var data = response.data;
-      if (kDebugMode) print(data);
-
       return 'success';
     } on DioError catch (e) {
       switch (e.response?.statusCode) {
@@ -48,7 +44,6 @@ class API {
         }),
       );
       var data = response.data;
-      if (kDebugMode) print(data);
 
       AppUser user = AppUser(
         username: username,
@@ -104,7 +99,6 @@ class API {
       }),
     );
     var data = response.data;
-    //if (kDebugMode) print(data);
 
     Map<String, Map<String, List<RegularTimetableEntry>>> timetable = {};
     for (String week in data.keys) {
@@ -126,8 +120,6 @@ class API {
       }
     }
 
-    //print(timetable);
-
     return timetable;
   }
 
@@ -140,7 +132,6 @@ class API {
       }),
     );
     var data = response.data;
-    if (kDebugMode) print(data);
 
     Map<DateTime, List<TimetableEntry>> timetable = {};
     for (List<dynamic> entry in data.values) {
