@@ -9,6 +9,55 @@ import '../enums/group.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+Future checkForUpdates() async {
+  var url = 'https://api.github.com/repos/MCG-App/MCG-App/releases/latest';
+  var response = await http.get(url);
+
+  if (response.statusCode == 200) {
+    var jsonResponse = jsonDecode(response.body);
+    var latestRelease = jsonResponse['latest'];
+    // TODO: Hier muss noch die aktuelle Version der App abgefragt werden
+    var currentVersion = 'CURRENT_APP_VERSION';
+    if (latestRelease != currentVersion) {
+      var updateAvailable = await showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("Neues Update verfügbar!"),
+            content: Text("Eine neue Version der App ist verfügbar. Möchtest du jetzt aktualisieren? "),
+            actions: <Widget>[
+              FlatButton(
+                child: Text("Jetzt Updaten"),
+                onPressed: () => Navigator.of(context).pop(true),
+              ),
+              FlatButton(
+                child: Text("Später"),
+                onPressed: () => Navigator.of(context).pop(false),
+              ),
+            ],
+          );
+        },
+      );
+
+
+      if (updateAvailable) {
+        // Perform update
+        var url = 'https://github.com/MCG-App/MCG-App/releases/latest';
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          throw 'Could not launch $url';
+        }
+      }
+    }
+  } else {
+    throw Exception('Die Suche nach Updates ist fehlgeschlagen');
+  }
+  
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
