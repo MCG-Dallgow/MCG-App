@@ -74,7 +74,7 @@ class _MCGDrawerState extends State<MCGDrawer> {
           ),
           ListTile(
             leading: Icon(
-              Icons.home,
+              widget.routeName == HomeScreen.routeName ? Icons.home: Icons.home_outlined,
               color: widget.routeName == HomeScreen.routeName ? Colors.green : null,
             ),
             title: Text(
@@ -91,7 +91,7 @@ class _MCGDrawerState extends State<MCGDrawer> {
           ),
           ListTile(
             leading: Icon(
-              Icons.timeline,
+              widget.routeName == TimelineScreen.routeName ? Icons.timeline: Icons.timeline_outlined,
               color: widget.routeName == TimelineScreen.routeName ? Colors.green : null,
             ),
             title: Text(
@@ -109,7 +109,7 @@ class _MCGDrawerState extends State<MCGDrawer> {
           ),
           ListTile(
             leading: Icon(
-              Icons.calendar_month,
+              widget.routeName == TimetableScreen.routeName ? Icons.calendar_month: Icons.calendar_month_outlined,
               color: widget.routeName == TimetableScreen.routeName ? Colors.green : null,
             ),
             title: Text(
@@ -127,7 +127,7 @@ class _MCGDrawerState extends State<MCGDrawer> {
           ),
           ListTile(
             leading: Icon(
-              Icons.edit_calendar,
+              widget.routeName == HomeScreen.routeName ? Icons.edit_calendar: Icons.edit_calendar_outlined,
               color: widget.routeName == SubstitutionsScreen.routeName ? Colors.green : null,
             ),
             title: Text(
@@ -145,7 +145,7 @@ class _MCGDrawerState extends State<MCGDrawer> {
           ),
           ListTile(
             leading: Icon(
-              Icons.room,
+              widget.routeName == RoomplanScreen.routeName ? Icons.room: Icons.room_outlined,
               color: widget.routeName == RoomplanScreen.routeName ? Colors.green : null,
             ),
             title: Text(
@@ -163,7 +163,7 @@ class _MCGDrawerState extends State<MCGDrawer> {
           ),
           ListTile(
             leading: Icon(
-              Icons.person,
+              widget.routeName == TeachersScreen.routeName ? Icons.person: Icons.person_outlined,
               color: widget.routeName == TeachersScreen.routeName ? Colors.green : null,
             ),
             title: Text(
@@ -181,7 +181,7 @@ class _MCGDrawerState extends State<MCGDrawer> {
           ),
           ListTile(
             leading: Icon(
-              Icons.star,
+              widget.routeName == GradesScreen.routeName ? Icons.star: Icons.star_outline,
               color: widget.routeName == GradesScreen.routeName ? Colors.green : null,
             ),
             title: Text(
@@ -200,7 +200,7 @@ class _MCGDrawerState extends State<MCGDrawer> {
           const Divider(indent: 10, endIndent: 10, thickness: 1),
           ListTile(
             leading: Icon(
-              Icons.settings,
+              widget.routeName == SettingsScreen.routeName ? Icons.settings: Icons.settings_outlined,
               color: widget.routeName == SettingsScreen.routeName ? Colors.green : null,
             ),
             title: Text(
@@ -218,7 +218,7 @@ class _MCGDrawerState extends State<MCGDrawer> {
           ),
           ListTile(
             leading: Icon(
-              Icons.account_balance,
+              widget.routeName == CreditsScreen.routeName ? Icons.account_balance: Icons.account_balance_outlined,
               color: widget.routeName == CreditsScreen.routeName ? Colors.green : null,
             ),
             title: Text(
