@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:mcgapp/classes/room.dart';
 import 'package:mcgapp/main.dart';
@@ -124,51 +123,27 @@ class _RoomplanScreenState extends State<RoomplanScreen> {
         ],
       ),
       drawer: const MCGDrawer(routeName: RoomplanScreen.routeName),
-      floatingActionButton: SpeedDial(
-        icon: Icons.layers,
-        activeIcon: Icons.close,
-        buttonSize: const Size(56.0, 56.0),
-        visible: true,
-        closeManually: false,
-        overlayColor: Colors.black,
-        overlayOpacity: 0.5,
-        elevation: 8.0,
-        childMargin: const EdgeInsets.all(20.0),
-        shape: const CircleBorder(),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          SpeedDialChild(
-            child: const Text(
-              '0',
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
-            foregroundColor: Theme.of(context).floatingActionButtonTheme.foregroundColor,
-            label: 'Erdgeschoss',
-            labelStyle: const TextStyle(fontSize: 18.0),
-            onTap: () {
-              setState(() {
-                _setSelectedPlan(0);
-              });
-            },
-          ),
-          SpeedDialChild(
-            child: const Text(
-              '1',
-              style: TextStyle(
-                fontSize: 20,
-              ),
-            ),
-            backgroundColor: Theme.of(context).floatingActionButtonTheme.backgroundColor,
-            foregroundColor: Theme.of(context).floatingActionButtonTheme.foregroundColor,
-            label: 'Obergeschoss',
-            labelStyle: const TextStyle(fontSize: 18.0),
-            onTap: () {
+          FloatingActionButton(
+            onPressed: () {
               setState(() {
                 _setSelectedPlan(1);
               });
             },
+            heroTag: 'story1',
+            child: const Text('1', style: TextStyle(fontSize: 20),),
+          ),
+          const SizedBox(height: 8),
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                _setSelectedPlan(0);
+              });
+            },
+            heroTag: 'story0',
+            child: const Text('0', style: TextStyle(fontSize: 20),),
           ),
         ],
       ),
