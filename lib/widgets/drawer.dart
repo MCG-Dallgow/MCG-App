@@ -32,44 +32,21 @@ class _MCGDrawerState extends State<MCGDrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          SizedBox(
-            height: 150,
-            child: DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(right: 16),
-                    child: CircleAvatar(
-                      foregroundImage: AssetImage('assets/images/mcg-icon.jpg'),
-                      radius: 35,
-                    ),
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '${AppUser.user!.firstname} ${AppUser.user!.lastname}',
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
-                      Text(
-                        AppUser.user!.group.name,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+          UserAccountsDrawerHeader(
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+            ),
+            accountName: Text(
+              '${AppUser.user!.firstname} ${AppUser.user!.lastname}',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            accountEmail: Text(
+              AppUser.user!.group.name,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            currentAccountPicture: const CircleAvatar(
+              foregroundImage: AssetImage('assets/images/mcg-icon.jpg'),
+              radius: 35,
             ),
           ),
           ListTile(
