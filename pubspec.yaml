@@ -42,6 +42,8 @@ dependencies:
   dio: ^4.0.6
   shared_preferences: ^2.0.15
   collection: ^1.16.0
+  flutter_hooks: ^0.18.0
+  hooks_riverpod: ^2.3.6
 
 dev_dependencies:
   flutter_test:
