@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mcgapp/classes/timetable_entry.dart';
 import 'package:mcgapp/classes/user.dart';
 import 'package:mcgapp/enums/group.dart';
@@ -7,12 +8,13 @@ import '../classes/course.dart';
 import '../classes/room.dart';
 import '../classes/teacher.dart';
 import '../enums/subject.dart';
-import '../main.dart';
 
 class API {
   static final dio = Dio();
 
   static Future<String> signup(String username, String password) async {
+    String apiBaseURL = dotenv.env['APIBASEURL'] ?? 'http://10.0.2.2:5000';
+
     try {
       await dio.post(
         '$apiBaseURL/auth/signup',
@@ -35,6 +37,8 @@ class API {
   }
 
   static Future<String> login(String username, String password) async {
+    String apiBaseURL = dotenv.env['APIBASEURL'] ?? 'http://10.0.2.2:5000';
+
     try {
       var response = await dio.post(
         '$apiBaseURL/auth/login',
@@ -69,6 +73,8 @@ class API {
   }
 
   static Future<Map<String, Course>> getCourses() async {
+    String apiBaseURL = dotenv.env['APIBASEURL'] ?? 'http://10.0.2.2:5000';
+
     var response = await dio.get(
       '$apiBaseURL/user/courses',
       options: Options(headers: {
@@ -91,6 +97,8 @@ class API {
   }
 
   static Future<Map<String, Map<String, List<RegularTimetableEntry>>>> getRegularTimetable() async {
+    String apiBaseURL = dotenv.env['APIBASEURL'] ?? 'http://10.0.2.2:5000';
+
     var response = await dio.get(
       '$apiBaseURL/user/reg_timetable',
       options: Options(headers: {
@@ -124,6 +132,8 @@ class API {
   }
 
   static Future<Map<DateTime, List<TimetableEntry>>> getTimetable(int start, int end) async {
+    String apiBaseURL = dotenv.env['APIBASEURL'] ?? 'http://10.0.2.2:5000';
+
     var response = await dio.get(
       '$apiBaseURL/user/timetable?start=$start&end=$end',
       options: Options(headers: {

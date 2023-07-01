@@ -41,6 +41,7 @@ dependencies:
   html: ^0.15.0
   dio: ^4.0.6
   shared_preferences: ^2.0.15
+  flutter_dotenv: ^5.1.0
   collection: ^1.16.0
   flutter_hooks: ^0.18.0
   hooks_riverpod: ^2.3.6
@@ -74,6 +75,7 @@ flutter:
     - assets/images/
     - assets/images/room_plan/
     - assets/images/teachers/
+    - .env
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
 

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:mcgapp/classes/user.dart';
 import 'package:mcgapp/screens/auth/signin_screen.dart';
 import 'package:mcgapp/screens/credits_screen.dart';
@@ -21,13 +22,13 @@ import 'classes/teacher.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load();
   AppUser.loadUser();
   runApp(const MyApp());
 }
 
 String get appName => 'MCG-App';
 String get appVersion => '1.0.0-alpha.1';
-String get apiBaseURL => 'http://10.0.2.2:5000';
 
 ThemeManager themeManager = ThemeManager();
 
