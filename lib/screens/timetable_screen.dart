@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:mcgapp/widgets/drawer.dart';
 
 import '../classes/timetable_entry.dart';
-import '../logic/api.dart';
+import '../api/api.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/timetable.dart';
 

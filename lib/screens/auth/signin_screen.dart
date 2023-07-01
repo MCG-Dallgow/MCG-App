@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mcgapp/main.dart';
 import 'package:mcgapp/widgets/text_fields.dart';
-import 'package:mcgapp/logic/api.dart';
+import 'package:mcgapp/api/api.dart';
 
 import '../../classes/course.dart';
 import '../../classes/user.dart';

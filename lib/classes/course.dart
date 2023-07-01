@@ -6,7 +6,7 @@ import 'package:mcgapp/classes/grade.dart';
 import 'package:mcgapp/classes/room.dart';
 import 'package:mcgapp/enums/subject.dart';
 import 'package:mcgapp/classes/teacher.dart';
-import 'package:mcgapp/logic/api.dart';
+import 'package:mcgapp/api/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../enums/group.dart';

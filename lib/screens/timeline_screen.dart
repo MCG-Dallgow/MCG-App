@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'package:mcgapp/logic/api.dart';
+import 'package:mcgapp/api/api.dart';
 import 'package:mcgapp/screens/timetable_screen.dart';
 import 'package:mcgapp/widgets/app_bar.dart';
 import 'package:mcgapp/widgets/drawer.dart';
